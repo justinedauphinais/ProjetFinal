@@ -20,7 +20,8 @@ private:
 
 	Sprite _background;		// Le sprite pour la background
 	Sprite _playButton;		// Le sprite du bouton jouer
-	Text _title;			// Le sprite du titre
+	Sprite _stopButton;		// Le sprite du bouton jouer
+	Text _title;			// Le texte du titre
 
 public:
 	mainMenuState(gameDataRef data);

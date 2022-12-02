@@ -15,6 +15,13 @@ void splashState::init()
 {
 	_data->assets.loadTexture("logo state background", SPLASH_STATE_BACKGROUND_FILEPATH);
 	_background.setTexture(_data->assets.getTexture("logo state background"));
+
+	_data->assets.loadTexture("pixel art font", PIXEL_ART_FONT);
+
+	_nomJimmi = Text("Jimmi Lancelot", _data->assets.getFont("pixel art font"), 200);
+	_nomJimmi.setOrigin(_nomJimmi.getGlobalBounds().width / 2, _nomJimmi.getGlobalBounds().height / 2);
+	_nomJimmi.setPosition(0, 0);
+	_nomJimmi.setFillColor(Color::Black);
 }
 
 /// <summary>
@@ -39,7 +46,7 @@ void splashState::update(float dt)
 	if (_clock.getElapsedTime().asSeconds() > LOGO_STATE_SHOW_TIME)
 	{
 		//todo call the menu state
-		_data->machine.addState(stateRef(new mainMenuState(_data)), true);
+		//_data->machine.addState(stateRef(new mainMenuState(_data)), true);
 		cout << "go to the main menu" << endl;
 	}
 }
@@ -52,5 +59,6 @@ void splashState::draw(float dt) const
 {
 	_data->window.clear();
 	_data->window.draw(_background);
+	_data->window.draw(_nomJimmi);
 	_data->window.display();
 }

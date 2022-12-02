@@ -18,15 +18,15 @@ enum directions {
 #define SCREEN_HEIGHT 1080
 #define LOGO_STATE_SHOW_TIME 3.0
 
-// Ressources
-#define SPLASH_STATE_BACKGROUND_FILEPATH "Resources/res/SplashBackground.png"
-#define MAIN_MENU_STATE_BACKGROUND_FILEPATH "Resources/res/sky.png"
-#define GAME_TITLE_FILEPATH "Resources/res/title.png"
-#define PLAY_BUTTON_FILEPATH "Resources/res/PlayButton.png"
+// Splash Screen
+#define SPLASH_STATE_BACKGROUND_FILEPATH "Ressources/Menu/SplashScreen.png"
+#define PIXEL_ART_FONT "Ressources/Fonts/Pixeled.ttf"
 
 // Main menu
 #define MAIN_MENU_BACKGROUND "Ressources/Menu/background.png"
 #define MAIN_MENU_FONT "Ressources/Fonts/Stranger back in the Night.ttf"
+#define PLAY_BUTTON_FILEPATH "Ressources/Menu/playButton.png"
+#define STOP_BUTTON_FILEPATH "Ressources/Menu/stopButton.png"
 
 // Game
 #define GAME_BACKGROUND_TEMP "Ressources/Map/Contour_map.png"
