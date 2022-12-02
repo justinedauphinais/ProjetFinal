@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "mainMenuState.h"
+#include "splashState.h"
 
 game::game(int width, int height, string title)
 {

@@ -18,19 +18,24 @@ void mainMenuState::init()
 	_background.setTexture(_data->assets.getTexture("main menu background"));
 
 	// Play button
-	_data->assets.loadTexture("main menu button", PLAY_BUTTON_FILEPATH);
-	_playButton.setTexture(_data->assets.getTexture("main menu button"));
+	_data->assets.loadTexture("main menu play button", PLAY_BUTTON_FILEPATH);
+	_playButton.setTexture(_data->assets.getTexture("main menu play button"));
+	_playButton.setScale(2, 2);
+	_playButton.setPosition(((SCREEN_WIDTH / 2) - (_playButton.getGlobalBounds().width) - 15),
+		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2)));
 
-	_playButton.setPosition(((SCREEN_WIDTH / 2) - (_playButton.getGlobalBounds().width / 2)),
+	// Stop button
+	_data->assets.loadTexture("main menu stop button", STOP_BUTTON_FILEPATH);
+	_stopButton.setTexture(_data->assets.getTexture("main menu stop button"));
+	_stopButton.setScale(2, 2);
+	_stopButton.setPosition(((SCREEN_WIDTH / 2) + 15),
 		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2)));
 
 	// Title
 	_data->assets.loadFont("main menu font", MAIN_MENU_FONT);
-	string text = "The Catacombs of Yharnam";
 
-	_title = Text(text, _data->assets.getFont("main menu font"), 300);
-	_title.setPosition((SCREEN_WIDTH / 2), -200);
-	_title.setFillColor(Color::Black);
+	_title = Text("The Catacombs of Yharnam", _data->assets.getFont("main menu font"), 300);
+	_title.setFillColor(Color::Color(206, 196, 188));
 	_title.setPosition(((SCREEN_WIDTH / 2) - (_title.getGlobalBounds().width / 2)), 100);
 }
 
@@ -48,6 +53,9 @@ void mainMenuState::handleInput()
 			// Create the new state main screen
 			_data->machine.addState(stateRef(new gameState(_data)), true);
 			cout << "go to main screen" << endl;
+		}
+		else if (_data->input.isSpriteClicked(_stopButton, Mouse::Left, _data->window)) {
+			exit(0);
 		}
 	}
 }
@@ -70,5 +78,6 @@ void mainMenuState::draw(float dt) const
 	_data->window.draw(_background);
 	_data->window.draw(_title);
 	_data->window.draw(_playButton);
+	_data->window.draw(_stopButton);
 	_data->window.display();
 }
