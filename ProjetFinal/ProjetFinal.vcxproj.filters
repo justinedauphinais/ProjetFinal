@@ -19,6 +19,12 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{eff22883-58eb-43a7-b966-43dbb1f7de06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Visuals">
+      <UniqueIdentifier>{66e4af91-642b-4be3-95a5-e12df45367f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Visuals">
+      <UniqueIdentifier>{086ec1d4-4081-4e8f-b27b-9da927c89205}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProjetFinal.cpp">
@@ -47,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="gameState.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="mainCharacter.cpp">
+      <Filter>Source Files\Visuals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="gameState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="mainCharacter.h">
+      <Filter>Header Files\Visuals</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

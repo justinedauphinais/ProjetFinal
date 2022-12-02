@@ -10,8 +10,11 @@ private:
 
 	Sprite _skeletonSprite;
 
-	vector<Texture> _animationFramesWalking;
+	vector<Texture> _animationFramesWalkingRight;
+	vector<Texture> _animationFramesWalkingLeft;
 	int _animationIterator;
+
+	directions _dir;
 
 	Clock _clock;
 
@@ -23,7 +26,7 @@ public:
 	Sprite getSprite() const;
 
 	void animate(float dt);
-	void update(float dt);
+	void move(directions dir);
 
 	void draw() const;
 };

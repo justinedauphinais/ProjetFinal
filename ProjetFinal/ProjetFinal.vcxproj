@@ -135,6 +135,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameState.cpp" />
     <ClCompile Include="inputManager.cpp" />
+    <ClCompile Include="mainCharacter.cpp" />
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="ProjetFinal.cpp" />
     <ClCompile Include="splashState.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gameState.h" />
     <ClInclude Include="inputManager.h" />
+    <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="splashState.h" />
     <ClInclude Include="state.hpp" />
