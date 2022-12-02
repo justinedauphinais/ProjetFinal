@@ -85,6 +85,9 @@ void gameState::handleInput()
 				_mainCharacter->move(directions::BOTTOM);
 			}
 		}
+		else if (event.type == Event::KeyReleased) {
+
+		}
 	}
 }
 

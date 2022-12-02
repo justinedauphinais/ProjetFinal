@@ -42,6 +42,7 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 
 	// Directions
 	_dir = directions::RIGHT;
+	_state = mainCharacterStates::IDLE;
 }
 
 /// <summary>
@@ -100,6 +101,13 @@ void mainCharacter::move(directions dir)
 
 		_clock.restart();
 	}
+}
+
+/// <summary>
+/// 
+/// </summary>
+void mainCharacter::idle()
+{
 }
 
 /// <summary>
