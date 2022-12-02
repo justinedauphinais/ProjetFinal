@@ -85,18 +85,26 @@ void mainCharacter::move(directions dir)
 		if (dir == directions::RIGHT) {
 			_skeletonSprite.move(20, 0);
 			_skeletonSprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+			
+			
 		}
 		else if (dir == directions::TOP) {
 			_skeletonSprite.move(0, -20);
 			_skeletonSprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+			
+			
 		}
 		else if (dir == directions::LEFT) {
 			_skeletonSprite.move(-20, 0);
 			_skeletonSprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
+			
+			
 		}
 		else if (dir == directions::BOTTOM) {
 			_skeletonSprite.move(0, 20);
 			_skeletonSprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
+			
+			
 		}
 
 		_clock.restart();
@@ -108,6 +116,7 @@ void mainCharacter::move(directions dir)
 /// </summary>
 void mainCharacter::idle()
 {
+
 }
 
 /// <summary>

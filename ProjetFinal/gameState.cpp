@@ -72,16 +72,17 @@ void gameState::handleInput()
 		if (event.type == Event::Closed)
 			_data->window.close();
 		else if (event.type == Event::KeyPressed) {
+			
 			if (Keyboard::isKeyPressed(Keyboard::D)) {
 				_mainCharacter->move(directions::RIGHT);
 			}
-			if (Keyboard::isKeyPressed(Keyboard::A)) {
+			else if (Keyboard::isKeyPressed(Keyboard::A)) {
 				_mainCharacter->move(directions::LEFT);
 			}
-			if (Keyboard::isKeyPressed(Keyboard::W)) {
+			else if (Keyboard::isKeyPressed(Keyboard::W)) {
 				_mainCharacter->move(directions::TOP);
 			}
-			if (Keyboard::isKeyPressed(Keyboard::S)) {
+			else if (Keyboard::isKeyPressed(Keyboard::S)) {
 				_mainCharacter->move(directions::BOTTOM);
 			}
 		}

@@ -59,3 +59,17 @@ enum directions {
 #define SKELETON_WALK_FRAME_LEFT_10 "Ressources/MC/Skeleton/Walk/Left/10.png"
 #define SKELETON_WALK_FRAME_LEFT_11 "Ressources/MC/Skeleton/Walk/Left/11.png"
 #define SKELETON_WALK_FRAME_LEFT_12 "Ressources/MC/Skeleton/Walk/Left/12.png"
+
+//Idle character
+#define SKELETON_IDLE_FRAME_1 "Ressources/MC/Skeleton/Idle/1.png"
+#define SKELETON_IDLE_FRAME_2 "Ressources/MC/Skeleton/Idle/2.png"
+#define SKELETON_IDLE_FRAME_3 "Ressources/MC/Skeleton/Idle/3.png"
+#define SKELETON_IDLE_FRAME_4 "Ressources/MC/Skeleton/Idle/4.png"
+#define SKELETON_IDLE_FRAME_5 "Ressources/MC/Skeleton/Idle/5.png"
+#define SKELETON_IDLE_FRAME_6 "Ressources/MC/Skeleton/Idle/6.png"
+#define SKELETON_IDLE_FRAME_7 "Ressources/MC/Skeleton/Idle/7.png"
+#define SKELETON_IDLE_FRAME_8 "Ressources/MC/Skeleton/Idle/8.png"
+#define SKELETON_IDLE_FRAME_9 "Ressources/MC/Skeleton/Idle/9.png"
+#define SKELETON_IDLE_FRAME_10 "Ressources/MC/Skeleton/Idle/10.png"
+#define SKELETON_IDLE_FRAME_11 "Ressources/MC/Skeleton/Idle/11.png"
+
