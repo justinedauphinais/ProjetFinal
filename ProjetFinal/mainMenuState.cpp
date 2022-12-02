@@ -14,7 +14,7 @@ mainMenuState::mainMenuState(gameDataRef data) : _data(data)
 void mainMenuState::init()
 {
 	// Background
-	_data->assets.loadTexture("main menu background", MAIN_MENU_STATE_BACKGROUND_FILEPATH);
+	_data->assets.loadTexture("main menu background", MAIN_MENU_BACKGROUND);
 	_background.setTexture(_data->assets.getTexture("main menu background"));
 
 	// Play button
@@ -25,9 +25,12 @@ void mainMenuState::init()
 		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2)));
 
 	// Title
-	_data->assets.loadTexture("main menu title", GAME_TITLE_FILEPATH);
-	_title.setTexture(_data->assets.getTexture("main menu title"));
+	_data->assets.loadFont("main menu font", MAIN_MENU_FONT);
+	string text = "The Catacombs of Yharnam";
 
+	_title = Text(text, _data->assets.getFont("main menu font"), 300);
+	_title.setPosition((SCREEN_WIDTH / 2), -200);
+	_title.setFillColor(Color::Black);
 	_title.setPosition(((SCREEN_WIDTH / 2) - (_title.getGlobalBounds().width / 2)), 100);
 }
 
@@ -43,7 +46,7 @@ void mainMenuState::handleInput()
 			_data->window.close();
 		else if (_data->input.isSpriteClicked(_playButton, Mouse::Left, _data->window)) {
 			// Create the new state main screen
-			//_data->machine.addState(stateRef(new gameState(_data)), true);
+			_data->machine.addState(stateRef(new gameState(_data)), true);
 			cout << "go to main screen" << endl;
 		}
 	}

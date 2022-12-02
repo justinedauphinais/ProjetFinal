@@ -133,6 +133,7 @@
     <ClCompile Include="assetManager.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameState.cpp" />
     <ClCompile Include="inputManager.cpp" />
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="ProjetFinal.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="gameState.h" />
     <ClInclude Include="inputManager.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="splashState.h" />

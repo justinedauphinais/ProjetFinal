@@ -1,15 +1,15 @@
 #include "game.h"
 #include <time.h>
 #include <stdlib.h>
-#include "splashState.h"
+#include "mainMenuState.h"
 
 game::game(int width, int height, string title)
 {
 	_data = make_shared<gameData>();	// Création de la game en mémoire dynamique
-	// Création de la fenêtre qui changera de contenu selon la state créée ensuite
+										// Création de la fenêtre qui changera de contenu selon la state créée ensuite
 	_data->window.create(VideoMode(width, height), title, Style::Close | Style::Titlebar);
 
-	_data->machine.addState(stateRef(new splashState(_data)), true);
+	_data->machine.addState(stateRef(new mainMenuState(_data)), true);
 
 	srand(time(0));
 

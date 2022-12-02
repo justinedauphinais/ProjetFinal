@@ -4,26 +4,24 @@
 #include "DEFINITIONS.hpp"
 #include "game.h"
 #include "state.hpp"
-#include "gameState.h"
 #include <iostream>
 
 using namespace sf;
 using namespace std;
 // Chaque state représentera une vraie fenêtre et hérite de state, car on implémentera
 // un init, update, draw et handleInput différent pour chaque fenêtre.
-class mainMenuState : public state
+class gameState : public state
 {
 private:
 	gameDataRef _data;		// Chaque state recevra le pointeur sur la gameData qui
-							// donne accès au stateMachine, au RenderWindow, au
-							// assertManager et au inputManager
+	// donne accès au stateMachine, au RenderWindow, au
+	// assertManager et au inputManager
 
 	Sprite _background;		// Le sprite pour la background
-	Sprite _playButton;		// Le sprite du bouton jouer
-	Text _title;			// Le sprite du titre
+	Sprite _foreground;		// Le sprite pour la background
 
 public:
-	mainMenuState(gameDataRef data);
+	gameState(gameDataRef data);
 	void init();
 	void handleInput();
 	void update(float dt);
