@@ -20,6 +20,7 @@ enum directions {
 
 // Splash Screen
 #define SPLASH_STATE_BACKGROUND_FILEPATH "Ressources/Menu/SplashScreen.png"
+#define SPLASH_STATE_MEOW "Ressources/Menu/SplashScreenMeow.png"
 #define PIXEL_ART_FONT "Ressources/Fonts/Pixeled.ttf"
 
 // Main menu
@@ -33,6 +34,9 @@ enum directions {
 #define GAME_FOREGROUND_TEMP "Ressources/Map/Contour_map_avant.png"
 
 // Main character
+	// Walk
+#define CHARACTER_NUMBER_LIVES 3
+
 	// Walk
 #define SKELETON_WALK_TIME 0.05
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Skeleton/Walk/Right/1.png"

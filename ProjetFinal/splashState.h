@@ -22,7 +22,10 @@ private:
 	Clock _clock;			// 1re fenêtre a besoin d’une clock car elle disparait
 							// au bout de quelques secondes
 
+	Clock _clockMeow;		// Temps pour faire apparaître le meow
+
 	Sprite _background;		// Le sprite pour la background
+	Sprite _meow;			// Le sprite du meow
 	Text _nomJimmi;
 	Text _nomJustine;
 

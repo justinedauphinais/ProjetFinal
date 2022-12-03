@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="assetManager.cpp" />
     <ClCompile Include="collision.cpp" />
+    <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameState.cpp" />
     <ClCompile Include="inputManager.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="assetManager.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DEFINITIONS.hpp" />
+    <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameState.h" />
     <ClInclude Include="inputManager.h" />
