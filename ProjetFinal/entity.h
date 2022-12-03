@@ -13,9 +13,7 @@ enum entityStates {
 };
 
 class entity {
-private:
-	gameDataRef _data;
-
+protected:
 	Sprite _sprite;
 
 	vector<Texture> _animationFramesWalkingRight;
@@ -23,17 +21,17 @@ private:
 	int _animationIterator;
 
 	entityStates _state;
+	directions _dir;
 
-	int _nbrVies;
+	int _nbrLives;
 
 	Clock _clock;
 
 public:
-	entity(gameDataRef data);
+	entity();
 
 	Sprite getSprite() const;
+	int getNbrLives() const;
 
 	void move(Keyboard::Key key);
-	
-	void draw() const;
 };

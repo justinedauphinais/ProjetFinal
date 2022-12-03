@@ -27,8 +27,8 @@ void gameState::init()
 	_background.setTexture(_data->assets.getTexture("game background"));
 
 	// Foreground
-	_data->assets.loadTexture("game foreground", GAME_FOREGROUND_TEMP);
-	_foreground.setTexture(_data->assets.getTexture("game foreground"));
+	//_data->assets.loadTexture("game foreground", GAME_FOREGROUND_TEMP);
+	//_foreground.setTexture(_data->assets.getTexture("game foreground"));
 	_foreground.setPosition(47, 916);
 
 	// Main character
@@ -86,16 +86,16 @@ void gameState::handleInput()
 		else if (event.type == Event::KeyPressed) {
 			
 			if (Keyboard::isKeyPressed(Keyboard::D)) {
-				_mainCharacter->move(directions::RIGHT);
+				_mainCharacter->move(Keyboard::D);
 			}
 			if (Keyboard::isKeyPressed(Keyboard::A)) {
-				_mainCharacter->move(directions::LEFT);
+				_mainCharacter->move(Keyboard::A);
 			}
 			if (Keyboard::isKeyPressed(Keyboard::W)) {
-				_mainCharacter->move(directions::TOP);
+				_mainCharacter->move(Keyboard::W);
 			}
 			if (Keyboard::isKeyPressed(Keyboard::S)) {
-				_mainCharacter->move(directions::BOTTOM);
+				_mainCharacter->move(Keyboard::S);
 			}
 		}
 		else if (event.type == Event::KeyReleased) {
@@ -111,10 +111,7 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
-	
-		_mainCharacter->idle(dt);
-	
-	
+	_mainCharacter->idle(dt);
 }
 
 /// <summary>
