@@ -74,11 +74,6 @@ void mainCharacter::animate(float dt)
 	}
 }
 
-void mainCharacter::setIdleState()
-{
-	_state = entityStates::IDLE;
-}
-
 /// <summary>
 /// create a animate character idle.
 /// </summary>
@@ -96,6 +91,17 @@ void mainCharacter::idle(float dt)
 		_sprite.setTexture(_animationFramesIdle.at(_animationIterator));
 
 		_clock.restart();
+	}
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dt"></param>
+void mainCharacter::attack(float dt)
+{
+	if (_state == entityStates::ATTACKING) {
+
 	}
 }
 

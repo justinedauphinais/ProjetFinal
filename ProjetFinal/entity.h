@@ -4,14 +4,6 @@
 #include "DEFINITIONS.hpp"
 #include "game.h"
 
-enum entityStates {
-	WALKING,
-	IDLE,
-	ATTACKING,
-	DYING,
-	DEAD
-};
-
 class entity {
 protected:
 	Sprite _sprite;
@@ -32,6 +24,9 @@ public:
 
 	Sprite getSprite() const;
 	int getNbrLives() const;
+	entityStates getState() const;
+
+	void setState(entityStates state);
 
 	void move(Keyboard::Key key);
 

@@ -13,6 +13,14 @@ enum directions {
 	BOTTOM
 };
 
+enum entityStates {
+	WALKING,
+	IDLE,
+	ATTACKING,
+	DYING,
+	DEAD
+};
+
 // Écran
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
@@ -79,3 +87,22 @@ enum directions {
 #define SKELETON_IDLE_FRAME_10 "Ressources/MC/Idle/Right/10.png"
 #define SKELETON_IDLE_FRAME_11 "Ressources/MC/Idle/Right/11.png"
 
+	// Attack
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/1.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/2.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/3.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/4.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/5.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/6.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/7.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/8.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/9.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/10.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/11.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/12.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/13.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/14.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/15.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/16.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/17.png"
+#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/18.png"

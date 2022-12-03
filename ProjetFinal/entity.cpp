@@ -18,9 +18,31 @@ Sprite entity::getSprite() const
 	return _sprite;
 }
 
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 int entity::getNbrLives() const
 {
 	return _nbrLives;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+entityStates entity::getState() const
+{
+	return _state;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="state"></param>
+void entity::setState(entityStates state)
+{
+	_state = state;
 }
 
 /// <summary>
