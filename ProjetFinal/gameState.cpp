@@ -137,7 +137,7 @@ void gameState::draw(float dt) const
 	_mainCharacter->draw();
 
 	// Le reste va ici
-	//_wall->draw();
+	_wall->draw();
 
 	_data->window.draw(_foreground);
 	_data->window.display();
