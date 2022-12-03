@@ -139,6 +139,7 @@
     <ClCompile Include="inputManager.cpp" />
     <ClCompile Include="mainCharacter.cpp" />
     <ClCompile Include="mainMenuState.cpp" />
+    <ClCompile Include="mainWalls.cpp" />
     <ClCompile Include="ProjetFinal.cpp" />
     <ClCompile Include="splashState.cpp" />
     <ClCompile Include="stateMachine.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="inputManager.h" />
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
+    <ClInclude Include="mainWalls.h" />
     <ClInclude Include="splashState.h" />
     <ClInclude Include="state.hpp" />
     <ClInclude Include="stateMachine.h" />

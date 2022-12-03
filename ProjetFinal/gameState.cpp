@@ -24,14 +24,20 @@ gameState::~gameState()
 /// </summary>
 void gameState::init()
 {
+	
 	// Background
-	_data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
+_data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	_background.setTexture(_data->assets.getTexture("game background"));
 
 	// Foreground
 	//_data->assets.loadTexture("game foreground", GAME_FOREGROUND_TEMP);
 	//_foreground.setTexture(_data->assets.getTexture("game foreground"));
-	_foreground.setPosition(47, 916);
+	//_foreground.setPosition(47, 916);
+
+	_data->assets.loadTexture("wall left", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
+	_data->assets.loadTexture("wall right", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
+	_data->assets.loadTexture("wall up", GAME_FOREGROUND_UP_DOWN_TEMP);
+	_data->assets.loadTexture("wall down", GAME_FOREGROUND_UP_DOWN_TEMP);
 
 	// Main character
 	#pragma region Main Character assets
@@ -76,6 +82,7 @@ void gameState::init()
 	// Pointeurs
 	_mainCharacter = new mainCharacter(_data);
 	_hearts = new hearts(_data, NBR_LIVES);
+	_wall = new wall(_data);
 }
 
 /// <summary>
@@ -118,7 +125,12 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
+
 	_mainCharacter->idle(dt);
+	_wall->spawnLeftWall();
+	_wall->spawnRightWall();
+	_wall->spawnUpWall();
+	_wall->spawnDownWall();
 	_mainCharacter->attack(dt);
 }
 
@@ -134,6 +146,7 @@ void gameState::draw(float dt) const
 	_hearts->draw();
 
 	// Le reste va ici
+	_wall->draw();
 
 	_data->window.draw(_foreground);
 	_data->window.display();

@@ -63,6 +63,9 @@
     <ClCompile Include="hearts.cpp">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
+    <ClCompile Include="mainWalls.cpp">
+      <Filter>Source Files\Visuals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -99,9 +102,6 @@
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="entity.h">
-      <Filter>Header Files\Visuals</Filter>
-    </ClInclude>
-    <ClInclude Include="hearts.h">
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
   </ItemGroup>
