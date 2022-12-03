@@ -48,7 +48,7 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left11"));
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left12"));
 
-	_skeletonSprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+	_skeletonSprite.setTexture(_animationFramesIdle.at(_animationIterator));
 
 	_skeletonSprite.setScale(5.0, 5.0);
 
