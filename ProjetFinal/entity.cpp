@@ -4,11 +4,9 @@
 /// 
 /// </summary>
 /// <param name="data"></param>
-entity::entity(gameDataRef data) : _data(data)
+entity::entity()
 {
-	_animationIterator = 0;
-	_state = entityStates::IDLE;
-	_nbrVies = 3;
+
 }
 
 /// <summary>
@@ -20,15 +18,21 @@ Sprite entity::getSprite() const
 	return _sprite;
 }
 
+int entity::getNbrLives() const
+{
+	return _nbrLives;
+}
+
 /// <summary>
 /// 
 /// </summary>
 /// <param name="key"></param>
 void entity::move(Keyboard::Key key)
 {
-	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME) {
+	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME / _animationFramesWalkingRight.size()) {
 
 		_animationIterator++;
+		_state = entityStates::WALKING;
 
 		// Si on revient au début de la liste
 		if (_animationIterator >= _animationFramesWalkingRight.size()) {
@@ -55,12 +59,4 @@ void entity::move(Keyboard::Key key)
 
 		_clock.restart();
 	}
-}
-
-/// <summary>
-/// 
-/// </summary>
-void entity::draw() const
-{
-	_data->window.draw(_sprite);
 }
