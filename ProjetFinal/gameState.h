@@ -24,7 +24,6 @@ private:
 
 	mainCharacter* _mainCharacter;	// Le personnage principal
 
-
 public:
 	gameState(gameDataRef data);
 	~gameState();
