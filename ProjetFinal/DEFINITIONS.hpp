@@ -32,7 +32,8 @@ enum directions {
 
 // Game
 #define GAME_BACKGROUND_TEMP "Ressources/Map/Contour_map.png"
-#define GAME_FOREGROUND_TEMP "Ressources/Map/Contour_map_avant.png"
+#define GAME_FOREGROUND_LEFT_RIGHT_TEMP "Ressources/Map/wall.png"
+#define GAME_FOREGROUND_UP_DOWN_TEMP "Ressources/Map/wall_back.png"
 
 // Main character
 
