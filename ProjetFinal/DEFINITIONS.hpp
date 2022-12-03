@@ -34,9 +34,9 @@ enum directions {
 #define GAME_BACKGROUND_TEMP "Ressources/Map/Contour_map.png"
 #define GAME_FOREGROUND_LEFT_RIGHT_TEMP "Ressources/Map/wall.png"
 #define GAME_FOREGROUND_UP_DOWN_TEMP "Ressources/Map/wall_back.png"
+#define GAME_HEARTS "Ressources/UI/hearts.png"
 
 // Main character
-
 	// Walk
 #define SKELETON_WALK_TIME 0.6f
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Walk/Right/1.png"
@@ -64,8 +64,8 @@ enum directions {
 #define SKELETON_WALK_FRAME_LEFT_11 "Ressources/MC/Walk/Left/11.png"
 #define SKELETON_WALK_FRAME_LEFT_12 "Ressources/MC/Walk/Left/12.png"
 
+	// Idle
 #define SKELETON_IDLE_TIME 1.0f
-//Idle character
 #define SKELETON_IDLE_FRAME_1 "Ressources/MC/Idle/Right/1.png"
 #define SKELETON_IDLE_FRAME_2 "Ressources/MC/Idle/Right/2.png"
 #define SKELETON_IDLE_FRAME_3 "Ressources/MC/Idle/Right/3.png"

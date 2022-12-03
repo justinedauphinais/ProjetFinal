@@ -5,6 +5,7 @@
 #include "game.h"
 #include "state.hpp"
 #include "mainCharacter.h"
+#include "mainWalls.h"
 #include <iostream>
 
 using namespace sf;
@@ -23,7 +24,7 @@ private:
 	Sprite _foreground;		// Le sprite pour la background
 
 	mainCharacter* _mainCharacter;	// Le personnage principal
-
+	wall* _wall;
 
 public:
 	gameState(gameDataRef data);

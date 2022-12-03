@@ -16,11 +16,12 @@ private:
 public:
 	wall(gameDataRef data);
 	~wall();
-	void draw();
+	
 	void spawnLeftWall();
 	void spawnRightWall();
 	void spawnDownWall();
 	void spawnUpWall();
+	void draw();
 	list<Sprite>& getSprites();
 
 
