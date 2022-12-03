@@ -32,6 +32,18 @@ void gameState::init()
 	_foreground.setPosition(47, 916);
 
 	// Main character
+	_data->assets.loadTexture("skeleton idle frame1", SKELETON_IDLE_FRAME_1);
+	_data->assets.loadTexture("skeleton idle frame2", SKELETON_IDLE_FRAME_2);
+	_data->assets.loadTexture("skeleton idle frame3", SKELETON_IDLE_FRAME_3);
+	_data->assets.loadTexture("skeleton idle frame4", SKELETON_IDLE_FRAME_4);
+	_data->assets.loadTexture("skeleton idle frame5", SKELETON_IDLE_FRAME_5);
+	_data->assets.loadTexture("skeleton idle frame6", SKELETON_IDLE_FRAME_6);
+	_data->assets.loadTexture("skeleton idle frame7", SKELETON_IDLE_FRAME_7);
+	_data->assets.loadTexture("skeleton idle frame8", SKELETON_IDLE_FRAME_8);
+	_data->assets.loadTexture("skeleton idle frame9", SKELETON_IDLE_FRAME_9);
+	_data->assets.loadTexture("skeleton idle frame10", SKELETON_IDLE_FRAME_10);
+	_data->assets.loadTexture("skeleton idle frame11", SKELETON_IDLE_FRAME_11);
+
 	_data->assets.loadTexture("skeleton walking frame left1", SKELETON_WALK_FRAME_LEFT_1);
 	_data->assets.loadTexture("skeleton walking frame left2", SKELETON_WALK_FRAME_LEFT_2);
 	_data->assets.loadTexture("skeleton walking frame left3", SKELETON_WALK_FRAME_LEFT_3);
@@ -76,18 +88,19 @@ void gameState::handleInput()
 			if (Keyboard::isKeyPressed(Keyboard::D)) {
 				_mainCharacter->move(directions::RIGHT);
 			}
-			else if (Keyboard::isKeyPressed(Keyboard::A)) {
+			if (Keyboard::isKeyPressed(Keyboard::A)) {
 				_mainCharacter->move(directions::LEFT);
 			}
-			else if (Keyboard::isKeyPressed(Keyboard::W)) {
+			if (Keyboard::isKeyPressed(Keyboard::W)) {
 				_mainCharacter->move(directions::TOP);
 			}
-			else if (Keyboard::isKeyPressed(Keyboard::S)) {
+			if (Keyboard::isKeyPressed(Keyboard::S)) {
 				_mainCharacter->move(directions::BOTTOM);
 			}
 		}
 		else if (event.type == Event::KeyReleased) {
-
+			
+			_mainCharacter->setIdleState();
 		}
 	}
 }
@@ -98,6 +111,10 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
+	
+		_mainCharacter->idle(dt);
+	
+	
 }
 
 /// <summary>

@@ -6,7 +6,22 @@
 /// <param name="data"></param>
 mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 {
-	// Animations
+	_animationIterator = 0;
+	//Animation idle
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame1"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame2"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame3"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame4"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame5"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame6"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame7"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame8"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame9"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame10"));
+	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame11"));
+	//_skeletonSprite.setTexture(_animationFramesIdle.at(_animationIterator));
+
+	// Animations walks
 	_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right1"));
 	_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right2"));
 	_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right3"));
@@ -19,6 +34,7 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 	_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right10"));
 	_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right11"));
 	_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right12"));
+
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left1"));
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left2"));
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left3"));
@@ -31,7 +47,6 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left10"));
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left11"));
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left12"));
-	_animationIterator = 0;
 
 	_skeletonSprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
 
@@ -66,13 +81,19 @@ void mainCharacter::animate(float dt)
 	}
 }
 
+void mainCharacter::setIdleState()
+{
+	_state =mainCharacterStates::IDLE;
+}
+
 /// <summary>
 /// 
 /// </summary>
 /// <param name="dir"></param>
 void mainCharacter::move(directions dir)
 {
-	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME) {
+	_state = mainCharacterStates::WALKING;
+	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME / _animationFramesWalkingRight.size()) {
 
 		_animationIterator++;
 
@@ -112,11 +133,22 @@ void mainCharacter::move(directions dir)
 }
 
 /// <summary>
-/// 
+/// create a animate character idle.
 /// </summary>
-void mainCharacter::idle()
+void mainCharacter::idle(float dt)
 {
-
+	if (_clock.getElapsedTime().asSeconds() > SKELETON_IDLE_TIME / _animationFramesIdle.size() && (_state == mainCharacterStates::IDLE))
+	{
+		if (_animationIterator < _animationFramesIdle.size() - 1)
+		{
+			_animationIterator++;
+		}
+		else {
+			_animationIterator = 0;
+		}
+		_skeletonSprite.setTexture(_animationFramesIdle.at(_animationIterator));
+		_clock.restart();
+	}
 }
 
 /// <summary>

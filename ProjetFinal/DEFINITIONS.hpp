@@ -34,7 +34,7 @@ enum directions {
 
 // Main character
 	// Walk
-#define SKELETON_WALK_TIME 0.05
+#define SKELETON_WALK_TIME 0.6f
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Skeleton/Walk/Right/1.png"
 #define SKELETON_WALK_FRAME_RIGHT_2 "Ressources/MC/Skeleton/Walk/Right/2.png"
 #define SKELETON_WALK_FRAME_RIGHT_3 "Ressources/MC/Skeleton/Walk/Right/3.png"
@@ -60,6 +60,7 @@ enum directions {
 #define SKELETON_WALK_FRAME_LEFT_11 "Ressources/MC/Skeleton/Walk/Left/11.png"
 #define SKELETON_WALK_FRAME_LEFT_12 "Ressources/MC/Skeleton/Walk/Left/12.png"
 
+#define SKELETON_IDLE_TIME 1.0f
 //Idle character
 #define SKELETON_IDLE_FRAME_1 "Ressources/MC/Skeleton/Idle/1.png"
 #define SKELETON_IDLE_FRAME_2 "Ressources/MC/Skeleton/Idle/2.png"
