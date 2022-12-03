@@ -7,6 +7,7 @@
 gameState::gameState(gameDataRef data) : _data(data)
 {
 	_mainCharacter = nullptr;
+	_hearts = nullptr;
 }
 
 /// <summary>
@@ -15,6 +16,7 @@ gameState::gameState(gameDataRef data) : _data(data)
 gameState::~gameState()
 {
 	delete _mainCharacter;
+	delete _hearts;
 }
 
 /// <summary>
@@ -77,6 +79,7 @@ _data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 
 	// Pointeurs
 	_mainCharacter = new mainCharacter(_data);
+	_hearts = new hearts(_data, NBR_LIVES);
 	_wall = new wall(_data);
 }
 
@@ -135,6 +138,7 @@ void gameState::draw(float dt) const
 	_data->window.clear();
 	_data->window.draw(_background);
 	_mainCharacter->draw();
+	_hearts->draw();
 
 	// Le reste va ici
 	_wall->draw();

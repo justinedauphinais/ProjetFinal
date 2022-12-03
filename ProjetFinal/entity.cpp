@@ -60,3 +60,13 @@ void entity::move(Keyboard::Key key)
 		_clock.restart();
 	}
 }
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="x"></param>
+/// <param name="y"></param>
+void entity::setPosition(float x, float y)
+{
+	_sprite.setPosition(x, y);
+}

@@ -6,6 +6,8 @@
 /// <param name="data"></param>
 mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 {
+	_nbrLives = NBR_LIVES;
+
 	_animationIterator = 0;
 	//Animation idle
 	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame1"));
