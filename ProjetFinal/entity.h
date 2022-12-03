@@ -34,4 +34,6 @@ public:
 	int getNbrLives() const;
 
 	void move(Keyboard::Key key);
+
+	void setPosition(float x, float y);
 };

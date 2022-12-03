@@ -1,10 +1,12 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include "DEFINITIONS.hpp"
 #include "game.h"
 #include "state.hpp"
 #include "mainCharacter.h"
+#include "hearts.h"
 #include <iostream>
 
 using namespace sf;
@@ -16,13 +18,15 @@ class gameState : public state
 {
 private:
 	gameDataRef _data;		// Chaque state recevra le pointeur sur la gameData qui
-	// donne accès au stateMachine, au RenderWindow, au
-	// assertManager et au inputManager
+							// donne accès au stateMachine, au RenderWindow, au
+							// assertManager et au inputManager
 
 	Sprite _background;		// Le sprite pour la background
 	Sprite _foreground;		// Le sprite pour la background
 
 	mainCharacter* _mainCharacter;	// Le personnage principal
+	hearts* _hearts;				// Les coeurs du joueur
+
 
 public:
 	gameState(gameDataRef data);

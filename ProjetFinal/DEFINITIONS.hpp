@@ -34,9 +34,10 @@ enum directions {
 #define GAME_BACKGROUND_TEMP "Ressources/Map/Contour_map.png"
 #define GAME_FOREGROUND_LEFT_RIGHT_TEMP "Ressources/Map/wall.png"
 #define GAME_FOREGROUND_UP_DOWN_TEMP "Ressources/Map/wall_back.png"
-#define GAME_HEARTS "Ressources/UI/hearts.png"
+#define GAME_HEARTS_FILEPATH "Ressources/UI/hearts.png"
 
 // Main character
+#define NBR_LIVES 5
 	// Walk
 #define SKELETON_WALK_TIME 0.6f
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Walk/Right/1.png"
