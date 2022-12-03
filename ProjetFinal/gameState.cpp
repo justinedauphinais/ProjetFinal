@@ -83,6 +83,12 @@ _data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	_mainCharacter = new mainCharacter(_data);
 	_hearts = new hearts(_data, NBR_LIVES);
 	_wall = new wall(_data);
+
+	// Murs
+	_wall->spawnLeftWall();
+	_wall->spawnRightWall();
+	_wall->spawnUpWall();
+	_wall->spawnDownWall();
 }
 
 /// <summary>
@@ -125,12 +131,7 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
-
 	_mainCharacter->idle(dt);
-	_wall->spawnLeftWall();
-	_wall->spawnRightWall();
-	_wall->spawnUpWall();
-	_wall->spawnDownWall();
 	_mainCharacter->attack(dt);
 }
 
@@ -141,12 +142,12 @@ void gameState::update(float dt)
 void gameState::draw(float dt) const
 {
 	_data->window.clear();
-	_data->window.draw(_background);
+	//_data->window.draw(_background);
 	_mainCharacter->draw();
+	_wall->draw();
 	_hearts->draw();
 
 	// Le reste va ici
-	_wall->draw();
 
 	_data->window.draw(_foreground);
 	_data->window.display();

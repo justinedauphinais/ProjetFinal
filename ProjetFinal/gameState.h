@@ -25,6 +25,9 @@ private:
 	Sprite _background;		// Le sprite pour la background
 	Sprite _foreground;		// Le sprite pour la background
 
+	hearts* _hearts;
+	wall* _wall;
+
 	mainCharacter* _mainCharacter;	// Le personnage principal
 
 public:
