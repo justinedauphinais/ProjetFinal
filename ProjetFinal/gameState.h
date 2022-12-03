@@ -24,9 +24,9 @@ private:
 
 	Sprite _background;		// Le sprite pour la background
 	Sprite _foreground;		// Le sprite pour la background
-
+	wall* _wall;
 	mainCharacter* _mainCharacter;	// Le personnage principal
-
+	hearts* _hearts;
 public:
 	gameState(gameDataRef data);
 	~gameState();

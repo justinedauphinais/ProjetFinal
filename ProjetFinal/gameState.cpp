@@ -39,6 +39,7 @@ _data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	_data->assets.loadTexture("wall up", GAME_FOREGROUND_UP_DOWN_TEMP);
 	_data->assets.loadTexture("wall down", GAME_FOREGROUND_UP_DOWN_TEMP);
 
+
 	// Main character
 	_data->assets.loadTexture("skeleton idle frame1", SKELETON_IDLE_FRAME_1);
 	_data->assets.loadTexture("skeleton idle frame2", SKELETON_IDLE_FRAME_2);
@@ -81,6 +82,10 @@ _data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	_mainCharacter = new mainCharacter(_data);
 	_hearts = new hearts(_data, NBR_LIVES);
 	_wall = new wall(_data);
+	_wall->spawnLeftWall();
+	_wall->spawnRightWall();
+	_wall->spawnUpWall();
+	_wall->spawnDownWall();
 }
 
 /// <summary>
@@ -123,10 +128,7 @@ void gameState::update(float dt)
 {
 
 	_mainCharacter->idle(dt);
-	_wall->spawnLeftWall();
-	_wall->spawnRightWall();
-	_wall->spawnUpWall();
-	_wall->spawnDownWall();
+	
 }
 
 /// <summary>
