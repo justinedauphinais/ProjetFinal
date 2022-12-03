@@ -19,7 +19,7 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame9"));
 	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame10"));
 	_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame11"));
-	//_skeletonSprite.setTexture(_animationFramesIdle.at(_animationIterator));
+	
 
 	// Animations walks
 	_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right1"));
@@ -96,6 +96,7 @@ void mainCharacter::move(directions dir)
 	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME / _animationFramesWalkingRight.size()) {
 
 		_animationIterator++;
+		
 
 		// Si on revient au début de la liste
 		if (_animationIterator >= _animationFramesWalkingRight.size()) {
@@ -106,25 +107,26 @@ void mainCharacter::move(directions dir)
 		if (dir == directions::RIGHT) {
 			_skeletonSprite.move(20, 0);
 			_skeletonSprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+			_dir = directions::RIGHT;
 			
 			
 		}
 		else if (dir == directions::TOP) {
 			_skeletonSprite.move(0, -20);
 			_skeletonSprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
-			
+			_dir = directions::RIGHT;
 			
 		}
 		else if (dir == directions::LEFT) {
 			_skeletonSprite.move(-20, 0);
 			_skeletonSprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
-			
+			_dir = directions::LEFT;
 			
 		}
 		else if (dir == directions::BOTTOM) {
 			_skeletonSprite.move(0, 20);
 			_skeletonSprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
-			
+			_dir = directions::LEFT;
 			
 		}
 
@@ -147,6 +149,7 @@ void mainCharacter::idle(float dt)
 			_animationIterator = 0;
 		}
 		_skeletonSprite.setTexture(_animationFramesIdle.at(_animationIterator));
+
 		_clock.restart();
 	}
 }
