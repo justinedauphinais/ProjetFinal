@@ -29,7 +29,7 @@ private:
 	wall* _wall;
 
 	mainCharacter* _mainCharacter;	// Le personnage principal
-	hearts* _hearts;
+	
 public:
 	gameState(gameDataRef data);
 	~gameState();

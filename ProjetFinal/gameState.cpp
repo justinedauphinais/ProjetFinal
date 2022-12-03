@@ -133,10 +133,7 @@ void gameState::handleInput()
 void gameState::update(float dt)
 {
 	_mainCharacter->idle(dt);
-	_wall->spawnLeftWall();
-	_wall->spawnRightWall();
-	_wall->spawnUpWall();
-	_wall->spawnDownWall();
+	
 }
 
 /// <summary>
