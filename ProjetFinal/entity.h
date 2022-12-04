@@ -10,6 +10,8 @@ protected:
 
 	vector<Texture> _animationFramesWalkingRight;
 	vector<Texture> _animationFramesWalkingLeft;
+	vector<Texture> _animationFramesFightingRight;
+	vector<Texture> _animationFramesFightingLeft;
 	int _animationIterator;
 
 	entityStates _state;

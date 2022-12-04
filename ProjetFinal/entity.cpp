@@ -51,7 +51,7 @@ void entity::setState(entityStates state)
 /// <param name="key"></param>
 void entity::move(Keyboard::Key key)
 {
-	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME / _animationFramesWalkingRight.size()) {
+	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME / _animationFramesWalkingRight.size() && (_state != entityStates::ATTACKING)) {
 
 		_animationIterator++;
 		_state = entityStates::WALKING;

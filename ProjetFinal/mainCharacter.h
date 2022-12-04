@@ -21,9 +21,9 @@ public:
 	mainCharacter(gameDataRef data);
 
 	void animate(float dt);
-	void idle(float dt);
+	void update(float dt);
 
-	void attack(float dt);
+	void attack();
 
 	void draw() const;
 };
