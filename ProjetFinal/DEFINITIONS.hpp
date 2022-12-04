@@ -46,6 +46,7 @@ enum entityStates {
 
 // Main character
 #define NBR_LIVES 5
+
 	// Walk
 #define SKELETON_WALK_TIME 0.6f
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Walk/Right/1.png"
@@ -88,7 +89,7 @@ enum entityStates {
 #define SKELETON_IDLE_FRAME_11 "Ressources/MC/Idle/Right/11.png"
 
 	// Attack
-#define SKELETE_ATTACK_TIME 1.5f
+#define SKELETE_ATTACK_TIME 1.2f
 #define SKELETON_ATTAQUE_FRAME_RIGHT_1 "Ressources/MC/Attack/Right/1.png"
 #define SKELETON_ATTAQUE_FRAME_RIGHT_2 "Ressources/MC/Attack/Right/2.png"
 #define SKELETON_ATTAQUE_FRAME_RIGHT_3 "Ressources/MC/Attack/Right/3.png"

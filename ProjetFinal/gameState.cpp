@@ -8,6 +8,7 @@ gameState::gameState(gameDataRef data) : _data(data)
 {
 	_mainCharacter = nullptr;
 	_hearts = nullptr;
+	_wall = nullptr;
 }
 
 /// <summary>
@@ -17,6 +18,7 @@ gameState::~gameState()
 {
 	delete _mainCharacter;
 	delete _hearts;
+	delete _wall;
 }
 
 /// <summary>
@@ -24,9 +26,9 @@ gameState::~gameState()
 /// </summary>
 void gameState::init()
 {
-	
+
 	// Background
-_data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
+	_data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	_background.setTexture(_data->assets.getTexture("game background"));
 
 	// Foreground
@@ -34,11 +36,11 @@ _data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	//_foreground.setTexture(_data->assets.getTexture("game foreground"));
 	//_foreground.setPosition(47, 916);
 
-	_data->assets.loadTexture("wall left", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
-	_data->assets.loadTexture("wall right", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
+	//Walls
 	_data->assets.loadTexture("wall up", GAME_FOREGROUND_UP_DOWN_TEMP);
 	_data->assets.loadTexture("wall down", GAME_FOREGROUND_UP_DOWN_TEMP);
-
+	_data->assets.loadTexture("wall left", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
+	_data->assets.loadTexture("wall right", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
 
 	// Main character
 	#pragma region Main Character assets
@@ -124,12 +126,12 @@ _data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	_mainCharacter = new mainCharacter(_data);
 	_hearts = new hearts(_data, NBR_LIVES);
 	_wall = new wall(_data);
-
+	_gameState = gameStates::ready;
 	// Murs
-	_wall->spawnLeftWall();
+	/*_wall->spawnLeftWall();
 	_wall->spawnRightWall();
 	_wall->spawnUpWall();
-	_wall->spawnDownWall();
+	_wall->spawnDownWall();*/
 }
 
 /// <summary>
@@ -143,7 +145,7 @@ void gameState::handleInput()
 		if (event.type == Event::Closed)
 			_data->window.close();
 		else if (event.type == Event::KeyPressed) {
-			
+
 			if (Keyboard::isKeyPressed(Keyboard::D)) {
 				_mainCharacter->move(Keyboard::D);
 			}
@@ -174,6 +176,34 @@ void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
 	
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallUp(), 1.0f))
+	{
+		cout << "mur toucherhaut" << endl;
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getGlobalBounds().height);
+
+	}
+
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f))
+	{
+		cout << "mur toucherbas" << endl;
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getGlobalBounds().height, _mainCharacter->getSprite().getPosition().y);
+
+	}
+
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallLeft(), 1.0f))
+	{
+		cout << "mur touchergauche" << endl;
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getGlobalBounds().width, _mainCharacter->getSprite().getPosition().y);
+	}
+
+
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), _wall->getWallRight()))
+	{
+		cout << "mur toucherdroite" << endl;
+
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getGlobalBounds().width, _mainCharacter->getSprite().getPosition().y);
+
+	}
 }
 
 /// <summary>
@@ -183,13 +213,13 @@ void gameState::update(float dt)
 void gameState::draw(float dt) const
 {
 	_data->window.clear();
-	//_data->window.draw(_background);
+	_data->window.draw(_background);
 	_mainCharacter->draw();
 	_wall->draw();
 	_hearts->draw();
 
 	// Le reste va ici
 
-	_data->window.draw(_foreground);
+	//_data->window.draw(_foreground);
 	_data->window.display();
 }

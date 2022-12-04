@@ -29,3 +29,4 @@ bool collision::checkSpriteCollision(Sprite sprite1, float scale1, Sprite sprite
 	Rect<float> rect2 = sprite2.getGlobalBounds();
 	return rect1.intersects(rect2);
 }
+

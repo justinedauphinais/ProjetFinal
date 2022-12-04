@@ -8,6 +8,7 @@
 #include "mainCharacter.h"
 #include "hearts.h"
 #include "mainWalls.h"
+#include "collision.h"
 #include <iostream>
 
 using namespace sf;
@@ -23,11 +24,12 @@ private:
 							// assertManager et au inputManager
 
 	Sprite _background;		// Le sprite pour la background
-	Sprite _foreground;		// Le sprite pour la background
+	//Sprite _foreground;		// Le sprite pour la background
 
-	hearts* _hearts;
-	wall* _wall;
-
+	hearts* _hearts;		//Le pointeur pour les coeurs.
+	wall* _wall;			//Le pointeur pour les murs.
+	collision _collision;
+	int _gameState;
 	mainCharacter* _mainCharacter;	// Le personnage principal
 	
 public:
