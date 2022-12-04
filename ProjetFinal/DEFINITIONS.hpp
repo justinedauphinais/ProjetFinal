@@ -46,6 +46,7 @@ enum entityStates {
 
 // Main character
 #define NBR_LIVES 5
+
 	// Walk
 #define SKELETON_WALK_TIME 0.6f
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Walk/Right/1.png"
@@ -89,20 +90,20 @@ enum entityStates {
 
 	// Attack
 #define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/1.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/2.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/3.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/4.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/5.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/6.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/7.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/8.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/9.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/10.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/11.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/12.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/13.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/14.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/15.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/16.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/17.png"
-#define SKELETON_ATTAQUE_FRAME_1 "Ressources/MC/Attack/Right/18.png"
+#define SKELETON_ATTAQUE_FRAME_2 "Ressources/MC/Attack/Right/2.png"
+#define SKELETON_ATTAQUE_FRAME_3 "Ressources/MC/Attack/Right/3.png"
+#define SKELETON_ATTAQUE_FRAME_4 "Ressources/MC/Attack/Right/4.png"
+#define SKELETON_ATTAQUE_FRAME_5 "Ressources/MC/Attack/Right/5.png"
+#define SKELETON_ATTAQUE_FRAME_6 "Ressources/MC/Attack/Right/6.png"
+#define SKELETON_ATTAQUE_FRAME_7 "Ressources/MC/Attack/Right/7.png"
+#define SKELETON_ATTAQUE_FRAME_8 "Ressources/MC/Attack/Right/8.png"
+#define SKELETON_ATTAQUE_FRAME_9 "Ressources/MC/Attack/Right/9.png"
+#define SKELETON_ATTAQUE_FRAME_10 "Ressources/MC/Attack/Right/10.png"
+#define SKELETON_ATTAQUE_FRAME_11 "Ressources/MC/Attack/Right/11.png"
+#define SKELETON_ATTAQUE_FRAME_12 "Ressources/MC/Attack/Right/12.png"
+#define SKELETON_ATTAQUE_FRAME_13 "Ressources/MC/Attack/Right/13.png"
+#define SKELETON_ATTAQUE_FRAME_14 "Ressources/MC/Attack/Right/14.png"
+#define SKELETON_ATTAQUE_FRAME_15 "Ressources/MC/Attack/Right/15.png"
+#define SKELETON_ATTAQUE_FRAME_16 "Ressources/MC/Attack/Right/16.png"
+#define SKELETON_ATTAQUE_FRAME_17 "Ressources/MC/Attack/Right/17.png"
+#define SKELETON_ATTAQUE_FRAME_18 "Ressources/MC/Attack/Right/18.png"

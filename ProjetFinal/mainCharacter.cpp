@@ -50,6 +50,25 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left11"));
 	_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left12"));
 
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame1"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame2"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame3"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame4"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame5"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame6"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame7"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame8"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame9"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame10"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame11"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame12"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame13"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame14"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame15"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame16"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame17"));
+	_animationFramesAttack.push_back(_data->assets.getTexture("skeleton attack frame18"));
+
 	_sprite.setTexture(_animationFramesIdle.at(_animationIterator));
 
 	_sprite.setScale(5.0, 5.0);
@@ -101,7 +120,19 @@ void mainCharacter::idle(float dt)
 void mainCharacter::attack(float dt)
 {
 	if (_state == entityStates::ATTACKING) {
+		if (_clock.getElapsedTime().asSeconds() > SKELETON_IDLE_TIME / _animationFramesAttack.size() )
+		{
+			if (_animationIterator < _animationFramesAttack.size() - 1)
+			{
+				_animationIterator++;
+			}
+			else {
+				_animationIterator = 0;
+			}
+			_sprite.setTexture(_animationFramesAttack.at(_animationIterator));
 
+			_clock.restart();
+		}
 	}
 }
 
