@@ -176,33 +176,29 @@ void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
 	
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallUp(), 1.0f))
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.0f, _wall->getWallUp(), 0.5f))
 	{
 		cout << "mur toucherhaut" << endl;
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getGlobalBounds().height);
-
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);
 	}
 
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f))
 	{
 		cout << "mur toucherbas" << endl;
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getGlobalBounds().height, _mainCharacter->getSprite().getPosition().y);
-
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - 20);
 	}
 
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallLeft(), 1.0f))
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallLeft(), 0.7f))
 	{
 		cout << "mur touchergauche" << endl;
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getGlobalBounds().width, _mainCharacter->getSprite().getPosition().y);
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + 20, _mainCharacter->getSprite().getPosition().y);
 	}
 
-
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), _wall->getWallRight()))
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.5f, _wall->getWallRight(), 1.0f))
 	{
 		cout << "mur toucherdroite" << endl;
 
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getGlobalBounds().width, _mainCharacter->getSprite().getPosition().y);
-
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
 	}
 }
 
@@ -214,6 +210,7 @@ void gameState::draw(float dt) const
 {
 	_data->window.clear();
 	_data->window.draw(_background);
+	_wall->drawBackWall();
 	_mainCharacter->draw();
 	_wall->draw();
 	_hearts->draw();

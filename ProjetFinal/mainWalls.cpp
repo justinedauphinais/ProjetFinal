@@ -3,12 +3,12 @@
 wall::wall(gameDataRef data) : _data(data)
 {
 	//Creation des murs des la piece.
-	// 
+
 	//mur du haut.
 	Sprite sprite1(_data->assets.getTexture("wall up"));
 	sprite1.setPosition(47, 0);
 	_wallSprites.push_back(sprite1);
-
+	
 	//mur du bas.
 	Sprite sprite2(_data->assets.getTexture("wall down"));
 	sprite2.setPosition(47, _data->window.getSize().y - sprite2.getGlobalBounds().height - 20);
@@ -26,12 +26,15 @@ wall::wall(gameDataRef data) : _data(data)
 
 }
 
-
-
-void wall::draw()
+void wall::draw() const
 {
-	for (int i = 0;i < _wallSprites.size(); i++)
+	for (int i = 1; i < _wallSprites.size(); i++)
 		_data->window.draw(_wallSprites.at(i));
+}
+
+void wall::drawBackWall() const
+{
+	_data->window.draw(_wallSprites.at(0));
 }
 
 const vector<Sprite>& wall::getSprites() const

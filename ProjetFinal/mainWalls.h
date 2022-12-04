@@ -16,7 +16,8 @@ private:
 public:
 	wall(gameDataRef data);
 	
-	void draw();
+	void draw() const;
+	void drawBackWall() const;
 	const vector<Sprite>& getSprites() const;
 
 	const Sprite& getWallUp() const;
