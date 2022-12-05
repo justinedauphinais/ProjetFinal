@@ -9,6 +9,7 @@
 #include "hearts.h"
 #include "mainWalls.h"
 #include "collision.h"
+#include "hud.h"
 #include <iostream>
 
 using namespace sf;
@@ -23,14 +24,16 @@ private:
 							// donne accès au stateMachine, au RenderWindow, au
 							// assertManager et au inputManager
 
-	Sprite _background;		// Le sprite pour la background
-	//Sprite _foreground;		// Le sprite pour la background
+	Sprite _background;			// Le sprite pour la background
 
-	hearts* _hearts;		//Le pointeur pour les coeurs.
-	wall* _wall;			//Le pointeur pour les murs.
-	collision _collision;
-	int _gameState;
+	hearts* _hearts;				// Le pointeur pour les coeurs
+	wall* _wall;					// Le pointeur pour les murs
+	hud* _hud;
 	mainCharacter* _mainCharacter;	// Le personnage principal
+
+	collision _collision;
+
+	int _gameState;
 	
 public:
 	gameState(gameDataRef data);

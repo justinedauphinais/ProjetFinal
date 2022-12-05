@@ -9,6 +9,7 @@ gameState::gameState(gameDataRef data) : _data(data)
 	_mainCharacter = nullptr;
 	_hearts = nullptr;
 	_wall = nullptr;
+	_hud = nullptr;
 }
 
 /// <summary>
@@ -19,6 +20,7 @@ gameState::~gameState()
 	delete _mainCharacter;
 	delete _hearts;
 	delete _wall;
+	delete _hud;
 }
 
 /// <summary>
@@ -31,12 +33,7 @@ void gameState::init()
 	_data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 	_background.setTexture(_data->assets.getTexture("game background"));
 
-	// Foreground
-	//_data->assets.loadTexture("game foreground", GAME_FOREGROUND_TEMP);
-	//_foreground.setTexture(_data->assets.getTexture("game foreground"));
-	//_foreground.setPosition(47, 916);
-
-	//Walls
+	// Walls
 	_data->assets.loadTexture("wall up", GAME_FOREGROUND_UP_DOWN_TEMP);
 	_data->assets.loadTexture("wall down", GAME_FOREGROUND_UP_DOWN_TEMP);
 	_data->assets.loadTexture("wall left", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
@@ -126,12 +123,9 @@ void gameState::init()
 	_mainCharacter = new mainCharacter(_data);
 	_hearts = new hearts(_data, NBR_LIVES);
 	_wall = new wall(_data);
+	_hud = new hud(_data);
+
 	_gameState = gameStates::ready;
-	// Murs
-	/*_wall->spawnLeftWall();
-	_wall->spawnRightWall();
-	_wall->spawnUpWall();
-	_wall->spawnDownWall();*/
 }
 
 /// <summary>
@@ -205,9 +199,9 @@ void gameState::draw(float dt) const
 	_mainCharacter->draw();
 	_wall->draw();
 	_hearts->draw();
+	_hud->draw();
 
 	// Le reste va ici
 
-	//_data->window.draw(_foreground);
 	_data->window.display();
 }

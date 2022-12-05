@@ -53,14 +53,11 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 /// <param name="dt"></param>
 void mainCharacter::animate(float dt)
 {
-	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME) {
 
-		_clock.restart();
-	}
 }
 
 /// <summary>
-/// create a animate character idle.
+/// Create a animate character idle
 /// </summary>
 void mainCharacter::update(float dt)
 {
@@ -87,8 +84,13 @@ void mainCharacter::update(float dt)
 
 			_state = entityStates::IDLE;
 		} 
-		else {
+		else if (_dir == RIGHT) {
 			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator));
+
+			_clock.restart();
+		}
+		else {
+			_sprite.setTexture(_animationFramesFightingLeft.at(_animationIterator));
 
 			_clock.restart();
 		}

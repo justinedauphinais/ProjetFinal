@@ -66,6 +66,9 @@
     <ClCompile Include="mainWalls.cpp">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
+    <ClCompile Include="hud.cpp">
+      <Filter>Source Files\Visuals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -102,6 +105,15 @@
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="entity.h">
+      <Filter>Header Files\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="hearts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mainWalls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hud.h">
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
   </ItemGroup>
