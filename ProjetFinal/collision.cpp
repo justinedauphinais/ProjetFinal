@@ -30,3 +30,22 @@ bool collision::checkSpriteCollision(Sprite sprite1, float scale1, Sprite sprite
 	return rect1.intersects(rect2);
 }
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sprite1"></param>
+/// <param name="scale1X"></param>
+/// <param name="scale1Y"></param>
+/// <param name="sprite2"></param>
+/// <param name="scale2X"></param>
+/// <param name="scale2Y"></param>
+/// <returns></returns>
+bool collision::checkSpriteCollision(Sprite sprite1, float scale1X, float scale1Y, Sprite sprite2, float scale2X, float scale2Y) const
+{
+	sprite1.setScale(scale1X, scale1Y);
+	sprite2.setScale(scale2X, scale2Y);
+	Rect<float> rect1 = sprite1.getGlobalBounds();
+	Rect<float> rect2 = sprite2.getGlobalBounds();
+	return rect1.intersects(rect2);
+}
+

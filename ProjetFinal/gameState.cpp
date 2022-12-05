@@ -176,28 +176,19 @@ void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
 	
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.0f, _wall->getWallUp(), 0.5f))
-	{
-		cout << "mur toucherhaut" << endl;
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);
 	}
 
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f))
-	{
-		cout << "mur toucherbas" << endl;
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - 20);
 	}
 
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallLeft(), 0.7f))
-	{
-		cout << "mur touchergauche" << endl;
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + 20, _mainCharacter->getSprite().getPosition().y);
 	}
 
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.5f, _wall->getWallRight(), 1.0f))
-	{
-		cout << "mur toucherdroite" << endl;
-
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
 	}
 }
