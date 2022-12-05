@@ -12,83 +12,27 @@ mainCharacter::mainCharacter(gameDataRef data) : _data(data)
 
 	#pragma region Load des assets
 		//Animation idle
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame1"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame2"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame3"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame4"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame5"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame6"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame7"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame8"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame9"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame10"));
-		_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame11"));
-
+		for (int i = 1; i < 12; i++) {
+			_animationFramesIdle.push_back(_data->assets.getTexture("skeleton idle frame" + to_string(i)));
+		}
 
 		// Animations walks
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right1"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right2"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right3"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right4"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right5"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right6"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right7"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right8"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right9"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right10"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right11"));
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right12"));
+		for (int i = 1; i < 13; i++) {
+			_animationFramesWalkingRight.push_back(_data->assets.getTexture("skeleton walking frame right" + to_string(i)));
+		}
 
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left1"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left2"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left3"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left4"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left5"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left6"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left7"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left8"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left9"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left10"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left11"));
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left12"));
+		for (int i = 1; i < 13; i++) {
+			_animationFramesWalkingLeft.push_back(_data->assets.getTexture("skeleton walking frame left" + to_string(i)));
+		}
 
 		// Animation fighting
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right1"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right2"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right3"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right4"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right5"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right6"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right7"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right8"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right9"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right10"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right11"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right12"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right13"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right14"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right15"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right16"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right17"));
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right18"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left1"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left2"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left3"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left4"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left5"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left6"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left7"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left8"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left9"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left10"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left11"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left12"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left13"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left14"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left15"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left16"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left17"));
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left18"));
+		for (int i = 1; i < 19; i++) {
+			_animationFramesFightingRight.push_back(_data->assets.getTexture("skeleton attacking frame right" + to_string(i)));
+		}
+
+		for (int i = 1; i < 19; i++) {
+			_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left" + to_string(i)));
+		}
 	#pragma endregion
 
 	_sprite.setTexture(_animationFramesIdle.at(_animationIterator));
