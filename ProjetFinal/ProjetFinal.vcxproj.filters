@@ -69,6 +69,9 @@
     <ClCompile Include="hud.cpp">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
+    <ClCompile Include="gameOverState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="hud.h">
       <Filter>Header Files\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="gameOverState.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

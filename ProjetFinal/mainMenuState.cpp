@@ -20,14 +20,12 @@ void mainMenuState::init()
 	// Play button
 	_data->assets.loadTexture("main menu play button", PLAY_BUTTON_FILEPATH);
 	_playButton.setTexture(_data->assets.getTexture("main menu play button"));
-	_playButton.setScale(2, 2);
 	_playButton.setPosition(((SCREEN_WIDTH / 2) - (_playButton.getGlobalBounds().width) - 15),
 		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2)));
 
 	// Stop button
 	_data->assets.loadTexture("main menu stop button", STOP_BUTTON_FILEPATH);
 	_stopButton.setTexture(_data->assets.getTexture("main menu stop button"));
-	_stopButton.setScale(2, 2);
 	_stopButton.setPosition(((SCREEN_WIDTH / 2) + 15),
 		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2)));
 
