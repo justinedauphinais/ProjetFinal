@@ -4,7 +4,7 @@
 #include "DEFINITIONS.hpp"
 #include "game.h"
 #include "entity.h"
-class enemys : public entity {
+class gardeEnemy : public entity {
 private:
 	gameDataRef _data;
 
@@ -13,7 +13,7 @@ private:
 
 
 public:
-	enemys(gameDataRef data);
+	gardeEnemy(gameDataRef data);
 	void update(float dt);
 	void attack();
 	void draw() const;

@@ -49,3 +49,11 @@ bool collision::checkSpriteCollision(Sprite sprite1, float scale1X, float scale1
 	return rect1.intersects(rect2);
 }
 
+bool collision::isNear(Sprite sprite1, Sprite sprite2) const
+{
+	
+	Rect<float> rect1 = sprite1.getGlobalBounds();
+	Rect<float> rect2 = sprite2.getGlobalBounds();
+	return rect1.intersects(rect2);
+}
+

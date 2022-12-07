@@ -148,6 +148,7 @@ enum entityStates {		// Les états des entités
 //Live enemys
 #define LIVE_ENEMY 3.0f
 #define ENEMY_IDLE_TIME 1.0f
+#define ENEMY_ATTACK_TIME 1.0f
 //Idle left
 #define ENEMY_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Idle/Left/1.png"
 #define ENEMY_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Idle/Left/2.png"
