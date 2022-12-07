@@ -6,6 +6,7 @@
 #include "state.hpp"
 #include "gameState.h"
 #include <iostream>
+#include <fstream>
 
 using namespace sf;
 using namespace std;
@@ -19,23 +20,25 @@ private:
 							// donne accès au stateMachine, au RenderWindow, au
 							// assertManager et au inputManager
 
-	int _color;
-	int _score;
+	int _color;				// Couleur du texte qui apparaît
+	int _score;				// Score de l'utilisateur
+	bool _gagne;			// Si utilisateur a gagne ou pas
 
-	Text _youDiedText;
+	Text _vousEtesText;		// Les différents textes
+	Text _outcomeText;
 	Text _scoreText;
 	Text _highScoreText;
 
-	Clock _clock;
+	Clock _clock;			// Horloge pour calculer le temps avant de faire apparaître les scores
 
 public:
-	gameOverState(gameDataRef data, int score);
-	~gameOverState();
+	gameOverState(gameDataRef data, int score, bool gagne);	// Constructeur
+	~gameOverState();										// Destructeur
 
-	void init();
+	void init();					// Initilise les variables
 
-	void handleInput();
-	void update(float dt);
+	void handleInput();				// Réagit aux inputs de l'utilisateur
+	void update(float dt);			// Mets-à-jour les objets 
 
-	void draw(float dt) const;
+	void draw(float dt) const;		// Clear, dessine le background et display la fenêtre
 };

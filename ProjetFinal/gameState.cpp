@@ -1,7 +1,7 @@
 #include "gameState.h"
 
 /// <summary>
-/// Le constructeur utilise les : pour initialiser _data avant même l’exécution du contenu{}
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
 gameState::gameState(gameDataRef data) : _data(data)
@@ -13,7 +13,7 @@ gameState::gameState(gameDataRef data) : _data(data)
 }
 
 /// <summary>
-/// 
+/// Destructeur
 /// </summary>
 gameState::~gameState()
 {
@@ -24,7 +24,7 @@ gameState::~gameState()
 }
 
 /// <summary>
-/// Load les sprites à l’aide du assetManager ds _data et la set au Sprite
+/// Initilisae les différents objets du state
 /// </summary>
 void gameState::init()
 {
@@ -129,16 +129,16 @@ void gameState::init()
 }
 
 /// <summary>
-/// Fenêtre qui reste ouverte tant qu’elle n’est pas fermée
+/// Réagit aux différents inputs de l'utilisateur
 /// </summary>
 void gameState::handleInput()
 {
 	Event event;
 	while (_data->window.pollEvent(event))
 	{
-		if (event.type == Event::Closed)
+		if (event.type == Event::Closed)	// Ferme la fenêtre
 			_data->window.close();
-		else if (event.type == Event::KeyPressed) {
+		else if (event.type == Event::KeyPressed) {			// Mouvement
 
 			if (Keyboard::isKeyPressed(Keyboard::D)) {
 				_mainCharacter->move(Keyboard::D);
@@ -153,35 +153,39 @@ void gameState::handleInput()
 				_mainCharacter->move(Keyboard::S);
 			}
 		}
-		else if (Mouse::isButtonPressed(Mouse::Left)) {
+		else if (Mouse::isButtonPressed(Mouse::Left)) {		// Attaque
 			_mainCharacter->attack();
 		}
-		else if (event.type == Event::KeyReleased) {
+		else if (event.type == Event::KeyReleased) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
 		}
 	}
 }
 
 /// <summary>
-/// 
+/// Mets-à-jour les objets du state
 /// </summary>
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
 	
+	// Collision mur du haut
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);
 	}
 
+	// Collision mur du bas
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - 20);
 	}
 
+	// Collision mur gauche
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + 20, _mainCharacter->getSprite().getPosition().y);
 	}
 
+	// Collision mur droit
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
 	}
@@ -198,10 +202,8 @@ void gameState::draw(float dt) const
 	_wall->drawBackWall();
 	_mainCharacter->draw();
 	_wall->draw();
+
 	_hearts->draw();
 	_hud->draw();
-
-	// Le reste va ici
-
 	_data->window.display();
 }

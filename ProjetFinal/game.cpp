@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "mainMenuState.h"
+#include "gameOverState.h"
 #include "splashState.h"
 
 game::game(int width, int height, string title)
@@ -10,7 +11,7 @@ game::game(int width, int height, string title)
 										// Création de la fenêtre qui changera de contenu selon la state créée ensuite
 	_data->window.create(VideoMode(width, height), title, Style::Close | Style::Titlebar);
 
-	_data->machine.addState(stateRef(new mainMenuState(_data)), true);
+	_data->machine.addState(stateRef(new gameOverState(_data, 2, true)), true);
 
 	srand(time(0));
 
