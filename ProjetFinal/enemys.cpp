@@ -6,22 +6,22 @@ enemys::enemys(gameDataRef data) : _data(data)
 	_animationIterator = 0;
 
 	//idle right
-	for (int  i = 0; i < 5; i++)
+	for (int  i = 1; i < 5; i++)
 	{
 		_animationFramesIdleRight.push_back(_data->assets.getTexture("enemy idle frame right" + to_string(i)));
 	}
 	//idle left
-	for (int  i = 0; i < 5; i++)
+	for (int  i = 1; i < 5; i++)
 	{
 		_animationFramesIdleLeft.push_back(_data->assets.getTexture("enemy idle frame left" + to_string(i)));
 	}
 	//Attack left
-	for (int i = 0; i < 6; i++)
+	for (int i = 1; i < 6; i++)
 	{
 		_animationFramesFightingLeft.push_back(_data->assets.getTexture("enemy attack frame left" + to_string(i)));
 	}
 	//Attack right
-	for (int i = 0; i < 6; i++)
+	for (int i = 1; i < 6; i++)
 	{
 		_animationFramesFightingRight.push_back(_data->assets.getTexture("enemy attack frame right" + to_string(i)));
 	}
