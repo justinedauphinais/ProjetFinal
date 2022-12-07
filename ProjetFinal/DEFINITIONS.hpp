@@ -38,6 +38,12 @@ enum entityStates {		// Les états des entités
 #define PLAY_BUTTON_FILEPATH "Ressources/Menu/playButton.png"
 #define STOP_BUTTON_FILEPATH "Ressources/Menu/stopButton.png"
 
+//------ Loading ------//
+#define LOADING_TIME 3.0f
+#define LOADING_FRAME_1 "Ressources/UI/Loading/1.png"
+#define LOADING_FRAME_2 "Ressources/UI/Loading/2.png"
+#define LOADING_FRAME_3 "Ressources/UI/Loading/3.png"
+
 //------ Game ------//
 	// Murs
 #define GAME_BACKGROUND_TEMP "Ressources/Map/Contour_map.png"

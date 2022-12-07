@@ -1,5 +1,5 @@
 #include "mainMenuState.h"
-#include "gameState.h"
+#include "loadingState.h"
 
 /// <summary>
 /// Le constructeur utilise les : pour initialiser _data avant même l’exécution du contenu{}
@@ -50,8 +50,7 @@ void mainMenuState::handleInput()
 			_data->window.close();
 		else if (_data->input.isSpriteClicked(_playButton, Mouse::Left, _data->window)) {
 			// Create the new state main screen
-			_data->machine.addState(stateRef(new gameState(_data)), true);
-			cout << "go to main screen" << endl;
+			_data->machine.addState(stateRef(new loadingState(_data)), true);
 		}
 		else if (_data->input.isSpriteClicked(_stopButton, Mouse::Left, _data->window)) {
 			_data->window.close();

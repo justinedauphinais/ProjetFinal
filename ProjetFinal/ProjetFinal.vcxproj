@@ -141,6 +141,7 @@
     <ClCompile Include="hearts.cpp" />
     <ClCompile Include="hud.cpp" />
     <ClCompile Include="inputManager.cpp" />
+    <ClCompile Include="loadingState.cpp" />
     <ClCompile Include="mainCharacter.cpp" />
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="mainWalls.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="hearts.h" />
     <ClInclude Include="hud.h" />
     <ClInclude Include="inputManager.h" />
+    <ClInclude Include="loadingState.h" />
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="mainWalls.h" />
