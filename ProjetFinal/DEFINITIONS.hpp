@@ -188,3 +188,15 @@ enum entityStates {		// Les états des entités
 #define ENEMY_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Attack 1/Left/4.png"
 #define ENEMY_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Attack 1/Left/5.png"
 #define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
+
+//------ Store owner ------//
+	// Idle
+#define STOREOWNER_IDLE_1 "Ressources/Map/Shop/NPC/1.png"
+#define STOREOWNER_IDLE_2 "Ressources/Map/Shop/NPC/2.png"
+#define STOREOWNER_IDLE_3 "Ressources/Map/Shop/NPC/3.png"
+#define STOREOWNER_IDLE_4 "Ressources/Map/Shop/NPC/4.png"
+#define STOREOWNER_IDLE_5 "Ressources/Map/Shop/NPC/5.png"
+#define STOREOWNER_IDLE_6 "Ressources/Map/Shop/NPC/6.png"
+#define STOREOWNER_IDLE_7 "Ressources/Map/Shop/NPC/7.png"
+#define STOREOWNER_IDLE_8 "Ressources/Map/Shop/NPC/8.png"
+#define STOREOWNER_IDLE_9 "Ressources/Map/Shop/NPC/9.png"

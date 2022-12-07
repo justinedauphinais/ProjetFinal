@@ -33,98 +33,6 @@ void loadingState::init()
 	_progressBarSprite.setTexture(_animationProgressBar[0]);
 	_progressBarSprite.setPosition((SCREEN_WIDTH / 2) - (_progressBarSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_progressBarSprite.getGlobalBounds().height / 2));
 
-	// Main character
-	#pragma region Main Character
-	// Idle
-	_data->assets.loadTexture("skeleton idle frame right 1", SKELETON_IDLE_FRAME_RIGHT_1);
-	_data->assets.loadTexture("skeleton idle frame right 2", SKELETON_IDLE_FRAME_RIGHT_2);
-	_data->assets.loadTexture("skeleton idle frame right 3", SKELETON_IDLE_FRAME_RIGHT_3);
-	_data->assets.loadTexture("skeleton idle frame right 4", SKELETON_IDLE_FRAME_RIGHT_4);
-	_data->assets.loadTexture("skeleton idle frame right 5", SKELETON_IDLE_FRAME_RIGHT_5);
-	_data->assets.loadTexture("skeleton idle frame right 6", SKELETON_IDLE_FRAME_RIGHT_6);
-	_data->assets.loadTexture("skeleton idle frame right 7", SKELETON_IDLE_FRAME_RIGHT_7);
-	_data->assets.loadTexture("skeleton idle frame right 8", SKELETON_IDLE_FRAME_RIGHT_8);
-	_data->assets.loadTexture("skeleton idle frame right 9", SKELETON_IDLE_FRAME_RIGHT_9);
-	_data->assets.loadTexture("skeleton idle frame right 10", SKELETON_IDLE_FRAME_RIGHT_10);
-	_data->assets.loadTexture("skeleton idle frame right 11", SKELETON_IDLE_FRAME_RIGHT_11);
-
-	_data->assets.loadTexture("skeleton idle frame left 1", SKELETON_IDLE_FRAME_LEFT_1);
-	_data->assets.loadTexture("skeleton idle frame left 2", SKELETON_IDLE_FRAME_LEFT_2);
-	_data->assets.loadTexture("skeleton idle frame left 3", SKELETON_IDLE_FRAME_LEFT_3);
-	_data->assets.loadTexture("skeleton idle frame left 4", SKELETON_IDLE_FRAME_LEFT_4);
-	_data->assets.loadTexture("skeleton idle frame left 5", SKELETON_IDLE_FRAME_LEFT_5);
-	_data->assets.loadTexture("skeleton idle frame left 6", SKELETON_IDLE_FRAME_LEFT_6);
-	_data->assets.loadTexture("skeleton idle frame left 7", SKELETON_IDLE_FRAME_LEFT_7);
-	_data->assets.loadTexture("skeleton idle frame left 8", SKELETON_IDLE_FRAME_LEFT_8);
-	_data->assets.loadTexture("skeleton idle frame left 9", SKELETON_IDLE_FRAME_LEFT_9);
-	_data->assets.loadTexture("skeleton idle frame left 10", SKELETON_IDLE_FRAME_LEFT_10);
-	_data->assets.loadTexture("skeleton idle frame left 11", SKELETON_IDLE_FRAME_LEFT_11);
-
-	// Walking
-	_data->assets.loadTexture("skeleton walking frame left1", SKELETON_WALK_FRAME_LEFT_1);
-	_data->assets.loadTexture("skeleton walking frame left2", SKELETON_WALK_FRAME_LEFT_2);
-	_data->assets.loadTexture("skeleton walking frame left3", SKELETON_WALK_FRAME_LEFT_3);
-	_data->assets.loadTexture("skeleton walking frame left4", SKELETON_WALK_FRAME_LEFT_4);
-	_data->assets.loadTexture("skeleton walking frame left5", SKELETON_WALK_FRAME_LEFT_5);
-	_data->assets.loadTexture("skeleton walking frame left6", SKELETON_WALK_FRAME_LEFT_6);
-	_data->assets.loadTexture("skeleton walking frame left7", SKELETON_WALK_FRAME_LEFT_7);
-	_data->assets.loadTexture("skeleton walking frame left8", SKELETON_WALK_FRAME_LEFT_8);
-	_data->assets.loadTexture("skeleton walking frame left9", SKELETON_WALK_FRAME_LEFT_9);
-	_data->assets.loadTexture("skeleton walking frame left10", SKELETON_WALK_FRAME_LEFT_10);
-	_data->assets.loadTexture("skeleton walking frame left11", SKELETON_WALK_FRAME_LEFT_11);
-	_data->assets.loadTexture("skeleton walking frame left12", SKELETON_WALK_FRAME_LEFT_12);
-	_data->assets.loadTexture("skeleton walking frame right1", SKELETON_WALK_FRAME_RIGHT_1);
-	_data->assets.loadTexture("skeleton walking frame right2", SKELETON_WALK_FRAME_RIGHT_2);
-	_data->assets.loadTexture("skeleton walking frame right3", SKELETON_WALK_FRAME_RIGHT_3);
-	_data->assets.loadTexture("skeleton walking frame right4", SKELETON_WALK_FRAME_RIGHT_4);
-	_data->assets.loadTexture("skeleton walking frame right5", SKELETON_WALK_FRAME_RIGHT_5);
-	_data->assets.loadTexture("skeleton walking frame right6", SKELETON_WALK_FRAME_RIGHT_6);
-	_data->assets.loadTexture("skeleton walking frame right7", SKELETON_WALK_FRAME_RIGHT_7);
-	_data->assets.loadTexture("skeleton walking frame right8", SKELETON_WALK_FRAME_RIGHT_8);
-	_data->assets.loadTexture("skeleton walking frame right9", SKELETON_WALK_FRAME_RIGHT_9);
-	_data->assets.loadTexture("skeleton walking frame right10", SKELETON_WALK_FRAME_RIGHT_10);
-	_data->assets.loadTexture("skeleton walking frame right11", SKELETON_WALK_FRAME_RIGHT_11);
-	_data->assets.loadTexture("skeleton walking frame right12", SKELETON_WALK_FRAME_RIGHT_12);
-
-	// Attacking
-	_data->assets.loadTexture("skeleton attacking frame right1", SKELETON_ATTAQUE_FRAME_RIGHT_1);
-	_data->assets.loadTexture("skeleton attacking frame right2", SKELETON_ATTAQUE_FRAME_RIGHT_2);
-	_data->assets.loadTexture("skeleton attacking frame right3", SKELETON_ATTAQUE_FRAME_RIGHT_3);
-	_data->assets.loadTexture("skeleton attacking frame right4", SKELETON_ATTAQUE_FRAME_RIGHT_4);
-	_data->assets.loadTexture("skeleton attacking frame right5", SKELETON_ATTAQUE_FRAME_RIGHT_5);
-	_data->assets.loadTexture("skeleton attacking frame right6", SKELETON_ATTAQUE_FRAME_RIGHT_6);
-	_data->assets.loadTexture("skeleton attacking frame right7", SKELETON_ATTAQUE_FRAME_RIGHT_7);
-	_data->assets.loadTexture("skeleton attacking frame right8", SKELETON_ATTAQUE_FRAME_RIGHT_8);
-	_data->assets.loadTexture("skeleton attacking frame right9", SKELETON_ATTAQUE_FRAME_RIGHT_9);
-	_data->assets.loadTexture("skeleton attacking frame right10", SKELETON_ATTAQUE_FRAME_RIGHT_10);
-	_data->assets.loadTexture("skeleton attacking frame right11", SKELETON_ATTAQUE_FRAME_RIGHT_11);
-	_data->assets.loadTexture("skeleton attacking frame right12", SKELETON_ATTAQUE_FRAME_RIGHT_12);
-	_data->assets.loadTexture("skeleton attacking frame right13", SKELETON_ATTAQUE_FRAME_RIGHT_13);
-	_data->assets.loadTexture("skeleton attacking frame right14", SKELETON_ATTAQUE_FRAME_RIGHT_14);
-	_data->assets.loadTexture("skeleton attacking frame right15", SKELETON_ATTAQUE_FRAME_RIGHT_15);
-	_data->assets.loadTexture("skeleton attacking frame right16", SKELETON_ATTAQUE_FRAME_RIGHT_16);
-	_data->assets.loadTexture("skeleton attacking frame right17", SKELETON_ATTAQUE_FRAME_RIGHT_17);
-	_data->assets.loadTexture("skeleton attacking frame right18", SKELETON_ATTAQUE_FRAME_RIGHT_18);
-	_data->assets.loadTexture("skeleton attacking frame left1", SKELETON_ATTAQUE_FRAME_LEFT_1);
-	_data->assets.loadTexture("skeleton attacking frame left2", SKELETON_ATTAQUE_FRAME_LEFT_2);
-	_data->assets.loadTexture("skeleton attacking frame left3", SKELETON_ATTAQUE_FRAME_LEFT_3);
-	_data->assets.loadTexture("skeleton attacking frame left4", SKELETON_ATTAQUE_FRAME_LEFT_4);
-	_data->assets.loadTexture("skeleton attacking frame left5", SKELETON_ATTAQUE_FRAME_LEFT_5);
-	_data->assets.loadTexture("skeleton attacking frame left6", SKELETON_ATTAQUE_FRAME_LEFT_6);
-	_data->assets.loadTexture("skeleton attacking frame left7", SKELETON_ATTAQUE_FRAME_LEFT_7);
-	_data->assets.loadTexture("skeleton attacking frame left8", SKELETON_ATTAQUE_FRAME_LEFT_8);
-	_data->assets.loadTexture("skeleton attacking frame left9", SKELETON_ATTAQUE_FRAME_LEFT_9);
-	_data->assets.loadTexture("skeleton attacking frame left10", SKELETON_ATTAQUE_FRAME_LEFT_10);
-	_data->assets.loadTexture("skeleton attacking frame left11", SKELETON_ATTAQUE_FRAME_LEFT_11);
-	_data->assets.loadTexture("skeleton attacking frame left12", SKELETON_ATTAQUE_FRAME_LEFT_12);
-	_data->assets.loadTexture("skeleton attacking frame left13", SKELETON_ATTAQUE_FRAME_LEFT_13);
-	_data->assets.loadTexture("skeleton attacking frame left14", SKELETON_ATTAQUE_FRAME_LEFT_14);
-	_data->assets.loadTexture("skeleton attacking frame left15", SKELETON_ATTAQUE_FRAME_LEFT_15);
-	_data->assets.loadTexture("skeleton attacking frame left16", SKELETON_ATTAQUE_FRAME_LEFT_16);
-	_data->assets.loadTexture("skeleton attacking frame left17", SKELETON_ATTAQUE_FRAME_LEFT_17);
-	_data->assets.loadTexture("skeleton attacking frame left18", SKELETON_ATTAQUE_FRAME_LEFT_18);
-#pragma endregion
-
 	// Background
 	_data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
 
@@ -137,6 +45,98 @@ void loadingState::init()
 	// Hud
 	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
 	_data->assets.loadFont("pixel art font", PIXEL_ART_FONT);			// A ENLEVER LORSQUE LE JEU EST COMPLET
+
+	// Main character
+	#pragma region Main Character
+	// Idle
+		_data->assets.loadTexture("skeleton idle frame right 1", SKELETON_IDLE_FRAME_RIGHT_1);
+		_data->assets.loadTexture("skeleton idle frame right 2", SKELETON_IDLE_FRAME_RIGHT_2);
+		_data->assets.loadTexture("skeleton idle frame right 3", SKELETON_IDLE_FRAME_RIGHT_3);
+		_data->assets.loadTexture("skeleton idle frame right 4", SKELETON_IDLE_FRAME_RIGHT_4);
+		_data->assets.loadTexture("skeleton idle frame right 5", SKELETON_IDLE_FRAME_RIGHT_5);
+		_data->assets.loadTexture("skeleton idle frame right 6", SKELETON_IDLE_FRAME_RIGHT_6);
+		_data->assets.loadTexture("skeleton idle frame right 7", SKELETON_IDLE_FRAME_RIGHT_7);
+		_data->assets.loadTexture("skeleton idle frame right 8", SKELETON_IDLE_FRAME_RIGHT_8);
+		_data->assets.loadTexture("skeleton idle frame right 9", SKELETON_IDLE_FRAME_RIGHT_9);
+		_data->assets.loadTexture("skeleton idle frame right 10", SKELETON_IDLE_FRAME_RIGHT_10);
+		_data->assets.loadTexture("skeleton idle frame right 11", SKELETON_IDLE_FRAME_RIGHT_11);
+
+		_data->assets.loadTexture("skeleton idle frame left 1", SKELETON_IDLE_FRAME_LEFT_1);
+		_data->assets.loadTexture("skeleton idle frame left 2", SKELETON_IDLE_FRAME_LEFT_2);
+		_data->assets.loadTexture("skeleton idle frame left 3", SKELETON_IDLE_FRAME_LEFT_3);
+		_data->assets.loadTexture("skeleton idle frame left 4", SKELETON_IDLE_FRAME_LEFT_4);
+		_data->assets.loadTexture("skeleton idle frame left 5", SKELETON_IDLE_FRAME_LEFT_5);
+		_data->assets.loadTexture("skeleton idle frame left 6", SKELETON_IDLE_FRAME_LEFT_6);
+		_data->assets.loadTexture("skeleton idle frame left 7", SKELETON_IDLE_FRAME_LEFT_7);
+		_data->assets.loadTexture("skeleton idle frame left 8", SKELETON_IDLE_FRAME_LEFT_8);
+		_data->assets.loadTexture("skeleton idle frame left 9", SKELETON_IDLE_FRAME_LEFT_9);
+		_data->assets.loadTexture("skeleton idle frame left 10", SKELETON_IDLE_FRAME_LEFT_10);
+		_data->assets.loadTexture("skeleton idle frame left 11", SKELETON_IDLE_FRAME_LEFT_11);
+
+		// Walking
+		_data->assets.loadTexture("skeleton walking frame left1", SKELETON_WALK_FRAME_LEFT_1);
+		_data->assets.loadTexture("skeleton walking frame left2", SKELETON_WALK_FRAME_LEFT_2);
+		_data->assets.loadTexture("skeleton walking frame left3", SKELETON_WALK_FRAME_LEFT_3);
+		_data->assets.loadTexture("skeleton walking frame left4", SKELETON_WALK_FRAME_LEFT_4);
+		_data->assets.loadTexture("skeleton walking frame left5", SKELETON_WALK_FRAME_LEFT_5);
+		_data->assets.loadTexture("skeleton walking frame left6", SKELETON_WALK_FRAME_LEFT_6);
+		_data->assets.loadTexture("skeleton walking frame left7", SKELETON_WALK_FRAME_LEFT_7);
+		_data->assets.loadTexture("skeleton walking frame left8", SKELETON_WALK_FRAME_LEFT_8);
+		_data->assets.loadTexture("skeleton walking frame left9", SKELETON_WALK_FRAME_LEFT_9);
+		_data->assets.loadTexture("skeleton walking frame left10", SKELETON_WALK_FRAME_LEFT_10);
+		_data->assets.loadTexture("skeleton walking frame left11", SKELETON_WALK_FRAME_LEFT_11);
+		_data->assets.loadTexture("skeleton walking frame left12", SKELETON_WALK_FRAME_LEFT_12);
+		_data->assets.loadTexture("skeleton walking frame right1", SKELETON_WALK_FRAME_RIGHT_1);
+		_data->assets.loadTexture("skeleton walking frame right2", SKELETON_WALK_FRAME_RIGHT_2);
+		_data->assets.loadTexture("skeleton walking frame right3", SKELETON_WALK_FRAME_RIGHT_3);
+		_data->assets.loadTexture("skeleton walking frame right4", SKELETON_WALK_FRAME_RIGHT_4);
+		_data->assets.loadTexture("skeleton walking frame right5", SKELETON_WALK_FRAME_RIGHT_5);
+		_data->assets.loadTexture("skeleton walking frame right6", SKELETON_WALK_FRAME_RIGHT_6);
+		_data->assets.loadTexture("skeleton walking frame right7", SKELETON_WALK_FRAME_RIGHT_7);
+		_data->assets.loadTexture("skeleton walking frame right8", SKELETON_WALK_FRAME_RIGHT_8);
+		_data->assets.loadTexture("skeleton walking frame right9", SKELETON_WALK_FRAME_RIGHT_9);
+		_data->assets.loadTexture("skeleton walking frame right10", SKELETON_WALK_FRAME_RIGHT_10);
+		_data->assets.loadTexture("skeleton walking frame right11", SKELETON_WALK_FRAME_RIGHT_11);
+		_data->assets.loadTexture("skeleton walking frame right12", SKELETON_WALK_FRAME_RIGHT_12);
+
+		// Attacking
+		_data->assets.loadTexture("skeleton attacking frame right1", SKELETON_ATTAQUE_FRAME_RIGHT_1);
+		_data->assets.loadTexture("skeleton attacking frame right2", SKELETON_ATTAQUE_FRAME_RIGHT_2);
+		_data->assets.loadTexture("skeleton attacking frame right3", SKELETON_ATTAQUE_FRAME_RIGHT_3);
+		_data->assets.loadTexture("skeleton attacking frame right4", SKELETON_ATTAQUE_FRAME_RIGHT_4);
+		_data->assets.loadTexture("skeleton attacking frame right5", SKELETON_ATTAQUE_FRAME_RIGHT_5);
+		_data->assets.loadTexture("skeleton attacking frame right6", SKELETON_ATTAQUE_FRAME_RIGHT_6);
+		_data->assets.loadTexture("skeleton attacking frame right7", SKELETON_ATTAQUE_FRAME_RIGHT_7);
+		_data->assets.loadTexture("skeleton attacking frame right8", SKELETON_ATTAQUE_FRAME_RIGHT_8);
+		_data->assets.loadTexture("skeleton attacking frame right9", SKELETON_ATTAQUE_FRAME_RIGHT_9);
+		_data->assets.loadTexture("skeleton attacking frame right10", SKELETON_ATTAQUE_FRAME_RIGHT_10);
+		_data->assets.loadTexture("skeleton attacking frame right11", SKELETON_ATTAQUE_FRAME_RIGHT_11);
+		_data->assets.loadTexture("skeleton attacking frame right12", SKELETON_ATTAQUE_FRAME_RIGHT_12);
+		_data->assets.loadTexture("skeleton attacking frame right13", SKELETON_ATTAQUE_FRAME_RIGHT_13);
+		_data->assets.loadTexture("skeleton attacking frame right14", SKELETON_ATTAQUE_FRAME_RIGHT_14);
+		_data->assets.loadTexture("skeleton attacking frame right15", SKELETON_ATTAQUE_FRAME_RIGHT_15);
+		_data->assets.loadTexture("skeleton attacking frame right16", SKELETON_ATTAQUE_FRAME_RIGHT_16);
+		_data->assets.loadTexture("skeleton attacking frame right17", SKELETON_ATTAQUE_FRAME_RIGHT_17);
+		_data->assets.loadTexture("skeleton attacking frame right18", SKELETON_ATTAQUE_FRAME_RIGHT_18);
+		_data->assets.loadTexture("skeleton attacking frame left1", SKELETON_ATTAQUE_FRAME_LEFT_1);
+		_data->assets.loadTexture("skeleton attacking frame left2", SKELETON_ATTAQUE_FRAME_LEFT_2);
+		_data->assets.loadTexture("skeleton attacking frame left3", SKELETON_ATTAQUE_FRAME_LEFT_3);
+		_data->assets.loadTexture("skeleton attacking frame left4", SKELETON_ATTAQUE_FRAME_LEFT_4);
+		_data->assets.loadTexture("skeleton attacking frame left5", SKELETON_ATTAQUE_FRAME_LEFT_5);
+		_data->assets.loadTexture("skeleton attacking frame left6", SKELETON_ATTAQUE_FRAME_LEFT_6);
+		_data->assets.loadTexture("skeleton attacking frame left7", SKELETON_ATTAQUE_FRAME_LEFT_7);
+		_data->assets.loadTexture("skeleton attacking frame left8", SKELETON_ATTAQUE_FRAME_LEFT_8);
+		_data->assets.loadTexture("skeleton attacking frame left9", SKELETON_ATTAQUE_FRAME_LEFT_9);
+		_data->assets.loadTexture("skeleton attacking frame left10", SKELETON_ATTAQUE_FRAME_LEFT_10);
+		_data->assets.loadTexture("skeleton attacking frame left11", SKELETON_ATTAQUE_FRAME_LEFT_11);
+		_data->assets.loadTexture("skeleton attacking frame left12", SKELETON_ATTAQUE_FRAME_LEFT_12);
+		_data->assets.loadTexture("skeleton attacking frame left13", SKELETON_ATTAQUE_FRAME_LEFT_13);
+		_data->assets.loadTexture("skeleton attacking frame left14", SKELETON_ATTAQUE_FRAME_LEFT_14);
+		_data->assets.loadTexture("skeleton attacking frame left15", SKELETON_ATTAQUE_FRAME_LEFT_15);
+		_data->assets.loadTexture("skeleton attacking frame left16", SKELETON_ATTAQUE_FRAME_LEFT_16);
+		_data->assets.loadTexture("skeleton attacking frame left17", SKELETON_ATTAQUE_FRAME_LEFT_17);
+		_data->assets.loadTexture("skeleton attacking frame left18", SKELETON_ATTAQUE_FRAME_LEFT_18);
+	#pragma endregion
 
 	// Enemy
 	#pragma region Enemy
@@ -167,6 +167,20 @@ void loadingState::init()
 	_data->assets.loadTexture("enemy attack frame right5", ENEMY_ATTACK_FRAME_RIGHT_5);
 	_data->assets.loadTexture("enemy attack frame right6", ENEMY_ATTACK_FRAME_RIGHT_6);
 	#pragma endregion
+
+	// Store owner
+	#pragma region Store owner
+		_data->assets.loadTexture("store owner idle 1", STOREOWNER_IDLE_1);
+		_data->assets.loadTexture("store owner idle 2", STOREOWNER_IDLE_2);
+		_data->assets.loadTexture("store owner idle 3", STOREOWNER_IDLE_3);
+		_data->assets.loadTexture("store owner idle 4", STOREOWNER_IDLE_4);
+		_data->assets.loadTexture("store owner idle 5", STOREOWNER_IDLE_5);
+		_data->assets.loadTexture("store owner idle 6", STOREOWNER_IDLE_6);
+		_data->assets.loadTexture("store owner idle 7", STOREOWNER_IDLE_7);
+		_data->assets.loadTexture("store owner idle 8", STOREOWNER_IDLE_8);
+		_data->assets.loadTexture("store owner idle 9", STOREOWNER_IDLE_9);
+	#pragma endregion
+
 
 	// Porte
 	_data->assets.loadTexture("closed door", GAME_DOOR_CLOSED);
