@@ -1,4 +1,5 @@
 #include "gameState.h"
+#include "shopState.h"
 
 /// <summary>
 /// Constructeur
@@ -106,8 +107,7 @@ void gameState::update(float dt)
 	// Collision porte
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.2f)) {
 		_hud->addRoom();
-		_hud->removeHeart(2);
-		_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
+		_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
 	}
 
 	

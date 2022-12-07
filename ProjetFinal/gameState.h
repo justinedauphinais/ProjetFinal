@@ -12,6 +12,7 @@
 #include "door.h"
 #include "gardeEnemy.h"
 #include "gameOverState.h"
+#include "shopOwner.h"
 #include <iostream>
 
 
@@ -34,6 +35,7 @@ private:
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
 	gardeEnemy* _gardes;
+
 	collision _collision;
 
 	int _gameState;

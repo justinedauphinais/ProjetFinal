@@ -7,20 +7,18 @@
 
 using namespace sf;
 
-class mainCharacter : public entity {
+class shopOwner : public entity {
 private:
 	gameDataRef _data;
 
 	int _animationIterator;
 
-	Clock _movementClock;
+	Clock _clock;
 
 public:
-	mainCharacter(gameDataRef data, int nbrVies = NBR_LIVES);
+	shopOwner(gameDataRef data);
 
 	void update(float dt);
 
-	void attack();
-
-	void draw() const;
+	void draw()const;
 };

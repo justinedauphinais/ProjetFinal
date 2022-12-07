@@ -192,6 +192,7 @@ enum entityStates {		// Les états des entités
 #define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
 
 //------ Store owner ------//
+#define STOREOWNER_IDLE_TIME 1.0f
 	// Idle
 #define STOREOWNER_IDLE_1 "Ressources/Map/Shop/NPC/1.png"
 #define STOREOWNER_IDLE_2 "Ressources/Map/Shop/NPC/2.png"

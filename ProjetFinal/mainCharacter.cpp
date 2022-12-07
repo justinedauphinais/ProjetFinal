@@ -52,15 +52,6 @@ mainCharacter::mainCharacter(gameDataRef data, int nbrVies) : _data(data)
 }
 
 /// <summary>
-/// 
-/// </summary>
-/// <param name="dt"></param>
-void mainCharacter::animate(float dt)
-{
-
-}
-
-/// <summary>
 /// Create a animate character idle
 /// </summary>
 void mainCharacter::update(float dt)

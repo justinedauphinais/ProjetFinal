@@ -146,6 +146,7 @@
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="mainWalls.cpp" />
     <ClCompile Include="ProjetFinal.cpp" />
+    <ClCompile Include="shopOwner.cpp" />
     <ClCompile Include="shopState.cpp" />
     <ClCompile Include="splashState.cpp" />
     <ClCompile Include="stateMachine.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="mainWalls.h" />
+    <ClInclude Include="shopOwner.h" />
     <ClInclude Include="shopState.h" />
     <ClInclude Include="splashState.h" />
     <ClInclude Include="state.hpp" />
