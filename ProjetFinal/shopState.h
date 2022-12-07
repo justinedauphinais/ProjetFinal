@@ -1,12 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include "DEFINITIONS.hpp"
-#include "state.hpp"
-#include "game.h"
 #include "gameState.h"
-#include "mainWalls.h"
-#include "hud.h"
 
 /// <summary>
 /// 
@@ -23,13 +17,17 @@ private:
 	door* _door;					// La porte
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
-	shopOwner* _shopOwner;
+	shopOwner* _shopOwner;			// Le NPC
+
+	Sprite _shopOwnerHiSprite;		// Dialogue du NPC
 
 	collision _collision;
 
 	int _gameState;
 	int _moveX;
 	int _moveY;
+
+	bool _showDialogue;
 
 public:
 	shopState(gameDataRef data, hud*& hud);

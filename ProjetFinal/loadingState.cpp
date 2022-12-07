@@ -25,12 +25,14 @@ void loadingState::init()
 	_data->assets.loadTexture("progress bar 1", LOADING_FRAME_1);
 	_data->assets.loadTexture("progress bar 2", LOADING_FRAME_2);
 	_data->assets.loadTexture("progress bar 3", LOADING_FRAME_3);
+	_data->assets.loadTexture("progress bar 4", LOADING_FRAME_4);
 
-	for (int i = 1; i < 4; i++) {
+	for (int i = 1; i <= 4; i++) {
 		_animationProgressBar.push_back(_data->assets.getTexture("progress bar " + to_string(i)));
 	}
 
 	_progressBarSprite.setTexture(_animationProgressBar[0]);
+	_progressBarSprite.setScale(5.0f, 5.0f);
 	_progressBarSprite.setPosition((SCREEN_WIDTH / 2) - (_progressBarSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_progressBarSprite.getGlobalBounds().height / 2));
 
 	// Background
@@ -170,6 +172,7 @@ void loadingState::init()
 
 	// Store owner
 	#pragma region Store owner
+		// Idle
 		_data->assets.loadTexture("store owner idle 1", STOREOWNER_IDLE_1);
 		_data->assets.loadTexture("store owner idle 2", STOREOWNER_IDLE_2);
 		_data->assets.loadTexture("store owner idle 3", STOREOWNER_IDLE_3);
@@ -179,8 +182,10 @@ void loadingState::init()
 		_data->assets.loadTexture("store owner idle 7", STOREOWNER_IDLE_7);
 		_data->assets.loadTexture("store owner idle 8", STOREOWNER_IDLE_8);
 		_data->assets.loadTexture("store owner idle 9", STOREOWNER_IDLE_9);
-	#pragma endregion
 
+		// Talking
+		_data->assets.loadTexture("talking shop owner", TALKING_SHOP_OWNER);
+	#pragma endregion
 
 	// Porte
 	_data->assets.loadTexture("closed door", GAME_DOOR_CLOSED);
@@ -196,6 +201,15 @@ void loadingState::init()
 /// </summary>
 void loadingState::handleInput()
 {
+	Event event;
+	while (_data->window.pollEvent(event))
+	{
+		if (event.type == Event::Closed)	// Ferme la fenêtre
+			_data->window.close();
+		else if (Mouse::isButtonPressed(Mouse::Left)) {
+			_data->machine.addState(stateRef(new gameState(_data)), true);
+		}
+	}
 }
 
 /// <summary>

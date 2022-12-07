@@ -44,6 +44,7 @@ enum entityStates {		// Les états des entités
 #define LOADING_FRAME_1 "Ressources/UI/Loading/1.png"
 #define LOADING_FRAME_2 "Ressources/UI/Loading/2.png"
 #define LOADING_FRAME_3 "Ressources/UI/Loading/3.png"
+#define LOADING_FRAME_4 "Ressources/UI/Loading/4.png"
 
 //------ Game ------//
 	// Murs
@@ -55,6 +56,8 @@ enum entityStates {		// Les états des entités
 	// Porte
 #define GAME_DOOR_CLOSED "Ressources/Objects/door_closed.png"
 #define GAME_DOOR_OPEN "Ressources/Objects/door_open.png"
+	// Shop
+#define TALKING_SHOP_OWNER "Ressources/Map/Shop/shopHi.png"
 
 //------ Main character ------//
 #define NBR_LIVES 5

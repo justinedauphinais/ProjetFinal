@@ -9,10 +9,9 @@ shopState::shopState(gameDataRef data, hud*& hud) : _data(data)
 {
 	_hud = hud;
 	_mainCharacter = nullptr;
-	_wall = nullptr;
-	_hud = nullptr;
 	_door = nullptr;
 	_shopOwner = nullptr;
+	_showDialogue = false;
 }
 
 /// <summary>
@@ -35,11 +34,15 @@ void shopState::init()
 
 	_hud->addRoom();
 
-	_mainCharacter = new mainCharacter(_data);
 	_wall = new wall(_data);
 	_door = new door(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 	_shopOwner = new shopOwner(_data);
+
+	_shopOwnerHiSprite.setTexture(_data->assets.getTexture("talking shop owner"));
+	_shopOwnerHiSprite.setScale(5.0f, 5.0f);
+	_shopOwnerHiSprite.setPosition(_shopOwner->getSprite().getPosition().x - ((_shopOwnerHiSprite.getGlobalBounds().width - _shopOwner->getSprite().getGlobalBounds().width) / 4),
+									_shopOwner->getSprite().getPosition().y - _shopOwnerHiSprite.getGlobalBounds().height + 20);
 
 	_gameState = gameStates::ready;
 }
@@ -123,8 +126,16 @@ void shopState::update(float dt)
 	}
 
 	// Collision shop keeper
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 3.0f, _shopOwner->getSprite(), 8.0f, 3.0f)) {
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 2.5f, _shopOwner->getSprite(), 7.0f, 2.5f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - _moveX, _mainCharacter->getSprite().getPosition().y - _moveY);
+	}
+
+	// Collision shop keeper
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 6.0f, 4.0f, _shopOwner->getSprite(), 9.0f, 4.0f)) {
+		_showDialogue = true;
+	}
+	else {
+		_showDialogue = false;
 	}
 }
 
@@ -141,6 +152,11 @@ void shopState::draw(float dt) const
 	_shopOwner->draw();
 	_mainCharacter->draw();
 	_wall->draw();
+
+	if (_showDialogue) {
+		_data->window.draw(_shopOwnerHiSprite);
+	}
+
 	_hud->draw();
 	_data->window.display();
 }
