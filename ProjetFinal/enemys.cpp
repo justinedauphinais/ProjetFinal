@@ -28,7 +28,7 @@ enemys::enemys(gameDataRef data) : _data(data)
 
 	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 
-	_sprite.setScale(5.0, 5.0);
+	_sprite.setScale(6.5, 6.5);
 
 	_sprite.setPosition((_data->window.getSize().x / 2) - (_sprite.getGlobalBounds().width / 2),
 		(_data->window.getSize().y / 2) - (_sprite.getGlobalBounds().height / 2));

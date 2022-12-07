@@ -276,6 +276,7 @@ void gameState::handleInput()
 void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
+	_enemys->setState(IDLE);
 
 	// Collision porte
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.2f)) {
