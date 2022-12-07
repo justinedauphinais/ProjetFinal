@@ -12,6 +12,7 @@ gameState::gameState(gameDataRef data) : _data(data)
 	_wall = nullptr;
 	_hud = nullptr;
 	_door = nullptr;
+	_gameState = 
 }
 
 /// <summary>
@@ -110,7 +111,6 @@ void gameState::update(float dt)
 		_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
 	}
 
-	
 	// Collision mur du haut
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);

@@ -1,23 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="assetManager.cpp" />
-    <ClCompile Include="collision.cpp" />
-    <ClCompile Include="door.cpp" />
-    <ClCompile Include="gardeEnemy.cpp" />
-    <ClCompile Include="entity.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="gameOverState.cpp" />
-    <ClCompile Include="gameState.cpp" />
-    <ClCompile Include="hearts.cpp" />
-    <ClCompile Include="hud.cpp" />
-    <ClCompile Include="inputManager.cpp" />
-    <ClCompile Include="mainCharacter.cpp" />
-    <ClCompile Include="mainMenuState.cpp" />
-    <ClCompile Include="mainWalls.cpp" />
-    <ClCompile Include="ProjetFinal.cpp" />
-    <ClCompile Include="splashState.cpp" />
-    <ClCompile Include="stateMachine.cpp" />
+    <ClCompile Include="assetManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="door.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="gameOverState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="gameState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="gardeEnemy.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="hearts.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="hud.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="inputManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="loadingState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mainCharacter.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mainMenuState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="mainWalls.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjetFinal.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="shopOwner.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="shopState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="splashState.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="stateMachine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h" />
@@ -38,5 +81,13 @@
     <ClInclude Include="splashState.h" />
     <ClInclude Include="state.hpp" />
     <ClInclude Include="stateMachine.h" />
+    <ClInclude Include="loadingState.h" />
+    <ClInclude Include="shopOwner.h" />
+    <ClInclude Include="shopState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{5a82cdec-f609-45ea-9e3b-f8bfe068ff11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
