@@ -75,9 +75,6 @@
     <ClCompile Include="door.cpp">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="roomState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -130,9 +127,6 @@
     </ClInclude>
     <ClInclude Include="door.h">
       <Filter>Header Files\Visuals</Filter>
-    </ClInclude>
-    <ClInclude Include="roomState.h">
-      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

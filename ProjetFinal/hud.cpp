@@ -4,9 +4,10 @@
 /// 
 /// </summary>
 /// <param name="score"></param>
-hud::hud(gameDataRef data, int score, int nbCoeurs) : _data(data)
+hud::hud(gameDataRef data, int nbrRoom, int score, int nbCoeurs) : _data(data)
 {
 	_score = score;
+	_nbrRoom = nbrRoom;
 
 	// Score
 	_scoreSprite = Text(to_string(_score), _data->assets.getFont("pixel art font"), 50);
@@ -22,6 +23,11 @@ hud::hud(gameDataRef data, int score, int nbCoeurs) : _data(data)
 		_hearts.push_back(_heart);
 		_heart.move(80, 0);
 	}
+
+	// Room
+	_roomText = Text(to_string(_nbrRoom), _data->assets.getFont("pixel art font"), 50);
+	_roomText.setFillColor(Color::Red);
+	_roomText.setPosition(((SCREEN_WIDTH / 2) - (_roomText.getGlobalBounds().width / 2)), (SCREEN_HEIGHT - _roomText.getGlobalBounds().height - 50));
 }
 
 /// <summary>
@@ -50,7 +56,7 @@ void hud::addScore(int score)
 /// <returns></returns>
 bool hud::removeHeart(int nb)
 {
-	for (int i = 0; i < nb; i++) {	// Enlève le coeur et replace le dernier
+	for (int i = 0; i < nb && _hearts.size() != 0; i++) {	// Enlève le coeur et replace le dernier
 		_hearts.pop_back();
 		_heart.move(-80, 0);
 	}
@@ -73,10 +79,28 @@ void hud::addHeart(int nb)
 /// <summary>
 /// 
 /// </summary>
+void hud::addRoom()
+{
+	_nbrRoom++;
+	_roomText.setString(to_string(_nbrRoom));
+}
+
+/// <summary>
+/// 
+/// </summary>
 /// <returns></returns>
 int hud::getScore() const
 {
 	return _score;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+int hud::getNbrVies() const
+{
+	return _hearts.size();
 }
 
 /// <summary>
@@ -88,4 +112,5 @@ void hud::draw() const
 	for (int i = 0; i < _hearts.size(); i++) {
 		_data->window.draw(_hearts[i]);
 	}
+	_data->window.draw(_roomText);
 }

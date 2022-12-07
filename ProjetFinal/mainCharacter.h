@@ -16,7 +16,7 @@ private:
 	Clock _movementClock;
 
 public:
-	mainCharacter(gameDataRef data);
+	mainCharacter(gameDataRef data, int nbrVies = NBR_LIVES);
 
 	void animate(float dt);
 	void update(float dt);

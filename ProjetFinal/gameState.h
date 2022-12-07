@@ -10,6 +10,7 @@
 #include "collision.h"
 #include "hud.h"
 #include "door.h"
+#include "gameOverState.h"
 #include <iostream>
 
 using namespace sf;
@@ -27,8 +28,8 @@ private:
 	Sprite _background;			// Le sprite pour la background
 
 	wall* _wall;					// Les murs
-	hud* _hud;						// Le hud
 	door* _door;					// La porte
+	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
 
 	collision _collision;
@@ -37,6 +38,7 @@ private:
 	
 public:
 	gameState(gameDataRef data);
+	gameState(gameDataRef data, hud*& hud);
 	~gameState();
 
 	void init();
