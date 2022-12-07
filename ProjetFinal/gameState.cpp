@@ -7,6 +7,7 @@
 gameState::gameState(gameDataRef data) : _data(data)
 {
 	_mainCharacter = nullptr;
+	_enemys = nullptr;
 	_wall = nullptr;
 	_hud = nullptr;
 	_door = nullptr;
@@ -18,6 +19,7 @@ gameState::gameState(gameDataRef data) : _data(data)
 gameState::~gameState()
 {
 	delete _mainCharacter;
+	delete _enemys;
 	delete _wall;
 	delete _hud;
 	delete _door;
@@ -138,9 +140,39 @@ void gameState::init()
 		_data->assets.loadTexture("skeleton attacking frame left17", SKELETON_ATTAQUE_FRAME_LEFT_17);
 		_data->assets.loadTexture("skeleton attacking frame left18", SKELETON_ATTAQUE_FRAME_LEFT_18);
 	#pragma endregion
+ #pragma region enemy asset
+
+		_data->assets.loadTexture("enemy idle frame left1", ENEMY_IDLE_FRAME_LEFT_1);
+		_data->assets.loadTexture("enemy idle frame left2", ENEMY_IDLE_FRAME_LEFT_2);
+		_data->assets.loadTexture("enemy idle frame left3", ENEMY_IDLE_FRAME_LEFT_3);
+		_data->assets.loadTexture("enemy idle frame left4", ENEMY_IDLE_FRAME_LEFT_4);
+		_data->assets.loadTexture("enemy idle frame left5", ENEMY_IDLE_FRAME_LEFT_5);
+
+		_data->assets.loadTexture("enemy idle frame right1", ENEMY_IDLE_FRAME_RIGHT_1);
+		_data->assets.loadTexture("enemy idle frame right2", ENEMY_IDLE_FRAME_RIGHT_2);
+		_data->assets.loadTexture("enemy idle frame right3", ENEMY_IDLE_FRAME_RIGHT_3);
+		_data->assets.loadTexture("enemy idle frame right4", ENEMY_IDLE_FRAME_RIGHT_4);
+		_data->assets.loadTexture("enemy idle frame right5", ENEMY_IDLE_FRAME_RIGHT_5);
+
+		_data->assets.loadTexture("enemy attack frame left1", ENEMY_ATTACK_FRAME_LEFT_1);
+		_data->assets.loadTexture("enemy attack frame left2", ENEMY_ATTACK_FRAME_LEFT_2);
+		_data->assets.loadTexture("enemy attack frame left3", ENEMY_ATTACK_FRAME_LEFT_3);
+		_data->assets.loadTexture("enemy attack frame left4", ENEMY_ATTACK_FRAME_LEFT_4);
+		_data->assets.loadTexture("enemy attack frame left5", ENEMY_ATTACK_FRAME_LEFT_5);
+		_data->assets.loadTexture("enemy attack frame left6", ENEMY_ATTACK_FRAME_LEFT_6);
+
+		_data->assets.loadTexture("enemy attack frame right1", ENEMY_ATTACK_FRAME_RIGHT_1);
+		_data->assets.loadTexture("enemy attack frame right2", ENEMY_ATTACK_FRAME_RIGHT_2);
+		_data->assets.loadTexture("enemy attack frame right3", ENEMY_ATTACK_FRAME_RIGHT_3);
+		_data->assets.loadTexture("enemy attack frame right4", ENEMY_ATTACK_FRAME_RIGHT_4);
+		_data->assets.loadTexture("enemy attack frame right5", ENEMY_ATTACK_FRAME_RIGHT_5);
+		_data->assets.loadTexture("enemy attack frame right6", ENEMY_ATTACK_FRAME_RIGHT_6);
+#pragma endregion
+
 
 	// Pointeurs
 	_mainCharacter = new mainCharacter(_data);
+	_enemys = new enemys(_data);
 	_wall = new wall(_data);
 	_hud = new hud(_data);
 	_door = new door(_data);
@@ -192,7 +224,7 @@ void gameState::handleInput()
 void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
-	
+	_enemys->update(dt);
 	// Collision mur du haut
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);
@@ -231,7 +263,7 @@ void gameState::draw(float dt) const
 	_door->draw();
 	_mainCharacter->draw();
 	_wall->draw();
-
+	_enemys->draw();
 	_hud->draw();
 	_data->window.display();
 }

@@ -10,7 +10,9 @@
 #include "collision.h"
 #include "hud.h"
 #include "door.h"
+#include "enemys.h"
 #include <iostream>
+
 
 using namespace sf;
 using namespace std;
@@ -30,7 +32,7 @@ private:
 	hud* _hud;						// Le hud
 	door* _door;					// La porte
 	mainCharacter* _mainCharacter;	// Le personnage principal
-
+	enemys* _enemys;
 	collision _collision;
 
 	int _gameState;
