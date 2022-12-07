@@ -7,7 +7,7 @@
 gameState::gameState(gameDataRef data) : _data(data)
 {
 	_mainCharacter = nullptr;
-	_enemys = nullptr;
+	_gardes = nullptr;
 	_wall = nullptr;
 	_hud = nullptr;
 	_door = nullptr;
@@ -32,7 +32,7 @@ gameState::gameState(gameDataRef data, hud*& hud) : _data(data)
 gameState::~gameState()
 {
 	delete _mainCharacter;
-	delete _enemys;
+	delete _gardes;
 	delete _wall;
 	delete _door;
 }
@@ -49,7 +49,7 @@ void gameState::init()
 		_hud = new hud(_data, 1, 0);
 
 	_mainCharacter = new mainCharacter(_data);
-	_enemys = new enemys(_data);
+	_gardes = new gardeEnemy(_data);
 	_wall = new wall(_data);
 	_door = new door(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
@@ -101,7 +101,7 @@ void gameState::handleInput()
 void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
-	_enemys->setState(IDLE);
+	_gardes->setState(IDLE);
 
 	// Collision porte
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.2f)) {
@@ -110,7 +110,7 @@ void gameState::update(float dt)
 		_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
 	}
 
-	_enemys->update(dt);
+	
 	// Collision mur du haut
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);
@@ -131,6 +131,12 @@ void gameState::update(float dt)
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
 	}
 
+	if (_collision.isNear(_gardes->getSprite(),_mainCharacter->getSprite()))
+	{
+		_gardes->attack();
+		_gardes->setState(ATTACKING);
+
+	}
 	// Si mort
 	if (_hud->getNbrVies() <= 0) {
 		_data->machine.addState(stateRef(new gameOverState(_data, _hud->getScore(), false)), true);
@@ -149,7 +155,7 @@ void gameState::draw(float dt) const
 	_door->draw();
 	_mainCharacter->draw();
 	_wall->draw();
-	_enemys->draw();
+	_gardes->draw();
 	_hud->draw();
 	_data->window.display();
 }
