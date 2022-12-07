@@ -4,9 +4,9 @@
 /// 
 /// </summary>
 /// <param name="data"></param>
-mainCharacter::mainCharacter(gameDataRef data) : _data(data)
+mainCharacter::mainCharacter(gameDataRef data, int nbrVies) : _data(data)
 {
-	_nbrLives = NBR_LIVES;
+	_nbrLives = nbrVies;
 
 	_animationIterator = 0;
 

@@ -14,12 +14,15 @@ private:
 	Text _scoreSprite;
 
 	int _score;
+	int _nbrRoom;
 	
 	vector<Sprite> _hearts;		// Les coeurs
 	Sprite _heart;
 
+	Text _roomText;
+
 public:
-	hud(gameDataRef data, int score = 0, int nbCoeurs = NBR_LIVES);
+	hud(gameDataRef data, int nbrRoom, int score = 0, int nbCoeurs = NBR_LIVES);
 
 	void setScore(int score);
 	void addScore(int score = 1);
@@ -27,7 +30,10 @@ public:
 	bool removeHeart(int nb = 1);
 	void addHeart(int nb = 1);
 
+	void addRoom();
+
 	int getScore() const;
+	int getNbrVies() const;
 
 	void draw() const;
 };
