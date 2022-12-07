@@ -57,9 +57,11 @@ enum entityStates {		// Les états des entités
 
 //------ Main character ------//
 #define NBR_LIVES 5
-
-	// Walk
 #define SKELETON_WALK_TIME 0.6f
+#define SKELETON_IDLE_TIME 1.0f
+#define SKELETE_ATTACK_TIME 1.2f
+
+	// Walk right
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Walk/Right/1.png"
 #define SKELETON_WALK_FRAME_RIGHT_2 "Ressources/MC/Walk/Right/2.png"
 #define SKELETON_WALK_FRAME_RIGHT_3 "Ressources/MC/Walk/Right/3.png"
@@ -72,6 +74,8 @@ enum entityStates {		// Les états des entités
 #define SKELETON_WALK_FRAME_RIGHT_10 "Ressources/MC/Walk/Right/10.png"
 #define SKELETON_WALK_FRAME_RIGHT_11 "Ressources/MC/Walk/Right/11.png"
 #define SKELETON_WALK_FRAME_RIGHT_12 "Ressources/MC/Walk/Right/12.png"
+
+	// Walk left
 #define SKELETON_WALK_FRAME_LEFT_1 "Ressources/MC/Walk/Left/1.png"
 #define SKELETON_WALK_FRAME_LEFT_2 "Ressources/MC/Walk/Left/2.png"
 #define SKELETON_WALK_FRAME_LEFT_3 "Ressources/MC/Walk/Left/3.png"
@@ -85,8 +89,7 @@ enum entityStates {		// Les états des entités
 #define SKELETON_WALK_FRAME_LEFT_11 "Ressources/MC/Walk/Left/11.png"
 #define SKELETON_WALK_FRAME_LEFT_12 "Ressources/MC/Walk/Left/12.png"
 
-	// Idle
-#define SKELETON_IDLE_TIME 1.0f
+	// Idle right
 #define SKELETON_IDLE_FRAME_RIGHT_1 "Ressources/MC/Idle/Right/1.png"
 #define SKELETON_IDLE_FRAME_RIGHT_2 "Ressources/MC/Idle/Right/2.png"
 #define SKELETON_IDLE_FRAME_RIGHT_3 "Ressources/MC/Idle/Right/3.png"
@@ -98,6 +101,8 @@ enum entityStates {		// Les états des entités
 #define SKELETON_IDLE_FRAME_RIGHT_9 "Ressources/MC/Idle/Right/9.png"
 #define SKELETON_IDLE_FRAME_RIGHT_10 "Ressources/MC/Idle/Right/10.png"
 #define SKELETON_IDLE_FRAME_RIGHT_11 "Ressources/MC/Idle/Right/11.png"
+
+	// Idle left
 #define SKELETON_IDLE_FRAME_LEFT_1 "Ressources/MC/Idle/Left/1.png"
 #define SKELETON_IDLE_FRAME_LEFT_2 "Ressources/MC/Idle/Left/2.png"
 #define SKELETON_IDLE_FRAME_LEFT_3 "Ressources/MC/Idle/Left/3.png"
@@ -110,8 +115,7 @@ enum entityStates {		// Les états des entités
 #define SKELETON_IDLE_FRAME_LEFT_10 "Ressources/MC/Idle/Left/10.png"
 #define SKELETON_IDLE_FRAME_LEFT_11 "Ressources/MC/Idle/Left/11.png"
 
-	// Attack
-#define SKELETE_ATTACK_TIME 1.2f
+	// Attack right
 #define SKELETON_ATTAQUE_FRAME_RIGHT_1 "Ressources/MC/Attack/Right/1.png"
 #define SKELETON_ATTAQUE_FRAME_RIGHT_2 "Ressources/MC/Attack/Right/2.png"
 #define SKELETON_ATTAQUE_FRAME_RIGHT_3 "Ressources/MC/Attack/Right/3.png"
@@ -130,6 +134,8 @@ enum entityStates {		// Les états des entités
 #define SKELETON_ATTAQUE_FRAME_RIGHT_16 "Ressources/MC/Attack/Right/16.png"
 #define SKELETON_ATTAQUE_FRAME_RIGHT_17 "Ressources/MC/Attack/Right/17.png"
 #define SKELETON_ATTAQUE_FRAME_RIGHT_18 "Ressources/MC/Attack/Right/18.png"
+
+	// Attack left
 #define SKELETON_ATTAQUE_FRAME_LEFT_1 "Ressources/MC/Attack/Left/1.png"
 #define SKELETON_ATTAQUE_FRAME_LEFT_2 "Ressources/MC/Attack/Left/2.png"
 #define SKELETON_ATTAQUE_FRAME_LEFT_3 "Ressources/MC/Attack/Left/3.png"
@@ -149,26 +155,25 @@ enum entityStates {		// Les états des entités
 #define SKELETON_ATTAQUE_FRAME_LEFT_17 "Ressources/MC/Attack/Left/17.png"
 #define SKELETON_ATTAQUE_FRAME_LEFT_18 "Ressources/MC/Attack/Left/18.png"
 
-
-
-//Live enemys
+//------ Guard Enemy ------//
 #define LIVE_ENEMY 3.0f
 #define ENEMY_IDLE_TIME 1.0f
-//Idle left
+
+	// Idle left
 #define ENEMY_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Idle/Left/1.png"
 #define ENEMY_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Idle/Left/2.png"
 #define ENEMY_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Idle/Left/3.png"
 #define ENEMY_IDLE_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Idle/Left/4.png"
 #define ENEMY_IDLE_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Idle/Left/5.png"
 
-//Idle right
+	// Idle right
 #define ENEMY_IDLE_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Idle/Right/1.png"
 #define ENEMY_IDLE_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Idle/Right/2.png"
 #define ENEMY_IDLE_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Idle/Right/3.png"
 #define ENEMY_IDLE_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Idle/Right/4.png"
 #define ENEMY_IDLE_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Idle/Right/5.png"
 
-//Attack right
+	// Attack right
 #define ENEMY_ATTACK_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Attack 1/Right/1.png"
 #define ENEMY_ATTACK_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Attack 1/Right/2.png"
 #define ENEMY_ATTACK_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Attack 1/Right/3.png"
@@ -176,7 +181,7 @@ enum entityStates {		// Les états des entités
 #define ENEMY_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Attack 1/Right/5.png"
 #define ENEMY_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Attack 1/Right/6.png"
 
-//Attack left
+	// Attack left
 #define ENEMY_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Attack 1/Left/1.png"
 #define ENEMY_ATTACK_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Attack 1/Left/2.png"
 #define ENEMY_ATTACK_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Attack 1/Left/3.png"
