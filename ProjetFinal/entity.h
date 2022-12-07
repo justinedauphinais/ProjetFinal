@@ -12,6 +12,8 @@ protected:
 	vector<Texture> _animationFramesWalkingLeft;
 	vector<Texture> _animationFramesFightingRight;
 	vector<Texture> _animationFramesFightingLeft;
+	vector<Texture> _animationFramesIdleRight;
+	vector<Texture> _animationFramesIdleLeft;
 	int _animationIterator;
 
 	entityStates _state;

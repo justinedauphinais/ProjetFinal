@@ -44,17 +44,29 @@ void gameState::init()
 	// Main character
 	#pragma region Main Character assets
 		// Idle
-		_data->assets.loadTexture("skeleton idle frame1", SKELETON_IDLE_FRAME_1);
-		_data->assets.loadTexture("skeleton idle frame2", SKELETON_IDLE_FRAME_2);
-		_data->assets.loadTexture("skeleton idle frame3", SKELETON_IDLE_FRAME_3);
-		_data->assets.loadTexture("skeleton idle frame4", SKELETON_IDLE_FRAME_4);
-		_data->assets.loadTexture("skeleton idle frame5", SKELETON_IDLE_FRAME_5);
-		_data->assets.loadTexture("skeleton idle frame6", SKELETON_IDLE_FRAME_6);
-		_data->assets.loadTexture("skeleton idle frame7", SKELETON_IDLE_FRAME_7);
-		_data->assets.loadTexture("skeleton idle frame8", SKELETON_IDLE_FRAME_8);
-		_data->assets.loadTexture("skeleton idle frame9", SKELETON_IDLE_FRAME_9);
-		_data->assets.loadTexture("skeleton idle frame10", SKELETON_IDLE_FRAME_10);
-		_data->assets.loadTexture("skeleton idle frame11", SKELETON_IDLE_FRAME_11);
+		_data->assets.loadTexture("skeleton idle frame right 1", SKELETON_IDLE_FRAME_RIGHT_1);
+		_data->assets.loadTexture("skeleton idle frame right 2", SKELETON_IDLE_FRAME_RIGHT_2);
+		_data->assets.loadTexture("skeleton idle frame right 3", SKELETON_IDLE_FRAME_RIGHT_3);
+		_data->assets.loadTexture("skeleton idle frame right 4", SKELETON_IDLE_FRAME_RIGHT_4);
+		_data->assets.loadTexture("skeleton idle frame right 5", SKELETON_IDLE_FRAME_RIGHT_5);
+		_data->assets.loadTexture("skeleton idle frame right 6", SKELETON_IDLE_FRAME_RIGHT_6);
+		_data->assets.loadTexture("skeleton idle frame right 7", SKELETON_IDLE_FRAME_RIGHT_7);
+		_data->assets.loadTexture("skeleton idle frame right 8", SKELETON_IDLE_FRAME_RIGHT_8);
+		_data->assets.loadTexture("skeleton idle frame right 9", SKELETON_IDLE_FRAME_RIGHT_9);
+		_data->assets.loadTexture("skeleton idle frame right 10", SKELETON_IDLE_FRAME_RIGHT_10);
+		_data->assets.loadTexture("skeleton idle frame right 11", SKELETON_IDLE_FRAME_RIGHT_11);
+
+		_data->assets.loadTexture("skeleton idle frame left 1", SKELETON_IDLE_FRAME_LEFT_1);
+		_data->assets.loadTexture("skeleton idle frame left 2", SKELETON_IDLE_FRAME_LEFT_2);
+		_data->assets.loadTexture("skeleton idle frame left 3", SKELETON_IDLE_FRAME_LEFT_3);
+		_data->assets.loadTexture("skeleton idle frame left 4", SKELETON_IDLE_FRAME_LEFT_4);
+		_data->assets.loadTexture("skeleton idle frame left 5", SKELETON_IDLE_FRAME_LEFT_5);
+		_data->assets.loadTexture("skeleton idle frame left 6", SKELETON_IDLE_FRAME_LEFT_6);
+		_data->assets.loadTexture("skeleton idle frame left 7", SKELETON_IDLE_FRAME_LEFT_7);
+		_data->assets.loadTexture("skeleton idle frame left 8", SKELETON_IDLE_FRAME_LEFT_8);
+		_data->assets.loadTexture("skeleton idle frame left 9", SKELETON_IDLE_FRAME_LEFT_9);
+		_data->assets.loadTexture("skeleton idle frame left 10", SKELETON_IDLE_FRAME_LEFT_10);
+		_data->assets.loadTexture("skeleton idle frame left 11", SKELETON_IDLE_FRAME_LEFT_11);
 
 		// Walking
 		_data->assets.loadTexture("skeleton walking frame left1", SKELETON_WALK_FRAME_LEFT_1);

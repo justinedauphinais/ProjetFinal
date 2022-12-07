@@ -11,9 +11,6 @@ class mainCharacter : public entity {
 private:
 	gameDataRef _data;
 
-	vector<Texture> _animationFramesIdle;
-	vector<Texture> _animationFramesAttack;
-
 	int _animationIterator;
 
 	Clock _movementClock;

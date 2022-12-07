@@ -65,18 +65,22 @@ void entity::move(Keyboard::Key key)
 		if (key == Keyboard::D) {
 			_sprite.move(20, 0);
 			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+			_dir = RIGHT;
 		}
 		else if (key == Keyboard::W) {
 			_sprite.move(0, -20);
 			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+			_dir = TOP;
 		}
 		else if (key == Keyboard::A) {
 			_sprite.move(-20, 0);
 			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
+			_dir = LEFT;
 		}
 		else if (key == Keyboard::S) {
 			_sprite.move(0, 20);
 			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
+			_dir = BOTTOM;
 		}
 
 		_clock.restart();
