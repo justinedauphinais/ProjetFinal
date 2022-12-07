@@ -5,7 +5,6 @@
 /// </summary>
 hearts::hearts(gameDataRef data) : _data(data)
 {
-	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
 	_heart = Sprite(_data->assets.getTexture("life hearts"));
 	_heart.setPosition(50, 50);
 	_heart.setScale(4, 4);
@@ -17,7 +16,6 @@ hearts::hearts(gameDataRef data) : _data(data)
 /// <param name="nb"></param>
 hearts::hearts(gameDataRef data, int nb) : _data(data)
 {
-	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
 	_heart = Sprite(_data->assets.getTexture("life hearts"));
 	_heart.setPosition(50, 50);
 	_heart.setScale(4, 4);

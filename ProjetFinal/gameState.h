@@ -6,7 +6,6 @@
 #include "game.h"
 #include "state.hpp"
 #include "mainCharacter.h"
-#include "hearts.h"
 #include "mainWalls.h"
 #include "collision.h"
 #include "hud.h"
@@ -26,7 +25,6 @@ private:
 
 	Sprite _background;			// Le sprite pour la background
 
-	hearts* _hearts;				// Le pointeur pour les coeurs
 	wall* _wall;					// Le pointeur pour les murs
 	hud* _hud;
 	mainCharacter* _mainCharacter;	// Le personnage principal

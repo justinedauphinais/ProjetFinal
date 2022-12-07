@@ -7,7 +7,6 @@
 gameState::gameState(gameDataRef data) : _data(data)
 {
 	_mainCharacter = nullptr;
-	_hearts = nullptr;
 	_wall = nullptr;
 	_hud = nullptr;
 }
@@ -18,7 +17,6 @@ gameState::gameState(gameDataRef data) : _data(data)
 gameState::~gameState()
 {
 	delete _mainCharacter;
-	delete _hearts;
 	delete _wall;
 	delete _hud;
 }
@@ -38,6 +36,10 @@ void gameState::init()
 	_data->assets.loadTexture("wall down", GAME_FOREGROUND_UP_DOWN_TEMP);
 	_data->assets.loadTexture("wall left", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
 	_data->assets.loadTexture("wall right", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
+	
+	// Hud
+	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
+	_data->assets.loadFont("pixel art font", PIXEL_ART_FONT);			// A ENLEVER LORSQUE LE JEU EST COMPLET
 
 	// Main character
 	#pragma region Main Character assets
@@ -121,7 +123,6 @@ void gameState::init()
 
 	// Pointeurs
 	_mainCharacter = new mainCharacter(_data);
-	_hearts = new hearts(_data, NBR_LIVES);
 	_wall = new wall(_data);
 	_hud = new hud(_data);
 
@@ -203,7 +204,6 @@ void gameState::draw(float dt) const
 	_mainCharacter->draw();
 	_wall->draw();
 
-	_hearts->draw();
 	_hud->draw();
 	_data->window.display();
 }
