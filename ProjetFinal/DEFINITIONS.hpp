@@ -149,31 +149,31 @@ enum entityStates {		// Les états des entités
 #define LIVE_ENEMY 3.0f
 #define ENEMY_IDLE_TIME 1.0f
 //Idle left
-#define ENEMY_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Idle/Left/1.png"
-#define ENEMY_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Idle/Left/2.png"
-#define ENEMY_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Idle/Left/3.png"
-#define ENEMY_IDLE_FRAME_LEFT_4 "Ressources/Enemies/Idle/Left/4.png"
-#define ENEMY_IDLE_FRAME_LEFT_5 "Ressources/Enemies/Idle/Left/5.png"
+#define ENEMY_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Idle/Left/1.png"
+#define ENEMY_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Idle/Left/2.png"
+#define ENEMY_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Idle/Left/3.png"
+#define ENEMY_IDLE_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Idle/Left/4.png"
+#define ENEMY_IDLE_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Idle/Left/5.png"
 
 //Idle right
-#define ENEMY_IDLE_FRAME_RIGHT_1 "Ressources/Enemies/Idle/Right/1.png"
-#define ENEMY_IDLE_FRAME_RIGHT_2 "Ressources/Enemies/Idle/Right/2.png"
-#define ENEMY_IDLE_FRAME_RIGHT_3 "Ressources/Enemies/Idle/Right/3.png"
-#define ENEMY_IDLE_FRAME_RIGHT_4 "Ressources/Enemies/Idle/Right/4.png"
-#define ENEMY_IDLE_FRAME_RIGHT_5 "Ressources/Enemies/Idle/Right/5.png"
+#define ENEMY_IDLE_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Idle/Right/1.png"
+#define ENEMY_IDLE_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Idle/Right/2.png"
+#define ENEMY_IDLE_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Idle/Right/3.png"
+#define ENEMY_IDLE_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Idle/Right/4.png"
+#define ENEMY_IDLE_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Idle/Right/5.png"
 
 //Attack right
-#define ENEMY_ATTACK_FRAME_RIGHT_1 "Ressources/Enemies/Attack/Right/1.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_2 "Ressources/Enemies/Attack/Right/2.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_3 "Ressources/Enemies/Attack/Right/3.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_4 "Ressources/Enemies/Attack/Right/4.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Attack/Right/5.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Attack/Right/6.png"
+#define ENEMY_ATTACK_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Attack 1/Right/1.png"
+#define ENEMY_ATTACK_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Attack 1/Right/2.png"
+#define ENEMY_ATTACK_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Attack 1/Right/3.png"
+#define ENEMY_ATTACK_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Attack 1/Right/4.png"
+#define ENEMY_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Attack 1/Right/5.png"
+#define ENEMY_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Attack 1/Right/6.png"
 
 //Attack left
-#define ENEMY_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Attack/Left/1.png"
-#define ENEMY_ATTACK_FRAME_LEFT_2 "Ressources/Enemies/Attack/Left/2.png"
-#define ENEMY_ATTACK_FRAME_LEFT_3 "Ressources/Enemies/Attack/Left/3.png"
-#define ENEMY_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Attack/Left/4.png"
-#define ENEMY_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Attack/Left/5.png"
-#define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Attack/Left/6.png"
+#define ENEMY_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Attack 1/Left/1.png"
+#define ENEMY_ATTACK_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Attack 1/Left/2.png"
+#define ENEMY_ATTACK_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Attack 1/Left/3.png"
+#define ENEMY_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Attack 1/Left/4.png"
+#define ENEMY_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Attack 1/Left/5.png"
+#define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
