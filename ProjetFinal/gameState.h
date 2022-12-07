@@ -34,7 +34,7 @@ private:
 	door* _door;					// La porte
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
-	gardeEnemy* _gardes;
+	gardeEnemy* _garde;
 
 	collision _collision;
 

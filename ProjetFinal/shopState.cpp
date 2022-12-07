@@ -33,9 +33,7 @@ void shopState::init()
 {
 	_background.setTexture(_data->assets.getTexture("game background"));
 
-	// Pointeurs
-	if (_hud == nullptr)
-		_hud = new hud(_data, 1, 0);
+	_hud->addRoom();
 
 	_mainCharacter = new mainCharacter(_data);
 	_wall = new wall(_data);

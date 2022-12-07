@@ -8,11 +8,11 @@
 gameState::gameState(gameDataRef data) : _data(data)
 {
 	_mainCharacter = nullptr;
-	_gardes = nullptr;
+	_garde = nullptr;
 	_wall = nullptr;
 	_hud = nullptr;
 	_door = nullptr;
-	_gameState = 
+	_gameState = gameStates::loading;
 }
 
 /// <summary>
@@ -26,6 +26,7 @@ gameState::gameState(gameDataRef data, hud*& hud) : _data(data)
 	_mainCharacter = nullptr;
 	_wall = nullptr;
 	_door = nullptr;
+	_garde = nullptr;
 }
 
 /// <summary>
@@ -34,7 +35,7 @@ gameState::gameState(gameDataRef data, hud*& hud) : _data(data)
 gameState::~gameState()
 {
 	delete _mainCharacter;
-	delete _gardes;
+	delete _garde;
 	delete _wall;
 	delete _door;
 }
@@ -48,10 +49,11 @@ void gameState::init()
 
 	// Pointeurs
 	if (_hud == nullptr) 
-		_hud = new hud(_data, 1, 0);
+		_hud = new hud(_data, 0, 0);
+	_hud->addRoom();
 
 	_mainCharacter = new mainCharacter(_data);
-	_gardes = new gardeEnemy(_data);
+	_garde = new gardeEnemy(_data);
 	_wall = new wall(_data);
 	_door = new door(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
@@ -103,11 +105,10 @@ void gameState::handleInput()
 void gameState::update(float dt)
 {
 	_mainCharacter->update(dt);
-	_gardes->setState(IDLE);
+	_garde->update(dt);
 
 	// Collision porte
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.2f)) {
-		_hud->addRoom();
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.5f)) {
 		_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
 	}
 
@@ -131,12 +132,12 @@ void gameState::update(float dt)
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
 	}
 
-	if (_collision.isNear(_gardes->getSprite(),_mainCharacter->getSprite()))
+	// Collision ennemis
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _garde->getSprite(), 3.0f, 10.0f))
 	{
-		_gardes->attack();
-		_gardes->setState(ATTACKING);
-
+		_garde->attack();
 	}
+
 	// Si mort
 	if (_hud->getNbrVies() <= 0) {
 		_data->machine.addState(stateRef(new gameOverState(_data, _hud->getScore(), false)), true);
@@ -155,7 +156,7 @@ void gameState::draw(float dt) const
 	_door->draw();
 	_mainCharacter->draw();
 	_wall->draw();
-	_gardes->draw();
+	_garde->draw();
 	_hud->draw();
 	_data->window.display();
 }

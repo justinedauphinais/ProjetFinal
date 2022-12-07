@@ -59,16 +59,13 @@ void mainCharacter::update(float dt)
 	if (_clock.getElapsedTime().asSeconds() > SKELETON_IDLE_TIME / _animationFramesIdleRight.size() && (_state == entityStates::IDLE)) {
 		_animationIterator++;
 
-		if (_animationIterator == _animationFramesIdleRight.size()) {
+		if (_animationIterator == _animationFramesIdleRight.size())
 			_animationIterator = 0;
-		}
 		
-		if (_dir == RIGHT || _dir == TOP) {
+		if (_dir == RIGHT || _dir == TOP)
 			_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
-		}
-		else {
+		else
 			_sprite.setTexture(_animationFramesIdleLeft.at(_animationIterator));
-		}
 
 		_clock.restart();
 	}
@@ -79,16 +76,12 @@ void mainCharacter::update(float dt)
 			_animationIterator = 0;
 
 			if (_dir == TOP || _dir == RIGHT) {
-				Sprite spriteTemp(_animationFramesIdleRight.at(_animationIterator));
-				spriteTemp.setPosition(_sprite.getPosition().x + 15, _sprite.getPosition().y + 20);
-				spriteTemp.setScale(5.0, 5.0);
-				_sprite = spriteTemp;
+				_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator), true);
+				_sprite.setPosition(_sprite.getPosition().x + 15, _sprite.getPosition().y + 20);
 			}
 			else {
-				Sprite spriteTemp(_animationFramesIdleLeft.at(_animationIterator));
-				spriteTemp.setPosition(_sprite.getPosition().x + 80, _sprite.getPosition().y + 20);
-				spriteTemp.setScale(5.0, 5.0);
-				_sprite = spriteTemp;
+				_sprite.setTexture(_animationFramesIdleLeft.at(_animationIterator), true);
+				_sprite.setPosition(_sprite.getPosition().x + 80, _sprite.getPosition().y + 20);
 			}
 
 			_state = entityStates::IDLE;
@@ -116,19 +109,15 @@ void mainCharacter::attack()
 		_state = entityStates::ATTACKING;
 
 		_animationIterator = 0;
-		Sprite spriteTemp;
 
 		if ((_dir == directions::RIGHT) || (_dir == directions::TOP)) {
-			spriteTemp.setTexture(_animationFramesFightingRight.at(_animationIterator));
-			spriteTemp.setPosition(_sprite.getPosition().x - 15, _sprite.getPosition().y - 20);
+			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator), true);
+			_sprite.setPosition(_sprite.getPosition().x - 15, _sprite.getPosition().y - 20);
 		}
 		else {
-			spriteTemp.setTexture(_animationFramesFightingLeft.at(_animationIterator));
-			spriteTemp.setPosition(_sprite.getPosition().x - 80, _sprite.getPosition().y - 20);
+			_sprite.setTexture(_animationFramesFightingLeft.at(_animationIterator), true);
+			_sprite.setPosition(_sprite.getPosition().x - 80, _sprite.getPosition().y - 20);
 		}
-
-		spriteTemp.setScale(5.0, 5.0);
-		_sprite = spriteTemp;
 	}
 }
 

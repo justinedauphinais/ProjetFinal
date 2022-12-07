@@ -1,6 +1,7 @@
 #pragma once
 
 enum gameStates {		// Les états du jeu
+	loading,
 	ready,
 	playing,
 	gameOver

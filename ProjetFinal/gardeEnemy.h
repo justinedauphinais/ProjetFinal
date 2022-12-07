@@ -10,11 +10,12 @@ private:
 
 	int _animationIterator;
 
-
-
 public:
 	gardeEnemy(gameDataRef data);
+
 	void update(float dt);
+
 	void attack();
+
 	void draw() const;
 };
