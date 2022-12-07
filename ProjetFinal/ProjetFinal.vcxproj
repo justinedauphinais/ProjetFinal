@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="assetManager.cpp" />
     <ClCompile Include="collision.cpp" />
+    <ClCompile Include="door.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameOverState.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="mainWalls.cpp" />
     <ClCompile Include="ProjetFinal.cpp" />
+    <ClCompile Include="roomState.cpp" />
     <ClCompile Include="splashState.cpp" />
     <ClCompile Include="stateMachine.cpp" />
   </ItemGroup>
@@ -150,6 +152,7 @@
     <ClInclude Include="assetManager.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DEFINITIONS.hpp" />
+    <ClInclude Include="door.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gameOverState.h" />
@@ -160,6 +163,7 @@
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="mainWalls.h" />
+    <ClInclude Include="roomState.h" />
     <ClInclude Include="splashState.h" />
     <ClInclude Include="state.hpp" />
     <ClInclude Include="stateMachine.h" />

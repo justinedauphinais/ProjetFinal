@@ -1,19 +1,19 @@
 #pragma once
 
-enum gameStates {
+enum gameStates {		// Les états du jeu
 	ready,
 	playing,
 	gameOver
 };
 
-enum directions {
+enum directions {		// Les directions des entités
 	RIGHT,
 	TOP,
 	LEFT,
 	BOTTOM
 };
 
-enum entityStates {
+enum entityStates {		// Les états des entités
 	WALKING,
 	IDLE,
 	ATTACKING,
@@ -21,30 +21,35 @@ enum entityStates {
 	DEAD
 };
 
-// Écran
+//------ Écran ------//
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
 #define LOGO_STATE_SHOW_TIME 3.0
 
-// Splash Screen
+//------ Splash Screen ------//
 #define SPLASH_STATE_BACKGROUND_FILEPATH "Ressources/Menu/SplashScreen.png"
 #define SPLASH_STATE_MEOW "Ressources/Menu/SplashScreenMeow.png"
 #define SPLASH_STATE_MEOW "Ressources/Menu/SplashScreenMeow.png"
 #define PIXEL_ART_FONT "Ressources/Fonts/Pixeled.ttf"
 
-// Main menu
+//------ Main menu ------//
 #define MAIN_MENU_BACKGROUND "Ressources/Menu/background.png"
 #define MAIN_MENU_FONT "Ressources/Fonts/Stranger back in the Night.ttf"
 #define PLAY_BUTTON_FILEPATH "Ressources/Menu/playButton.png"
 #define STOP_BUTTON_FILEPATH "Ressources/Menu/stopButton.png"
 
-// Game
+//------ Game ------//
+	// Murs
 #define GAME_BACKGROUND_TEMP "Ressources/Map/Contour_map.png"
 #define GAME_FOREGROUND_LEFT_RIGHT_TEMP "Ressources/Map/wall.png"
 #define GAME_FOREGROUND_UP_DOWN_TEMP "Ressources/Map/wall_back.png"
+	// Hud
 #define GAME_HEARTS_FILEPATH "Ressources/UI/hearts.png"
+	// Porte
+#define GAME_DOOR_CLOSED "Ressources/Objects/door_closed.png"
+#define GAME_DOOR_OPEN "Ressources/Objects/door_open.png"
 
-// Main character
+//------ Main character ------//
 #define NBR_LIVES 5
 
 	// Walk

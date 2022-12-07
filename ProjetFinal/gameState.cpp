@@ -9,6 +9,7 @@ gameState::gameState(gameDataRef data) : _data(data)
 	_mainCharacter = nullptr;
 	_wall = nullptr;
 	_hud = nullptr;
+	_door = nullptr;
 }
 
 /// <summary>
@@ -19,6 +20,7 @@ gameState::~gameState()
 	delete _mainCharacter;
 	delete _wall;
 	delete _hud;
+	delete _door;
 }
 
 /// <summary>
@@ -40,6 +42,10 @@ void gameState::init()
 	// Hud
 	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
 	_data->assets.loadFont("pixel art font", PIXEL_ART_FONT);			// A ENLEVER LORSQUE LE JEU EST COMPLET
+
+	// Porte
+	_data->assets.loadTexture("closed door", GAME_DOOR_CLOSED);
+	_data->assets.loadTexture("opened door", GAME_DOOR_OPEN);
 
 	// Main character
 	#pragma region Main Character assets
@@ -137,6 +143,7 @@ void gameState::init()
 	_mainCharacter = new mainCharacter(_data);
 	_wall = new wall(_data);
 	_hud = new hud(_data);
+	_door = new door(_data);
 
 	_gameState = gameStates::ready;
 }
@@ -156,12 +163,15 @@ void gameState::handleInput()
 			if (Keyboard::isKeyPressed(Keyboard::D)) {
 				_mainCharacter->move(Keyboard::D);
 			}
+
 			if (Keyboard::isKeyPressed(Keyboard::A)) {
 				_mainCharacter->move(Keyboard::A);
 			}
+
 			if (Keyboard::isKeyPressed(Keyboard::W)) {
 				_mainCharacter->move(Keyboard::W);
 			}
+
 			if (Keyboard::isKeyPressed(Keyboard::S)) {
 				_mainCharacter->move(Keyboard::S);
 			}
@@ -202,6 +212,11 @@ void gameState::update(float dt)
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
 	}
+
+	// Collision porte
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), _door->getSprite())) {
+		_door->openDoor();
+	}
 }
 
 /// <summary>
@@ -213,6 +228,7 @@ void gameState::draw(float dt) const
 	_data->window.clear();
 	_data->window.draw(_background);
 	_wall->drawBackWall();
+	_door->draw();
 	_mainCharacter->draw();
 	_wall->draw();
 

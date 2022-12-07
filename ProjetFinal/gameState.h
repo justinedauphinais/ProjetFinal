@@ -9,6 +9,7 @@
 #include "mainWalls.h"
 #include "collision.h"
 #include "hud.h"
+#include "door.h"
 #include <iostream>
 
 using namespace sf;
@@ -25,8 +26,9 @@ private:
 
 	Sprite _background;			// Le sprite pour la background
 
-	wall* _wall;					// Le pointeur pour les murs
-	hud* _hud;
+	wall* _wall;					// Les murs
+	hud* _hud;						// Le hud
+	door* _door;					// La porte
 	mainCharacter* _mainCharacter;	// Le personnage principal
 
 	collision _collision;
