@@ -1,4 +1,11 @@
+/********************************************************************************************
+* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
+* Nom		: mainWalls.h																	*
+* Date		: 21/12/2022																	*
+* Description : ...																			*
+*********************************************************************************************/
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include "DEFINITIONS.hpp"
 #include <vector>
@@ -14,7 +21,7 @@ private:
 	vector<Sprite> _wallSprites;
 
 public:
-	wall(gameDataRef data);
+	wall(gameDataRef data, int nbrWall = 1);
 	
 	void draw() const;
 	void drawBackWall() const;

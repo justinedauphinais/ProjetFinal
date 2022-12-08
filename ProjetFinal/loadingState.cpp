@@ -36,13 +36,18 @@ void loadingState::init()
 	_progressBarSprite.setPosition((SCREEN_WIDTH / 2) - (_progressBarSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_progressBarSprite.getGlobalBounds().height / 2));
 
 	// Background
-	_data->assets.loadTexture("game background", GAME_BACKGROUND_TEMP);
+	_data->assets.loadTexture("game background 1", GAME_BACKGROUND_TEMP_1);
+	_data->assets.loadTexture("game background 2", GAME_BACKGROUND_TEMP_2);
 
 	// Walls
-	_data->assets.loadTexture("wall up", GAME_FOREGROUND_UP_DOWN_TEMP);
-	_data->assets.loadTexture("wall down", GAME_FOREGROUND_UP_DOWN_TEMP);
-	_data->assets.loadTexture("wall left", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
-	_data->assets.loadTexture("wall right", GAME_FOREGROUND_LEFT_RIGHT_TEMP);
+	_data->assets.loadTexture("wall up 1", GAME_FOREGROUND_UP_DOWN_TEMP_1);
+	_data->assets.loadTexture("wall down 1", GAME_FOREGROUND_UP_DOWN_TEMP_1);
+	_data->assets.loadTexture("wall left 1", GAME_FOREGROUND_LEFT_RIGHT_TEMP_1);
+	_data->assets.loadTexture("wall right 1", GAME_FOREGROUND_LEFT_RIGHT_TEMP_1);
+	_data->assets.loadTexture("wall up 2", GAME_FOREGROUND_UP_DOWN_TEMP_2);
+	_data->assets.loadTexture("wall down 2", GAME_FOREGROUND_UP_DOWN_TEMP_2);
+	_data->assets.loadTexture("wall left 2", GAME_FOREGROUND_LEFT_RIGHT_TEMP_2);
+	_data->assets.loadTexture("wall right 2", GAME_FOREGROUND_LEFT_RIGHT_TEMP_2);
 
 	// Hud
 	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
@@ -187,8 +192,39 @@ void loadingState::init()
 		_data->assets.loadTexture("talking shop owner", TALKING_SHOP_OWNER);
 	#pragma endregion
 
+	// Minotaur
+	#pragma region Minotaur
+		// Idle
+		_data->assets.loadTexture("minotaur idle frame right 1", MINOTAUR_IDLE_FRAME_RIGHT_1);
+		_data->assets.loadTexture("minotaur idle frame right 2", MINOTAUR_IDLE_FRAME_RIGHT_2);
+		_data->assets.loadTexture("minotaur idle frame right 3", MINOTAUR_IDLE_FRAME_RIGHT_3);
+		_data->assets.loadTexture("minotaur idle frame right 4", MINOTAUR_IDLE_FRAME_RIGHT_4);
+		_data->assets.loadTexture("minotaur idle frame right 5", MINOTAUR_IDLE_FRAME_RIGHT_5);
+		_data->assets.loadTexture("minotaur idle frame left 1", MINOTAUR_IDLE_FRAME_LEFT_1);
+		_data->assets.loadTexture("minotaur idle frame left 2", MINOTAUR_IDLE_FRAME_LEFT_2);
+		_data->assets.loadTexture("minotaur idle frame left 3", MINOTAUR_IDLE_FRAME_LEFT_3);
+		_data->assets.loadTexture("minotaur idle frame left 4", MINOTAUR_IDLE_FRAME_LEFT_4);
+		_data->assets.loadTexture("minotaur idle frame left 5", MINOTAUR_IDLE_FRAME_LEFT_5);
+
+		// Walking
+		_data->assets.loadTexture("minotaur walking frame right 1", MINOTAUR_WALKING_FRAME_RIGHT_1);
+		_data->assets.loadTexture("minotaur walking frame right 2", MINOTAUR_WALKING_FRAME_RIGHT_2);
+		_data->assets.loadTexture("minotaur walking frame right 3", MINOTAUR_WALKING_FRAME_RIGHT_3);
+		_data->assets.loadTexture("minotaur walking frame right 4", MINOTAUR_WALKING_FRAME_RIGHT_4);
+		_data->assets.loadTexture("minotaur walking frame right 5", MINOTAUR_WALKING_FRAME_RIGHT_5);
+		_data->assets.loadTexture("minotaur walking frame right 6", MINOTAUR_WALKING_FRAME_RIGHT_6);
+		_data->assets.loadTexture("minotaur walking frame left 1", MINOTAUR_WALKING_FRAME_LEFT_1);
+		_data->assets.loadTexture("minotaur walking frame left 2", MINOTAUR_WALKING_FRAME_LEFT_2);
+		_data->assets.loadTexture("minotaur walking frame left 3", MINOTAUR_WALKING_FRAME_LEFT_3);
+		_data->assets.loadTexture("minotaur walking frame left 4", MINOTAUR_WALKING_FRAME_LEFT_4);
+		_data->assets.loadTexture("minotaur walking frame left 5", MINOTAUR_WALKING_FRAME_LEFT_5);
+		_data->assets.loadTexture("minotaur walking frame left 6", MINOTAUR_WALKING_FRAME_LEFT_6);
+	#pragma endregion
+
+
 	// Porte
-	_data->assets.loadTexture("closed door", GAME_DOOR_CLOSED);
+	_data->assets.loadTexture("closed door 1", GAME_DOOR_CLOSED_1);
+	_data->assets.loadTexture("closed door 2", GAME_DOOR_CLOSED_2);
 	_data->assets.loadTexture("opened door", GAME_DOOR_OPEN);
 
 	// Background

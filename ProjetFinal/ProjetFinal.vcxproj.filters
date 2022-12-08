@@ -19,9 +19,6 @@
     <ClCompile Include="door.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="hearts.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="hud.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
@@ -61,6 +58,9 @@
     <ClCompile Include="mainWalls.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="minotaur.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -93,9 +93,6 @@
     <ClInclude Include="shopOwner.h">
       <Filter>Header\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="hearts.h">
-      <Filter>Header\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="hud.h">
       <Filter>Header\Objects</Filter>
     </ClInclude>
@@ -125,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="mainWalls.h">
       <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="minotaur.h">
+      <Filter>Header\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,12 @@
 #include "mainCharacter.h"
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
-mainCharacter::mainCharacter(gameDataRef data, int nbrVies) : _data(data)
+mainCharacter::mainCharacter(gameDataRef data, int nbrVies)
 {
+	_data = data;
 	_nbrLives = nbrVies;
 
 	_animationIterator = 0;
@@ -52,17 +53,18 @@ mainCharacter::mainCharacter(gameDataRef data, int nbrVies) : _data(data)
 }
 
 /// <summary>
-/// Create a animate character idle
+/// Update l'entité à chaque frame
 /// </summary>
 void mainCharacter::update(float dt)
 {
+	// Si on change de frame et que nous ne sommes pas en train d'attaquer
 	if (_clock.getElapsedTime().asSeconds() > SKELETON_IDLE_TIME / _animationFramesIdleRight.size() && (_state == entityStates::IDLE)) {
 		_animationIterator++;
 
-		if (_animationIterator == _animationFramesIdleRight.size())
+		if (_animationIterator == _animationFramesIdleRight.size())		// Si à la fin du vecteur
 			_animationIterator = 0;
 		
-		if (_dir == RIGHT || _dir == TOP)
+		if (_dir == RIGHT || _dir == TOP)								// Gauche ou droite
 			_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 		else
 			_sprite.setTexture(_animationFramesIdleLeft.at(_animationIterator));
@@ -100,7 +102,7 @@ void mainCharacter::update(float dt)
 }
 
 /// <summary>
-/// 
+/// Déclenche l'attaque de l'entité
 /// </summary>
 /// <param name="dt"></param>
 void mainCharacter::attack()
@@ -119,12 +121,4 @@ void mainCharacter::attack()
 			_sprite.setPosition(_sprite.getPosition().x - 80, _sprite.getPosition().y - 20);
 		}
 	}
-}
-
-/// <summary>
-/// 
-/// </summary>
-void mainCharacter::draw() const
-{
-	_data->window.draw(_sprite);
 }

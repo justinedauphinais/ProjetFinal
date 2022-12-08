@@ -4,12 +4,12 @@
 /// 
 /// </summary>
 /// <param name="state"></param>
-door::door(gameDataRef data, doorState state) : _data(data)
+door::door(gameDataRef data, doorState state, int nbr) : _data(data)
 {
 	_state = state;
 
 	if (_state == CLOSED) {
-		_sprite.setTexture(_data->assets.getTexture("closed door"));
+		_sprite.setTexture(_data->assets.getTexture("closed door " + to_string(nbr)));
 	}
 	else {
 		_sprite.setTexture(_data->assets.getTexture("opened door"));

@@ -1,16 +1,7 @@
 #include "entity.h"
 
 /// <summary>
-/// 
-/// </summary>
-/// <param name="data"></param>
-entity::entity()
-{
-
-}
-
-/// <summary>
-/// 
+/// Get le sprite de l'entité
 /// </summary>
 /// <returns></returns>
 Sprite entity::getSprite() const
@@ -19,7 +10,7 @@ Sprite entity::getSprite() const
 }
 
 /// <summary>
-/// 
+/// Get le nombre de vie de l'entité
 /// </summary>
 /// <returns></returns>
 int entity::getNbrLives() const
@@ -28,7 +19,7 @@ int entity::getNbrLives() const
 }
 
 /// <summary>
-/// 
+/// Get le state de l'entité
 /// </summary>
 /// <returns></returns>
 entityStates entity::getState() const
@@ -37,7 +28,7 @@ entityStates entity::getState() const
 }
 
 /// <summary>
-/// 
+/// Set le state de l'entité
 /// </summary>
 /// <param name="state"></param>
 void entity::setState(entityStates state)
@@ -46,39 +37,48 @@ void entity::setState(entityStates state)
 }
 
 /// <summary>
-/// 
+/// Set la position de l'entité
+/// </summary>
+/// <param name="x"></param>
+/// <param name="y"></param>
+void entity::setPosition(float x, float y)
+{
+	_sprite.setPosition(x, y);
+}
+
+/// <summary>
+/// Bouge l'entité
 /// </summary>
 /// <param name="key"></param>
-void entity::move(Keyboard::Key key)
+void entity::move(Keyboard::Key key, float time)
 {
-	if (_clock.getElapsedTime().asSeconds() > SKELETON_WALK_TIME / _animationFramesWalkingRight.size() && (_state != entityStates::ATTACKING)) {
-
-		_animationIterator++;
+	// Si on change de frame et que nous ne sommes pas en train d'attaquer
+	if (_clock.getElapsedTime().asSeconds() > (time / _animationFramesWalkingRight.size()) && (_state != entityStates::ATTACKING)) {
 		_state = entityStates::WALKING;
+		_animationIterator++;
 
 		// Si on revient au début de la liste
-		if (_animationIterator >= _animationFramesWalkingRight.size()) {
+		if (_animationIterator >= _animationFramesWalkingRight.size())
 			_animationIterator = 0;
-		}
 
 		// Bouge le sprite
 		if (key == Keyboard::D) {
-			_sprite.move(20, 0);
+			_sprite.move(MOVEMENT_DISTANCE, 0);
 			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
 			_dir = RIGHT;
 		}
 		else if (key == Keyboard::W) {
-			_sprite.move(0, -20);
+			_sprite.move(0, -MOVEMENT_DISTANCE);
 			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
 			_dir = TOP;
 		}
 		else if (key == Keyboard::A) {
-			_sprite.move(-20, 0);
+			_sprite.move(-MOVEMENT_DISTANCE, 0);
 			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
 			_dir = LEFT;
 		}
 		else if (key == Keyboard::S) {
-			_sprite.move(0, 20);
+			_sprite.move(0, MOVEMENT_DISTANCE);
 			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
 			_dir = BOTTOM;
 		}
@@ -87,12 +87,7 @@ void entity::move(Keyboard::Key key)
 	}
 }
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="x"></param>
-/// <param name="y"></param>
-void entity::setPosition(float x, float y)
+void entity::draw() const
 {
-	_sprite.setPosition(x, y);
+	_data->window.draw(_sprite);
 }

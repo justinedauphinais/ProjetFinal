@@ -30,12 +30,10 @@ shopState::~shopState()
 /// </summary>
 void shopState::init()
 {
-	_background.setTexture(_data->assets.getTexture("game background"));
+	_background.setTexture(_data->assets.getTexture("game background 2"));
 
-	_hud->addRoom();
-
-	_wall = new wall(_data);
-	_door = new door(_data);
+	_wall = new wall(_data, 2);
+	_door = new door(_data, CLOSED, 2);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 	_shopOwner = new shopOwner(_data);
 
@@ -60,25 +58,25 @@ void shopState::handleInput()
 		else if (event.type == Event::KeyPressed) {			// Mouvement
 
 			if (Keyboard::isKeyPressed(Keyboard::D)) {
-				_mainCharacter->move(Keyboard::D);
+				_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
 				_moveX = 20;
 				_moveY = 0;
 			}
 
 			if (Keyboard::isKeyPressed(Keyboard::A)) {
-				_mainCharacter->move(Keyboard::A);
+				_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
 				_moveX = -20;
 				_moveY = 0;
 			}
 
 			if (Keyboard::isKeyPressed(Keyboard::W)) {
-				_mainCharacter->move(Keyboard::W);
+				_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
 				_moveX = 0;
 				_moveY = -20;
 			}
 
 			if (Keyboard::isKeyPressed(Keyboard::S)) {
-				_mainCharacter->move(Keyboard::S);
+				_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
 				_moveX = 0;
 				_moveY = 20;
 			}
@@ -99,9 +97,8 @@ void shopState::update(float dt)
 	_shopOwner->update(dt);
 
 	// Collision porte
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.2f)) {
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.3f)) {
 		_hud->addRoom();
-		_hud->removeHeart(2);
 		_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
 	}
 

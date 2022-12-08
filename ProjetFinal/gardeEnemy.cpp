@@ -1,11 +1,12 @@
 #include "gardeEnemy.h";
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
-gardeEnemy::gardeEnemy(gameDataRef data) : _data(data)
+gardeEnemy::gardeEnemy(gameDataRef data)
 {
+	_data = data;
 	_animationIterator = 0;
 
 	// Idle right
@@ -43,11 +44,12 @@ gardeEnemy::gardeEnemy(gameDataRef data) : _data(data)
 }
 
 /// <summary>
-/// 
+/// Update l'objet à chaque frame
 /// </summary>
 /// <param name="dt"></param>
 void gardeEnemy::update(float dt)
 {
+	// Si on change de frame et que nous ne sommes pas en train d'attaquer
 	if (_clock.getElapsedTime().asSeconds() > ENEMY_IDLE_TIME / _animationFramesIdleLeft.size() && (_state == entityStates::IDLE)) {	// Si idle
 		_animationIterator++;
 
@@ -88,7 +90,7 @@ void gardeEnemy::update(float dt)
 }
 
 /// <summary>
-/// 
+/// Déclenche l'attaque de l'entité
 /// </summary>
 void gardeEnemy::attack()
 {
@@ -102,12 +104,4 @@ void gardeEnemy::attack()
 		else
 			_sprite.setTexture(_animationFramesFightingLeft.at(_animationIterator));
 	}
-}
-
-/// <summary>
-/// 
-/// </summary>
-void gardeEnemy::draw() const
-{
-	_data->window.draw(_sprite);
 }
