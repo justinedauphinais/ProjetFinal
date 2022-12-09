@@ -1,6 +1,10 @@
 
 #include "gardeEnemy.h";
 
+/// <summary>
+/// crée les animations de l'enemie est set la position de celui ci.
+/// </summary>
+/// <param name="data"></param>
 gardeEnemy::gardeEnemy(gameDataRef data) : _data(data)
 {
 	_animationIterator = 0;
@@ -33,7 +37,10 @@ gardeEnemy::gardeEnemy(gameDataRef data) : _data(data)
 	_sprite.setPosition((_data->window.getSize().x / 2) - (_sprite.getGlobalBounds().width / 2),
 		(_data->window.getSize().y / 2) - (_sprite.getGlobalBounds().height / 2));
 }
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dt"></param>
 void gardeEnemy::update(float dt)
 {
 	if (_clock.getElapsedTime().asSeconds() > ENEMY_IDLE_TIME / _animationFramesIdleLeft.size() && (_state == entityStates::IDLE)) {
@@ -85,7 +92,9 @@ void gardeEnemy::update(float dt)
 		}
 	}
 }
-
+/// <summary>
+/// crée les attacks
+/// </summary>
 void gardeEnemy::attack()
 {
 	if (_state != entityStates::ATTACKING)
@@ -107,7 +116,9 @@ void gardeEnemy::attack()
 		_sprite = spriteTemp;
 	}
 }
-
+/// <summary>
+/// affiche l'enemie
+/// </summary>
 void gardeEnemy::draw() const
 {
 	_data->window.draw(_sprite);
