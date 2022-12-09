@@ -138,14 +138,16 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameOverState.cpp" />
     <ClCompile Include="gameState.cpp" />
-    <ClCompile Include="hearts.cpp" />
     <ClCompile Include="hud.cpp" />
     <ClCompile Include="inputManager.cpp" />
     <ClCompile Include="loadingState.cpp" />
     <ClCompile Include="mainCharacter.cpp" />
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="mainWalls.cpp" />
+    <ClCompile Include="minotaur.cpp" />
     <ClCompile Include="ProjetFinal.cpp" />
+    <ClCompile Include="shopOwner.cpp" />
+    <ClCompile Include="shopState.cpp" />
     <ClCompile Include="splashState.cpp" />
     <ClCompile Include="stateMachine.cpp" />
   </ItemGroup>
@@ -159,13 +161,15 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gameOverState.h" />
     <ClInclude Include="gameState.h" />
-    <ClInclude Include="hearts.h" />
     <ClInclude Include="hud.h" />
     <ClInclude Include="inputManager.h" />
     <ClInclude Include="loadingState.h" />
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="mainWalls.h" />
+    <ClInclude Include="minotaur.h" />
+    <ClInclude Include="shopOwner.h" />
+    <ClInclude Include="shopState.h" />
     <ClInclude Include="splashState.h" />
     <ClInclude Include="state.hpp" />
     <ClInclude Include="stateMachine.h" />

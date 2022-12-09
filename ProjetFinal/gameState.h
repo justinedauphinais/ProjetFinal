@@ -1,3 +1,9 @@
+/********************************************************************************************
+* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
+* Nom		: gameState.h																	*
+* Date		: 21/12/2022																	*
+* Description : ...																			*
+*********************************************************************************************/
 #pragma once
 
 #include <SFML/Graphics.hpp>
@@ -12,6 +18,8 @@
 #include "door.h"
 #include "gardeEnemy.h"
 #include "gameOverState.h"
+#include "minotaur.h"
+#include "shopOwner.h"
 #include <iostream>
 
 
@@ -33,7 +41,9 @@ private:
 	door* _door;					// La porte
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
-	gardeEnemy* _gardes;
+	gardeEnemy* _garde;
+	minotaur* _minotaur;
+
 	collision _collision;
 
 	int _gameState;

@@ -1,6 +1,13 @@
+/********************************************************************************************
+* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
+* Nom		: DEFINITIONS.hpp																*
+* Date		: 21/12/2022																	*
+* Description : ...																			*
+*********************************************************************************************/
 #pragma once
 
 enum gameStates {		// Les états du jeu
+	loading,
 	ready,
 	playing,
 	gameOver
@@ -43,23 +50,31 @@ enum entityStates {		// Les états des entités
 #define LOADING_FRAME_1 "Ressources/UI/Loading/1.png"
 #define LOADING_FRAME_2 "Ressources/UI/Loading/2.png"
 #define LOADING_FRAME_3 "Ressources/UI/Loading/3.png"
+#define LOADING_FRAME_4 "Ressources/UI/Loading/4.png"
 
 //------ Game ------//
 	// Murs
-#define GAME_BACKGROUND_TEMP "Ressources/Map/Contour_map.png"
-#define GAME_FOREGROUND_LEFT_RIGHT_TEMP "Ressources/Map/wall.png"
-#define GAME_FOREGROUND_UP_DOWN_TEMP "Ressources/Map/wall_back.png"
+#define GAME_BACKGROUND_TEMP_1 "Ressources/Map/Contour_map.png"
+#define GAME_FOREGROUND_LEFT_RIGHT_TEMP_1 "Ressources/Map/wall.png"
+#define GAME_FOREGROUND_UP_DOWN_TEMP_1 "Ressources/Map/wall_back.png"
+#define GAME_BACKGROUND_TEMP_2 "Ressources/Map/Contour_map_3.png"
+#define GAME_FOREGROUND_LEFT_RIGHT_TEMP_2 "Ressources/Map/wall_3.png"
+#define GAME_FOREGROUND_UP_DOWN_TEMP_2 "Ressources/Map/wall_back_3.png"
 	// Hud
 #define GAME_HEARTS_FILEPATH "Ressources/UI/hearts.png"
 	// Porte
-#define GAME_DOOR_CLOSED "Ressources/Objects/door_closed.png"
+#define GAME_DOOR_CLOSED_1 "Ressources/Objects/door_closed.png"
+#define GAME_DOOR_CLOSED_2 "Ressources/Objects/door_closed_1.png"
 #define GAME_DOOR_OPEN "Ressources/Objects/door_open.png"
+	// Shop
+#define TALKING_SHOP_OWNER "Ressources/Map/Shop/shopHi.png"
 
 //------ Main character ------//
 #define NBR_LIVES 5
 #define SKELETON_WALK_TIME 0.6f
 #define SKELETON_IDLE_TIME 1.0f
 #define SKELETE_ATTACK_TIME 1.2f
+#define MOVEMENT_DISTANCE 20
 
 	// Walk right
 #define SKELETON_WALK_FRAME_RIGHT_1 "Ressources/MC/Walk/Right/1.png"
@@ -190,3 +205,48 @@ enum entityStates {		// Les états des entités
 #define ENEMY_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Attack 1/Left/4.png"
 #define ENEMY_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Attack 1/Left/5.png"
 #define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
+
+//------ Store owner ------//
+#define STOREOWNER_IDLE_TIME 1.3f
+	// Idle
+#define STOREOWNER_IDLE_1 "Ressources/Map/Shop/NPC/1.png"
+#define STOREOWNER_IDLE_2 "Ressources/Map/Shop/NPC/2.png"
+#define STOREOWNER_IDLE_3 "Ressources/Map/Shop/NPC/3.png"
+#define STOREOWNER_IDLE_4 "Ressources/Map/Shop/NPC/4.png"
+#define STOREOWNER_IDLE_5 "Ressources/Map/Shop/NPC/5.png"
+#define STOREOWNER_IDLE_6 "Ressources/Map/Shop/NPC/6.png"
+#define STOREOWNER_IDLE_7 "Ressources/Map/Shop/NPC/7.png"
+#define STOREOWNER_IDLE_8 "Ressources/Map/Shop/NPC/8.png"
+#define STOREOWNER_IDLE_9 "Ressources/Map/Shop/NPC/9.png"
+
+//------ Minotaur ------//
+#define MINOTAUR_NBR_LIVES 5
+#define MINOTAUR_WALK_TIME 1.0f
+#define MINOTAUR_IDLE_TIME 1.0f
+#define MINOTAUR_ATTACK_TIME 1.2f
+
+	// Idle
+#define MINOTAUR_IDLE_FRAME_RIGHT_1 "Ressources/Boss/Idle/Right/1.png"
+#define MINOTAUR_IDLE_FRAME_RIGHT_2 "Ressources/Boss/Idle/Right/2.png"
+#define MINOTAUR_IDLE_FRAME_RIGHT_3 "Ressources/Boss/Idle/Right/3.png"
+#define MINOTAUR_IDLE_FRAME_RIGHT_4 "Ressources/Boss/Idle/Right/4.png"
+#define MINOTAUR_IDLE_FRAME_RIGHT_5 "Ressources/Boss/Idle/Right/5.png"
+#define MINOTAUR_IDLE_FRAME_LEFT_1 "Ressources/Boss/Idle/Left/1.png"
+#define MINOTAUR_IDLE_FRAME_LEFT_2 "Ressources/Boss/Idle/Left/2.png"
+#define MINOTAUR_IDLE_FRAME_LEFT_3 "Ressources/Boss/Idle/Left/3.png"
+#define MINOTAUR_IDLE_FRAME_LEFT_4 "Ressources/Boss/Idle/Left/4.png"
+#define MINOTAUR_IDLE_FRAME_LEFT_5 "Ressources/Boss/Idle/Left/5.png"
+
+	// Walking
+#define MINOTAUR_WALKING_FRAME_RIGHT_1 "Ressources/Boss/Run/Right/1.png"
+#define MINOTAUR_WALKING_FRAME_RIGHT_2 "Ressources/Boss/Run/Right/2.png"
+#define MINOTAUR_WALKING_FRAME_RIGHT_3 "Ressources/Boss/Run/Right/3.png"
+#define MINOTAUR_WALKING_FRAME_RIGHT_4 "Ressources/Boss/Run/Right/4.png"
+#define MINOTAUR_WALKING_FRAME_RIGHT_5 "Ressources/Boss/Run/Right/5.png"
+#define MINOTAUR_WALKING_FRAME_RIGHT_6 "Ressources/Boss/Run/Right/6.png"
+#define MINOTAUR_WALKING_FRAME_LEFT_1 "Ressources/Boss/Run/Left/1.png"
+#define MINOTAUR_WALKING_FRAME_LEFT_2 "Ressources/Boss/Run/Left/2.png"
+#define MINOTAUR_WALKING_FRAME_LEFT_3 "Ressources/Boss/Run/Left/3.png"
+#define MINOTAUR_WALKING_FRAME_LEFT_4 "Ressources/Boss/Run/Left/4.png"
+#define MINOTAUR_WALKING_FRAME_LEFT_5 "Ressources/Boss/Run/Left/5.png"
+#define MINOTAUR_WALKING_FRAME_LEFT_6 "Ressources/Boss/Run/Left/6.png"

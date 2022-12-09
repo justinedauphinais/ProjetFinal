@@ -1,11 +1,12 @@
 #include "mainCharacter.h"
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
-mainCharacter::mainCharacter(gameDataRef data, int nbrVies) : _data(data)
+mainCharacter::mainCharacter(gameDataRef data, int nbrVies)
 {
+	_data = data;
 	_nbrLives = nbrVies;
 
 	_animationIterator = 0;
@@ -52,32 +53,21 @@ mainCharacter::mainCharacter(gameDataRef data, int nbrVies) : _data(data)
 }
 
 /// <summary>
-/// 
-/// </summary>
-/// <param name="dt"></param>
-void mainCharacter::animate(float dt)
-{
-
-}
-
-/// <summary>
-/// Create a animate character idle
+/// Update l'entité à chaque frame
 /// </summary>
 void mainCharacter::update(float dt)
 {
+	// Si on change de frame et que nous ne sommes pas en train d'attaquer
 	if (_clock.getElapsedTime().asSeconds() > SKELETON_IDLE_TIME / _animationFramesIdleRight.size() && (_state == entityStates::IDLE)) {
 		_animationIterator++;
 
-		if (_animationIterator == _animationFramesIdleRight.size()) {
+		if (_animationIterator == _animationFramesIdleRight.size())		// Si à la fin du vecteur
 			_animationIterator = 0;
-		}
 		
-		if (_dir == RIGHT || _dir == TOP) {
+		if (_dir == RIGHT || _dir == TOP)								// Gauche ou droite
 			_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
-		}
-		else {
+		else
 			_sprite.setTexture(_animationFramesIdleLeft.at(_animationIterator));
-		}
 
 		_clock.restart();
 	}
@@ -88,16 +78,12 @@ void mainCharacter::update(float dt)
 			_animationIterator = 0;
 
 			if (_dir == TOP || _dir == RIGHT) {
-				Sprite spriteTemp(_animationFramesIdleRight.at(_animationIterator));
-				spriteTemp.setPosition(_sprite.getPosition().x + 15, _sprite.getPosition().y + 20);
-				spriteTemp.setScale(5.0, 5.0);
-				_sprite = spriteTemp;
+				_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator), true);
+				_sprite.setPosition(_sprite.getPosition().x + 15, _sprite.getPosition().y + 20);
 			}
 			else {
-				Sprite spriteTemp(_animationFramesIdleLeft.at(_animationIterator));
-				spriteTemp.setPosition(_sprite.getPosition().x + 80, _sprite.getPosition().y + 20);
-				spriteTemp.setScale(5.0, 5.0);
-				_sprite = spriteTemp;
+				_sprite.setTexture(_animationFramesIdleLeft.at(_animationIterator), true);
+				_sprite.setPosition(_sprite.getPosition().x + 80, _sprite.getPosition().y + 20);
 			}
 
 			_state = entityStates::IDLE;
@@ -116,7 +102,7 @@ void mainCharacter::update(float dt)
 }
 
 /// <summary>
-/// 
+/// Déclenche l'attaque de l'entité
 /// </summary>
 /// <param name="dt"></param>
 void mainCharacter::attack()
@@ -125,26 +111,14 @@ void mainCharacter::attack()
 		_state = entityStates::ATTACKING;
 
 		_animationIterator = 0;
-		Sprite spriteTemp;
 
 		if ((_dir == directions::RIGHT) || (_dir == directions::TOP)) {
-			spriteTemp.setTexture(_animationFramesFightingRight.at(_animationIterator));
-			spriteTemp.setPosition(_sprite.getPosition().x - 15, _sprite.getPosition().y - 20);
+			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator), true);
+			_sprite.setPosition(_sprite.getPosition().x - 15, _sprite.getPosition().y - 20);
 		}
 		else {
-			spriteTemp.setTexture(_animationFramesFightingLeft.at(_animationIterator));
-			spriteTemp.setPosition(_sprite.getPosition().x - 80, _sprite.getPosition().y - 20);
+			_sprite.setTexture(_animationFramesFightingLeft.at(_animationIterator), true);
+			_sprite.setPosition(_sprite.getPosition().x - 80, _sprite.getPosition().y - 20);
 		}
-
-		spriteTemp.setScale(5.0, 5.0);
-		_sprite = spriteTemp;
 	}
-}
-
-/// <summary>
-/// 
-/// </summary>
-void mainCharacter::draw() const
-{
-	_data->window.draw(_sprite);
 }

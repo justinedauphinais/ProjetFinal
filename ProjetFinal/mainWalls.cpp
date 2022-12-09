@@ -1,26 +1,25 @@
 #include "mainWalls.h"
 
-wall::wall(gameDataRef data) : _data(data)
+wall::wall(gameDataRef data, int nbrWall) : _data(data)
 {
-	//Creation des murs des la piece.
-
-	//mur du haut.
-	Sprite sprite1(_data->assets.getTexture("wall up"));
+	// Création des murs de la pièce
+	// Mur du haut
+	Sprite sprite1(_data->assets.getTexture("wall up " + to_string(nbrWall)));
 	sprite1.setPosition(47, 0);
 	_wallSprites.push_back(sprite1);
 	
-	//mur du bas.
-	Sprite sprite2(_data->assets.getTexture("wall down"));
+	// Mur du bas
+	Sprite sprite2(_data->assets.getTexture("wall down " + to_string(nbrWall)));
 	sprite2.setPosition(47, _data->window.getSize().y - sprite2.getGlobalBounds().height - 20);
 	_wallSprites.push_back(sprite2);
 
-	//mur de gauche.
-	Sprite sprite3(_data->assets.getTexture("wall left"));
+	// Mur de gauche
+	Sprite sprite3(_data->assets.getTexture("wall left " + to_string(nbrWall)));
 	sprite3.setPosition(0, 0);
 	_wallSprites.push_back(sprite3);
 
-	//mur de droite.
-	Sprite sprite4(_data->assets.getTexture("wall right"));
+	// Mur de droite
+	Sprite sprite4(_data->assets.getTexture("wall right " + to_string(nbrWall)));
 	sprite4.setPosition(_data->window.getSize().x - sprite4.getGlobalBounds().width, 0);
 	_wallSprites.push_back(sprite4);
 
