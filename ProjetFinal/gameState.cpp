@@ -180,7 +180,7 @@ void gameState::draw(float dt) const
 	_mainCharacter->draw();
 	_wall->draw();
 	_garde->draw();
-	_minotaur->draw();
+	//_minotaur->draw();
 	_hud->draw();
 	_data->window.display();
 }

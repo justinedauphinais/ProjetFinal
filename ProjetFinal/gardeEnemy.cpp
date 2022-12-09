@@ -105,20 +105,13 @@ void gardeEnemy::attack()
 
 		if ((_dir == directions::RIGHT) || (_dir == directions::TOP))
 			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator), true);
-		else
+		else{
 			_sprite.setTexture(_animationFramesFightingLeft.at(_animationIterator));
+
+		}
+		_sprite.setScale(8.0, 8.0);
+		
 	}
-}
-		spriteTemp.setScale(8.0, 8.0);
-		_sprite = spriteTemp;
-	}
-}
-/// <summary>
-/// affiche l'enemie
-/// </summary>
-void gardeEnemy::draw() const
-{
-	_data->window.draw(_sprite);
 }
 
 
