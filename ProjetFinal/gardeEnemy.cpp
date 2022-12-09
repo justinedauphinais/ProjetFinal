@@ -47,10 +47,7 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 /// Update l'objet à chaque frame
 /// </summary>
 /// <param name="dt"></param>
-/// <summary>
-/// 
-/// </summary>
-/// <param name="dt"></param>
+
 void gardeEnemy::update(float dt)
 {
 	// Si on change de frame et que nous ne sommes pas en train d'attaquer
