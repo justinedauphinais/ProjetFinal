@@ -60,6 +60,10 @@ void gameState::init()
 	_minotaur = new minotaur(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 
+	_lstSprites.push_back(_mainCharacter->getSprite());
+	_lstSprites.push_back(_minotaur->getSprite());
+	_lstSprites.push_back(_garde->getSprite());
+
 	_gameState = gameStates::ready;
 }
 
@@ -122,6 +126,10 @@ void gameState::update(float dt)
 	_garde->update(dt);
 	_minotaur->update(dt);
 
+	_lstSprites[0] = _mainCharacter->getSprite();
+	_lstSprites[1] = _garde->getSprite();
+	_lstSprites[2] = _minotaur->getSprite();
+
 	// Collision porte
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {
 		_hud->addRoom();
@@ -153,6 +161,16 @@ void gameState::update(float dt)
 		_garde->attack();
 	}
 
+	// Gestion de l'ordre d'affichage 
+	for (int i = 0; i < _lstSprites.size() - 1; i++) {
+		if (_collision.isPast(_lstSprites[i], _lstSprites[i + 1])) {
+			Sprite temp = _lstSprites[i];
+			_lstSprites[i] = _lstSprites[i + 1];
+			_lstSprites[i + 1] = temp;
+		}
+	}
+
+
 	// Si mort
 	if (_hud->getNbrVies() <= 0) {
 		_data->machine.addState(stateRef(new gameOverState(_data, _hud->getScore(), false)), true);
@@ -169,9 +187,11 @@ void gameState::draw(float dt) const
 	_data->window.draw(_background);
 	_wall->drawBackWall();
 	_door->draw();
-	_minotaur->draw();
-	_garde->draw();
-	_mainCharacter->draw();
+
+	for (int i = 0; i < _lstSprites.size(); i++) {
+		_data->window.draw(_lstSprites[i]);
+	}
+
 	_wall->draw();
 	_hud->draw();
 	_data->window.display();

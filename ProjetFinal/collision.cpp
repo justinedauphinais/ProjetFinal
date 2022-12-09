@@ -62,3 +62,21 @@ Vector2f collision::getDistance(Sprite sprite1, Sprite sprite2) const
 
 	return Vector2f(distanceX, distanceY);
 }
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sprite1"></param>
+/// <param name="scale1X"></param>
+/// <param name="scale1Y"></param>
+/// <param name="sprite2"></param>
+/// <param name="scale2X"></param>
+/// <param name="scale2Y"></param>
+/// <returns></returns>
+bool collision::isPast(Sprite sprite1, Sprite sprite2) const
+{
+	//sprite1.setScale(scale1X, scale1Y);
+	//sprite2.setScale(scale2X, scale2Y);
+
+	return sprite1.getPosition().y + sprite1.getGlobalBounds().height >= sprite2.getPosition().y + sprite2.getGlobalBounds().height;
+}

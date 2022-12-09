@@ -44,6 +44,8 @@ private:
 	gardeEnemy* _garde;
 	minotaur* _minotaur;
 
+	vector<Sprite> _lstSprites;		// Liste des sprites
+
 	collision _collision;
 
 	int _gameState;
