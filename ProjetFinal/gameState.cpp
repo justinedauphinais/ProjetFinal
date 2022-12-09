@@ -73,24 +73,6 @@ void gameState::handleInput()
 	{
 		if (event.type == Event::Closed)	// Ferme la fenêtre
 			_data->window.close();
-		else if (event.type == Event::KeyPressed) {			// Mouvement
-
-			if (Keyboard::isKeyPressed(Keyboard::D)) {
-				_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
-			}
-
-			if (Keyboard::isKeyPressed(Keyboard::A)) {
-				_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
-			}
-
-			if (Keyboard::isKeyPressed(Keyboard::W)) {
-				_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
-			}
-
-			if (Keyboard::isKeyPressed(Keyboard::S)) {
-				_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
-			}
-		}
 		else if (Mouse::isButtonPressed(Mouse::Left)) {		// Attaque
 			_mainCharacter->attack();
 		}
@@ -106,7 +88,7 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
-	Vector2f distance = _collision.getDistance(_mainCharacter->getSprite(), _minotaur->getSprite());
+	/*Vector2f distance = _collision.getDistance(_mainCharacter->getSprite(), _minotaur->getSprite());
 
 	if (abs(distance.x) > abs(distance.y) && distance.x < 0) {
 		_minotaur->move(Keyboard::A, MINOTAUR_WALK_TIME);
@@ -122,15 +104,34 @@ void gameState::update(float dt)
 	}
 	else {
 		_minotaur->setState(IDLE);
+	}*/
+
+	if (Keyboard::isKeyPressed(Keyboard::D)) {
+		cout << "D" << endl;
+		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
 	}
 
+	if (Keyboard::isKeyPressed(Keyboard::A)) {
+		cout << "A" << endl;
+		_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::W)) {
+		cout << "W" << endl;
+		_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::S)) {
+		cout << "S" << endl;
+		_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
+	}
 
 	_mainCharacter->update(dt);
-	_garde->update(dt); 
+	_garde->update(dt);
 	_minotaur->update(dt);
 
 	// Collision porte
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.5f)) {
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {
 		_hud->addRoom();
 		_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
 	}
@@ -177,10 +178,12 @@ void gameState::draw(float dt) const
 	_data->window.draw(_background);
 	_wall->drawBackWall();
 	_door->draw();
+	_minotaur->draw();
+	_garde->draw();
 	_mainCharacter->draw();
 	_wall->draw();
 	_garde->draw();
-	//_minotaur->draw();
+	_minotaur->draw();
 	_hud->draw();
 	_data->window.display();
 }

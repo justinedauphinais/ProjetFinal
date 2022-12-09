@@ -57,29 +57,6 @@ void shopState::handleInput()
 			_data->window.close();
 		else if (event.type == Event::KeyPressed) {			// Mouvement
 
-			if (Keyboard::isKeyPressed(Keyboard::D)) {
-				_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
-				_moveX = 20;
-				_moveY = 0;
-			}
-
-			if (Keyboard::isKeyPressed(Keyboard::A)) {
-				_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
-				_moveX = -20;
-				_moveY = 0;
-			}
-
-			if (Keyboard::isKeyPressed(Keyboard::W)) {
-				_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
-				_moveX = 0;
-				_moveY = -20;
-			}
-
-			if (Keyboard::isKeyPressed(Keyboard::S)) {
-				_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
-				_moveX = 0;
-				_moveY = 20;
-			}
 		}
 		else if (event.type == Event::KeyReleased) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
@@ -96,8 +73,32 @@ void shopState::update(float dt)
 	_mainCharacter->update(dt);
 	_shopOwner->update(dt);
 
+	if (Keyboard::isKeyPressed(Keyboard::D)) {
+		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
+		_moveX = 20;
+		_moveY = 0;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::A)) {
+		_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
+		_moveX = -20;
+		_moveY = 0;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::W)) {
+		_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
+		_moveX = 0;
+		_moveY = -20;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::S)) {
+		_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
+		_moveX = 0;
+		_moveY = 20;
+	}
+
 	// Collision porte
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 1.0f, 0.3f)) {
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {
 		_hud->addRoom();
 		_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
 	}
