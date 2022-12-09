@@ -75,26 +75,26 @@ void shopState::update(float dt)
 
 	if (Keyboard::isKeyPressed(Keyboard::D)) {
 		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
-		_moveX = 20;
+		_moveX = MOVEMENT_DISTANCE;
 		_moveY = 0;
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::A)) {
 		_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
-		_moveX = -20;
+		_moveX = -MOVEMENT_DISTANCE;
 		_moveY = 0;
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::W)) {
 		_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
 		_moveX = 0;
-		_moveY = -20;
+		_moveY = -MOVEMENT_DISTANCE;
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::S)) {
 		_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
 		_moveX = 0;
-		_moveY = 20;
+		_moveY = MOVEMENT_DISTANCE;
 	}
 
 	// Collision porte
@@ -105,22 +105,22 @@ void shopState::update(float dt)
 
 	// Collision mur du haut
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
 	}
 
 	// Collision mur du bas
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - 20);
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - MOVEMENT_DISTANCE);
 	}
 
 	// Collision mur gauche
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + 20, _mainCharacter->getSprite().getPosition().y);
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
 
 	// Collision mur droit
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
 
 	// Collision shop keeper

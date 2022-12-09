@@ -53,7 +53,7 @@ void entity::setPosition(float x, float y)
 void entity::move(Keyboard::Key key, float time)
 {
 	// Si on change de frame et que nous ne sommes pas en train d'attaquer
-	if (_clock.getElapsedTime().asSeconds() > (time / _animationFramesWalkingRight.size()) && (_state != entityStates::ATTACKING)) {
+	if (_clock.getElapsedTime().asSeconds() > (time / _animationFramesWalkingRight.size()) && (_state == entityStates::IDLE || _state == entityStates::WALKING)) {
 		_state = entityStates::WALKING;
 		_animationIterator++;
 
@@ -87,6 +87,9 @@ void entity::move(Keyboard::Key key, float time)
 	}
 }
 
+/// <summary>
+/// 
+/// </summary>
 void entity::draw() const
 {
 	_data->window.draw(_sprite);
