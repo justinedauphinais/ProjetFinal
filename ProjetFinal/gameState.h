@@ -45,8 +45,9 @@ private:
 	minotaur* _minotaur;
 
 	collision _collision;
-
+	Clock _clock;
 	int _gameState;
+	bool _toucher = false;
 	
 public:
 	gameState(gameDataRef data);

@@ -106,6 +106,25 @@ void gameState::update(float dt)
 		_minotaur->setState(IDLE);
 	}*/
 
+	/*Vector2f distance = _collision.getDistance(_mainCharacter->getSprite(), _garde->getSprite());
+
+	if (abs(distance.x) > abs(distance.y) && distance.x < 5 ) {
+		_garde->move(Keyboard::A, ENEMY_WALK_TIME);
+	}
+	if (abs(distance.x) > abs(distance.y) && distance.x > 5) {
+		_garde->move(Keyboard::D, ENEMY_WALK_TIME);
+	}
+	if (distance.y < 0 && distance.y < 5) {
+		_garde->move(Keyboard::W, ENEMY_WALK_TIME);
+	}
+	if (distance.y > 0 && distance.y > 5) {
+		_garde->move(Keyboard::S, ENEMY_WALK_TIME);
+	}
+	else {
+		_garde->setState(IDLE);
+	}*/
+
+
 	if (Keyboard::isKeyPressed(Keyboard::D)) {
 		cout << "D" << endl;
 		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
@@ -157,9 +176,25 @@ void gameState::update(float dt)
 	}
 
 	// Collision ennemis
+
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _garde->getSprite(), 3.0f, 10.0f))
 	{
-		_garde->attack();
+		//enleve heart
+
+		if (!_toucher)
+		{
+			_toucher = true;
+			_hud->removeHeart(1);
+			if (_hud->getNbrVies() == 0)
+			{
+				cout << " mort";
+			}
+		}
+		else
+		{
+			_toucher =false ;
+		}
+
 	}
 
 	// Si mort
@@ -178,7 +213,7 @@ void gameState::draw(float dt) const
 	_data->window.draw(_background);
 	_wall->drawBackWall();
 	_door->draw();
-	_minotaur->draw();
+	//_minotaur->draw();
 	_garde->draw();
 	_mainCharacter->draw();
 	_wall->draw();

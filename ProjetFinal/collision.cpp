@@ -57,8 +57,13 @@ bool collision::checkSpriteCollision(Sprite sprite1, float scale1X, float scale1
 /// <returns></returns>
 Vector2f collision::getDistance(Sprite sprite1, Sprite sprite2) const
 {
-	int distanceX = (sprite1.getPosition().x + sprite1.getGlobalBounds().width) - (sprite2.getPosition().x + sprite2.getGlobalBounds().width);
+	int distanceX = (sprite1.getPosition().x+ sprite1.getGlobalBounds().width) - (sprite2.getPosition().x + sprite2.getGlobalBounds().width);
 	int distanceY = (sprite1.getPosition().y + sprite1.getGlobalBounds().height) - (sprite2.getPosition().y + sprite2.getGlobalBounds().height);
 
 	return Vector2f(distanceX, distanceY);
+}
+
+ float DistanceToEntity(const Vector2f& LocalPlayer, const Vector2f& Enemy)
+{
+	return sqrt(pow(LocalPlayer.x - Enemy.x, 2) + pow(LocalPlayer.y - Enemy.y, 2) );
 }

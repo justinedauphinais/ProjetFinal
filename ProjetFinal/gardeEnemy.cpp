@@ -21,6 +21,18 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 		_animationFramesIdleLeft.push_back(_data->assets.getTexture("enemy idle frame left" + to_string(i)));
 	}
 
+	// Walking left
+	for (int i = 1; i < 6; i++)
+	{
+		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("enemy walking frame left" + to_string(i)));
+	}
+
+	// Walking right
+	for (int i = 1; i < 6; i++)
+	{
+		_animationFramesWalkingRight.push_back(_data->assets.getTexture("enemy walking frame right" + to_string(i)));
+	}
+
 	// Attack left
 	for (int i = 1; i < 6; i++)
 	{
@@ -32,6 +44,7 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 	{
 		_animationFramesFightingRight.push_back(_data->assets.getTexture("enemy attack frame right" + to_string(i)));
 	}
+
 
 	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 
