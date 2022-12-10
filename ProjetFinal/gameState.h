@@ -47,8 +47,9 @@ private:
 	vector<Sprite> _lstSprites;		// Liste des sprites
 
 	collision _collision;
-
+	Clock _clock;
 	int _gameState;
+	bool _toucher = false;
 	
 public:
 	gameState(gameDataRef data);

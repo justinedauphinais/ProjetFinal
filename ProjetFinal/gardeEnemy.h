@@ -1,4 +1,4 @@
-/********************************************************************************************
+/*******************************************************************************************
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: gardeEnemy.h																	*
 * Date		: 21/12/2022																	*
@@ -11,6 +11,7 @@
 #include "game.h"
 #include "entity.h"
 class gardeEnemy : public entity {
+
 public:
 	gardeEnemy(gameDataRef data);
 

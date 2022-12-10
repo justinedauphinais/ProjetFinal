@@ -20,4 +20,6 @@ public:
 	Vector2f getDistance(Sprite sprite1, Sprite sprite2) const;
 	
 	bool isPast(Sprite sprite1, Sprite sprite2) const;
+	float DistanceToEntity(const Vector2f& LocalPlayer, const Vector2f& Enemy);
+
 };

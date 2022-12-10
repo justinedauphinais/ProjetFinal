@@ -110,7 +110,27 @@ void gameState::update(float dt)
 		_minotaur->setState(IDLE);
 	}*/
 
-	if (Keyboard::isKeyPressed(Keyboard::D))
+	/*Vector2f distance = _collision.getDistance(_mainCharacter->getSprite(), _garde->getSprite());
+
+	if (abs(distance.x) > abs(distance.y) && distance.x < 5 ) {
+		_garde->move(Keyboard::A, ENEMY_WALK_TIME);
+	}
+	if (abs(distance.x) > abs(distance.y) && distance.x > 5) {
+		_garde->move(Keyboard::D, ENEMY_WALK_TIME);
+	}
+	if (distance.y < 0 && distance.y < 5) {
+		_garde->move(Keyboard::W, ENEMY_WALK_TIME);
+	}
+	if (distance.y > 0 && distance.y > 5) {
+		_garde->move(Keyboard::S, ENEMY_WALK_TIME);
+	}
+	else {
+		_garde->setState(IDLE);
+	}*/
+
+
+	if (Keyboard::isKeyPressed(Keyboard::D)) {
+		cout << "D" << endl;
 		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
 
 	if (Keyboard::isKeyPressed(Keyboard::A))
@@ -153,6 +173,31 @@ void gameState::update(float dt)
 	_lstSprites[1] = _garde->getSprite();
 	_lstSprites[2] = _minotaur->getSprite();
 
+	// Collision mur droit
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
+	}
+
+	// Collision ennemis
+
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _garde->getSprite(), 3.0f, 10.0f))
+	{
+		//enleve heart
+
+		if (!_toucher)
+		{
+			_toucher = true;
+			_hud->removeHeart(1);
+			if (_hud->getNbrVies() == 0)
+			{
+				cout << " mort";
+			}
+		}
+		else
+		{
+			_toucher =false ;
+		}
+
 	// Gestion de l'ordre d'affichage 
 	for (int i = 0; i < _lstSprites.size() - 1; i++) {
 		if (_collision.isPast(_lstSprites[i], _lstSprites[i + 1])) {
@@ -183,7 +228,12 @@ void gameState::draw(float dt) const
 		_data->window.draw(_lstSprites[i]);
 	}
 
+	//_minotaur->draw();
+	_garde->draw();
+	_mainCharacter->draw();
 	_wall->draw();
+	_garde->draw();
+	_minotaur->draw();
 	_hud->draw();
 	_data->window.display();
 }

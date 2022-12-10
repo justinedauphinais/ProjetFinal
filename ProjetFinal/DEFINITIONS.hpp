@@ -202,6 +202,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 //------ Guard Enemy ------//
 #define LIVE_ENEMY 3.0f
 #define ENEMY_IDLE_TIME 1.0f
+#define ENEMY_WALK_TIME 0.8f
 
 	// Idle left
 #define ENEMY_ATTACK_TIME 1.0f
@@ -234,6 +235,24 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define ENEMY_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Attack 1/Left/4.png"
 #define ENEMY_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Attack 1/Left/5.png"
 #define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
+
+	// Walking left
+#define ENEMY_WALKING_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Run/Left/1.png"
+#define ENEMY_WALKING_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Run/Left/2.png"
+#define ENEMY_WALKING_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Run/Left/3.png"
+#define ENEMY_WALKING_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Run/Left/4.png"
+#define ENEMY_WALKING_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Run/Left/5.png"
+#define ENEMY_WALKING_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Run/Left/6.png"
+
+	// Walking right
+#define ENEMY_WALKING_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Run/Right/1.png"
+#define ENEMY_WALKING_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Run/Right/2.png"
+#define ENEMY_WALKING_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Run/Right/3.png"
+#define ENEMY_WALKING_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Run/Right/4.png"
+#define ENEMY_WALKING_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Run/Right/5.png"
+#define ENEMY_WALKING_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Run/Right/6.png"
+
+
 
 //------ Store owner ------//
 #define STOREOWNER_IDLE_TIME 1.3f

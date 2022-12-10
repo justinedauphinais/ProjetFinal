@@ -21,6 +21,18 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 		_animationFramesIdleLeft.push_back(_data->assets.getTexture("enemy idle frame left" + to_string(i)));
 	}
 
+	// Walking left
+	for (int i = 1; i < 6; i++)
+	{
+		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("enemy walking frame left" + to_string(i)));
+	}
+
+	// Walking right
+	for (int i = 1; i < 6; i++)
+	{
+		_animationFramesWalkingRight.push_back(_data->assets.getTexture("enemy walking frame right" + to_string(i)));
+	}
+
 	// Attack left
 	for (int i = 1; i < 6; i++)
 	{
@@ -32,6 +44,7 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 	{
 		_animationFramesFightingRight.push_back(_data->assets.getTexture("enemy attack frame right" + to_string(i)));
 	}
+
 
 	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 
@@ -47,6 +60,7 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 /// Update l'objet à chaque frame
 /// </summary>
 /// <param name="dt"></param>
+
 void gardeEnemy::update(float dt)
 {
 	// Si on change de frame et que nous ne sommes pas en train d'attaquer
@@ -92,6 +106,9 @@ void gardeEnemy::update(float dt)
 /// <summary>
 /// Déclenche l'attaque de l'entité
 /// </summary>
+/// <summary>
+/// crée les attacks
+/// </summary>
 void gardeEnemy::attack()
 {
 	if (_state != entityStates::ATTACKING)
@@ -101,7 +118,13 @@ void gardeEnemy::attack()
 
 		if ((_dir == directions::RIGHT) || (_dir == directions::TOP))
 			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator), true);
-		else
+		else{
 			_sprite.setTexture(_animationFramesFightingLeft.at(_animationIterator));
+
+		}
+		_sprite.setScale(8.0, 8.0);
+		
 	}
 }
+
+
