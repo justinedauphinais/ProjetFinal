@@ -79,7 +79,7 @@ bool collision::isPast(Sprite sprite1, Sprite sprite2) const
 	//sprite2.setScale(scale2X, scale2Y);
 
 	return sprite1.getPosition().y + sprite1.getGlobalBounds().height >= sprite2.getPosition().y + sprite2.getGlobalBounds().height;
-}
+
 }
 
  float DistanceToEntity(const Vector2f& LocalPlayer, const Vector2f& Enemy)
