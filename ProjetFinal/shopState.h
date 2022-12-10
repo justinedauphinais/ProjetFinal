@@ -9,6 +9,7 @@
 #include "gameState.h"
 #include "torch.h"
 #include "cat.h"
+#include "items.h"
 
 /// <summary>
 /// 
@@ -20,6 +21,7 @@ private:
 							// assertManager et au inputManager
 
 	Sprite _background;			// Le sprite pour la background
+	Sprite _carpet;				// Le tapis
 
 	wall* _wall;					// Les murs
 	door* _door;					// La porte
@@ -31,8 +33,15 @@ private:
 	Sprite _shopOwnerHiSprite;		// Dialogue du NPC
 
 	vector<torch> _torches;
+	vector<item> _items;
 
 	vector<Sprite> _lstSprites;		// Liste des sprites
+
+	Sprite _popUp;
+	Text _popUpText;
+	Sprite _selectedItem;
+	int _indexSelectedItem;
+	Sprite _buttonAccept;
 
 	collision _collision;
 
@@ -41,6 +50,7 @@ private:
 	int _moveY;
 
 	bool _showDialogue;
+	bool _inItemFrame;
 
 	Clock _clock;
 

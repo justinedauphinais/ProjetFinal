@@ -17,24 +17,32 @@ class hud {
 private:
 	gameDataRef _data;
 
-	Text _scoreSprite;
-
 	int _score;
-	int _nbrRoom;
+	Sprite _scoreSprite;
+	Text _scoreText;
+
+	int _money;
+	Sprite _moneySprite;
+	Text _moneyText;
 	
 	vector<Sprite> _hearts;		// Les coeurs
 	Sprite _heart;
 
+	int _nbrRoom;
 	Text _roomText;
 
 public:
-	hud(gameDataRef data, int nbrRoom, int score = 0, int nbCoeurs = NBR_LIVES);
+	hud(gameDataRef data, int nbrRoom, int score = 0, int money = 0, int nbCoeurs = NBR_LIVES);
 
 	void setScore(int score);
 	void addScore(int score = 1);
 
 	bool removeHeart(int nb = 1);
 	void addHeart(int nb = 1);
+
+	void setMoney(int nb);
+	void addMoney(int nb = 1);
+	bool removeMoney(int nb);
 
 	void addRoom();
 

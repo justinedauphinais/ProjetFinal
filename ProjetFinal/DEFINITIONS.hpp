@@ -28,6 +28,11 @@ enum entityStates {		// Les états des entités
 	DEAD
 };
 
+enum itemTypes {		// Les types d'item qu'on peut acquérir
+	bigLifePotion,
+	smallLifePotion
+};
+
 //------ Écran ------//
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
@@ -60,16 +65,27 @@ enum entityStates {		// Les états des entités
 #define GAME_BACKGROUND_TEMP_2 "Ressources/Map/Contour_map_3.png"
 #define GAME_FOREGROUND_LEFT_RIGHT_TEMP_2 "Ressources/Map/wall_3.png"
 #define GAME_FOREGROUND_UP_DOWN_TEMP_2 "Ressources/Map/wall_back_3.png"
+#define POP_UP "Ressources/UI/pop_up.png"
+#define ACCEPT_PURCHASE "Ressources/UI/accept.png"
 	// Hud
 #define GAME_HEARTS_FILEPATH "Ressources/UI/hearts.png"
+#define GAME_COIN_FILEPATH "Ressources/UI/coin.png"
+#define GAME_KILLS_FILEPATH "Ressources/UI/kills.png"
 	// Porte
 #define GAME_DOOR_CLOSED_1 "Ressources/Objects/door_closed.png"
 #define GAME_DOOR_CLOSED_2 "Ressources/Objects/door_closed_1.png"
 #define GAME_DOOR_OPEN "Ressources/Objects/door_open.png"
+	// Items
+#define PRICE_BIG_LIFE_POTION 5
+#define BIG_LIFE_POTION "Ressources/Objects/flask_big_red.png"
+#define PRICE_SMALL_LIFE_POTION 3
+#define BIG_LIFE_POTION "Ressources/Objects/flask_big_red.png"
 
 //------ Store ------//
 	// Hi
 #define TALKING_SHOP_OWNER "Ressources/Map/Shop/shopHi.png"
+	// Carpet
+#define CARPET_STORE "Ressources/Map/Shop/tapis.png"
 	// Cat
 #define CAT_IDLE_TIME 1.0f
 #define CAT_FRAME_1 "Ressources/Map/Shop/Cat/1.png"
