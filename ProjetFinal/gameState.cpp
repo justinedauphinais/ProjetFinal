@@ -126,10 +126,6 @@ void gameState::update(float dt)
 	_garde->update(dt);
 	_minotaur->update(dt);
 
-	_lstSprites[0] = _mainCharacter->getSprite();
-	_lstSprites[1] = _garde->getSprite();
-	_lstSprites[2] = _minotaur->getSprite();
-
 	// Collision porte
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {
 		_hud->addRoom();
@@ -140,26 +136,22 @@ void gameState::update(float dt)
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
 	}
-
-	// Collision mur du bas
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {		// Collision mur du haut
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
+	}
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {					// Collision mur du bas
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - MOVEMENT_DISTANCE);
 	}
-
-	// Collision mur gauche
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {		// Collision mur gauche
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
-
-	// Collision mur droit
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {		// Collision mur droit
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
 
-	// Collision ennemis
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _garde->getSprite(), 3.0f, 10.0f)) {
-		_garde->attack();
-	}
+	_lstSprites[0] = _mainCharacter->getSprite();
+	_lstSprites[1] = _garde->getSprite();
+	_lstSprites[2] = _minotaur->getSprite();
 
 	// Gestion de l'ordre d'affichage 
 	for (int i = 0; i < _lstSprites.size() - 1; i++) {
@@ -169,7 +161,6 @@ void gameState::update(float dt)
 			_lstSprites[i + 1] = temp;
 		}
 	}
-
 
 	// Si mort
 	if (_hud->getNbrVies() <= 0) {

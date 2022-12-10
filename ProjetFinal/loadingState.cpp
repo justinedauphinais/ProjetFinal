@@ -192,6 +192,11 @@ void loadingState::init()
 		_data->assets.loadTexture("talking shop owner", TALKING_SHOP_OWNER);
 	#pragma endregion
 
+	// Cat
+	_data->assets.loadTexture("cat 1", CAT_FRAME_1);
+	_data->assets.loadTexture("cat 2", CAT_FRAME_2);
+	_data->assets.loadTexture("cat 3", CAT_FRAME_3);
+
 	// Minotaur
 	#pragma region Minotaur
 		// Idle
@@ -221,11 +226,16 @@ void loadingState::init()
 		_data->assets.loadTexture("minotaur walking frame left 6", MINOTAUR_WALKING_FRAME_LEFT_6);
 	#pragma endregion
 
-
 	// Porte
 	_data->assets.loadTexture("closed door 1", GAME_DOOR_CLOSED_1);
 	_data->assets.loadTexture("closed door 2", GAME_DOOR_CLOSED_2);
 	_data->assets.loadTexture("opened door", GAME_DOOR_OPEN);
+
+	// Torches
+	_data->assets.loadTexture("torch frame 1", TORCH_FRAME_1);
+	_data->assets.loadTexture("torch frame 2", TORCH_FRAME_2);
+	_data->assets.loadTexture("torch frame 3", TORCH_FRAME_3);
+	_data->assets.loadTexture("torch frame 4", TORCH_FRAME_4);
 
 	// Background
 	_backgroundSprite.setFillColor(Color::Black);

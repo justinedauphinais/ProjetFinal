@@ -61,6 +61,15 @@
     <ClCompile Include="minotaur.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="torch.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="drawable.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="cat.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -124,6 +133,15 @@
       <Filter>Header\Objects</Filter>
     </ClInclude>
     <ClInclude Include="minotaur.h">
+      <Filter>Header\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="torch.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="drawable.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="cat.h">
       <Filter>Header\Entities</Filter>
     </ClInclude>
   </ItemGroup>

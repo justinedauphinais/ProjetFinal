@@ -1,15 +1,6 @@
 #include "entity.h"
 
 /// <summary>
-/// Get le sprite de l'entité
-/// </summary>
-/// <returns></returns>
-Sprite entity::getSprite() const
-{
-	return _sprite;
-}
-
-/// <summary>
 /// Get le nombre de vie de l'entité
 /// </summary>
 /// <returns></returns>
@@ -34,16 +25,6 @@ entityStates entity::getState() const
 void entity::setState(entityStates state)
 {
 	_state = state;
-}
-
-/// <summary>
-/// Set la position de l'entité
-/// </summary>
-/// <param name="x"></param>
-/// <param name="y"></param>
-void entity::setPosition(float x, float y)
-{
-	_sprite.setPosition(x, y);
 }
 
 /// <summary>
@@ -85,12 +66,4 @@ void entity::move(Keyboard::Key key, float time)
 
 		_clock.restart();
 	}
-}
-
-/// <summary>
-/// 
-/// </summary>
-void entity::draw() const
-{
-	_data->window.draw(_sprite);
 }
