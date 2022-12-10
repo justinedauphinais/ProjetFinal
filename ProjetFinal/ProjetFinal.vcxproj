@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="assetManager.cpp" />
+    <ClCompile Include="cat.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="door.cpp" />
     <ClCompile Include="gardeEnemy.cpp" />
@@ -145,14 +146,17 @@
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="mainWalls.cpp" />
     <ClCompile Include="minotaur.cpp" />
+    <ClCompile Include="drawable.cpp" />
     <ClCompile Include="ProjetFinal.cpp" />
     <ClCompile Include="shopOwner.cpp" />
     <ClCompile Include="shopState.cpp" />
     <ClCompile Include="splashState.cpp" />
     <ClCompile Include="stateMachine.cpp" />
+    <ClCompile Include="torch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h" />
+    <ClInclude Include="cat.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="door.h" />
@@ -168,11 +172,13 @@
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="mainWalls.h" />
     <ClInclude Include="minotaur.h" />
+    <ClInclude Include="drawable.h" />
     <ClInclude Include="shopOwner.h" />
     <ClInclude Include="shopState.h" />
     <ClInclude Include="splashState.h" />
     <ClInclude Include="state.hpp" />
     <ClInclude Include="stateMachine.h" />
+    <ClInclude Include="torch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

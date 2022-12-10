@@ -6,16 +6,10 @@
 *********************************************************************************************/
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include "DEFINITIONS.hpp"
-#include "game.h"
+#include "drawable.h"
 
-class entity {
+class entity : public drawable {
 protected:
-	gameDataRef _data;
-
-	Sprite _sprite;
-
 	int _animationIterator;
 	vector<Texture> _animationFramesWalkingRight;
 	vector<Texture> _animationFramesWalkingLeft;
@@ -29,17 +23,11 @@ protected:
 
 	int _nbrLives;
 
-	Clock _clock;
-
 public:
-	Sprite getSprite() const;
 	int getNbrLives() const;
 	entityStates getState() const;
 
 	void setState(entityStates state);
-	void setPosition(float x, float y);
 
 	void move(Keyboard::Key key, float time);
-
-	void draw()const;
 };

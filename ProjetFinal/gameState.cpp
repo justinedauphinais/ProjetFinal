@@ -60,6 +60,10 @@ void gameState::init()
 	_minotaur = new minotaur(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 
+	_lstSprites.push_back(_mainCharacter->getSprite());
+	_lstSprites.push_back(_minotaur->getSprite());
+	_lstSprites.push_back(_garde->getSprite());
+
 	_gameState = gameStates::ready;
 }
 
@@ -76,7 +80,7 @@ void gameState::handleInput()
 		else if (Mouse::isButtonPressed(Mouse::Left)) {		// Attaque
 			_mainCharacter->attack();
 		}
-		else if (event.type == Event::KeyReleased) {		// Idle
+		else if (event.type == Event::KeyReleased && _mainCharacter->getState() == WALKING) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
 		}
 	}
@@ -128,22 +132,15 @@ void gameState::update(float dt)
 	if (Keyboard::isKeyPressed(Keyboard::D)) {
 		cout << "D" << endl;
 		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
-	}
 
-	if (Keyboard::isKeyPressed(Keyboard::A)) {
-		cout << "A" << endl;
+	if (Keyboard::isKeyPressed(Keyboard::A))
 		_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
-	}
 
-	if (Keyboard::isKeyPressed(Keyboard::W)) {
-		cout << "W" << endl;
+	if (Keyboard::isKeyPressed(Keyboard::W))
 		_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
-	}
 
-	if (Keyboard::isKeyPressed(Keyboard::S)) {
-		cout << "S" << endl;
+	if (Keyboard::isKeyPressed(Keyboard::S))
 		_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
-	}
 
 	_mainCharacter->update(dt);
 	_garde->update(dt);
@@ -157,18 +154,24 @@ void gameState::update(float dt)
 
 	// Collision mur du haut
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + 20);
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
+	}
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {		// Collision mur du haut
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
+	}
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {					// Collision mur du bas
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - MOVEMENT_DISTANCE);
+	}
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {		// Collision mur gauche
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
+	}
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {		// Collision mur droit
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
 
-	// Collision mur du bas
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - 20);
-	}
-
-	// Collision mur gauche
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + 20, _mainCharacter->getSprite().getPosition().y);
-	}
+	_lstSprites[0] = _mainCharacter->getSprite();
+	_lstSprites[1] = _garde->getSprite();
+	_lstSprites[2] = _minotaur->getSprite();
 
 	// Collision mur droit
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
@@ -195,6 +198,13 @@ void gameState::update(float dt)
 			_toucher =false ;
 		}
 
+	// Gestion de l'ordre d'affichage 
+	for (int i = 0; i < _lstSprites.size() - 1; i++) {
+		if (_collision.isPast(_lstSprites[i], _lstSprites[i + 1])) {
+			Sprite temp = _lstSprites[i];
+			_lstSprites[i] = _lstSprites[i + 1];
+			_lstSprites[i + 1] = temp;
+		}
 	}
 
 	// Si mort
@@ -213,6 +223,11 @@ void gameState::draw(float dt) const
 	_data->window.draw(_background);
 	_wall->drawBackWall();
 	_door->draw();
+
+	for (int i = 0; i < _lstSprites.size(); i++) {
+		_data->window.draw(_lstSprites[i]);
+	}
+
 	//_minotaur->draw();
 	_garde->draw();
 	_mainCharacter->draw();

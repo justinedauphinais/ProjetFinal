@@ -66,8 +66,21 @@ enum entityStates {		// Les états des entités
 #define GAME_DOOR_CLOSED_1 "Ressources/Objects/door_closed.png"
 #define GAME_DOOR_CLOSED_2 "Ressources/Objects/door_closed_1.png"
 #define GAME_DOOR_OPEN "Ressources/Objects/door_open.png"
-	// Shop
+
+//------ Store ------//
+	// Hi
 #define TALKING_SHOP_OWNER "Ressources/Map/Shop/shopHi.png"
+	// Cat
+#define CAT_IDLE_TIME 1.0f
+#define CAT_FRAME_1 "Ressources/Map/Shop/Cat/1.png"
+#define CAT_FRAME_2 "Ressources/Map/Shop/Cat/2.png"
+#define CAT_FRAME_3 "Ressources/Map/Shop/Cat/3.png"
+	// Torches
+#define TORCH_ANIMATION_TIME 1.0f
+#define TORCH_FRAME_1 "Ressources/Objects/Torch/1.png"
+#define TORCH_FRAME_2 "Ressources/Objects/Torch/2.png"
+#define TORCH_FRAME_3 "Ressources/Objects/Torch/3.png"
+#define TORCH_FRAME_4 "Ressources/Objects/Torch/4.png"
 
 //------ Main character ------//
 #define NBR_LIVES 5

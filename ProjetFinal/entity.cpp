@@ -1,15 +1,6 @@
 #include "entity.h"
 
 /// <summary>
-/// Get le sprite de l'entité
-/// </summary>
-/// <returns></returns>
-Sprite entity::getSprite() const
-{
-	return _sprite;
-}
-
-/// <summary>
 /// Get le nombre de vie de l'entité
 /// </summary>
 /// <returns></returns>
@@ -37,23 +28,13 @@ void entity::setState(entityStates state)
 }
 
 /// <summary>
-/// Set la position de l'entité
-/// </summary>
-/// <param name="x"></param>
-/// <param name="y"></param>
-void entity::setPosition(float x, float y)
-{
-	_sprite.setPosition(x, y);
-}
-
-/// <summary>
 /// Bouge l'entité
 /// </summary>
 /// <param name="key"></param>
 void entity::move(Keyboard::Key key, float time)
 {
 	// Si on change de frame et que nous ne sommes pas en train d'attaquer
-	if (_clock.getElapsedTime().asSeconds() > (time / _animationFramesWalkingRight.size()) && (_state != entityStates::ATTACKING)) {
+	if (_clock.getElapsedTime().asSeconds() > (time / _animationFramesWalkingRight.size()) && (_state == entityStates::IDLE || _state == entityStates::WALKING)) {
 		_state = entityStates::WALKING;
 		_animationIterator++;
 
@@ -85,9 +66,4 @@ void entity::move(Keyboard::Key key, float time)
 
 		_clock.restart();
 	}
-}
-
-void entity::draw() const
-{
-	_data->window.draw(_sprite);
 }

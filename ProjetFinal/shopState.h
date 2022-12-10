@@ -7,6 +7,8 @@
 #pragma once
 
 #include "gameState.h"
+#include "torch.h"
+#include "cat.h"
 
 /// <summary>
 /// 
@@ -24,8 +26,13 @@ private:
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
 	shopOwner* _shopOwner;			// Le NPC
+	cat* _cat;
 
 	Sprite _shopOwnerHiSprite;		// Dialogue du NPC
+
+	vector<torch> _torches;
+
+	vector<Sprite> _lstSprites;		// Liste des sprites
 
 	collision _collision;
 
@@ -34,6 +41,8 @@ private:
 	int _moveY;
 
 	bool _showDialogue;
+
+	Clock _clock;
 
 public:
 	shopState(gameDataRef data, hud*& hud);
