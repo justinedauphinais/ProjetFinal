@@ -50,12 +50,27 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define PLAY_BUTTON_FILEPATH "Ressources/Menu/playButton.png"
 #define STOP_BUTTON_FILEPATH "Ressources/Menu/stopButton.png"
 
+//----- Intro -----//
+#define NEXT_BUTTON_FILEPATH "Ressources/Menu/suivantButton.png"
+
 //------ Loading ------//
 #define LOADING_TIME 3.0f
 #define LOADING_FRAME_1 "Ressources/UI/Loading/1.png"
 #define LOADING_FRAME_2 "Ressources/UI/Loading/2.png"
 #define LOADING_FRAME_3 "Ressources/UI/Loading/3.png"
 #define LOADING_FRAME_4 "Ressources/UI/Loading/4.png"
+
+//----- Skeleton Loading ------//
+#define LOADING_SKELETON_TIME 1.0f
+#define LOADING_SKELETON_FAME_1 "Ressources/UI/LoadingSkeleton/1.png"
+#define LOADING_SKELETON_FAME_2 "Ressources/UI/LoadingSkeleton/2.png"
+#define LOADING_SKELETON_FAME_3 "Ressources/UI/LoadingSkeleton/3.png"
+#define LOADING_SKELETON_FAME_4 "Ressources/UI/LoadingSkeleton/4.png"
+#define LOADING_SKELETON_FAME_5 "Ressources/UI/LoadingSkeleton/5.png"
+#define LOADING_SKELETON_FAME_6 "Ressources/UI/LoadingSkeleton/6.png"
+#define LOADING_SKELETON_FAME_7 "Ressources/UI/LoadingSkeleton/7.png"
+#define LOADING_SKELETON_FAME_8 "Ressources/UI/LoadingSkeleton/8.png"
+
 
 //------ Game ------//
 	// Murs

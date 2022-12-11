@@ -29,15 +29,23 @@ private:
 	int _color;				// Couleur du texte qui apparaît
 	bool intro;				// Si utilisateur a gagne ou pas
 
-	Text _vousEtesText;		// Les différents textes
-	Text _outcomeText;
-	Text _scoreText;
-	Text _highScoreText;
+	Text _titreText;		// Les différents textes
+	Text _introparagragh1Text;
+	Text _introparagragh2Text;
+	Text _introparagragh3Text;
+	Text _introparagragh4Text;
+	Text _introparagragh5Text;
+	Text _introparagragh6Text;
+	Text _introparagragh7Text;
+
+	Sprite _suivantButton;		// Le sprite du bouton suivant
+
+
 
 	Clock _clock;			// Horloge pour calculer le temps avant de faire apparaître les scores
 
 public:
-	introduction(gameDataRef data, int score, bool gagne);	// Constructeur
+	introduction(gameDataRef data);	// Constructeur
 	~introduction();										// Destructeur
 
 	void init();					// Initilise les variables

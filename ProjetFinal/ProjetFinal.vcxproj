@@ -141,6 +141,7 @@
     <ClCompile Include="gameState.cpp" />
     <ClCompile Include="hud.cpp" />
     <ClCompile Include="inputManager.cpp" />
+    <ClCompile Include="introduction.cpp" />
     <ClCompile Include="items.cpp" />
     <ClCompile Include="loadingState.cpp" />
     <ClCompile Include="mainCharacter.cpp" />
