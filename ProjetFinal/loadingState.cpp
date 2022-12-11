@@ -39,6 +39,10 @@ void loadingState::init()
 	_data->assets.loadTexture("game background 1", GAME_BACKGROUND_TEMP_1);
 	_data->assets.loadTexture("game background 2", GAME_BACKGROUND_TEMP_2);
 
+	// Pop up
+	_data->assets.loadTexture("pop up", POP_UP);
+	_data->assets.loadTexture("accept purchase", ACCEPT_PURCHASE);
+
 	// Walls
 	_data->assets.loadTexture("wall up 1", GAME_FOREGROUND_UP_DOWN_TEMP_1);
 	_data->assets.loadTexture("wall down 1", GAME_FOREGROUND_UP_DOWN_TEMP_1);
@@ -52,6 +56,8 @@ void loadingState::init()
 	// Hud
 	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
 	_data->assets.loadFont("pixel art font", PIXEL_ART_FONT);			// A ENLEVER LORSQUE LE JEU EST COMPLET
+	_data->assets.loadTexture("coin", GAME_COIN_FILEPATH);
+	_data->assets.loadTexture("kills", GAME_KILLS_FILEPATH);
 
 	// Main character
 	#pragma region Main Character
@@ -215,6 +221,12 @@ void loadingState::init()
 	_data->assets.loadTexture("cat 1", CAT_FRAME_1);
 	_data->assets.loadTexture("cat 2", CAT_FRAME_2);
 	_data->assets.loadTexture("cat 3", CAT_FRAME_3);
+
+	// Carpet
+	_data->assets.loadTexture("tapis", CARPET_STORE);
+
+	// Items
+	_data->assets.loadTexture("big life potion", BIG_LIFE_POTION);
 
 	// Minotaur
 	#pragma region Minotaur

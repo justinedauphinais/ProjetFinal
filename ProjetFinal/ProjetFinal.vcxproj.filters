@@ -70,6 +70,9 @@
     <ClCompile Include="cat.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="items.cpp">
+      <Filter>Source\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -144,6 +147,9 @@
     <ClInclude Include="cat.h">
       <Filter>Header\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="items.h">
+      <Filter>Header\Items</Filter>
+    </ClInclude>
     <ClInclude Include="introduction.h" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +176,12 @@
     </Filter>
     <Filter Include="Source\States">
       <UniqueIdentifier>{cbe38766-f7f2-4aef-b290-bb74175e368e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Items">
+      <UniqueIdentifier>{21a3d9fc-4730-4764-a410-60f1bb473b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Items">
+      <UniqueIdentifier>{7099df04-81ee-4cec-bcb7-1fb9c7e87a13}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

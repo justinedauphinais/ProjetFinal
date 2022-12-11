@@ -4,15 +4,29 @@
 /// 
 /// </summary>
 /// <param name="score"></param>
-hud::hud(gameDataRef data, int nbrRoom, int score, int nbCoeurs) : _data(data)
+hud::hud(gameDataRef data, int nbrRoom, int score, int money, int nbCoeurs) : _data(data)
 {
 	_score = score;
 	_nbrRoom = nbrRoom;
+	_money = money;
 
 	// Score
-	_scoreSprite = Text(to_string(_score), _data->assets.getFont("pixel art font"), 50);
-	_scoreSprite.setFillColor(Color::White);
-	_scoreSprite.setPosition((SCREEN_WIDTH - _scoreSprite.getGlobalBounds().width - 60), 50);
+	_scoreText = Text(to_string(_score), _data->assets.getFont("pixel art font"), 50);
+	_scoreText.setFillColor(Color::White);
+	_scoreText.setPosition((SCREEN_WIDTH - _scoreText.getGlobalBounds().width - 60), 50);
+
+	_scoreSprite.setTexture(_data->assets.getTexture("kills"));
+	_scoreSprite.setScale(4.0f, 4.0f);
+	_scoreSprite.setPosition(_scoreText.getPosition().x - 100, _scoreText.getPosition().y - 7);
+
+	// Argent
+	_moneyText = Text(to_string(_score), _data->assets.getFont("pixel art font"), 50);
+	_moneyText.setFillColor(Color::White);
+	_moneyText.setPosition((SCREEN_WIDTH - _moneyText.getGlobalBounds().width - 60), 150);
+
+	_moneySprite.setTexture(_data->assets.getTexture("coin"));
+	_moneySprite.setScale(4.0f, 4.0f);
+	_moneySprite.setPosition(_moneyText.getPosition().x - 100, _moneyText.getPosition().y - 15);
 
 	// Coeurs
 	_heart = Sprite(_data->assets.getTexture("life hearts"));
@@ -36,7 +50,7 @@ hud::hud(gameDataRef data, int nbrRoom, int score, int nbCoeurs) : _data(data)
 void hud::setScore(int score)
 {
 	_score = score;
-	_scoreSprite.setString(to_string(_score));
+	_scoreText.setString(to_string(_score));
 }
 
 /// <summary>
@@ -46,7 +60,7 @@ void hud::setScore(int score)
 void hud::addScore(int score)
 {
 	_score += score;
-	_scoreSprite.setString(to_string(_score));
+	_scoreText.setString(to_string(_score));
 }
 
 /// <summary>
@@ -74,6 +88,41 @@ void hud::addHeart(int nb)
 		_hearts.push_back(_heart);
 		_heart.move(80, 0);
 	}
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="nb"></param>
+void hud::setMoney(int nb)
+{
+	_money = nb;
+	_moneyText.setString(to_string(_money));
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="nb"></param>
+void hud::addMoney(int nb)
+{
+	_money += nb;
+	_moneyText.setString(to_string(_money));
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="nb"></param>
+bool hud::removeMoney(int nb)
+{
+	if (nb > _money)
+		return false;
+
+	_money -= nb;
+	_moneyText.setString(to_string(_money));
+
+	return true;
 }
 
 /// <summary>
@@ -109,6 +158,9 @@ int hud::getNbrVies() const
 void hud::draw() const
 {
 	_data->window.draw(_scoreSprite);
+	_data->window.draw(_scoreText);
+	_data->window.draw(_moneySprite);
+	_data->window.draw(_moneyText);
 	for (int i = 0; i < _hearts.size(); i++) {
 		_data->window.draw(_hearts[i]);
 	}
