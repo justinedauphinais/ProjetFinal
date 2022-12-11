@@ -129,7 +129,7 @@ void gameState::update(float dt)
 	}*/
 
 
-	if (Keyboard::isKeyPressed(Keyboard::D)) {
+	if (Keyboard::isKeyPressed(Keyboard::D)) 
 		cout << "D" << endl;
 		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
 
@@ -183,7 +183,7 @@ void gameState::update(float dt)
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _garde->getSprite(), 3.0f, 10.0f))
 	{
 		//enleve heart
-
+		_toucher = true;
 		if (!_toucher)
 		{
 			_toucher = true;

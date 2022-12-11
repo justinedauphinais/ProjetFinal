@@ -167,6 +167,7 @@
     <ClInclude Include="gameState.h" />
     <ClInclude Include="hud.h" />
     <ClInclude Include="inputManager.h" />
+    <ClInclude Include="introduction.h" />
     <ClInclude Include="loadingState.h" />
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />

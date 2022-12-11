@@ -144,6 +144,7 @@
     <ClInclude Include="cat.h">
       <Filter>Header\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="introduction.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
