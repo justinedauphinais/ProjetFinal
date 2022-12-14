@@ -99,6 +99,7 @@ void loadingState::init()
 		_data->assets.loadTexture("skeleton walking frame left10", SKELETON_WALK_FRAME_LEFT_10);
 		_data->assets.loadTexture("skeleton walking frame left11", SKELETON_WALK_FRAME_LEFT_11);
 		_data->assets.loadTexture("skeleton walking frame left12", SKELETON_WALK_FRAME_LEFT_12);
+
 		_data->assets.loadTexture("skeleton walking frame right1", SKELETON_WALK_FRAME_RIGHT_1);
 		_data->assets.loadTexture("skeleton walking frame right2", SKELETON_WALK_FRAME_RIGHT_2);
 		_data->assets.loadTexture("skeleton walking frame right3", SKELETON_WALK_FRAME_RIGHT_3);
@@ -131,6 +132,7 @@ void loadingState::init()
 		_data->assets.loadTexture("skeleton attacking frame right16", SKELETON_ATTAQUE_FRAME_RIGHT_16);
 		_data->assets.loadTexture("skeleton attacking frame right17", SKELETON_ATTAQUE_FRAME_RIGHT_17);
 		_data->assets.loadTexture("skeleton attacking frame right18", SKELETON_ATTAQUE_FRAME_RIGHT_18);
+
 		_data->assets.loadTexture("skeleton attacking frame left1", SKELETON_ATTAQUE_FRAME_LEFT_1);
 		_data->assets.loadTexture("skeleton attacking frame left2", SKELETON_ATTAQUE_FRAME_LEFT_2);
 		_data->assets.loadTexture("skeleton attacking frame left3", SKELETON_ATTAQUE_FRAME_LEFT_3);
@@ -153,51 +155,77 @@ void loadingState::init()
 
 	// Enemy
 	#pragma region Enemy
-	// Idle
-	_data->assets.loadTexture("enemy idle frame left1", ENEMY_IDLE_FRAME_LEFT_1);
-	_data->assets.loadTexture("enemy idle frame left2", ENEMY_IDLE_FRAME_LEFT_2);
-	_data->assets.loadTexture("enemy idle frame left3", ENEMY_IDLE_FRAME_LEFT_3);
-	_data->assets.loadTexture("enemy idle frame left4", ENEMY_IDLE_FRAME_LEFT_4);
-	_data->assets.loadTexture("enemy idle frame left5", ENEMY_IDLE_FRAME_LEFT_5);
-	_data->assets.loadTexture("enemy idle frame right1", ENEMY_IDLE_FRAME_RIGHT_1);
-	_data->assets.loadTexture("enemy idle frame right2", ENEMY_IDLE_FRAME_RIGHT_2);
-	_data->assets.loadTexture("enemy idle frame right3", ENEMY_IDLE_FRAME_RIGHT_3);
-	_data->assets.loadTexture("enemy idle frame right4", ENEMY_IDLE_FRAME_RIGHT_4);
-	_data->assets.loadTexture("enemy idle frame right5", ENEMY_IDLE_FRAME_RIGHT_5);
+		_data->assets.loadTexture("lifeBar", LIFE_BAR_FILEPATH);
+		// Idle
+		_data->assets.loadTexture("enemy idle frame left1", ENEMY_IDLE_FRAME_LEFT_1);
+		_data->assets.loadTexture("enemy idle frame left2", ENEMY_IDLE_FRAME_LEFT_2);
+		_data->assets.loadTexture("enemy idle frame left3", ENEMY_IDLE_FRAME_LEFT_3);
+		_data->assets.loadTexture("enemy idle frame left4", ENEMY_IDLE_FRAME_LEFT_4);
+		_data->assets.loadTexture("enemy idle frame left5", ENEMY_IDLE_FRAME_LEFT_5);
+		_data->assets.loadTexture("enemy idle frame right1", ENEMY_IDLE_FRAME_RIGHT_1);
+		_data->assets.loadTexture("enemy idle frame right2", ENEMY_IDLE_FRAME_RIGHT_2);
+		_data->assets.loadTexture("enemy idle frame right3", ENEMY_IDLE_FRAME_RIGHT_3);
+		_data->assets.loadTexture("enemy idle frame right4", ENEMY_IDLE_FRAME_RIGHT_4);
+		_data->assets.loadTexture("enemy idle frame right5", ENEMY_IDLE_FRAME_RIGHT_5);
 
-	// Attack left
-	_data->assets.loadTexture("enemy attack frame left1", ENEMY_ATTACK_FRAME_LEFT_1);
-	_data->assets.loadTexture("enemy attack frame left2", ENEMY_ATTACK_FRAME_LEFT_2);
-	_data->assets.loadTexture("enemy attack frame left3", ENEMY_ATTACK_FRAME_LEFT_3);
-	_data->assets.loadTexture("enemy attack frame left4", ENEMY_ATTACK_FRAME_LEFT_4);
-	_data->assets.loadTexture("enemy attack frame left5", ENEMY_ATTACK_FRAME_LEFT_5);
-	_data->assets.loadTexture("enemy attack frame left6", ENEMY_ATTACK_FRAME_LEFT_6);
+		// Attack left
+		_data->assets.loadTexture("enemy attack frame left1", ENEMY_ATTACK_FRAME_LEFT_1);
+		_data->assets.loadTexture("enemy attack frame left2", ENEMY_ATTACK_FRAME_LEFT_2);
+		_data->assets.loadTexture("enemy attack frame left3", ENEMY_ATTACK_FRAME_LEFT_3);
+		_data->assets.loadTexture("enemy attack frame left4", ENEMY_ATTACK_FRAME_LEFT_4);
+		_data->assets.loadTexture("enemy attack frame left5", ENEMY_ATTACK_FRAME_LEFT_5);
+		_data->assets.loadTexture("enemy attack frame left6", ENEMY_ATTACK_FRAME_LEFT_6);
+		_data->assets.loadTexture("enemy attack frame left7", ENEMY_ATTACK_FRAME_LEFT_7);
 
-	// Attack right
-	_data->assets.loadTexture("enemy attack frame right1", ENEMY_ATTACK_FRAME_RIGHT_1);
-	_data->assets.loadTexture("enemy attack frame right2", ENEMY_ATTACK_FRAME_RIGHT_2);
-	_data->assets.loadTexture("enemy attack frame right3", ENEMY_ATTACK_FRAME_RIGHT_3);
-	_data->assets.loadTexture("enemy attack frame right4", ENEMY_ATTACK_FRAME_RIGHT_4);
-	_data->assets.loadTexture("enemy attack frame right5", ENEMY_ATTACK_FRAME_RIGHT_5);
-	_data->assets.loadTexture("enemy attack frame right6", ENEMY_ATTACK_FRAME_RIGHT_6);
+		// Attack right
+		_data->assets.loadTexture("enemy attack frame right1", ENEMY_ATTACK_FRAME_RIGHT_1);
+		_data->assets.loadTexture("enemy attack frame right2", ENEMY_ATTACK_FRAME_RIGHT_2);
+		_data->assets.loadTexture("enemy attack frame right3", ENEMY_ATTACK_FRAME_RIGHT_3);
+		_data->assets.loadTexture("enemy attack frame right4", ENEMY_ATTACK_FRAME_RIGHT_4);
+		_data->assets.loadTexture("enemy attack frame right5", ENEMY_ATTACK_FRAME_RIGHT_5);
+		_data->assets.loadTexture("enemy attack frame right6", ENEMY_ATTACK_FRAME_RIGHT_6);
+		_data->assets.loadTexture("enemy attack frame right7", ENEMY_ATTACK_FRAME_RIGHT_7);
 
-	// Walking left
-	_data->assets.loadTexture("enemy walking frame left1", ENEMY_WALKING_FRAME_LEFT_1);
-	_data->assets.loadTexture("enemy walking frame left2", ENEMY_WALKING_FRAME_LEFT_2);
-	_data->assets.loadTexture("enemy walking frame left3", ENEMY_WALKING_FRAME_LEFT_3);
-	_data->assets.loadTexture("enemy walking frame left4", ENEMY_WALKING_FRAME_LEFT_4);
-	_data->assets.loadTexture("enemy walking frame left5", ENEMY_WALKING_FRAME_LEFT_5);
-	_data->assets.loadTexture("enemy walking frame left6", ENEMY_WALKING_FRAME_LEFT_6);
+		// Walking left
+		_data->assets.loadTexture("enemy walking frame left1", ENEMY_WALKING_FRAME_LEFT_1);
+		_data->assets.loadTexture("enemy walking frame left2", ENEMY_WALKING_FRAME_LEFT_2);
+		_data->assets.loadTexture("enemy walking frame left3", ENEMY_WALKING_FRAME_LEFT_3);
+		_data->assets.loadTexture("enemy walking frame left4", ENEMY_WALKING_FRAME_LEFT_4);
+		_data->assets.loadTexture("enemy walking frame left5", ENEMY_WALKING_FRAME_LEFT_5);
+		_data->assets.loadTexture("enemy walking frame left6", ENEMY_WALKING_FRAME_LEFT_6);
 
-	// Walking right
-	_data->assets.loadTexture("enemy walking frame right1", ENEMY_WALKING_FRAME_RIGHT_1);
-	_data->assets.loadTexture("enemy walking frame right2", ENEMY_WALKING_FRAME_RIGHT_2);
-	_data->assets.loadTexture("enemy walking frame right3", ENEMY_WALKING_FRAME_RIGHT_3);
-	_data->assets.loadTexture("enemy walking frame right4", ENEMY_WALKING_FRAME_RIGHT_4);
-	_data->assets.loadTexture("enemy walking frame right5", ENEMY_WALKING_FRAME_RIGHT_5);
-	_data->assets.loadTexture("enemy walking frame right6", ENEMY_WALKING_FRAME_RIGHT_6);
+		// Walking right
+		_data->assets.loadTexture("enemy walking frame right1", ENEMY_WALKING_FRAME_RIGHT_1);
+		_data->assets.loadTexture("enemy walking frame right2", ENEMY_WALKING_FRAME_RIGHT_2);
+		_data->assets.loadTexture("enemy walking frame right3", ENEMY_WALKING_FRAME_RIGHT_3);
+		_data->assets.loadTexture("enemy walking frame right4", ENEMY_WALKING_FRAME_RIGHT_4);
+		_data->assets.loadTexture("enemy walking frame right5", ENEMY_WALKING_FRAME_RIGHT_5);
+		_data->assets.loadTexture("enemy walking frame right6", ENEMY_WALKING_FRAME_RIGHT_6);
 
-	
+		// Damaged left
+		_data->assets.loadTexture("enemy damaged frame left1", ENEMY_HIT_LEFT_1);
+		_data->assets.loadTexture("enemy damaged frame left2", ENEMY_HIT_LEFT_2);
+
+		// Damaged right
+		_data->assets.loadTexture("enemy damaged frame right1", ENEMY_HIT_RIGHT_1);
+		_data->assets.loadTexture("enemy damaged frame right2", ENEMY_HIT_RIGHT_2);
+
+		// Dying left
+		_data->assets.loadTexture("enemy dying frame left1", ENEMY_DYING_LEFT_1);
+		_data->assets.loadTexture("enemy dying frame left2", ENEMY_DYING_LEFT_2);
+		_data->assets.loadTexture("enemy dying frame left3", ENEMY_DYING_LEFT_3);
+		_data->assets.loadTexture("enemy dying frame left4", ENEMY_DYING_LEFT_4);
+		_data->assets.loadTexture("enemy dying frame left5", ENEMY_DYING_LEFT_5);
+		_data->assets.loadTexture("enemy dying frame left6", ENEMY_DYING_LEFT_6);
+
+		// Dying right
+		_data->assets.loadTexture("enemy dying frame right1", ENEMY_DYING_RIGHT_1);
+		_data->assets.loadTexture("enemy dying frame right2", ENEMY_DYING_RIGHT_2);
+		_data->assets.loadTexture("enemy dying frame right3", ENEMY_DYING_RIGHT_3);
+		_data->assets.loadTexture("enemy dying frame right4", ENEMY_DYING_RIGHT_4);
+		_data->assets.loadTexture("enemy dying frame right5", ENEMY_DYING_RIGHT_5);
+		_data->assets.loadTexture("enemy dying frame right6", ENEMY_DYING_RIGHT_6);
+
 	#pragma endregion
 
 	// Store owner

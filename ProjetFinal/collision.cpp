@@ -53,6 +53,33 @@ bool collision::checkSpriteCollision(Sprite sprite1, float scale1X, float scale1
 /// 
 /// </summary>
 /// <param name="sprite1"></param>
+/// <param name="scale1X"></param>
+/// <param name="scale1Y"></param>
+/// <param name="offset1X"></param>
+/// <param name="offset1Y"></param>
+/// <param name="sprite2"></param>
+/// <param name="scale2X"></param>
+/// <param name="scale2Y"></param>
+/// <param name="offset2X"></param>
+/// <param name="offset2Y"></param>
+/// <returns></returns>
+bool collision::checkSpriteCollision(Sprite sprite1, float scale1X, float scale1Y, float offset1X, float offset1Y, Sprite sprite2, float scale2X, float scale2Y, float offset2X, float offset2Y) const
+{
+	sprite1.setScale(scale1X, scale1Y);
+	sprite2.setScale(scale2X, scale2Y);
+	
+	sprite1.move(offset1X, offset1Y);
+	sprite2.move(offset2X, offset2Y);
+
+	Rect<float> rect1 = sprite1.getGlobalBounds();
+	Rect<float> rect2 = sprite2.getGlobalBounds();
+	return rect1.intersects(rect2);
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sprite1"></param>
 /// <param name="sprite2"></param>
 /// <returns></returns>
 Vector2f collision::getDistance(Sprite sprite1, Sprite sprite2) const
@@ -75,14 +102,5 @@ Vector2f collision::getDistance(Sprite sprite1, Sprite sprite2) const
 /// <returns></returns>
 bool collision::isPast(Sprite sprite1, Sprite sprite2) const
 {
-	//sprite1.setScale(scale1X, scale1Y);
-	//sprite2.setScale(scale2X, scale2Y);
-
 	return sprite1.getPosition().y + sprite1.getGlobalBounds().height >= sprite2.getPosition().y + sprite2.getGlobalBounds().height;
-
-}
-
- float DistanceToEntity(const Vector2f& LocalPlayer, const Vector2f& Enemy)
-{
-	return sqrt(pow(LocalPlayer.x - Enemy.x, 2) + pow(LocalPlayer.y - Enemy.y, 2) );
 }

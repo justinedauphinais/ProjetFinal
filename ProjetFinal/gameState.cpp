@@ -12,7 +12,6 @@ gameState::gameState(gameDataRef data) : _data(data)
 	_wall = nullptr;
 	_hud = nullptr;
 	_door = nullptr;
-	_minotaur = nullptr;
 	_gameState = gameStates::loading;
 }
 
@@ -39,7 +38,6 @@ gameState::~gameState()
 	delete _garde;
 	delete _wall;
 	delete _door;
-	delete _minotaur;
 }
 
 /// <summary>
@@ -54,14 +52,12 @@ void gameState::init()
 		_hud = new hud(_data, 1, 0);
 
 	_mainCharacter = new mainCharacter(_data);
-	_garde = new gardeEnemy(_data);
+	_garde = new gardeEnemy(_data, 200, 200);
 	_wall = new wall(_data);
 	_door = new door(_data);
-	_minotaur = new minotaur(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 
 	_lstSprites.push_back(_mainCharacter->getSprite());
-	_lstSprites.push_back(_minotaur->getSprite());
 	_lstSprites.push_back(_garde->getSprite());
 
 	_gameState = gameStates::ready;
@@ -92,124 +88,86 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
-	/*Vector2f distance = _collision.getDistance(_mainCharacter->getSprite(), _minotaur->getSprite());
+	if (_garde->move(_collision.getDistance(_mainCharacter->getSprite(), _garde->getSprite()), dt, 200, 75))
+		_garde->attack();
 
-if (abs(distance.x) > abs(distance.y) && distance.x < 0) {
-	_minotaur->move(Keyboard::A, MINOTAUR_WALK_TIME);
-}
-else if (abs(distance.x) > abs(distance.y)) {
-	_minotaur->move(Keyboard::D, MINOTAUR_WALK_TIME);
-}
-else if (distance.y < 0) {
-	_minotaur->move(Keyboard::W, MINOTAUR_WALK_TIME);
-}
-else if (distance.y > 0) {
-	_minotaur->move(Keyboard::S, MINOTAUR_WALK_TIME);
-}
-else {
-	_minotaur->setState(IDLE);
-}*/
+	#pragma region Mouvement personnage
+		_moveY = _moveX = 0;
 
-/*Vector2f distance = _collision.getDistance(_mainCharacter->getSprite(), _garde->getSprite());
+		if (Keyboard::isKeyPressed(Keyboard::D)) {
+			_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
+			_moveX += MOVEMENT_DISTANCE;
+		}
 
-if (abs(distance.x) > abs(distance.y) && distance.x < 5 ) {
-	_garde->move(Keyboard::A, ENEMY_WALK_TIME);
-}
-if (abs(distance.x) > abs(distance.y) && distance.x > 5) {
-	_garde->move(Keyboard::D, ENEMY_WALK_TIME);
-}
-if (distance.y < 0 && distance.y < 5) {
-	_garde->move(Keyboard::W, ENEMY_WALK_TIME);
-}
-if (distance.y > 0 && distance.y > 5) {
-	_garde->move(Keyboard::S, ENEMY_WALK_TIME);
-}
-else {
-	_garde->setState(IDLE);
-}*/
+		if (Keyboard::isKeyPressed(Keyboard::A)) {
+			_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
+			_moveX += -MOVEMENT_DISTANCE;
+		}
 
+		if (Keyboard::isKeyPressed(Keyboard::W)) {
+			_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
+			_moveY += -MOVEMENT_DISTANCE;
+		}
 
-	if (Keyboard::isKeyPressed(Keyboard::D))
-		_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
-
-	if (Keyboard::isKeyPressed(Keyboard::A))
-		_mainCharacter->move(Keyboard::A, SKELETON_WALK_TIME);
-
-	if (Keyboard::isKeyPressed(Keyboard::W))
-		_mainCharacter->move(Keyboard::W, SKELETON_WALK_TIME);
-
-	if (Keyboard::isKeyPressed(Keyboard::S))
-		_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
+		if (Keyboard::isKeyPressed(Keyboard::S)) {
+			_mainCharacter->move(Keyboard::S, SKELETON_WALK_TIME);
+			_moveY += MOVEMENT_DISTANCE;
+		}
+	#pragma endregion
 
 	_mainCharacter->update(dt);
 	_garde->update(dt);
-	_minotaur->update(dt);
 
-	// Collision porte
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {
-		_hud->addRoom();
-		_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
-	}
+	if (_mainCharacter->getState() != ATTACKING) {
+		_garde->setWasHit(false, 0);
 
-	// Collision mur du haut
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
-	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {		// Collision mur du haut
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
-	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {					// Collision mur du bas
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - MOVEMENT_DISTANCE);
-	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f)) {		// Collision mur gauche
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
-	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {		// Collision mur droit
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
-	}
-
-	_lstSprites[0] = _mainCharacter->getSprite();
-	_lstSprites[1] = _garde->getSprite();
-	_lstSprites[2] = _minotaur->getSprite();
-
-	// Collision mur droit
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f)) {
-		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - 20, _mainCharacter->getSprite().getPosition().y);
-	}
-
-	// Collision ennemis
-
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _garde->getSprite(), 3.0f, 10.0f))
-	{
-		//enleve heart
-
-		if (!_toucher)
-		{
-			_toucher = true;
-			_hud->removeHeart(1);
-			if (_hud->getNbrVies() == 0)
-			{
-				cout << " mort";
-			}
-		}
-		else
-		{
-			_toucher = false;
+		// Collision porte
+		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {
+			_hud->addRoom();
+			_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
 		}
 
-		// Gestion de l'ordre d'affichage 
-		for (int i = 0; i < _lstSprites.size() - 1; i++) {
-			if (_collision.isPast(_lstSprites[i], _lstSprites[i + 1])) {
-				Sprite temp = _lstSprites[i];
-				_lstSprites[i] = _lstSprites[i + 1];
-				_lstSprites[i + 1] = temp;
-			}
-		}
+		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f))			// Collision mur du haut
+			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
+		else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f))				// Collision mur du bas
+			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y - MOVEMENT_DISTANCE);
+		else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _wall->getWallLeft(), 0.7f, 1.0f))	// Collision mur gauche
+			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x + MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
+		else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f))	// Collision mur droit
+			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
+	}
+	else if (!_mainCharacter->getHit() && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 4.0f, _garde->getSprite(), 2.0f, 5.0f) && !_garde->getWasHit()) {
+		_garde->setWasHit(true, 1);
+		_garde->setState(HIT);
+	}
 
-		// Si mort
-		if (_hud->getNbrVies() <= 0) {
-			_data->machine.addState(stateRef(new gameOverState(_data, _hud->getScore(), false)), true);
+	if (_garde->getState() == ATTACKING && !_mainCharacter->getWasHit() && _collision.checkSpriteCollision(_mainCharacter->getSprite(), _garde->getSprite())) {
+		_mainCharacter->setWasHit(true);
+		_hud->removeHeart();
+	}
+	else if (_garde->getState() != ATTACKING) {
+		_mainCharacter->setWasHit(false);
+	}
+
+	_lstSprites.clear();
+	_lstSprites.push_back(_mainCharacter->getSprite());
+	
+	if (_garde->getState() != DEAD) {
+		_lstSprites.push_back(_garde->getSprite());
+	}
+
+	// Gestion de l'ordre d'affichage 
+	for (int i = 0; i < (_lstSprites.size() - 1); i++) {
+		if (_collision.isPast(_lstSprites[i], _lstSprites[i + 1])) {
+			Sprite temp = _lstSprites[i];
+			_lstSprites[i] = _lstSprites[i + 1];
+			_lstSprites[i + 1] = temp;
 		}
+	}
+
+	// Si mort
+	if (_hud->getNbrVies() <= 0) {
+		_data->machine.addState(stateRef(new gameOverState(_data, _hud->getScore(), false)), true);
 	}
 }
 

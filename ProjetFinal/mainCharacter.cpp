@@ -63,7 +63,7 @@ void mainCharacter::update(float dt)
 
 		if (_animationIterator == _animationFramesIdleRight.size())		// Si à la fin du vecteur
 			_animationIterator = 0;
-		
+
 		if (_dir == RIGHT || _dir == TOP)								// Gauche ou droite
 			_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 		else
@@ -87,7 +87,7 @@ void mainCharacter::update(float dt)
 			}
 
 			_state = entityStates::IDLE;
-		} 
+		}
 		else if (_dir == RIGHT) {
 			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator));
 
@@ -99,6 +99,7 @@ void mainCharacter::update(float dt)
 			_clock.restart();
 		}
 	}
+	//else if (_clock.getElapsedTime().asSeconds() > SKELETE_ATTACK_TIME);
 }
 
 /// <summary>

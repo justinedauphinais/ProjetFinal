@@ -24,6 +24,7 @@ enum entityStates {		// Les états des entités
 	WALKING,
 	IDLE,
 	ATTACKING,
+	HIT,
 	DYING,
 	DEAD
 };
@@ -199,14 +200,29 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define SKELETON_ATTAQUE_FRAME_LEFT_17 "Ressources/MC/Attack/Left/17.png"
 #define SKELETON_ATTAQUE_FRAME_LEFT_18 "Ressources/MC/Attack/Left/18.png"
 
+//------ Store owner ------//
+#define STOREOWNER_IDLE_TIME 1.3f
+	// Idle
+#define STOREOWNER_IDLE_1 "Ressources/Map/Shop/NPC/1.png"
+#define STOREOWNER_IDLE_2 "Ressources/Map/Shop/NPC/2.png"
+#define STOREOWNER_IDLE_3 "Ressources/Map/Shop/NPC/3.png"
+#define STOREOWNER_IDLE_4 "Ressources/Map/Shop/NPC/4.png"
+#define STOREOWNER_IDLE_5 "Ressources/Map/Shop/NPC/5.png"
+#define STOREOWNER_IDLE_6 "Ressources/Map/Shop/NPC/6.png"
+#define STOREOWNER_IDLE_7 "Ressources/Map/Shop/NPC/7.png"
+#define STOREOWNER_IDLE_8 "Ressources/Map/Shop/NPC/8.png"
+#define STOREOWNER_IDLE_9 "Ressources/Map/Shop/NPC/9.png"
+
 //------ Guard Enemy ------//
 #define LIVE_ENEMY 3.0f
 #define ENEMY_IDLE_TIME 1.0f
 #define ENEMY_WALK_TIME 0.8f
+#define AGRO_RANGE 500
+#define LIFE_BAR_FILEPATH "Ressources/UI/enemy_life_bar.png"
+#define NBR_LIVES_GARD 2
 
-	// Idle left
 #define ENEMY_ATTACK_TIME 1.0f
-//Idle left
+	// Idle left
 #define ENEMY_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Idle/Left/1.png"
 #define ENEMY_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Idle/Left/2.png"
 #define ENEMY_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Idle/Left/3.png"
@@ -227,6 +243,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define ENEMY_ATTACK_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Attack 1/Right/4.png"
 #define ENEMY_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Attack 1/Right/5.png"
 #define ENEMY_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Attack 1/Right/6.png"
+#define ENEMY_ATTACK_FRAME_RIGHT_7 "Ressources/Enemies/Mud Guard/Attack 1/Right/7.png"
 
 	// Attack left
 #define ENEMY_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Attack 1/Left/1.png"
@@ -235,6 +252,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define ENEMY_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Attack 1/Left/4.png"
 #define ENEMY_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Attack 1/Left/5.png"
 #define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
+#define ENEMY_ATTACK_FRAME_LEFT_7 "Ressources/Enemies/Mud Guard/Attack 1/Left/7.png"
 
 	// Walking left
 #define ENEMY_WALKING_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Run/Left/1.png"
@@ -252,20 +270,31 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define ENEMY_WALKING_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Run/Right/5.png"
 #define ENEMY_WALKING_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Run/Right/6.png"
 
+	// Hit left
+#define ENEMY_HIT_TIME 0.5f
+#define ENEMY_HIT_LEFT_1 "Ressources/Enemies/Mud Guard/Damaged/Left/1.png"
+#define ENEMY_HIT_LEFT_2 "Ressources/Enemies/Mud Guard/Damaged/Left/2.png"
 
+	// Hit right
+#define ENEMY_HIT_RIGHT_1 "Ressources/Enemies/Mud Guard/Damaged/Right/1.png"
+#define ENEMY_HIT_RIGHT_2 "Ressources/Enemies/Mud Guard/Damaged/Right/2.png"
 
-//------ Store owner ------//
-#define STOREOWNER_IDLE_TIME 1.3f
-	// Idle
-#define STOREOWNER_IDLE_1 "Ressources/Map/Shop/NPC/1.png"
-#define STOREOWNER_IDLE_2 "Ressources/Map/Shop/NPC/2.png"
-#define STOREOWNER_IDLE_3 "Ressources/Map/Shop/NPC/3.png"
-#define STOREOWNER_IDLE_4 "Ressources/Map/Shop/NPC/4.png"
-#define STOREOWNER_IDLE_5 "Ressources/Map/Shop/NPC/5.png"
-#define STOREOWNER_IDLE_6 "Ressources/Map/Shop/NPC/6.png"
-#define STOREOWNER_IDLE_7 "Ressources/Map/Shop/NPC/7.png"
-#define STOREOWNER_IDLE_8 "Ressources/Map/Shop/NPC/8.png"
-#define STOREOWNER_IDLE_9 "Ressources/Map/Shop/NPC/9.png"
+	// Dying left
+#define ENEMY_DYING_TIME 2.0f
+#define ENEMY_DYING_LEFT_1 "Ressources/Enemies/Mud Guard/Death/Left/1.png"
+#define ENEMY_DYING_LEFT_2 "Ressources/Enemies/Mud Guard/Death/Left/2.png"
+#define ENEMY_DYING_LEFT_3 "Ressources/Enemies/Mud Guard/Death/Left/3.png"
+#define ENEMY_DYING_LEFT_4 "Ressources/Enemies/Mud Guard/Death/Left/4.png"
+#define ENEMY_DYING_LEFT_5 "Ressources/Enemies/Mud Guard/Death/Left/5.png"
+#define ENEMY_DYING_LEFT_6 "Ressources/Enemies/Mud Guard/Death/Left/6.png"
+
+	// Dying right
+#define ENEMY_DYING_RIGHT_1 "Ressources/Enemies/Mud Guard/Death/Right/1.png"
+#define ENEMY_DYING_RIGHT_2 "Ressources/Enemies/Mud Guard/Death/Right/2.png"
+#define ENEMY_DYING_RIGHT_3 "Ressources/Enemies/Mud Guard/Death/Right/3.png"
+#define ENEMY_DYING_RIGHT_4 "Ressources/Enemies/Mud Guard/Death/Right/4.png"
+#define ENEMY_DYING_RIGHT_5 "Ressources/Enemies/Mud Guard/Death/Right/5.png"
+#define ENEMY_DYING_RIGHT_6 "Ressources/Enemies/Mud Guard/Death/Right/6.png"
 
 //------ Minotaur ------//
 #define MINOTAUR_NBR_LIVES 5

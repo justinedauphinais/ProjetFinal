@@ -1,4 +1,5 @@
 #include "entity.h"
+#include <iostream>
 
 /// <summary>
 /// Get le nombre de vie de l'entité
@@ -19,12 +20,59 @@ entityStates entity::getState() const
 }
 
 /// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+directions entity::getDirection() const
+{
+	return _dir;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+bool entity::getWasHit() const
+{
+	return _wasHit;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+bool entity::getHit() const
+{
+	return _hit;
+}
+
+/// <summary>
 /// Set le state de l'entité
 /// </summary>
 /// <param name="state"></param>
 void entity::setState(entityStates state)
 {
 	_state = state;
+	_animationIterator = 0;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="value"></param>
+void entity::setWasHit(bool value, int nbLives)
+{
+	_wasHit = value;
+	_nbrLives -= nbLives;
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="value"></param>
+void entity::setHit(bool value)
+{
+	_hit = value;
 }
 
 /// <summary>
@@ -45,25 +93,51 @@ void entity::move(Keyboard::Key key, float time)
 		// Bouge le sprite
 		if (key == Keyboard::D) {
 			_sprite.move(MOVEMENT_DISTANCE, 0);
-			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator), true);
 			_dir = RIGHT;
 		}
 		else if (key == Keyboard::W) {
 			_sprite.move(0, -MOVEMENT_DISTANCE);
-			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator));
+			_sprite.setTexture(_animationFramesWalkingRight.at(_animationIterator), true);
 			_dir = TOP;
 		}
 		else if (key == Keyboard::A) {
 			_sprite.move(-MOVEMENT_DISTANCE, 0);
-			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
+			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator), true);
 			_dir = LEFT;
 		}
 		else if (key == Keyboard::S) {
 			_sprite.move(0, MOVEMENT_DISTANCE);
-			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator));
+			_sprite.setTexture(_animationFramesWalkingLeft.at(_animationIterator), true);
 			_dir = BOTTOM;
 		}
 
 		_clock.restart();
 	}
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="distance"></param>
+/// <param name="time"></param>
+/// <returns></returns>
+bool entity::move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY)
+{
+	if (_state != ATTACKING) {
+		if (abs(distance.x) > AGRO_RANGE && abs(distance.y) < AGRO_RANGE)
+			setState(IDLE);
+		else if (abs(distance.x) < hitDistanceX && abs(distance.y) < hitDistanceY && _attackClock.getElapsedTime().asSeconds() > 6)
+			return true;
+		else if (abs(distance.x) > abs(distance.y) && distance.x < 0)
+			move(Keyboard::A, ENEMY_WALK_TIME);
+		else if (abs(distance.x) > abs(distance.y))
+			move(Keyboard::D, ENEMY_WALK_TIME);
+		else if (distance.y < 0)
+			move(Keyboard::W, ENEMY_WALK_TIME);
+		else if (distance.y > 0)
+			move(Keyboard::S, ENEMY_WALK_TIME);
+	}
+
+	return false;
 }

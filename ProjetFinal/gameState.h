@@ -42,14 +42,15 @@ private:
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
 	gardeEnemy* _garde;
-	minotaur* _minotaur;
 
 	vector<Sprite> _lstSprites;		// Liste des sprites
 
 	collision _collision;
 	Clock _clock;
+
 	int _gameState;
-	bool _toucher = false;
+	int _moveX;
+	int _moveY;
 	
 public:
 	gameState(gameDataRef data);

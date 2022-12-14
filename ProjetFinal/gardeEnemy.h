@@ -11,9 +11,9 @@
 #include "game.h"
 #include "entity.h"
 class gardeEnemy : public entity {
-
 public:
 	gardeEnemy(gameDataRef data);
+	gardeEnemy(gameDataRef data, float posX, float posY);
 
 	void update(float dt);
 
