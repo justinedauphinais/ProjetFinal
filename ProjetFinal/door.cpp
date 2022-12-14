@@ -31,6 +31,7 @@ door::~door()
 /// </summary>
 void door::openDoor()
 {
+	_state = OPENED;
 	_sprite.setTexture(_data->assets.getTexture("opened door"));
 }
 

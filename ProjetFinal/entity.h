@@ -28,22 +28,15 @@ protected:
 	int _nbrLives;
 	int _totalLives;
 
-	bool _wasHit;
-	bool _hit;
-	bool _dead;
-
 	Clock _attackClock;
 
 public:
 	int getNbrLives() const;
 	entityStates getState() const;
 	directions getDirection() const;
-	bool getWasHit() const;
-	bool getHit() const;
 
 	void setState(entityStates state);
-	void setWasHit(bool value, int nbLives = 0);
-	void setHit(bool value);
+	bool removeHearts(int nbr = 1);
 
 	void move(Keyboard::Key key, float time);
 	bool move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY);

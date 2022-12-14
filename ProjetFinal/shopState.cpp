@@ -32,9 +32,10 @@ void shopState::init()
 {
 	_hud->addMoney(10);
 
-	_background.setTexture(_data->assets.getTexture("game background 2"));
+	_background.setTexture(_data->assets.getTexture("game background 1"));
 	_carpet.setTexture(_data->assets.getTexture("tapis"));
-	_carpet.setPosition(125, 175);
+	_carpet.setScale(0.8f, 0.8f);
+	_carpet.setPosition(150, 200);
 
 	_torches.push_back(torch(_data, 250, 40, 1));
 	_torches.push_back(torch(_data, 800, 40, 3));
@@ -42,8 +43,8 @@ void shopState::init()
 	_torches.push_back(torch(_data, 1600, 40, 0));
 
 	// Pointeurs
-	_wall = new wall(_data, 2);
-	_door = new door(_data, CLOSED, 2);
+	_wall = new wall(_data, 1);
+	_door = new door(_data, CLOSED, 1);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 	_shopOwner = new shopOwner(_data);
 	_cat = new cat(_data);
@@ -92,9 +93,6 @@ void shopState::handleInput()
 	{
 		if (event.type == Event::Closed)	// Ferme la fenêtre
 			_data->window.close();
-		else if (event.type == Event::KeyPressed) {			// Mouvement
-
-		}
 		else if (event.type == Event::KeyReleased) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
 		}
@@ -105,23 +103,9 @@ void shopState::handleInput()
 			}
 		}
 	}
-}
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="dt"></param>
-void shopState::update(float dt)
-{
-	_mainCharacter->update(dt);
-	_shopOwner->update(dt);
-	_cat->update(dt);
-
-	for (int i = 0; i < _torches.size(); i++)
-		_torches[i].update(dt);
 
 	#pragma region Mouvement personnage
-	_moveY = _moveX = 0;
+		_moveY = _moveX = 0;
 
 		if (Keyboard::isKeyPressed(Keyboard::D)) {
 			_mainCharacter->move(Keyboard::D, SKELETON_WALK_TIME);
@@ -143,10 +127,24 @@ void shopState::update(float dt)
 			_moveY += MOVEMENT_DISTANCE;
 		}
 	#pragma endregion
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dt"></param>
+void shopState::update(float dt)
+{
+	_mainCharacter->update(dt);
+	_shopOwner->update(dt);
+	_cat->update(dt);
+
+	for (int i = 0; i < _torches.size(); i++)
+		_torches[i].update(dt);
 
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {				// Collision porte
 		_hud->addRoom();
-		_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
+		_data->machine.addState(stateRef(new bossRoomState(_data, _hud)), true);
 	}
 	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {		// Collision mur du haut
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);

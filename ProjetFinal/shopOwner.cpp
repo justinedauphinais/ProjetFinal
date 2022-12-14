@@ -12,7 +12,7 @@ shopOwner::shopOwner(gameDataRef data)
 		_animationFramesIdleRight.push_back(_data->assets.getTexture("store owner idle " + to_string(i)));
 
 	_sprite.setTexture(_animationFramesIdleRight[_animationIterator]);
-	_sprite.setScale(6.0, 6.0);
+	_sprite.setScale(8.0, 8.0);
 	_sprite.setPosition(250, 250);
 }
 

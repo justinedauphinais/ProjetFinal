@@ -19,7 +19,7 @@ using namespace std;
 
 // Chaque state représentera une vraie fenêtre et hérite de state, car on implémentera
 // un init, update, draw et handleInput différent pour chaque fenêtre.
-class  introduction: public state
+class introductionState: public state
 {
 private:
 	gameDataRef _data;		// Chaque state recevra le pointeur sur la gameData qui
@@ -45,8 +45,8 @@ private:
 	Clock _clock;			// Horloge pour calculer le temps avant de faire apparaître les scores
 
 public:
-	introduction(gameDataRef data);	// Constructeur
-	~introduction();										// Destructeur
+	introductionState(gameDataRef data);	// Constructeur
+	~introductionState();										// Destructeur
 
 	void init();					// Initilise les variables
 

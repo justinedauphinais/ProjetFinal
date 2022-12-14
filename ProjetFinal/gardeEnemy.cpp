@@ -9,7 +9,6 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 	_data = data;
 	_animationIterator = 0;
 	_nbrLives = NBR_LIVES_GARD;
-	_dead = false;
 
 	// Idle right
 	for (int  i = 1; i < 5; i++)
@@ -43,6 +42,14 @@ gardeEnemy::gardeEnemy(gameDataRef data)
 	for (int i = 1; i < 3; i++)
 		_animationFramesDamagedRight.push_back(_data->assets.getTexture("enemy damaged frame right" + to_string(i)));
 
+	// Dying left
+	for (int i = 1; i <= 6; i++)
+		_animationFramesDyingLeft.push_back(_data->assets.getTexture("enemy dying frame left" + to_string(i)));
+
+	// Dying right
+	for (int i = 1; i <= 6; i++)
+		_animationFramesDyingRight.push_back(_data->assets.getTexture("enemy dying frame right" + to_string(i)));
+
 	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 
 	_sprite.setScale(8.0,8.0);
@@ -71,7 +78,6 @@ gardeEnemy::gardeEnemy(gameDataRef data, float posX, float posY)
 	_data = data;
 	_animationIterator = 0;
 	_nbrLives = NBR_LIVES_GARD;
-	_dead = false;
 
 	// Idle right
 	for (int i = 1; i < 5; i++)
@@ -171,30 +177,29 @@ void gardeEnemy::update(float dt)
 	}
 	else if (_clock.getElapsedTime().asSeconds() > ENEMY_HIT_TIME / _animationFramesDamagedRight.size() && (_state == entityStates::HIT)) {
 		if (_dir == RIGHT || _dir == TOP) {
-			_sprite.setTexture(_animationFramesDamagedRight[_animationIterator]);
+			_sprite.setTexture(_animationFramesDamagedRight[_animationIterator], true);
 		}
 		else {
-			_sprite.setTexture(_animationFramesDamagedLeft[_animationIterator]);
+			_sprite.setTexture(_animationFramesDamagedLeft[_animationIterator], true);
 		}
 
 		_animationIterator++;
 
-		if (_animationIterator >= _animationFramesDamagedLeft.size() && _nbrLives == 0) {
-			setState(DYING);
-		}
-		else if (_animationIterator >= _animationFramesDamagedLeft.size()) {
+		if (_animationIterator >= _animationFramesDamagedLeft.size())
 			setState(IDLE);
-		}
 
 		_clock.restart();
 	}
 	else if (_clock.getElapsedTime().asSeconds() > ENEMY_DYING_TIME / _animationFramesDyingRight.size() && (_state == entityStates::DYING)) {
 		if (_dir == RIGHT || _dir == TOP) {
-			_sprite.setTexture(_animationFramesDyingRight[_animationIterator]);
+			_sprite.setTexture(_animationFramesDyingRight[_animationIterator], true);
 		}
 		else {
-			_sprite.setTexture(_animationFramesDyingLeft[_animationIterator]);
+			_sprite.setTexture(_animationFramesDyingLeft[_animationIterator], true);
 		}
+
+		if (_animationIterator == 0)
+			_sprite.move(-80, -15);
 
 		_animationIterator++;
 

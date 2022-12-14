@@ -10,6 +10,8 @@
 #include "torch.h"
 #include "cat.h"
 #include "items.h"
+#include "shopOwner.h"
+#include "bossRoomState.h"
 
 /// <summary>
 /// 

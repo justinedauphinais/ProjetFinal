@@ -1,9 +1,3 @@
-/********************************************************************************************
-* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
-* Nom		: gameState.h																	*
-* Date		: 21/12/2022																	*
-* Description : ...																			*
-*********************************************************************************************/
 #pragma once
 
 #include <SFML/Graphics.hpp>
@@ -16,19 +10,15 @@
 #include "collision.h"
 #include "hud.h"
 #include "door.h"
-#include "gardeEnemy.h"
 #include "gameOverState.h"
-#include "shopState.h"
-#include "shopOwner.h"
-#include <iostream>
+#include "minotaur.h"
 
 using namespace sf;
 using namespace std;
 
 // Chaque state représentera une vraie fenêtre et hérite de state, car on implémentera
 // un init, update, draw et handleInput différent pour chaque fenêtre.
-class gameState : public state
-{
+class bossRoomState : public state {
 private:
 	gameDataRef _data;		// Chaque state recevra le pointeur sur la gameData qui
 							// donne accès au stateMachine, au RenderWindow, au
@@ -37,12 +27,9 @@ private:
 	Sprite _background;			// Le sprite pour la background
 
 	wall* _wall;					// Les murs
-	door* _door;					// La porte
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
-
-	vector<gardeEnemy> _gardes;		// Vecteur de garde
-	gardeEnemy* _garde;
+	minotaur* _minotaur;			// Le minotaur (boss)
 
 	vector<Sprite> _lstSprites;		// Liste des sprites
 
@@ -53,13 +40,9 @@ private:
 	int _moveX;
 	int _moveY;
 
-	bool _hasKey;
-	bool _hit;
-	
 public:
-	gameState(gameDataRef data);
-	gameState(gameDataRef data, hud*& hud);
-	~gameState();
+	bossRoomState(gameDataRef data, hud*& hud);
+	~bossRoomState();
 
 	void init();
 

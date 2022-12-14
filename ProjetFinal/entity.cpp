@@ -29,24 +29,6 @@ directions entity::getDirection() const
 }
 
 /// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-bool entity::getWasHit() const
-{
-	return _wasHit;
-}
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-bool entity::getHit() const
-{
-	return _hit;
-}
-
-/// <summary>
 /// Set le state de l'entité
 /// </summary>
 /// <param name="state"></param>
@@ -59,20 +41,12 @@ void entity::setState(entityStates state)
 /// <summary>
 /// 
 /// </summary>
-/// <param name="value"></param>
-void entity::setWasHit(bool value, int nbLives)
+/// <param name="nbr"></param>
+bool entity::removeHearts(int nbr)
 {
-	_wasHit = value;
-	_nbrLives -= nbLives;
-}
+	_nbrLives -= nbr;
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="value"></param>
-void entity::setHit(bool value)
-{
-	_hit = value;
+	return _nbrLives <= 0;
 }
 
 /// <summary>

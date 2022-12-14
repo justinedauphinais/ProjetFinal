@@ -1,4 +1,4 @@
-#include "introduction.h"
+#include "introductionState.h"
 #include "loadingState.h"
 
 /// <summary>
@@ -6,7 +6,7 @@
 /// </summary>
 /// <param name="data"></param>
 /// <param name="score"></param>
-introduction::introduction(gameDataRef data):_data(data)
+introductionState::introductionState(gameDataRef data):_data(data)
 {
 	_color = 0;
 }
@@ -14,11 +14,11 @@ introduction::introduction(gameDataRef data):_data(data)
 /// <summary>
 /// Destructeur
 /// </summary>
-introduction::~introduction()
+introductionState::~introductionState()
 {
 }
 
-void introduction::init()
+void introductionState::init()
 {
 	_data->assets.loadFont("pixel art font", PIXEL_ART_FONT);
 
@@ -64,7 +64,7 @@ void introduction::init()
 /// <summary>
 /// Initialise les différents objets du state
 /// </summary>
-void introduction::handleInput()
+void introductionState::handleInput()
 {
 	Event event;
 	while (_data->window.pollEvent(event))
@@ -74,6 +74,12 @@ void introduction::handleInput()
 		else if (_data->input.isSpriteClicked(_suivantButton, Mouse::Left, _data->window))
 		{
 			_data->machine.addState(stateRef(new loadingState(_data)), true);
+		}
+		else if (Mouse::isButtonPressed(Mouse::Left)) {
+			_data->assets.loadTexture("main continuer button", NEXT_BUTTON_FILEPATH);
+			_suivantButton.setTexture(_data->assets.getTexture("main continuer button"));
+			_suivantButton.setScale(5.0f, 5.0f);
+			_suivantButton.setPosition(((SCREEN_WIDTH / 2) - (_suivantButton.getGlobalBounds().width) / 2 + 600), ((SCREEN_HEIGHT / 2) - (_suivantButton.getGlobalBounds().height / 2 - 400)));
 		}
 		//else if (Mouse::isButtonPressed(Mouse::Left)) {		// Si clique, skip le temps pour faire apparaître les textes et boutons
 		//	_color = 255;
@@ -90,7 +96,7 @@ void introduction::handleInput()
 	}
 }
 
-void introduction::update(float dt)
+void introductionState::update(float dt)
 {
 	if (_color < 255) {
 		_titreText.setFillColor(Color::Color(255, 0, 0, _color++));
@@ -114,7 +120,7 @@ void introduction::update(float dt)
 	}
 }
 
-void introduction::draw(float dt) const
+void introductionState::draw(float dt) const
 {
 	_data->window.clear();
 	_data->window.draw(_titreText);

@@ -21,8 +21,6 @@ loadingState::~loadingState()
 /// </summary>
 void loadingState::init()
 {
-
-
 	// Progress bar
 	_data->assets.loadTexture("progress bar 1", LOADING_FRAME_1);
 	_data->assets.loadTexture("progress bar 2", LOADING_FRAME_2);
@@ -37,32 +35,10 @@ void loadingState::init()
 	_progressBarSprite.setScale(5.0f, 5.0f);
 	_progressBarSprite.setPosition((SCREEN_WIDTH / 2) - (_progressBarSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_progressBarSprite.getGlobalBounds().height / 2));
 
-
-#pragma region animation Squelette Loading
-	// Skeleton loading
-	_data->assets.loadTexture("animation skeleton1", LOADING_SKELETON_FAME_1);
-	_data->assets.loadTexture("animation skeleton2", LOADING_SKELETON_FAME_2);
-	_data->assets.loadTexture("animation skeleton3", LOADING_SKELETON_FAME_3);
-	_data->assets.loadTexture("animation skeleton4", LOADING_SKELETON_FAME_4);
-	_data->assets.loadTexture("animation skeleton5", LOADING_SKELETON_FAME_5);
-	_data->assets.loadTexture("animation skeleton6", LOADING_SKELETON_FAME_6);
-	_data->assets.loadTexture("animation skeleton7", LOADING_SKELETON_FAME_7);
-	_data->assets.loadTexture("animation skeleton8", LOADING_SKELETON_FAME_8);
-
-	for (int i = 1; i <= 8; i++)
-	{
-		_animationSkeletonLoading.push_back(_data->assets.getTexture("animation skeleton" + to_string(i)));
-	}
-
-	_skeletonLoadingSprite.setTexture(_animationSkeletonLoading.at(_frameSkeletonIterator));
-	_skeletonLoadingSprite.setScale(7.0f, 7.0f);
-	_skeletonLoadingSprite.setPosition((SCREEN_WIDTH / 2) - (_skeletonLoadingSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_skeletonLoadingSprite.getGlobalBounds().height / 2 + 80));
-
-#pragma endregion
-
 	// Background
 	_data->assets.loadTexture("game background 1", GAME_BACKGROUND_TEMP_1);
 	_data->assets.loadTexture("game background 2", GAME_BACKGROUND_TEMP_2);
+	_data->assets.loadTexture("game background 3", GAME_BACKGROUND_TEMP_3);
 
 	// Pop up
 	_data->assets.loadTexture("pop up", POP_UP);
@@ -77,6 +53,10 @@ void loadingState::init()
 	_data->assets.loadTexture("wall down 2", GAME_FOREGROUND_UP_DOWN_TEMP_2);
 	_data->assets.loadTexture("wall left 2", GAME_FOREGROUND_LEFT_RIGHT_TEMP_2);
 	_data->assets.loadTexture("wall right 2", GAME_FOREGROUND_LEFT_RIGHT_TEMP_2);
+	_data->assets.loadTexture("wall up 3", GAME_FOREGROUND_UP_DOWN_TEMP_3);
+	_data->assets.loadTexture("wall down 3", GAME_FOREGROUND_UP_DOWN_TEMP_3);
+	_data->assets.loadTexture("wall left 3", GAME_FOREGROUND_LEFT_RIGHT_TEMP_3);
+	_data->assets.loadTexture("wall right 3", GAME_FOREGROUND_LEFT_RIGHT_TEMP_3);
 
 	// Hud
 	_data->assets.loadTexture("life hearts", GAME_HEARTS_FILEPATH);
@@ -253,6 +233,90 @@ void loadingState::init()
 
 	#pragma endregion
 
+	// Minotaur
+	#pragma region Minotaur
+		// Idle
+		_data->assets.loadTexture("minotaur idle frame right 1", MINOTAUR_IDLE_FRAME_RIGHT_1);
+		_data->assets.loadTexture("minotaur idle frame right 2", MINOTAUR_IDLE_FRAME_RIGHT_2);
+		_data->assets.loadTexture("minotaur idle frame right 3", MINOTAUR_IDLE_FRAME_RIGHT_3);
+		_data->assets.loadTexture("minotaur idle frame right 4", MINOTAUR_IDLE_FRAME_RIGHT_4);
+		_data->assets.loadTexture("minotaur idle frame right 5", MINOTAUR_IDLE_FRAME_RIGHT_5);
+
+		_data->assets.loadTexture("minotaur idle frame left 1", MINOTAUR_IDLE_FRAME_LEFT_1);
+		_data->assets.loadTexture("minotaur idle frame left 2", MINOTAUR_IDLE_FRAME_LEFT_2);
+		_data->assets.loadTexture("minotaur idle frame left 3", MINOTAUR_IDLE_FRAME_LEFT_3);
+		_data->assets.loadTexture("minotaur idle frame left 4", MINOTAUR_IDLE_FRAME_LEFT_4);
+		_data->assets.loadTexture("minotaur idle frame left 5", MINOTAUR_IDLE_FRAME_LEFT_5);
+
+		// Walking
+		_data->assets.loadTexture("minotaur walking frame right 1", MINOTAUR_WALKING_FRAME_RIGHT_1);
+		_data->assets.loadTexture("minotaur walking frame right 2", MINOTAUR_WALKING_FRAME_RIGHT_2);
+		_data->assets.loadTexture("minotaur walking frame right 3", MINOTAUR_WALKING_FRAME_RIGHT_3);
+		_data->assets.loadTexture("minotaur walking frame right 4", MINOTAUR_WALKING_FRAME_RIGHT_4);
+		_data->assets.loadTexture("minotaur walking frame right 5", MINOTAUR_WALKING_FRAME_RIGHT_5);
+		_data->assets.loadTexture("minotaur walking frame right 6", MINOTAUR_WALKING_FRAME_RIGHT_6);
+
+		_data->assets.loadTexture("minotaur walking frame left 1", MINOTAUR_WALKING_FRAME_LEFT_1);
+		_data->assets.loadTexture("minotaur walking frame left 2", MINOTAUR_WALKING_FRAME_LEFT_2);
+		_data->assets.loadTexture("minotaur walking frame left 3", MINOTAUR_WALKING_FRAME_LEFT_3);
+		_data->assets.loadTexture("minotaur walking frame left 4", MINOTAUR_WALKING_FRAME_LEFT_4);
+		_data->assets.loadTexture("minotaur walking frame left 5", MINOTAUR_WALKING_FRAME_LEFT_5);
+		_data->assets.loadTexture("minotaur walking frame left 6", MINOTAUR_WALKING_FRAME_LEFT_6);
+
+		// Attack 1
+		_data->assets.loadTexture("minotaur attack 1 frame right 1", MINOTAUR_ATTACK_FRAME_RIGHT_1);
+		_data->assets.loadTexture("minotaur attack 1 frame right 2", MINOTAUR_ATTACK_FRAME_RIGHT_2);
+		_data->assets.loadTexture("minotaur attack 1 frame right 3", MINOTAUR_ATTACK_FRAME_RIGHT_3);
+		_data->assets.loadTexture("minotaur attack 1 frame right 4", MINOTAUR_ATTACK_FRAME_RIGHT_4);
+		_data->assets.loadTexture("minotaur attack 1 frame right 5", MINOTAUR_ATTACK_FRAME_RIGHT_5);
+		_data->assets.loadTexture("minotaur attack 1 frame right 6", MINOTAUR_ATTACK_FRAME_RIGHT_6);
+		_data->assets.loadTexture("minotaur attack 1 frame right 7", MINOTAUR_ATTACK_FRAME_RIGHT_7);
+		_data->assets.loadTexture("minotaur attack 1 frame right 8", MINOTAUR_ATTACK_FRAME_RIGHT_8);
+		_data->assets.loadTexture("minotaur attack 1 frame right 9", MINOTAUR_ATTACK_FRAME_RIGHT_9);
+		_data->assets.loadTexture("minotaur attack 1 frame right 10", MINOTAUR_ATTACK_FRAME_RIGHT_10);
+
+		_data->assets.loadTexture("minotaur attack 1 frame left 1", MINOTAUR_ATTACK_FRAME_LEFT_1);
+		_data->assets.loadTexture("minotaur attack 1 frame left 2", MINOTAUR_ATTACK_FRAME_LEFT_2);
+		_data->assets.loadTexture("minotaur attack 1 frame left 3", MINOTAUR_ATTACK_FRAME_LEFT_3);
+		_data->assets.loadTexture("minotaur attack 1 frame left 4", MINOTAUR_ATTACK_FRAME_LEFT_4);
+		_data->assets.loadTexture("minotaur attack 1 frame left 5", MINOTAUR_ATTACK_FRAME_LEFT_5);
+		_data->assets.loadTexture("minotaur attack 1 frame left 6", MINOTAUR_ATTACK_FRAME_LEFT_6);
+		_data->assets.loadTexture("minotaur attack 1 frame left 7", MINOTAUR_ATTACK_FRAME_LEFT_7);
+		_data->assets.loadTexture("minotaur attack 1 frame left 8", MINOTAUR_ATTACK_FRAME_LEFT_8);
+		_data->assets.loadTexture("minotaur attack 1 frame left 9", MINOTAUR_ATTACK_FRAME_LEFT_9);
+		_data->assets.loadTexture("minotaur attack 1 frame left 10", MINOTAUR_ATTACK_FRAME_LEFT_10);
+
+		// Damaged
+		_data->assets.loadTexture("minotaur damaged frame left 1", MINOTAUR_HIT_LEFT_1);
+		_data->assets.loadTexture("minotaur damaged frame left 2", MINOTAUR_HIT_LEFT_2);
+		_data->assets.loadTexture("minotaur damaged frame left 3", MINOTAUR_HIT_LEFT_3);
+		_data->assets.loadTexture("minotaur damaged frame left 4", MINOTAUR_HIT_LEFT_4);
+
+		_data->assets.loadTexture("minotaur damaged frame right 1", MINOTAUR_HIT_RIGHT_1);
+		_data->assets.loadTexture("minotaur damaged frame right 2", MINOTAUR_HIT_RIGHT_2);
+		_data->assets.loadTexture("minotaur damaged frame right 3", MINOTAUR_HIT_RIGHT_3);
+		_data->assets.loadTexture("minotaur damaged frame right 4", MINOTAUR_HIT_RIGHT_4);
+
+		// Dying
+		_data->assets.loadTexture("minotaur dying frame left 1", MINOTAUR_DYING_LEFT_1);
+		_data->assets.loadTexture("minotaur dying frame left 2", MINOTAUR_DYING_LEFT_2);
+		_data->assets.loadTexture("minotaur dying frame left 3", MINOTAUR_DYING_LEFT_3);
+		_data->assets.loadTexture("minotaur dying frame left 4", MINOTAUR_DYING_LEFT_4);
+		_data->assets.loadTexture("minotaur dying frame left 5", MINOTAUR_DYING_LEFT_5);
+		_data->assets.loadTexture("minotaur dying frame left 6", MINOTAUR_DYING_LEFT_6);
+		_data->assets.loadTexture("minotaur dying frame left 7", MINOTAUR_DYING_LEFT_7);
+		_data->assets.loadTexture("minotaur dying frame left 8", MINOTAUR_DYING_LEFT_8);
+
+		_data->assets.loadTexture("minotaur dying frame right 1", MINOTAUR_DYING_RIGHT_1);
+		_data->assets.loadTexture("minotaur dying frame right 2", MINOTAUR_DYING_RIGHT_2);
+		_data->assets.loadTexture("minotaur dying frame right 3", MINOTAUR_DYING_RIGHT_3);
+		_data->assets.loadTexture("minotaur dying frame right 4", MINOTAUR_DYING_RIGHT_4);
+		_data->assets.loadTexture("minotaur dying frame right 5", MINOTAUR_DYING_RIGHT_5);
+		_data->assets.loadTexture("minotaur dying frame right 6", MINOTAUR_DYING_RIGHT_6);
+		_data->assets.loadTexture("minotaur dying frame right 7", MINOTAUR_DYING_RIGHT_7);
+		_data->assets.loadTexture("minotaur dying frame right 8", MINOTAUR_DYING_RIGHT_8);
+	#pragma endregion
+
 	// Store owner
 	#pragma region Store owner
 		// Idle
@@ -281,35 +345,6 @@ void loadingState::init()
 	// Items
 	_data->assets.loadTexture("big life potion", BIG_LIFE_POTION);
 
-	// Minotaur
-	#pragma region Minotaur
-		// Idle
-		_data->assets.loadTexture("minotaur idle frame right 1", MINOTAUR_IDLE_FRAME_RIGHT_1);
-		_data->assets.loadTexture("minotaur idle frame right 2", MINOTAUR_IDLE_FRAME_RIGHT_2);
-		_data->assets.loadTexture("minotaur idle frame right 3", MINOTAUR_IDLE_FRAME_RIGHT_3);
-		_data->assets.loadTexture("minotaur idle frame right 4", MINOTAUR_IDLE_FRAME_RIGHT_4);
-		_data->assets.loadTexture("minotaur idle frame right 5", MINOTAUR_IDLE_FRAME_RIGHT_5);
-		_data->assets.loadTexture("minotaur idle frame left 1", MINOTAUR_IDLE_FRAME_LEFT_1);
-		_data->assets.loadTexture("minotaur idle frame left 2", MINOTAUR_IDLE_FRAME_LEFT_2);
-		_data->assets.loadTexture("minotaur idle frame left 3", MINOTAUR_IDLE_FRAME_LEFT_3);
-		_data->assets.loadTexture("minotaur idle frame left 4", MINOTAUR_IDLE_FRAME_LEFT_4);
-		_data->assets.loadTexture("minotaur idle frame left 5", MINOTAUR_IDLE_FRAME_LEFT_5);
-
-		// Walking
-		_data->assets.loadTexture("minotaur walking frame right 1", MINOTAUR_WALKING_FRAME_RIGHT_1);
-		_data->assets.loadTexture("minotaur walking frame right 2", MINOTAUR_WALKING_FRAME_RIGHT_2);
-		_data->assets.loadTexture("minotaur walking frame right 3", MINOTAUR_WALKING_FRAME_RIGHT_3);
-		_data->assets.loadTexture("minotaur walking frame right 4", MINOTAUR_WALKING_FRAME_RIGHT_4);
-		_data->assets.loadTexture("minotaur walking frame right 5", MINOTAUR_WALKING_FRAME_RIGHT_5);
-		_data->assets.loadTexture("minotaur walking frame right 6", MINOTAUR_WALKING_FRAME_RIGHT_6);
-		_data->assets.loadTexture("minotaur walking frame left 1", MINOTAUR_WALKING_FRAME_LEFT_1);
-		_data->assets.loadTexture("minotaur walking frame left 2", MINOTAUR_WALKING_FRAME_LEFT_2);
-		_data->assets.loadTexture("minotaur walking frame left 3", MINOTAUR_WALKING_FRAME_LEFT_3);
-		_data->assets.loadTexture("minotaur walking frame left 4", MINOTAUR_WALKING_FRAME_LEFT_4);
-		_data->assets.loadTexture("minotaur walking frame left 5", MINOTAUR_WALKING_FRAME_LEFT_5);
-		_data->assets.loadTexture("minotaur walking frame left 6", MINOTAUR_WALKING_FRAME_LEFT_6);
-	#pragma endregion
-
 	// Porte
 	_data->assets.loadTexture("closed door 1", GAME_DOOR_CLOSED_1);
 	_data->assets.loadTexture("closed door 2", GAME_DOOR_CLOSED_2);
@@ -320,6 +355,28 @@ void loadingState::init()
 	_data->assets.loadTexture("torch frame 2", TORCH_FRAME_2);
 	_data->assets.loadTexture("torch frame 3", TORCH_FRAME_3);
 	_data->assets.loadTexture("torch frame 4", TORCH_FRAME_4);
+
+	#pragma region animation Squelette Loading
+		// Skeleton loading
+		_data->assets.loadTexture("animation skeleton1", LOADING_SKELETON_FAME_1);
+		_data->assets.loadTexture("animation skeleton2", LOADING_SKELETON_FAME_2);
+		_data->assets.loadTexture("animation skeleton3", LOADING_SKELETON_FAME_3);
+		_data->assets.loadTexture("animation skeleton4", LOADING_SKELETON_FAME_4);
+		_data->assets.loadTexture("animation skeleton5", LOADING_SKELETON_FAME_5);
+		_data->assets.loadTexture("animation skeleton6", LOADING_SKELETON_FAME_6);
+		_data->assets.loadTexture("animation skeleton7", LOADING_SKELETON_FAME_7);
+		_data->assets.loadTexture("animation skeleton8", LOADING_SKELETON_FAME_8);
+
+		for (int i = 1; i <= 8; i++)
+		{
+			_animationSkeletonLoading.push_back(_data->assets.getTexture("animation skeleton" + to_string(i)));
+		}
+
+		_skeletonLoadingSprite.setTexture(_animationSkeletonLoading.at(_frameSkeletonIterator));
+		_skeletonLoadingSprite.setScale(7.0f, 7.0f);
+		_skeletonLoadingSprite.setPosition((SCREEN_WIDTH / 2) - (_skeletonLoadingSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_skeletonLoadingSprite.getGlobalBounds().height / 2 + 80));
+
+	#pragma endregion
 
 	// Background
 	_backgroundSprite.setFillColor(Color::Black);

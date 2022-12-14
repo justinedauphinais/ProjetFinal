@@ -1,72 +1,45 @@
-#include "gameState.h"
-
-/// <summary>
-/// Constructeur
-/// </summary>
-/// <param name="data"></param>
-gameState::gameState(gameDataRef data) : _data(data)
-{
-	_mainCharacter = nullptr;
-	_garde = nullptr;
-	_wall = nullptr;
-	_hud = nullptr;
-	_door = nullptr;
-	_gameState = gameStates::loading;
-}
+#include "bossRoomState.h"
 
 /// <summary>
 /// 
 /// </summary>
 /// <param name="data"></param>
-/// <param name="character"></param>
-gameState::gameState(gameDataRef data, hud*& hud) : _data(data)
+/// <param name="hud"></param>
+bossRoomState::bossRoomState(gameDataRef data, hud*& hud) : _data(data)
 {
 	_hud = hud;
 	_mainCharacter = nullptr;
 	_wall = nullptr;
-	_door = nullptr;
-	_garde = nullptr;
+	_minotaur = nullptr;
 }
 
 /// <summary>
-/// Destructeur
+/// 
 /// </summary>
-gameState::~gameState()
+bossRoomState::~bossRoomState()
 {
 	delete _mainCharacter;
-	delete _garde;
+	delete _minotaur;
 	delete _wall;
-	delete _door;
 }
 
 /// <summary>
-/// Initilisae les différents objets du state
+/// 
 /// </summary>
-void gameState::init()
+void bossRoomState::init()
 {
-	_background.setTexture(_data->assets.getTexture("game background 1"));
-	_hasKey = true;
-
-	// Pointeurs
-	if (_hud == nullptr) 
-		_hud = new hud(_data, 1, 0);
+	_background.setTexture(_data->assets.getTexture("game background 2"));
 
 	_mainCharacter = new mainCharacter(_data);
-	_garde = new gardeEnemy(_data, 200, 200);
-	_wall = new wall(_data);
-	_door = new door(_data);
+	_minotaur = new minotaur(_data);
+	_wall = new wall(_data, 2);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
-
-	_lstSprites.push_back(_mainCharacter->getSprite());
-	_lstSprites.push_back(_garde->getSprite());
-
-	_gameState = gameStates::ready;
 }
 
 /// <summary>
-/// Réagit aux différents inputs de l'utilisateur
+/// 
 /// </summary>
-void gameState::handleInput()
+void bossRoomState::handleInput()
 {
 	Event event;
 	while (_data->window.pollEvent(event))
@@ -107,32 +80,21 @@ void gameState::handleInput()
 }
 
 /// <summary>
-/// Mets-à-jour les objets du state
+/// 
 /// </summary>
 /// <param name="dt"></param>
-void gameState::update(float dt)
+void bossRoomState::update(float dt)
 {
-	if (_garde->move(_collision.getDistance(_mainCharacter->getSprite(), _garde->getSprite()), dt, 200, 75))
-		_garde->attack();
+	if (_minotaur->move(_collision.getDistance(_mainCharacter->getSprite(), _minotaur->getSprite()), dt, 200, 75))
+		_minotaur->attack();
 
 	_mainCharacter->update(dt);
-	_garde->update(dt);
+	_minotaur->update(dt);
 
+	if (_minotaur->getState() != DEAD) {
+		_lstSprites.push_back(_minotaur->getSprite());
+	}
 	if (_mainCharacter->getState() != ATTACKING) {
-		_hit = false;
-
-		// Collision porte
-		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f) && _hasKey) {
-			if (_door->getState() == CLOSED) {
-				_door->openDoor();
-				_clock.restart();
-			}
-			else if (_clock.getElapsedTime().asSeconds() > 0.3f) {
-				_hud->addRoom();
-				_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
-			}
-		}
-
 		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f))			// Collision mur du haut
 			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
 		else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f))				// Collision mur du bas
@@ -142,29 +104,21 @@ void gameState::update(float dt)
 		else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f))	// Collision mur droit
 			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 7.0f, 4.0f, _garde->getSprite(), 2.0f, 5.0f) && !_hit) {
-		_hit = true;
-
-		if (_garde->removeHearts()) {
-			_garde->setState(DYING);
-			_hud->addScore();
-			_hud->addMoney(2);
-			_hasKey = true;
-		}
-		else {
-			_garde->setState(HIT);
-		}
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 7.0f, 4.0f, _minotaur->getSprite(), 2.0f, 5.0f) && 
+		_minotaur->getState() != HIT && _minotaur->getState() != DEAD && _minotaur->getState() != DYING) {
+		_minotaur->removeHearts();
+		_minotaur->setState(HIT);
 	}
 
-	if (_garde->getState() == ATTACKING && !_mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 3.0f, _garde->getSprite(), 3.0f, 2.0f)) {
+	if (_minotaur->getState() == ATTACKING && _mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 3.0f, _minotaur->getSprite(), 3.0f, 2.0f)) {
 		_hud->removeHeart();
 	}
 
 	_lstSprites.clear();
 	_lstSprites.push_back(_mainCharacter->getSprite());
-	if (_garde->getState() != DEAD) {
-		_lstSprites.push_back(_garde->getSprite());
-	}
+	
+	if (_minotaur->getState() != DEAD) 
+		_lstSprites.push_back(_minotaur->getSprite());
 
 	// Gestion de l'ordre d'affichage 
 	for (int i = 0; i < (_lstSprites.size() - 1); i++) {
@@ -182,15 +136,14 @@ void gameState::update(float dt)
 }
 
 /// <summary>
-/// Clear, dessine le background et display la fenêtre
+/// 
 /// </summary>
 /// <param name="dt"></param>
-void gameState::draw(float dt) const
+void bossRoomState::draw(float dt) const
 {
 	_data->window.clear();
 	_data->window.draw(_background);
 	_wall->drawBackWall();
-	_door->draw();
 
 	for (int i = 0; i < _lstSprites.size(); i++) {
 		_data->window.draw(_lstSprites[i]);

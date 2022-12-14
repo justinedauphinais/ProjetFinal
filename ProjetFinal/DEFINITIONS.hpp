@@ -78,9 +78,12 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define GAME_BACKGROUND_TEMP_1 "Ressources/Map/Contour_map.png"
 #define GAME_FOREGROUND_LEFT_RIGHT_TEMP_1 "Ressources/Map/wall.png"
 #define GAME_FOREGROUND_UP_DOWN_TEMP_1 "Ressources/Map/wall_back.png"
-#define GAME_BACKGROUND_TEMP_2 "Ressources/Map/Contour_map_3.png"
-#define GAME_FOREGROUND_LEFT_RIGHT_TEMP_2 "Ressources/Map/wall_3.png"
-#define GAME_FOREGROUND_UP_DOWN_TEMP_2 "Ressources/Map/wall_back_3.png"
+#define GAME_BACKGROUND_TEMP_2 "Ressources/Map/Contour_map_2.png"
+#define GAME_FOREGROUND_LEFT_RIGHT_TEMP_2 "Ressources/Map/wall_2.png"
+#define GAME_FOREGROUND_UP_DOWN_TEMP_2 "Ressources/Map/wall_back_2.png"
+#define GAME_BACKGROUND_TEMP_3 "Ressources/Map/Contour_map_3.png"
+#define GAME_FOREGROUND_LEFT_RIGHT_TEMP_3 "Ressources/Map/wall_3.png"
+#define GAME_FOREGROUND_UP_DOWN_TEMP_3 "Ressources/Map/wall_back_3.png"
 #define POP_UP "Ressources/UI/pop_up.png"
 #define ACCEPT_PURCHASE "Ressources/UI/accept.png"
 	// Hud
@@ -118,7 +121,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define NBR_LIVES 5
 #define SKELETON_WALK_TIME 0.6f
 #define SKELETON_IDLE_TIME 1.0f
-#define SKELETE_ATTACK_TIME 1.2f
+#define SKELETE_ATTACK_TIME 0.6f
 #define MOVEMENT_DISTANCE 20
 
 	// Walk right
@@ -286,9 +289,9 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define ENEMY_WALKING_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Run/Right/6.png"
 
 	// Hit left
-#define ENEMY_HIT_TIME 0.5f
-#define ENEMY_HIT_LEFT_1 "Ressources/Enemies/Mud Guard/Damaged/Left/1.png"
-#define ENEMY_HIT_LEFT_2 "Ressources/Enemies/Mud Guard/Damaged/Left/2.png"
+#define ENEMY_HIT_TIME 1.0f
+#define ENEMY_HIT_LEFT_1 "Ressources/Enemies/Mud Guard/Damaged/Left/2.png"
+#define ENEMY_HIT_LEFT_2 "Ressources/Enemies/Mud Guard/Damaged/Left/1.png"
 
 	// Hit right
 #define ENEMY_HIT_RIGHT_1 "Ressources/Enemies/Mud Guard/Damaged/Right/1.png"
@@ -323,6 +326,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define MINOTAUR_IDLE_FRAME_RIGHT_3 "Ressources/Boss/Idle/Right/3.png"
 #define MINOTAUR_IDLE_FRAME_RIGHT_4 "Ressources/Boss/Idle/Right/4.png"
 #define MINOTAUR_IDLE_FRAME_RIGHT_5 "Ressources/Boss/Idle/Right/5.png"
+
 #define MINOTAUR_IDLE_FRAME_LEFT_1 "Ressources/Boss/Idle/Left/1.png"
 #define MINOTAUR_IDLE_FRAME_LEFT_2 "Ressources/Boss/Idle/Left/2.png"
 #define MINOTAUR_IDLE_FRAME_LEFT_3 "Ressources/Boss/Idle/Left/3.png"
@@ -336,9 +340,65 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define MINOTAUR_WALKING_FRAME_RIGHT_4 "Ressources/Boss/Run/Right/4.png"
 #define MINOTAUR_WALKING_FRAME_RIGHT_5 "Ressources/Boss/Run/Right/5.png"
 #define MINOTAUR_WALKING_FRAME_RIGHT_6 "Ressources/Boss/Run/Right/6.png"
+
 #define MINOTAUR_WALKING_FRAME_LEFT_1 "Ressources/Boss/Run/Left/1.png"
 #define MINOTAUR_WALKING_FRAME_LEFT_2 "Ressources/Boss/Run/Left/2.png"
 #define MINOTAUR_WALKING_FRAME_LEFT_3 "Ressources/Boss/Run/Left/3.png"
 #define MINOTAUR_WALKING_FRAME_LEFT_4 "Ressources/Boss/Run/Left/4.png"
 #define MINOTAUR_WALKING_FRAME_LEFT_5 "Ressources/Boss/Run/Left/5.png"
 #define MINOTAUR_WALKING_FRAME_LEFT_6 "Ressources/Boss/Run/Left/6.png"
+
+	// Attack 1
+#define MINOTAUR_ATTACK_FRAME_RIGHT_1 "Ressources/Boss/Attack1/Right/1.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_2 "Ressources/Boss/Attack1/Right/2.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_3 "Ressources/Boss/Attack1/Right/3.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_4 "Ressources/Boss/Attack1/Right/4.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_5 "Ressources/Boss/Attack1/Right/5.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_6 "Ressources/Boss/Attack1/Right/6.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_7 "Ressources/Boss/Attack1/Right/7.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_8 "Ressources/Boss/Attack1/Right/8.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_9 "Ressources/Boss/Attack1/Right/9.png"
+#define MINOTAUR_ATTACK_FRAME_RIGHT_10 "Ressources/Boss/Attack1/Right/10.png"
+
+#define MINOTAUR_ATTACK_FRAME_LEFT_1 "Ressources/Boss/Attack1/Left/1.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_2 "Ressources/Boss/Attack1/Left/2.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_3 "Ressources/Boss/Attack1/Left/3.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_4 "Ressources/Boss/Attack1/Left/4.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_5 "Ressources/Boss/Attack1/Left/5.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_6 "Ressources/Boss/Attack1/Left/6.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_7 "Ressources/Boss/Attack1/Left/7.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_8 "Ressources/Boss/Attack1/Left/8.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_9 "Ressources/Boss/Attack1/Left/9.png"
+#define MINOTAUR_ATTACK_FRAME_LEFT_10 "Ressources/Boss/Attack1/Left/10.png"
+
+	// Hit
+#define MINOTAUR_HIT_TIME 1.2f
+#define MINOTAUR_HIT_LEFT_1 "Ressources/Boss/Hurt/Left/1.png"
+#define MINOTAUR_HIT_LEFT_2 "Ressources/Boss/Hurt/Left/2.png"
+#define MINOTAUR_HIT_LEFT_3 "Ressources/Boss/Hurt/Left/3.png"
+#define MINOTAUR_HIT_LEFT_4 "Ressources/Boss/Hurt/Left/4.png"
+
+#define MINOTAUR_HIT_RIGHT_1 "Ressources/Boss/Hurt/Right/1.png"
+#define MINOTAUR_HIT_RIGHT_2 "Ressources/Boss/Hurt/Right/2.png"
+#define MINOTAUR_HIT_RIGHT_3 "Ressources/Boss/Hurt/Right/3.png"
+#define MINOTAUR_HIT_RIGHT_4 "Ressources/Boss/Hurt/Right/4.png"
+
+	// Dying
+#define MINOTAUR_DYING_TIME 1.50f
+#define MINOTAUR_DYING_LEFT_1 "Ressources/Boss/Death/Left/1.png"
+#define MINOTAUR_DYING_LEFT_2 "Ressources/Boss/Death/Left/2.png"
+#define MINOTAUR_DYING_LEFT_3 "Ressources/Boss/Death/Left/3.png"
+#define MINOTAUR_DYING_LEFT_4 "Ressources/Boss/Death/Left/4.png"
+#define MINOTAUR_DYING_LEFT_5 "Ressources/Boss/Death/Left/5.png"
+#define MINOTAUR_DYING_LEFT_6 "Ressources/Boss/Death/Left/6.png"
+#define MINOTAUR_DYING_LEFT_7 "Ressources/Boss/Death/Left/7.png"
+#define MINOTAUR_DYING_LEFT_8 "Ressources/Boss/Death/Left/8.png"
+
+#define MINOTAUR_DYING_RIGHT_1 "Ressources/Boss/Death/Right/1.png"
+#define MINOTAUR_DYING_RIGHT_2 "Ressources/Boss/Death/Right/2.png"
+#define MINOTAUR_DYING_RIGHT_3 "Ressources/Boss/Death/Right/3.png"
+#define MINOTAUR_DYING_RIGHT_4 "Ressources/Boss/Death/Right/4.png"
+#define MINOTAUR_DYING_RIGHT_5 "Ressources/Boss/Death/Right/5.png"
+#define MINOTAUR_DYING_RIGHT_6 "Ressources/Boss/Death/Right/6.png"
+#define MINOTAUR_DYING_RIGHT_7 "Ressources/Boss/Death/Right/7.png"
+#define MINOTAUR_DYING_RIGHT_8 "Ressources/Boss/Death/Right/8.png"

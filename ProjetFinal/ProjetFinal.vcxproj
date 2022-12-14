@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="assetManager.cpp" />
+    <ClCompile Include="bossRoomState.cpp" />
     <ClCompile Include="cat.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="door.cpp" />
@@ -141,7 +142,7 @@
     <ClCompile Include="gameState.cpp" />
     <ClCompile Include="hud.cpp" />
     <ClCompile Include="inputManager.cpp" />
-    <ClCompile Include="introduction.cpp" />
+    <ClCompile Include="introductionState.cpp" />
     <ClCompile Include="items.cpp" />
     <ClCompile Include="loadingState.cpp" />
     <ClCompile Include="mainCharacter.cpp" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h" />
+    <ClInclude Include="bossRoomState.h" />
     <ClInclude Include="cat.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DEFINITIONS.hpp" />
@@ -170,7 +172,7 @@
     <ClInclude Include="hud.h" />
     <ClInclude Include="inputManager.h" />
     <ClInclude Include="items.h" />
-    <ClInclude Include="introduction.h" />
+    <ClInclude Include="introductionState.h" />
     <ClInclude Include="loadingState.h" />
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
