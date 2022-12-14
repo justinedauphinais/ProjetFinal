@@ -1,186 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="assetManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="collision.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="inputManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjetFinal.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="door.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="hud.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="gameOverState.cpp">
-      <Filter>Source\States</Filter>
-    </ClCompile>
-    <ClCompile Include="gameState.cpp">
-      <Filter>Source\States</Filter>
-    </ClCompile>
-    <ClCompile Include="loadingState.cpp">
-      <Filter>Source\States</Filter>
-    </ClCompile>
-    <ClCompile Include="mainMenuState.cpp">
-      <Filter>Source\States</Filter>
-    </ClCompile>
-    <ClCompile Include="shopState.cpp">
-      <Filter>Source\States</Filter>
-    </ClCompile>
-    <ClCompile Include="splashState.cpp">
-      <Filter>Source\States</Filter>
-    </ClCompile>
-    <ClCompile Include="stateMachine.cpp">
-      <Filter>Source\States</Filter>
-    </ClCompile>
-    <ClCompile Include="entity.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="gardeEnemy.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="shopOwner.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="mainCharacter.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="mainWalls.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="minotaur.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="torch.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="drawable.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="cat.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="items.cpp">
-      <Filter>Source\Items</Filter>
-    </ClCompile>
+    <ClCompile Include="assetManager.cpp" />
+    <ClCompile Include="cat.cpp" />
+    <ClCompile Include="collision.cpp" />
+    <ClCompile Include="door.cpp" />
+    <ClCompile Include="gardeEnemy.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameOverState.cpp" />
+    <ClCompile Include="gameState.cpp" />
+    <ClCompile Include="hud.cpp" />
+    <ClCompile Include="inputManager.cpp" />
+    <ClCompile Include="items.cpp" />
+    <ClCompile Include="loadingState.cpp" />
+    <ClCompile Include="mainCharacter.cpp" />
+    <ClCompile Include="mainMenuState.cpp" />
+    <ClCompile Include="mainWalls.cpp" />
+    <ClCompile Include="minotaur.cpp" />
+    <ClCompile Include="drawable.cpp" />
+    <ClCompile Include="ProjetFinal.cpp" />
+    <ClCompile Include="shopOwner.cpp" />
+    <ClCompile Include="shopState.cpp" />
+    <ClCompile Include="splashState.cpp" />
+    <ClCompile Include="stateMachine.cpp" />
+    <ClCompile Include="torch.cpp" />
+    <ClCompile Include="introduction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="assetManager.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="collision.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="DEFINITIONS.hpp">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="inputManager.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="door.h">
-      <Filter>Header\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="entity.h">
-      <Filter>Header\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="gardeEnemy.h">
-      <Filter>Header\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="mainCharacter.h">
-      <Filter>Header\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="shopOwner.h">
-      <Filter>Header\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="hud.h">
-      <Filter>Header\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="gameOverState.h">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="gameState.h">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="loadingState.h">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="mainMenuState.h">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="shopState.h">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="splashState.h">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="state.hpp">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="stateMachine.h">
-      <Filter>Header\States</Filter>
-    </ClInclude>
-    <ClInclude Include="mainWalls.h">
-      <Filter>Header\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="minotaur.h">
-      <Filter>Header\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="torch.h">
-      <Filter>Header\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="drawable.h">
-      <Filter>Header\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="cat.h">
-      <Filter>Header\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="items.h">
-      <Filter>Header\Items</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Source">
-      <UniqueIdentifier>{5a82cdec-f609-45ea-9e3b-f8bfe068ff11}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header">
-      <UniqueIdentifier>{89f5014e-23d4-45e6-b66d-af4d62595f3c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header\States">
-      <UniqueIdentifier>{aa7560e5-3285-43ea-9a7b-7dbece134c02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header\Objects">
-      <UniqueIdentifier>{d35b2c3a-ded5-4d53-9f33-5d81d369f75f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header\Entities">
-      <UniqueIdentifier>{35f43396-79ca-4be8-a61a-5a12f6a85905}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities">
-      <UniqueIdentifier>{1720f156-5ba9-4fa2-995e-2ac37393469c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Objects">
-      <UniqueIdentifier>{a0508ef3-2e46-4603-bf9b-b43012c234c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\States">
-      <UniqueIdentifier>{cbe38766-f7f2-4aef-b290-bb74175e368e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header\Items">
-      <UniqueIdentifier>{21a3d9fc-4730-4764-a410-60f1bb473b3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Items">
-      <UniqueIdentifier>{7099df04-81ee-4cec-bcb7-1fb9c7e87a13}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="assetManager.h" />
+    <ClInclude Include="cat.h" />
+    <ClInclude Include="collision.h" />
+    <ClInclude Include="DEFINITIONS.hpp" />
+    <ClInclude Include="door.h" />
+    <ClInclude Include="gardeEnemy.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="gameOverState.h" />
+    <ClInclude Include="gameState.h" />
+    <ClInclude Include="hud.h" />
+    <ClInclude Include="inputManager.h" />
+    <ClInclude Include="items.h" />
+    <ClInclude Include="introduction.h" />
+    <ClInclude Include="loadingState.h" />
+    <ClInclude Include="mainCharacter.h" />
+    <ClInclude Include="mainMenuState.h" />
+    <ClInclude Include="mainWalls.h" />
+    <ClInclude Include="minotaur.h" />
+    <ClInclude Include="drawable.h" />
+    <ClInclude Include="shopOwner.h" />
+    <ClInclude Include="shopState.h" />
+    <ClInclude Include="splashState.h" />
+    <ClInclude Include="state.hpp" />
+    <ClInclude Include="stateMachine.h" />
+    <ClInclude Include="torch.h" />
   </ItemGroup>
 </Project>

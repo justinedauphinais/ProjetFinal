@@ -21,6 +21,8 @@ loadingState::~loadingState()
 /// </summary>
 void loadingState::init()
 {
+
+
 	// Progress bar
 	_data->assets.loadTexture("progress bar 1", LOADING_FRAME_1);
 	_data->assets.loadTexture("progress bar 2", LOADING_FRAME_2);
@@ -34,6 +36,29 @@ void loadingState::init()
 	_progressBarSprite.setTexture(_animationProgressBar[0]);
 	_progressBarSprite.setScale(5.0f, 5.0f);
 	_progressBarSprite.setPosition((SCREEN_WIDTH / 2) - (_progressBarSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_progressBarSprite.getGlobalBounds().height / 2));
+
+
+#pragma region animation Squelette Loading
+	// Skeleton loading
+	_data->assets.loadTexture("animation skeleton1", LOADING_SKELETON_FAME_1);
+	_data->assets.loadTexture("animation skeleton2", LOADING_SKELETON_FAME_2);
+	_data->assets.loadTexture("animation skeleton3", LOADING_SKELETON_FAME_3);
+	_data->assets.loadTexture("animation skeleton4", LOADING_SKELETON_FAME_4);
+	_data->assets.loadTexture("animation skeleton5", LOADING_SKELETON_FAME_5);
+	_data->assets.loadTexture("animation skeleton6", LOADING_SKELETON_FAME_6);
+	_data->assets.loadTexture("animation skeleton7", LOADING_SKELETON_FAME_7);
+	_data->assets.loadTexture("animation skeleton8", LOADING_SKELETON_FAME_8);
+
+	for (int i = 1; i <= 8; i++)
+	{
+		_animationSkeletonLoading.push_back(_data->assets.getTexture("animation skeleton" + to_string(i)));
+	}
+
+	_skeletonLoadingSprite.setTexture(_animationSkeletonLoading.at(_frameSkeletonIterator));
+	_skeletonLoadingSprite.setScale(7.0f, 7.0f);
+	_skeletonLoadingSprite.setPosition((SCREEN_WIDTH / 2) - (_skeletonLoadingSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_skeletonLoadingSprite.getGlobalBounds().height / 2 + 80));
+
+#pragma endregion
 
 	// Background
 	_data->assets.loadTexture("game background 1", GAME_BACKGROUND_TEMP_1);
@@ -323,6 +348,8 @@ void loadingState::handleInput()
 /// <param name="dt"></param>
 void loadingState::update(float dt)
 {
+	
+
 	if (_clock.getElapsedTime().asSeconds() > (LOADING_TIME / _animationProgressBar.size())) {
 		_clock.restart();
 		_frameIterator++;
@@ -330,8 +357,20 @@ void loadingState::update(float dt)
 			_data->machine.addState(stateRef(new gameState(_data)), true);
 		}
 		else {
-			_progressBarSprite.setTexture(_animationProgressBar[_frameIterator]);
+			_progressBarSprite.setTexture(_animationProgressBar.at(_frameIterator));
 		}
+	}
+	
+	if (_clockSkeleton.getElapsedTime().asSeconds() > (LOADING_SKELETON_TIME/_animationSkeletonLoading.size()))
+	{
+		_frameSkeletonIterator++;
+		if (_frameSkeletonIterator == _animationSkeletonLoading.size()){
+			_frameSkeletonIterator = 0;
+		}
+		else{
+			_skeletonLoadingSprite.setTexture(_animationSkeletonLoading.at(_frameSkeletonIterator));
+		}
+		_clockSkeleton.restart();
 	}
 }
 
@@ -344,6 +383,8 @@ void loadingState::draw(float dt) const
 	_data->window.clear();
 	_data->window.draw(_backgroundSprite);
 	_data->window.draw(_loadingText);
+	
 	_data->window.draw(_progressBarSprite);
+	_data->window.draw(_skeletonLoadingSprite);
 	_data->window.display();
 }

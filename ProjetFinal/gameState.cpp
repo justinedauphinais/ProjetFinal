@@ -149,12 +149,25 @@ void gameState::update(float dt)
 		_mainCharacter->setWasHit(false);
 	}
 
-	_lstSprites.clear();
-	_lstSprites.push_back(_mainCharacter->getSprite());
-	
-	if (_garde->getState() != DEAD) {
-		_lstSprites.push_back(_garde->getSprite());
-	}
+	// Collision ennemis
+
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _garde->getSprite(), 3.0f, 10.0f))
+	{
+		//enleve heart
+
+		if (!_toucher)
+		{
+			_toucher = true;
+			_hud->removeHeart(1);
+			if (_hud->getNbrVies() == 0)
+			{
+				cout << " mort";
+			}
+		}
+		else
+		{
+			_toucher = false;
+		}
 
 	// Gestion de l'ordre d'affichage 
 	for (int i = 0; i < (_lstSprites.size() - 1); i++) {

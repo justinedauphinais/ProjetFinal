@@ -22,12 +22,17 @@ private:
 
 	RectangleShape _backgroundSprite;
 	Sprite _progressBarSprite;
+	Sprite _skeletonLoadingSprite;
 	vector<Texture> _animationProgressBar;
+	vector<Texture> _animationSkeletonLoading;
 	Text _loadingText;
 
 	int _frameIterator;
+	int _frameSkeletonIterator;
+
 
 	Clock _clock;
+	Clock _clockSkeleton;
 
 public:
 	loadingState(gameDataRef data);

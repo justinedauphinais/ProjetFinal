@@ -141,6 +141,7 @@
     <ClCompile Include="gameState.cpp" />
     <ClCompile Include="hud.cpp" />
     <ClCompile Include="inputManager.cpp" />
+    <ClCompile Include="introduction.cpp" />
     <ClCompile Include="items.cpp" />
     <ClCompile Include="loadingState.cpp" />
     <ClCompile Include="mainCharacter.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="hud.h" />
     <ClInclude Include="inputManager.h" />
     <ClInclude Include="items.h" />
+    <ClInclude Include="introduction.h" />
     <ClInclude Include="loadingState.h" />
     <ClInclude Include="mainCharacter.h" />
     <ClInclude Include="mainMenuState.h" />
