@@ -133,6 +133,7 @@
     <ClCompile Include="assetManager.cpp" />
     <ClCompile Include="bossRoomState.cpp" />
     <ClCompile Include="cat.cpp" />
+    <ClCompile Include="coffres.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="door.cpp" />
     <ClCompile Include="gardeEnemy.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="hud.cpp" />
     <ClCompile Include="inputManager.cpp" />
     <ClCompile Include="introductionState.cpp" />
+    <ClCompile Include="inventaire.cpp" />
     <ClCompile Include="items.cpp" />
     <ClCompile Include="loadingState.cpp" />
     <ClCompile Include="mainCharacter.cpp" />
@@ -161,6 +163,7 @@
     <ClInclude Include="assetManager.h" />
     <ClInclude Include="bossRoomState.h" />
     <ClInclude Include="cat.h" />
+    <ClInclude Include="coffres.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="door.h" />
@@ -171,6 +174,7 @@
     <ClInclude Include="gameState.h" />
     <ClInclude Include="hud.h" />
     <ClInclude Include="inputManager.h" />
+    <ClInclude Include="Inventaire.h" />
     <ClInclude Include="items.h" />
     <ClInclude Include="introductionState.h" />
     <ClInclude Include="loadingState.h" />

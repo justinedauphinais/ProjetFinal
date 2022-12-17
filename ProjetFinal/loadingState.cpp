@@ -40,6 +40,13 @@ void loadingState::init()
 	_data->assets.loadTexture("game background 2", GAME_BACKGROUND_TEMP_2);
 	_data->assets.loadTexture("game background 3", GAME_BACKGROUND_TEMP_3);
 
+	//coffres
+	_data->assets.loadTexture("coffre close", COFFRE_CLOSE); 
+	_data->assets.loadTexture("coffre open", COFFRE_OPEN); 
+
+	//Inventory
+	_data->assets.loadTexture("inventory", INVENTORY_BACKGROUND);
+
 	// Pop up
 	_data->assets.loadTexture("pop up", POP_UP);
 	_data->assets.loadTexture("accept purchase", ACCEPT_PURCHASE);

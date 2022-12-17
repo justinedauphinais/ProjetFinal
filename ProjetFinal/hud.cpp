@@ -10,6 +10,7 @@ hud::hud(gameDataRef data, int nbrRoom, int score, int money, int nbCoeurs) : _d
 	_nbrRoom = nbrRoom;
 	_money = money;
 
+
 	// Score
 	_scoreText = Text(to_string(_score), _data->assets.getFont("pixel art font"), 50);
 	_scoreText.setFillColor(Color::White);
@@ -42,6 +43,13 @@ hud::hud(gameDataRef data, int nbrRoom, int score, int money, int nbCoeurs) : _d
 	_roomText = Text(to_string(_nbrRoom), _data->assets.getFont("pixel art font"), 50);
 	_roomText.setFillColor(Color::Red);
 	_roomText.setPosition(((SCREEN_WIDTH / 2) - (_roomText.getGlobalBounds().width / 2)), (SCREEN_HEIGHT - _roomText.getGlobalBounds().height - 50));
+
+	_inventory = new inventaire(_data);
+}
+
+hud::~hud()
+{
+	delete _inventory;
 }
 
 /// <summary>
@@ -152,6 +160,16 @@ int hud::getNbrVies() const
 	return _hearts.size();
 }
 
+void hud::addItem(item item)
+{
+	_inventory->addItem(item);
+}
+
+void hud::removeItem(item item)
+{
+	_inventory->removeItem(item);
+}
+
 /// <summary>
 /// 
 /// </summary>
@@ -161,6 +179,7 @@ void hud::draw() const
 	_data->window.draw(_scoreText);
 	_data->window.draw(_moneySprite);
 	_data->window.draw(_moneyText);
+	_inventory->draw();
 	for (int i = 0; i < _hearts.size(); i++) {
 		_data->window.draw(_hearts[i]);
 	}

@@ -10,6 +10,7 @@
 #include "DEFINITIONS.hpp"
 #include "game.h"
 #include "entity.h"
+#include "Inventaire.h"
 
 using namespace sf;
 
@@ -31,9 +32,11 @@ private:
 	int _nbrRoom;
 	Text _roomText;
 
+	inventaire* _inventory;
+
 public:
 	hud(gameDataRef data, int nbrRoom, int score = 0, int money = 0, int nbCoeurs = NBR_LIVES);
-
+	~hud();
 	void setScore(int score);
 	void addScore(int score = 1);
 
@@ -48,6 +51,8 @@ public:
 
 	int getScore() const;
 	int getNbrVies() const;
+	void addItem(item item);
+	void removeItem(item item);
 
 	void draw() const;
 };

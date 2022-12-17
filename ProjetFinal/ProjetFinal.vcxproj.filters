@@ -79,6 +79,12 @@
     <ClCompile Include="entity.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="coffres.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="inventaire.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assetManager.h">
@@ -160,6 +166,12 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="state.hpp">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="coffres.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventaire.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

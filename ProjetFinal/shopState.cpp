@@ -12,6 +12,7 @@ shopState::shopState(gameDataRef data, hud*& hud) : _data(data)
 	_door = nullptr;
 	_shopOwner = nullptr;
 	_showDialogue = false;
+	//_chest = nullptr;
 }
 
 /// <summary>
@@ -23,6 +24,7 @@ shopState::~shopState()
 	delete _wall;
 	delete _door;
 	delete _shopOwner;
+	//delete _chest;
 }
 
 /// <summary>
@@ -48,6 +50,7 @@ void shopState::init()
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 	_shopOwner = new shopOwner(_data);
 	_cat = new cat(_data);
+	//_chest = new coffres(_data, Closed);
 
 	// Shop owner
 	_shopOwnerHiSprite.setTexture(_data->assets.getTexture("talking shop owner"));
@@ -73,10 +76,16 @@ void shopState::init()
 	_buttonAccept.setScale(4.0f, 4.0f);
 	_buttonAccept.setPosition(SCREEN_WIDTH / 2 - _buttonAccept.getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 + _buttonAccept.getGlobalBounds().height * 1.2f);
 
+	// Coffre fermer
+	_chestClose.setTexture(_data->assets.getTexture("coffre close"));
+	_chestClose.setScale(6.0f, 6.0f);
+	_chestClose.setPosition(SCREEN_WIDTH / 2 - _chestClose.getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 - _chestClose.getGlobalBounds().height / 2);
+
 	// Liste de sprites
 	_lstSprites.push_back(_mainCharacter->getSprite());
 	_lstSprites.push_back(_shopOwner->getSprite());
 	_lstSprites.push_back(_items[0].getSprite());
+
 
 	_inItemFrame = false;
 
@@ -96,11 +105,21 @@ void shopState::handleInput()
 		else if (event.type == Event::KeyReleased) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
 		}
-		else if (_inItemFrame && _data->input.isSpriteClicked(_buttonAccept, Mouse::Left, _data->window)) {
+		else if (_inItemFrame && _data->input.isSpriteClicked(_buttonAccept, Mouse::Left, _data->window)) { //item present sur la page.
 			if (_hud->removeMoney(_items[_indexSelectedItem].getPrice())) {
 				_items[_indexSelectedItem].wasBought();
 				_inItemFrame = false;
+				_hud->addItem(_items[_indexSelectedItem]);
+				//_items.push_back();
+				
 			}
+			
+		}
+		else if (!_items.empty() && Keyboard::isKeyPressed(Keyboard::E))
+		{		
+			_hud->removeItem(_items[_indexSelectedItem]);
+			//_items.pop_back();
+
 		}
 	}
 
@@ -183,6 +202,11 @@ void shopState::update(float dt)
 			_selectedItem.setPosition(SCREEN_WIDTH / 2 - _selectedItem.getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 - _selectedItem.getGlobalBounds().height / 2);
 		}
 	}
+	//Collision avec coffres
+	/*if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _chest->getSprite(), 5.0f, 0.3f)) {
+		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - _moveX, _mainCharacter->getSprite().getPosition().y - _moveY);
+		_chest->openCoffre();
+	}*/
 
 	// Collision shop keeper
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 6.0f, 4.0f, _shopOwner->getSprite(), 9.0f, 4.0f))
@@ -219,11 +243,13 @@ void shopState::draw(float dt) const
 	_data->window.draw(_background);
 	_data->window.draw(_carpet);
 	_wall->drawBackWall();	
+	//_chest->draw();
 	for (int i = 0; i < _torches.size(); i++)
 		_torches[i].draw();
 	_cat->draw();
 
 	_door->draw();
+	
 
 	for (int i = 0; i < _lstSprites.size(); i++)
 		_data->window.draw(_lstSprites[i]);
@@ -238,6 +264,7 @@ void shopState::draw(float dt) const
 	if (_inItemFrame) {
 		_data->window.draw(_popUp);
 		_data->window.draw(_popUpText);
+		_data->window.draw(_priceText);
 		_data->window.draw(_selectedItem);
 		_data->window.draw(_buttonAccept);
 	}

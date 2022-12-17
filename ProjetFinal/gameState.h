@@ -20,6 +20,7 @@
 #include "gameOverState.h"
 #include "shopState.h"
 #include "shopOwner.h"
+#include "Inventaire.h"
 #include <iostream>
 
 using namespace sf;
@@ -45,7 +46,7 @@ private:
 	gardeEnemy* _garde;
 
 	vector<Sprite> _lstSprites;		// Liste des sprites
-
+	
 	collision _collision;
 	Clock _clock;
 

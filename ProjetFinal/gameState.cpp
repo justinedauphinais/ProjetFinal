@@ -26,6 +26,7 @@ gameState::gameState(gameDataRef data, hud*& hud) : _data(data)
 	_wall = nullptr;
 	_door = nullptr;
 	_garde = nullptr;
+	
 }
 
 /// <summary>
@@ -37,6 +38,7 @@ gameState::~gameState()
 	delete _garde;
 	delete _wall;
 	delete _door;
+	
 }
 
 /// <summary>
@@ -148,7 +150,7 @@ void gameState::update(float dt)
 		if (_garde->removeHearts()) {
 			_garde->setState(DYING);
 			_hud->addScore();
-			_hud->addMoney(2);
+			_hud->addMoney(5);
 			_hasKey = true;
 		}
 		else {
