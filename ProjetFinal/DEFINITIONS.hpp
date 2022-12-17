@@ -50,7 +50,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define MAIN_MENU_FONT "Ressources/Fonts/Stranger back in the Night.ttf"
 #define PLAY_BUTTON_FILEPATH "Ressources/Menu/playButton.png"
 #define STOP_BUTTON_FILEPATH "Ressources/Menu/stopButton.png"
-
+#define OPTION_BUTTON_FILEPATH "Ressources/Menu/optionsButton.png"
 //----- Intro -----//
 #define NEXT_BUTTON_FILEPATH "Ressources/Menu/suivantButton.png"
 
@@ -85,6 +85,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define GAME_FOREGROUND_LEFT_RIGHT_TEMP_3 "Ressources/Map/wall_3.png"
 #define GAME_FOREGROUND_UP_DOWN_TEMP_3 "Ressources/Map/wall_back_3.png"
 #define POP_UP "Ressources/UI/pop_up.png"
+#define INVENTORY_BACKGROUND "Ressources/UI/pop_up.png"
 #define ACCEPT_PURCHASE "Ressources/UI/accept.png"
 	// Hud
 #define GAME_HEARTS_FILEPATH "Ressources/UI/hearts.png"
@@ -117,6 +118,9 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define TORCH_FRAME_3 "Ressources/Objects/Torch/3.png"
 #define TORCH_FRAME_4 "Ressources/Objects/Torch/4.png"
 
+	//coffres
+#define COFFRE_CLOSE "Ressources/Objects/chest_closed.png"
+#define COFFRE_OPEN "Ressources/Objects/chest_open_full.png"
 //------ Main character ------//
 #define NBR_LIVES 5
 #define SKELETON_WALK_TIME 0.6f

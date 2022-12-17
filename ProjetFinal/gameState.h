@@ -45,7 +45,7 @@ private:
 	vector<gardeEnemy> _gardes;		// Vecteur de garde
 
 	vector<Sprite> _lstSprites;		// Liste des sprites
-
+	
 	collision _collision;
 	Clock _clock;
 

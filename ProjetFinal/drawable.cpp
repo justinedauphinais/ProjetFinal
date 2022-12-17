@@ -25,4 +25,5 @@ void drawable::setPosition(float x, float y)
 void drawable::draw() const
 {
 	_data->window.draw(_sprite);
+	
 }

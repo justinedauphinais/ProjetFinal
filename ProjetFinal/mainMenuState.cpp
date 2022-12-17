@@ -34,6 +34,13 @@ void mainMenuState::init()
 	_stopButton.setPosition(((SCREEN_WIDTH / 2) + 15),
 		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2)));
 
+	// Option button
+	_data->assets.loadTexture("main menu option button", OPTION_BUTTON_FILEPATH);
+	_optionButton.setTexture(_data->assets.getTexture("main menu option button"));
+	_optionButton.setScale(6.0f, 6.0f);
+	_optionButton.setPosition(((SCREEN_WIDTH / 2) - (_playButton.getGlobalBounds().width) + 100),
+		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2) + 100));
+
 	// Title
 	_data->assets.loadFont("main menu font", MAIN_MENU_FONT);
 
@@ -60,6 +67,9 @@ void mainMenuState::handleInput()
 		else if (_data->input.isSpriteClicked(_stopButton, Mouse::Left, _data->window)) {
 			_data->window.close();
 		}
+		else if (_data->input.isSpriteClicked(_optionButton, Mouse::Left, _data->window)) {
+			//
+		}
 	}
 }
 
@@ -82,5 +92,6 @@ void mainMenuState::draw(float dt) const
 	_data->window.draw(_title);
 	_data->window.draw(_playButton);
 	_data->window.draw(_stopButton);
+	_data->window.draw(_optionButton);
 	_data->window.display();
 }

@@ -34,6 +34,7 @@ gameState::~gameState()
 	delete _mainCharacter;
 	delete _wall;
 	delete _door;
+	
 }
 
 /// <summary>

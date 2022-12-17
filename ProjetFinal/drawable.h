@@ -7,7 +7,7 @@
 class drawable {
 protected:
 	gameDataRef _data;
-
+	
 	Sprite _sprite;
 
 	Clock _clock;

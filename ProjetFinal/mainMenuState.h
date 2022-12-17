@@ -27,6 +27,7 @@ private:
 	Sprite _background;		// Le sprite pour la background
 	Sprite _playButton;		// Le sprite du bouton jouer
 	Sprite _stopButton;		// Le sprite du bouton jouer
+	Sprite _optionButton;		// Le sprite du bouton option
 	Text _title;			// Le texte du titre
 
 public:

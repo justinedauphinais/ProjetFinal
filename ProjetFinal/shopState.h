@@ -12,6 +12,8 @@
 #include "items.h"
 #include "shopOwner.h"
 #include "bossRoomState.h"
+#include "Inventaire.h"
+//#include "coffres.h"
 
 /// <summary>
 /// 
@@ -28,12 +30,13 @@ private:
 	wall* _wall;					// Les murs
 	door* _door;					// La porte
 	hud* _hud;						// Le hud
+	//coffres* _chest;
 	mainCharacter* _mainCharacter;	// Le personnage principal
 	shopOwner* _shopOwner;			// Le NPC
 	cat* _cat;
 
 	Sprite _shopOwnerHiSprite;		// Dialogue du NPC
-
+	Sprite _inventaire;
 	vector<torch> _torches;
 	vector<item> _items;
 
@@ -41,10 +44,12 @@ private:
 
 	Sprite _popUp;
 	Text _popUpText;
+	Text _priceText;
 	Sprite _selectedItem;
 	int _indexSelectedItem;
 	Sprite _buttonAccept;
-
+	Sprite _chestClose;
+	Sprite _chestOppen;
 	collision _collision;
 
 	int _gameState;
@@ -53,6 +58,7 @@ private:
 
 	bool _showDialogue;
 	bool _inItemFrame;
+	
 
 	Clock _clock;
 

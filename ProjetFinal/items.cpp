@@ -12,6 +12,9 @@ item::item(gameDataRef data, itemTypes itemType)
 
 	if (itemType == bigLifePotion) {
 		_price = PRICE_BIG_LIFE_POTION;
+		_priceText = Text(to_string(_price), _data->assets.getFont("pixel art font"), 20);
+		_priceText.setFillColor(Color::White);
+		_priceText.setPosition((SCREEN_WIDTH - _sprite.getGlobalBounds().width - 60), 20);
 		_sprite.setTexture(_data->assets.getTexture("big life potion"));
 		_sprite.setScale(5.5f, 5.5f);
 	}
@@ -33,7 +36,9 @@ item::item(gameDataRef data, itemTypes itemType, float posX, float posY)
 	_bought = false;
 
 	if (itemType == bigLifePotion) {
-		_price = PRICE_BIG_LIFE_POTION;
+		_price = PRICE_BIG_LIFE_POTION;	_priceText = Text(to_string(_price), _data->assets.getFont("pixel art font"), 20);
+		_priceText.setFillColor(Color::White);
+		_priceText.setPosition((SCREEN_WIDTH / 2) - (_sprite.getGlobalBounds().width),60);
 		_sprite.setTexture(_data->assets.getTexture("big life potion"));
 		_sprite.setScale(5.5f, 5.5f);
 	}
@@ -68,4 +73,9 @@ bool item::isBought() const
 int item::getPrice() const
 {
 	return _price;
+}
+
+void item::draw() const
+{
+	_data->window.draw(_priceText);
 }

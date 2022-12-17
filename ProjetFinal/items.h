@@ -5,7 +5,7 @@
 class item : public drawable {
 private:
 	itemTypes itemType;
-
+	Text _priceText;
 	int _price;
 
 	bool _bought;
@@ -18,4 +18,5 @@ public:
 	bool isBought() const;
 
 	int getPrice() const;
+	void draw()const;
 };
