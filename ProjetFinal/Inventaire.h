@@ -9,7 +9,6 @@
 
 class inventaire : public drawable
 {
-
 protected:
 	
 	Clock _clock;

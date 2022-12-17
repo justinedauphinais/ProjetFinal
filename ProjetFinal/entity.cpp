@@ -34,8 +34,10 @@ directions entity::getDirection() const
 /// <param name="state"></param>
 void entity::setState(entityStates state)
 {
-	_state = state;
-	_animationIterator = 0;
+	if (_state != state) {
+		_state = state;
+		_animationIterator = 0;
+	}
 }
 
 /// <summary>

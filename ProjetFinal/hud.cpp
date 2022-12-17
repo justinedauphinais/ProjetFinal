@@ -160,11 +160,19 @@ int hud::getNbrVies() const
 	return _hearts.size();
 }
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="item"></param>
 void hud::addItem(item item)
 {
 	_inventory->addItem(item);
 }
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="item"></param>
 void hud::removeItem(item item)
 {
 	_inventory->removeItem(item);

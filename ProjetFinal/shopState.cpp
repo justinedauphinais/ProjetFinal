@@ -32,6 +32,8 @@ shopState::~shopState()
 /// </summary>
 void shopState::init()
 {
+	_hud->addMoney(40);
+
 	_background.setTexture(_data->assets.getTexture("game background 1"));
 	_carpet.setTexture(_data->assets.getTexture("tapis"));
 	_carpet.setScale(0.8f, 0.8f);
@@ -102,22 +104,19 @@ void shopState::handleInput()
 			_data->window.close();
 		else if (event.type == Event::KeyReleased) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
+			_usedItem = false;
 		}
 		else if (_inItemFrame && _data->input.isSpriteClicked(_buttonAccept, Mouse::Left, _data->window)) { //item present sur la page.
 			if (_hud->removeMoney(_items[_indexSelectedItem].getPrice())) {
 				_items[_indexSelectedItem].wasBought();
 				_inItemFrame = false;
 				_hud->addItem(_items[_indexSelectedItem]);
-				//_items.push_back();
-				
 			}
-			
 		}
-		else if (!_items.empty() && Keyboard::isKeyPressed(Keyboard::E))
+		else if (Keyboard::isKeyPressed(Keyboard::E) && !_usedItem)
 		{		
+			_usedItem = true;
 			_hud->removeItem(_items[_indexSelectedItem]);
-			//_items.pop_back();
-
 		}
 	}
 

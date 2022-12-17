@@ -19,7 +19,9 @@ void inventaire::addItem(item item)
 
 void inventaire::removeItem(item item)
 {	
-	_items.pop_back();
+	if (!_items.empty()) {
+		_items.pop_back();
+	}
 }
 
 void inventaire::draw() const
