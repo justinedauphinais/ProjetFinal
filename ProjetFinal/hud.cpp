@@ -155,6 +155,15 @@ int hud::getNbrVies() const
 /// <summary>
 /// 
 /// </summary>
+/// <returns></returns>
+int hud::getRoom() const
+{
+	return _nbrRoom;
+}
+
+/// <summary>
+/// 
+/// </summary>
 void hud::draw() const
 {
 	_data->window.draw(_scoreSprite);

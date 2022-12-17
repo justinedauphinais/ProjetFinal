@@ -122,6 +122,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define SKELETON_WALK_TIME 0.6f
 #define SKELETON_IDLE_TIME 1.0f
 #define SKELETE_ATTACK_TIME 0.6f
+#define SKELETE_HURT_TIME 0.8f
 #define MOVEMENT_DISTANCE 20
 
 	// Walk right
@@ -218,6 +219,25 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define SKELETON_ATTAQUE_FRAME_LEFT_17 "Ressources/MC/Attack/Left/17.png"
 #define SKELETON_ATTAQUE_FRAME_LEFT_18 "Ressources/MC/Attack/Left/18.png"
 
+	// Hurt
+#define SKELETON_HIT_FRAME_RIGHT_1 "Ressources/MC/Hit/Right/1.png"
+#define SKELETON_HIT_FRAME_RIGHT_2 "Ressources/MC/Hit/Right/2.png"
+#define SKELETON_HIT_FRAME_RIGHT_3 "Ressources/MC/Hit/Right/3.png"
+#define SKELETON_HIT_FRAME_RIGHT_4 "Ressources/MC/Hit/Right/4.png"
+#define SKELETON_HIT_FRAME_RIGHT_5 "Ressources/MC/Hit/Right/5.png"
+#define SKELETON_HIT_FRAME_RIGHT_6 "Ressources/MC/Hit/Right/6.png"
+#define SKELETON_HIT_FRAME_RIGHT_7 "Ressources/MC/Hit/Right/7.png"
+#define SKELETON_HIT_FRAME_RIGHT_8 "Ressources/MC/Hit/Right/8.png"
+
+#define SKELETON_HIT_FRAME_LEFT_1 "Ressources/MC/Hit/Left/1.png"
+#define SKELETON_HIT_FRAME_LEFT_2 "Ressources/MC/Hit/Left/2.png"
+#define SKELETON_HIT_FRAME_LEFT_3 "Ressources/MC/Hit/Left/3.png"
+#define SKELETON_HIT_FRAME_LEFT_4 "Ressources/MC/Hit/Left/4.png"
+#define SKELETON_HIT_FRAME_LEFT_5 "Ressources/MC/Hit/Left/5.png"
+#define SKELETON_HIT_FRAME_LEFT_6 "Ressources/MC/Hit/Left/6.png"
+#define SKELETON_HIT_FRAME_LEFT_7 "Ressources/MC/Hit/Left/7.png"
+#define SKELETON_HIT_FRAME_LEFT_8 "Ressources/MC/Hit/Left/8.png"
+
 //------ Store owner ------//
 #define STOREOWNER_IDLE_TIME 1.3f
 	// Idle
@@ -232,87 +252,158 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define STOREOWNER_IDLE_9 "Ressources/Map/Shop/NPC/9.png"
 
 //------ Guard Enemy ------//
-#define LIVE_ENEMY 3.0f
-#define ENEMY_IDLE_TIME 1.0f
-#define ENEMY_WALK_TIME 0.8f
+#define NBR_LIVES_GUARD 3
+#define GUARD_IDLE_TIME 1.0f
+#define GUARD_WALK_TIME 0.8f
 #define AGRO_RANGE 500
 #define LIFE_BAR_FILEPATH "Ressources/UI/enemy_life_bar.png"
-#define NBR_LIVES_GARD 2
 
-#define ENEMY_ATTACK_TIME 1.0f
-	// Idle left
-#define ENEMY_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Idle/Left/1.png"
-#define ENEMY_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Idle/Left/2.png"
-#define ENEMY_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Idle/Left/3.png"
-#define ENEMY_IDLE_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Idle/Left/4.png"
-#define ENEMY_IDLE_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Idle/Left/5.png"
+#define GUARD_ATTACK_TIME 1.0f
 
-	// Idle right
-#define ENEMY_IDLE_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Idle/Right/1.png"
-#define ENEMY_IDLE_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Idle/Right/2.png"
-#define ENEMY_IDLE_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Idle/Right/3.png"
-#define ENEMY_IDLE_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Idle/Right/4.png"
-#define ENEMY_IDLE_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Idle/Right/5.png"
+	// Idle 
+#define GUARD_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Idle/Left/1.png"
+#define GUARD_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Idle/Left/2.png"
+#define GUARD_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Idle/Left/3.png"
+#define GUARD_IDLE_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Idle/Left/4.png"
+#define GUARD_IDLE_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Idle/Left/5.png"
 
-	// Attack right
-#define ENEMY_ATTACK_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Attack 1/Right/1.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Attack 1/Right/2.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Attack 1/Right/3.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Attack 1/Right/4.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Attack 1/Right/5.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Attack 1/Right/6.png"
-#define ENEMY_ATTACK_FRAME_RIGHT_7 "Ressources/Enemies/Mud Guard/Attack 1/Right/7.png"
+#define GUARD_IDLE_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Idle/Right/1.png"
+#define GUARD_IDLE_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Idle/Right/2.png"
+#define GUARD_IDLE_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Idle/Right/3.png"
+#define GUARD_IDLE_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Idle/Right/4.png"
+#define GUARD_IDLE_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Idle/Right/5.png"
 
-	// Attack left
-#define ENEMY_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Attack 1/Left/1.png"
-#define ENEMY_ATTACK_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Attack 1/Left/2.png"
-#define ENEMY_ATTACK_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Attack 1/Left/3.png"
-#define ENEMY_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Attack 1/Left/4.png"
-#define ENEMY_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Attack 1/Left/5.png"
-#define ENEMY_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
-#define ENEMY_ATTACK_FRAME_LEFT_7 "Ressources/Enemies/Mud Guard/Attack 1/Left/7.png"
+	// Attack 
+#define GUARD_ATTACK_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Attack 1/Right/1.png"
+#define GUARD_ATTACK_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Attack 1/Right/2.png"
+#define GUARD_ATTACK_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Attack 1/Right/3.png"
+#define GUARD_ATTACK_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Attack 1/Right/4.png"
+#define GUARD_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Attack 1/Right/5.png"
+#define GUARD_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Attack 1/Right/6.png"
+#define GUARD_ATTACK_FRAME_RIGHT_7 "Ressources/Enemies/Mud Guard/Attack 1/Right/7.png"
 
-	// Walking left
-#define ENEMY_WALKING_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Run/Left/1.png"
-#define ENEMY_WALKING_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Run/Left/2.png"
-#define ENEMY_WALKING_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Run/Left/3.png"
-#define ENEMY_WALKING_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Run/Left/4.png"
-#define ENEMY_WALKING_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Run/Left/5.png"
-#define ENEMY_WALKING_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Run/Left/6.png"
+#define GUARD_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Attack 1/Left/1.png"
+#define GUARD_ATTACK_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Attack 1/Left/2.png"
+#define GUARD_ATTACK_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Attack 1/Left/3.png"
+#define GUARD_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Attack 1/Left/4.png"
+#define GUARD_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Attack 1/Left/5.png"
+#define GUARD_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Attack 1/Left/6.png"
+#define GUARD_ATTACK_FRAME_LEFT_7 "Ressources/Enemies/Mud Guard/Attack 1/Left/7.png"
 
-	// Walking right
-#define ENEMY_WALKING_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Run/Right/1.png"
-#define ENEMY_WALKING_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Run/Right/2.png"
-#define ENEMY_WALKING_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Run/Right/3.png"
-#define ENEMY_WALKING_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Run/Right/4.png"
-#define ENEMY_WALKING_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Run/Right/5.png"
-#define ENEMY_WALKING_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Run/Right/6.png"
+	// Walking 
+#define GUARD_WALKING_FRAME_LEFT_1 "Ressources/Enemies/Mud Guard/Run/Left/1.png"
+#define GUARD_WALKING_FRAME_LEFT_2 "Ressources/Enemies/Mud Guard/Run/Left/2.png"
+#define GUARD_WALKING_FRAME_LEFT_3 "Ressources/Enemies/Mud Guard/Run/Left/3.png"
+#define GUARD_WALKING_FRAME_LEFT_4 "Ressources/Enemies/Mud Guard/Run/Left/4.png"
+#define GUARD_WALKING_FRAME_LEFT_5 "Ressources/Enemies/Mud Guard/Run/Left/5.png"
+#define GUARD_WALKING_FRAME_LEFT_6 "Ressources/Enemies/Mud Guard/Run/Left/6.png"
 
-	// Hit left
-#define ENEMY_HIT_TIME 1.0f
-#define ENEMY_HIT_LEFT_1 "Ressources/Enemies/Mud Guard/Damaged/Left/2.png"
-#define ENEMY_HIT_LEFT_2 "Ressources/Enemies/Mud Guard/Damaged/Left/1.png"
+#define GUARD_WALKING_FRAME_RIGHT_1 "Ressources/Enemies/Mud Guard/Run/Right/1.png"
+#define GUARD_WALKING_FRAME_RIGHT_2 "Ressources/Enemies/Mud Guard/Run/Right/2.png"
+#define GUARD_WALKING_FRAME_RIGHT_3 "Ressources/Enemies/Mud Guard/Run/Right/3.png"
+#define GUARD_WALKING_FRAME_RIGHT_4 "Ressources/Enemies/Mud Guard/Run/Right/4.png"
+#define GUARD_WALKING_FRAME_RIGHT_5 "Ressources/Enemies/Mud Guard/Run/Right/5.png"
+#define GUARD_WALKING_FRAME_RIGHT_6 "Ressources/Enemies/Mud Guard/Run/Right/6.png"
 
-	// Hit right
-#define ENEMY_HIT_RIGHT_1 "Ressources/Enemies/Mud Guard/Damaged/Right/1.png"
-#define ENEMY_HIT_RIGHT_2 "Ressources/Enemies/Mud Guard/Damaged/Right/2.png"
+	// Hit 
+#define GUARD_HIT_TIME 0.2f
+#define GUARD_HIT_LEFT_1 "Ressources/Enemies/Mud Guard/Damaged/Left/2.png"
+#define GUARD_HIT_LEFT_2 "Ressources/Enemies/Mud Guard/Damaged/Left/1.png"
 
-	// Dying left
-#define ENEMY_DYING_TIME 2.0f
-#define ENEMY_DYING_LEFT_1 "Ressources/Enemies/Mud Guard/Death/Left/1.png"
-#define ENEMY_DYING_LEFT_2 "Ressources/Enemies/Mud Guard/Death/Left/2.png"
-#define ENEMY_DYING_LEFT_3 "Ressources/Enemies/Mud Guard/Death/Left/3.png"
-#define ENEMY_DYING_LEFT_4 "Ressources/Enemies/Mud Guard/Death/Left/4.png"
-#define ENEMY_DYING_LEFT_5 "Ressources/Enemies/Mud Guard/Death/Left/5.png"
-#define ENEMY_DYING_LEFT_6 "Ressources/Enemies/Mud Guard/Death/Left/6.png"
+#define GUARD_HIT_RIGHT_1 "Ressources/Enemies/Mud Guard/Damaged/Right/2.png"
+#define GUARD_HIT_RIGHT_2 "Ressources/Enemies/Mud Guard/Damaged/Right/1.png"
 
-	// Dying right
-#define ENEMY_DYING_RIGHT_1 "Ressources/Enemies/Mud Guard/Death/Right/1.png"
-#define ENEMY_DYING_RIGHT_2 "Ressources/Enemies/Mud Guard/Death/Right/2.png"
-#define ENEMY_DYING_RIGHT_3 "Ressources/Enemies/Mud Guard/Death/Right/3.png"
-#define ENEMY_DYING_RIGHT_4 "Ressources/Enemies/Mud Guard/Death/Right/4.png"
-#define ENEMY_DYING_RIGHT_5 "Ressources/Enemies/Mud Guard/Death/Right/5.png"
-#define ENEMY_DYING_RIGHT_6 "Ressources/Enemies/Mud Guard/Death/Right/6.png"
+	// Dying 
+#define GUARD_DYING_TIME 2.0f
+#define GUARD_DYING_LEFT_1 "Ressources/Enemies/Mud Guard/Death/Left/1.png"
+#define GUARD_DYING_LEFT_2 "Ressources/Enemies/Mud Guard/Death/Left/2.png"
+#define GUARD_DYING_LEFT_3 "Ressources/Enemies/Mud Guard/Death/Left/3.png"
+#define GUARD_DYING_LEFT_4 "Ressources/Enemies/Mud Guard/Death/Left/4.png"
+#define GUARD_DYING_LEFT_5 "Ressources/Enemies/Mud Guard/Death/Left/5.png"
+#define GUARD_DYING_LEFT_6 "Ressources/Enemies/Mud Guard/Death/Left/6.png"
+
+#define GUARD_DYING_RIGHT_1 "Ressources/Enemies/Mud Guard/Death/Right/1.png"
+#define GUARD_DYING_RIGHT_2 "Ressources/Enemies/Mud Guard/Death/Right/2.png"
+#define GUARD_DYING_RIGHT_3 "Ressources/Enemies/Mud Guard/Death/Right/3.png"
+#define GUARD_DYING_RIGHT_4 "Ressources/Enemies/Mud Guard/Death/Right/4.png"
+#define GUARD_DYING_RIGHT_5 "Ressources/Enemies/Mud Guard/Death/Right/5.png"
+#define GUARD_DYING_RIGHT_6 "Ressources/Enemies/Mud Guard/Death/Right/6.png"
+
+//------ Archer ------//
+#define NBR_LIVES_ARCHER 2
+#define ARCHER_IDLE_TIME 1.0f
+#define ARCHER_WALK_TIME 0.8f
+
+#define ARCHER_ATTACK_TIME 1.0f
+
+	// Idle 
+#define ARCHER_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Archer/Idle/Left/1.png"
+#define ARCHER_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Archer/Idle/Left/2.png"
+#define ARCHER_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Archer/Idle/Left/3.png"
+#define ARCHER_IDLE_FRAME_LEFT_4 "Ressources/Enemies/Archer/Idle/Left/4.png"
+#define ARCHER_IDLE_FRAME_LEFT_5 "Ressources/Enemies/Archer/Idle/Left/5.png"
+#define ARCHER_IDLE_FRAME_LEFT_6 "Ressources/Enemies/Archer/Idle/Left/6.png"
+
+#define ARCHER_IDLE_FRAME_RIGHT_1 "Ressources/Enemies/Archer/Idle/Right/1.png"
+#define ARCHER_IDLE_FRAME_RIGHT_2 "Ressources/Enemies/Archer/Idle/Right/2.png"
+#define ARCHER_IDLE_FRAME_RIGHT_3 "Ressources/Enemies/Archer/Idle/Right/3.png"
+#define ARCHER_IDLE_FRAME_RIGHT_4 "Ressources/Enemies/Archer/Idle/Right/4.png"
+#define ARCHER_IDLE_FRAME_RIGHT_5 "Ressources/Enemies/Archer/Idle/Right/5.png"
+#define ARCHER_IDLE_FRAME_RIGHT_6 "Ressources/Enemies/Archer/Idle/Right/6.png"
+
+	// Walking 
+#define ARCHER_WALKING_FRAME_LEFT_1 "Ressources/Enemies/Archer/Run/Left/1.png"
+#define ARCHER_WALKING_FRAME_LEFT_2 "Ressources/Enemies/Archer/Run/Left/2.png"
+#define ARCHER_WALKING_FRAME_LEFT_3 "Ressources/Enemies/Archer/Run/Left/3.png"
+#define ARCHER_WALKING_FRAME_LEFT_4 "Ressources/Enemies/Archer/Run/Left/4.png"
+#define ARCHER_WALKING_FRAME_LEFT_5 "Ressources/Enemies/Archer/Run/Left/5.png"
+#define ARCHER_WALKING_FRAME_LEFT_6 "Ressources/Enemies/Archer/Run/Left/6.png"
+
+#define ARCHER_WALKING_FRAME_RIGHT_1 "Ressources/Enemies/Archer/Run/Right/1.png"
+#define ARCHER_WALKING_FRAME_RIGHT_2 "Ressources/Enemies/Archer/Run/Right/2.png"
+#define ARCHER_WALKING_FRAME_RIGHT_3 "Ressources/Enemies/Archer/Run/Right/3.png"
+#define ARCHER_WALKING_FRAME_RIGHT_4 "Ressources/Enemies/Archer/Run/Right/4.png"
+#define ARCHER_WALKING_FRAME_RIGHT_5 "Ressources/Enemies/Archer/Run/Right/5.png"
+#define ARCHER_WALKING_FRAME_RIGHT_6 "Ressources/Enemies/Archer/Run/Right/6.png"
+
+	// Attack 
+#define ARCHER_ATTACK_FRAME_RIGHT_1 "Ressources/Enemies/Archer/Attack/Right/1.png"
+#define ARCHER_ATTACK_FRAME_RIGHT_2 "Ressources/Enemies/Archer/Attack/Right/2.png"
+#define ARCHER_ATTACK_FRAME_RIGHT_3 "Ressources/Enemies/Archer/Attack/Right/3.png"
+#define ARCHER_ATTACK_FRAME_RIGHT_4 "Ressources/Enemies/Archer/Attack/Right/4.png"
+#define ARCHER_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Archer/Attack/Right/5.png"
+#define ARCHER_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Archer/Attack/Right/6.png"
+#define ARCHER_ATTACK_FRAME_RIGHT_7 "Ressources/Enemies/Archer/Attack/Right/7.png"
+
+#define ARCHER_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Archer/Attack/Left/1.png"
+#define ARCHER_ATTACK_FRAME_LEFT_2 "Ressources/Enemies/Archer/Attack/Left/2.png"
+#define ARCHER_ATTACK_FRAME_LEFT_3 "Ressources/Enemies/Archer/Attack/Left/3.png"
+#define ARCHER_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Archer/Attack/Left/4.png"
+#define ARCHER_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Archer/Attack/Left/5.png"
+#define ARCHER_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Archer/Attack/Left/6.png"
+#define ARCHER_ATTACK_FRAME_LEFT_7 "Ressources/Enemies/Archer/Attack/Left/7.png"
+
+	// Hit 
+#define ARCHER_HIT_TIME 0.2f
+#define ARCHER_HIT_LEFT_1 "Ressources/Enemies/Archer/Damaged/Left/1.png"
+#define ARCHER_HIT_LEFT_2 "Ressources/Enemies/Archer/Damaged/Left/2.png"
+
+#define ARCHER_HIT_RIGHT_1 "Ressources/Enemies/Archer/Damaged/Right/1.png"
+#define ARCHER_HIT_RIGHT_2 "Ressources/Enemies/Archer/Damaged/Right/2.png"
+
+	// Dying 
+#define ARCHER_DYING_TIME 2.0f
+#define ARCHER_DYING_LEFT_1 "Ressources/Enemies/Archer/Death/Left/1.png"
+#define ARCHER_DYING_LEFT_2 "Ressources/Enemies/Archer/Death/Left/2.png"
+#define ARCHER_DYING_LEFT_3 "Ressources/Enemies/Archer/Death/Left/3.png"
+#define ARCHER_DYING_LEFT_4 "Ressources/Enemies/Archer/Death/Left/4.png"
+#define ARCHER_DYING_LEFT_5 "Ressources/Enemies/Archer/Death/Left/5.png"
+
+#define ARCHER_DYING_RIGHT_1 "Ressources/Enemies/Archer/Death/Right/1.png"
+#define ARCHER_DYING_RIGHT_2 "Ressources/Enemies/Archer/Death/Right/2.png"
+#define ARCHER_DYING_RIGHT_3 "Ressources/Enemies/Archer/Death/Right/3.png"
+#define ARCHER_DYING_RIGHT_4 "Ressources/Enemies/Archer/Death/Right/4.png"
+#define ARCHER_DYING_RIGHT_5 "Ressources/Enemies/Archer/Death/Right/5.png"
 
 //------ Minotaur ------//
 #define MINOTAUR_NBR_LIVES 5

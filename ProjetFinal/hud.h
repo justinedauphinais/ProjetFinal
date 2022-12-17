@@ -48,6 +48,7 @@ public:
 
 	int getScore() const;
 	int getNbrVies() const;
+	int getRoom() const;
 
 	void draw() const;
 };

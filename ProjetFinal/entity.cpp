@@ -96,21 +96,23 @@ void entity::move(Keyboard::Key key, float time)
 /// <param name="distance"></param>
 /// <param name="time"></param>
 /// <returns></returns>
-bool entity::move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY)
+bool entity::move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY, bool agroRange)
 {
+	int x = abs(distance.x);
+	int y = abs(distance.y);
 	if (_state != ATTACKING) {
-		if (abs(distance.x) > AGRO_RANGE && abs(distance.y) < AGRO_RANGE)
+		if (abs(distance.x) > AGRO_RANGE && abs(distance.y) < AGRO_RANGE && agroRange)
 			setState(IDLE);
 		else if (abs(distance.x) < hitDistanceX && abs(distance.y) < hitDistanceY && _attackClock.getElapsedTime().asSeconds() > 6)
 			return true;
 		else if (abs(distance.x) > abs(distance.y) && distance.x < 0)
-			move(Keyboard::A, ENEMY_WALK_TIME);
+			move(Keyboard::A, GUARD_WALK_TIME);
 		else if (abs(distance.x) > abs(distance.y))
-			move(Keyboard::D, ENEMY_WALK_TIME);
+			move(Keyboard::D, GUARD_WALK_TIME);
 		else if (distance.y < 0)
-			move(Keyboard::W, ENEMY_WALK_TIME);
+			move(Keyboard::W, GUARD_WALK_TIME);
 		else if (distance.y > 0)
-			move(Keyboard::S, ENEMY_WALK_TIME);
+			move(Keyboard::S, GUARD_WALK_TIME);
 	}
 
 	return false;

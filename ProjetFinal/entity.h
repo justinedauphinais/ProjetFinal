@@ -39,5 +39,5 @@ public:
 	bool removeHearts(int nbr = 1);
 
 	void move(Keyboard::Key key, float time);
-	bool move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY);
+	bool move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY, bool agroRange = true);
 };

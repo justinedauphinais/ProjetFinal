@@ -1,73 +1,6 @@
 #include "gardeEnemy.h";
 
 /// <summary>
-/// Constructeur
-/// </summary>
-/// <param name="data"></param>
-gardeEnemy::gardeEnemy(gameDataRef data)
-{
-	_data = data;
-	_animationIterator = 0;
-	_nbrLives = NBR_LIVES_GARD;
-
-	// Idle right
-	for (int  i = 1; i < 5; i++)
-		_animationFramesIdleRight.push_back(_data->assets.getTexture("enemy idle frame right" + to_string(i)));
-
-	// Idle left
-	for (int  i = 1; i < 5; i++)
-		_animationFramesIdleLeft.push_back(_data->assets.getTexture("enemy idle frame left" + to_string(i)));
-
-	// Walking left
-	for (int i = 1; i < 6; i++)
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("enemy walking frame left" + to_string(i)));
-
-	// Walking right
-	for (int i = 1; i < 6; i++)
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("enemy walking frame right" + to_string(i)));
-
-	// Attack left
-	for (int i = 1; i < 6; i++)
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("enemy attack frame left" + to_string(i)));
-
-	// Attack right
-	for (int i = 1; i < 6; i++)
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("enemy attack frame right" + to_string(i)));
-
-	// Damaged left
-	for (int i = 1; i < 3; i++)
-		_animationFramesDamagedLeft.push_back(_data->assets.getTexture("enemy damaged frame left" + to_string(i)));
-
-	// Damaged right
-	for (int i = 1; i < 3; i++)
-		_animationFramesDamagedRight.push_back(_data->assets.getTexture("enemy damaged frame right" + to_string(i)));
-
-	// Dying left
-	for (int i = 1; i <= 6; i++)
-		_animationFramesDyingLeft.push_back(_data->assets.getTexture("enemy dying frame left" + to_string(i)));
-
-	// Dying right
-	for (int i = 1; i <= 6; i++)
-		_animationFramesDyingRight.push_back(_data->assets.getTexture("enemy dying frame right" + to_string(i)));
-
-	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
-
-	_sprite.setScale(8.0,8.0);
-
-	_sprite.setPosition((_data->window.getSize().x / 2) - (_sprite.getGlobalBounds().width / 2),
-		(_data->window.getSize().y / 2) - (_sprite.getGlobalBounds().height / 2));
-
-	//_lifeBarSprite.setTexture(_data->assets.getTexture("lifeBar"));
-	//_lifeBarSprite.setPosition(_sprite.getPosition().x, _sprite.getPosition().y - 50);
-	//_lifeBarSprite.setScale(2.0f, 2.0f);
-
-	//_lifeSprite.setFillColor(Color::Color(244, 20, 20));
-	//_lifeSprite.setSize(Vector2f(100, 50));
-
-	_state = IDLE;
-}
-
-/// <summary>
 /// 
 /// </summary>
 /// <param name="data"></param>
@@ -77,47 +10,47 @@ gardeEnemy::gardeEnemy(gameDataRef data, float posX, float posY)
 {
 	_data = data;
 	_animationIterator = 0;
-	_nbrLives = NBR_LIVES_GARD;
+	_nbrLives = NBR_LIVES_GUARD;
 
 	// Idle right
-	for (int i = 1; i < 5; i++)
-		_animationFramesIdleRight.push_back(_data->assets.getTexture("enemy idle frame right" + to_string(i)));
+	for (int i = 1; i <= 5; i++)
+		_animationFramesIdleRight.push_back(_data->assets.getTexture("guard idle frame right" + to_string(i)));
 
 	// Idle left
-	for (int i = 1; i < 5; i++)
-		_animationFramesIdleLeft.push_back(_data->assets.getTexture("enemy idle frame left" + to_string(i)));
+	for (int i = 1; i <= 5; i++)
+		_animationFramesIdleLeft.push_back(_data->assets.getTexture("guard idle frame left" + to_string(i)));
 
 	// Walking left
 	for (int i = 1; i < 6; i++)
-		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("enemy walking frame left" + to_string(i)));
+		_animationFramesWalkingLeft.push_back(_data->assets.getTexture("guard walking frame left" + to_string(i)));
 
 	// Walking right
 	for (int i = 1; i < 6; i++)
-		_animationFramesWalkingRight.push_back(_data->assets.getTexture("enemy walking frame right" + to_string(i)));
+		_animationFramesWalkingRight.push_back(_data->assets.getTexture("guard walking frame right" + to_string(i)));
 
 	// Attack left
 	for (int i = 1; i < 6; i++)
-		_animationFramesFightingLeft.push_back(_data->assets.getTexture("enemy attack frame left" + to_string(i)));
+		_animationFramesFightingLeft.push_back(_data->assets.getTexture("guard attack frame left" + to_string(i)));
 
 	// Attack right
 	for (int i = 1; i < 6; i++)
-		_animationFramesFightingRight.push_back(_data->assets.getTexture("enemy attack frame right" + to_string(i)));
+		_animationFramesFightingRight.push_back(_data->assets.getTexture("guard attack frame right" + to_string(i)));
 
 	// Damaged left
 	for (int i = 1; i < 3; i++)
-		_animationFramesDamagedLeft.push_back(_data->assets.getTexture("enemy damaged frame left" + to_string(i)));
+		_animationFramesDamagedLeft.push_back(_data->assets.getTexture("guard damaged frame left" + to_string(i)));
 
 	// Damaged right
 	for (int i = 1; i < 3; i++)
-		_animationFramesDamagedRight.push_back(_data->assets.getTexture("enemy damaged frame right" + to_string(i)));
+		_animationFramesDamagedRight.push_back(_data->assets.getTexture("guard damaged frame right" + to_string(i)));
 
 	// Dying left
 	for (int i = 1; i <= 6; i++) 
-		_animationFramesDyingLeft.push_back(_data->assets.getTexture("enemy dying frame left" + to_string(i)));
+		_animationFramesDyingLeft.push_back(_data->assets.getTexture("guard dying frame left" + to_string(i)));
 
 	// Dying right
 	for (int i = 1; i <= 6; i++)
-		_animationFramesDyingRight.push_back(_data->assets.getTexture("enemy dying frame right" + to_string(i)));
+		_animationFramesDyingRight.push_back(_data->assets.getTexture("guard dying frame right" + to_string(i)));
 
 	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 
@@ -136,7 +69,7 @@ gardeEnemy::gardeEnemy(gameDataRef data, float posX, float posY)
 void gardeEnemy::update(float dt)
 {
 	// Si on change de frame et que nous ne sommes pas en train d'attaquer
-	if (_clock.getElapsedTime().asSeconds() > ENEMY_IDLE_TIME / _animationFramesIdleLeft.size() && (_state == entityStates::IDLE)) {	// Si idle
+	if (_clock.getElapsedTime().asSeconds() > GUARD_IDLE_TIME / _animationFramesIdleLeft.size() && (_state == entityStates::IDLE)) {	// Si idle
 		_animationIterator++;
 
 		if (_animationIterator >= _animationFramesIdleRight.size())		// Si fin du vecteur
@@ -149,7 +82,7 @@ void gardeEnemy::update(float dt)
 
 		_clock.restart();
 	}
-	else if (_clock.getElapsedTime().asSeconds() > ENEMY_ATTACK_TIME / _animationFramesIdleRight.size() && (_state == entityStates::ATTACKING)) {	// Si attaque
+	else if (_clock.getElapsedTime().asSeconds() > GUARD_ATTACK_TIME / _animationFramesIdleRight.size() && (_state == entityStates::ATTACKING)) {	// Si attaque
 		_animationIterator++;
 
 		if (_animationIterator >= _animationFramesFightingRight.size()) {	// Si fin de l'attaque
@@ -175,7 +108,7 @@ void gardeEnemy::update(float dt)
 			_clock.restart();
 		}
 	}
-	else if (_clock.getElapsedTime().asSeconds() > ENEMY_HIT_TIME / _animationFramesDamagedRight.size() && (_state == entityStates::HIT)) {
+	else if (_clock.getElapsedTime().asSeconds() > GUARD_HIT_TIME / _animationFramesDamagedRight.size() && (_state == entityStates::HIT)) {
 		if (_dir == RIGHT || _dir == TOP) {
 			_sprite.setTexture(_animationFramesDamagedRight[_animationIterator], true);
 		}
@@ -190,7 +123,7 @@ void gardeEnemy::update(float dt)
 
 		_clock.restart();
 	}
-	else if (_clock.getElapsedTime().asSeconds() > ENEMY_DYING_TIME / _animationFramesDyingRight.size() && (_state == entityStates::DYING)) {
+	else if (_clock.getElapsedTime().asSeconds() > GUARD_DYING_TIME / _animationFramesDyingRight.size() && (_state == entityStates::DYING)) {
 		if (_dir == RIGHT || _dir == TOP) {
 			_sprite.setTexture(_animationFramesDyingRight[_animationIterator], true);
 		}
