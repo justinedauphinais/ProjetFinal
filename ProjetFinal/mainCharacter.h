@@ -15,8 +15,6 @@ using namespace sf;
 
 class mainCharacter : public entity {
 private:
-	int _animationIterator;
-
 	Clock _movementClock;
 
 public:

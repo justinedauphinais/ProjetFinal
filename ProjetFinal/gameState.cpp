@@ -7,7 +7,6 @@
 gameState::gameState(gameDataRef data) : _data(data)
 {
 	_mainCharacter = nullptr;
-	_garde = nullptr;
 	_wall = nullptr;
 	_hud = nullptr;
 	_door = nullptr;
@@ -25,8 +24,6 @@ gameState::gameState(gameDataRef data, hud*& hud) : _data(data)
 	_mainCharacter = nullptr;
 	_wall = nullptr;
 	_door = nullptr;
-	_garde = nullptr;
-	
 }
 
 /// <summary>
@@ -35,7 +32,6 @@ gameState::gameState(gameDataRef data, hud*& hud) : _data(data)
 gameState::~gameState()
 {
 	delete _mainCharacter;
-	delete _garde;
 	delete _wall;
 	delete _door;
 	
@@ -53,14 +49,24 @@ void gameState::init()
 	if (_hud == nullptr) 
 		_hud = new hud(_data, 1, 0);
 
+	int nbrEnemies = (rand() % _hud->getRoom() + 1);
+	for (int i = 0; i < nbrEnemies; i++) {
+		_gardes.push_back(gardeEnemy(_data, rand() % 1500 + 150, rand() % 750 + 150));
+		_lstSprites.push_back(_gardes[i].getSprite());
+	}
+
+	nbrEnemies = (rand() % 2);
+	for (int i = 0; i < nbrEnemies; i++) {
+		_archers.push_back(archerEnemy(_data, rand() % 1500 + 150, rand() % 750 + 150));
+	}
+
 	_mainCharacter = new mainCharacter(_data);
-	_garde = new gardeEnemy(_data, 200, 200);
 	_wall = new wall(_data);
 	_door = new door(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 
 	_lstSprites.push_back(_mainCharacter->getSprite());
-	_lstSprites.push_back(_garde->getSprite());
+
 
 	_gameState = gameStates::ready;
 }
@@ -114,11 +120,25 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
-	if (_garde->move(_collision.getDistance(_mainCharacter->getSprite(), _garde->getSprite()), dt, 200, 75))
-		_garde->attack();
+	for (int i = 0; i < _gardes.size(); i++) {
+		if (_gardes[i].getState() != DEAD) {
+			_gardes[i].update(dt);
+
+			if (_gardes[i].move(_collision.getDistance(_mainCharacter->getSprite(), _gardes[i].getSprite()), dt, 175, 125))
+				_gardes[i].attack();
+		}
+	}
+
+	for (int i = 0; i < _archers.size(); i++) {
+		if (_archers[i].getState() != DEAD) {
+			_archers[i].update(dt);
+
+			if (_archers[i].move(_collision.getDistance(_mainCharacter->getSprite(), _archers[i].getSprite()), dt, 175, 125))
+				_archers[i].attack();
+		}
+	}
 
 	_mainCharacter->update(dt);
-	_garde->update(dt);
 
 	if (_mainCharacter->getState() != ATTACKING) {
 		_hit = false;
@@ -131,7 +151,15 @@ void gameState::update(float dt)
 			}
 			else if (_clock.getElapsedTime().asSeconds() > 0.3f) {
 				_hud->addRoom();
-				_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
+				if (_hud->getRoom() == 3) {
+					_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
+				}
+				else if (_hud->getRoom() == 5) {
+					_data->machine.addState(stateRef(new bossRoomState(_data, _hud)), true);
+				}
+				else {
+					_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
+				}
 			}
 		}
 
@@ -144,28 +172,41 @@ void gameState::update(float dt)
 		else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f))	// Collision mur droit
 			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 7.0f, 4.0f, _garde->getSprite(), 2.0f, 5.0f) && !_hit) {
-		_hit = true;
 
-		if (_garde->removeHearts()) {
-			_garde->setState(DYING);
-			_hud->addScore();
-			_hud->addMoney(5);
-			_hasKey = true;
-		}
-		else {
-			_garde->setState(HIT);
-		}
-	}
+	for (int i = 0; i < _gardes.size(); i++) {
+		if (_mainCharacter->getState() == ATTACKING && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 7.0f, 4.0f, _gardes[i].getSprite(), 2.0f, 5.0f) 
+			&& !_hit && _gardes[i].getState() != DEAD) {
+			_hit = true;
 
-	if (_garde->getState() == ATTACKING && !_mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 3.0f, _garde->getSprite(), 3.0f, 2.0f)) {
-		_hud->removeHeart();
+			if (_gardes[i].removeHearts()) {
+				_gardes[i].setState(DYING);
+				_hud->addScore();
+				_hud->addMoney(2);
+				_hasKey = true;
+			}
+			else {
+				_gardes[i].setState(HIT);
+			}
+		}
+		else if (_gardes[i].getState() == ATTACKING && _mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 3.0f, _gardes[i].getSprite(), 3.0f, 2.0f)) {
+			_mainCharacter->setState(HIT);
+			_hud->removeHeart();
+		}
 	}
 
 	_lstSprites.clear();
 	_lstSprites.push_back(_mainCharacter->getSprite());
-	if (_garde->getState() != DEAD) {
-		_lstSprites.push_back(_garde->getSprite());
+
+	for (int i = 0; i < _gardes.size(); i++) {
+		if (_gardes[i].getState() != DEAD) {
+			_lstSprites.push_back(_gardes[i].getSprite());
+		}
+	}
+
+	for (int i = 0; i < _archers.size(); i++) {
+		if (_gardes[i].getState() != DEAD) {
+			_lstSprites.push_back(_archers[i].getSprite());
+		}
 	}
 
 	// Gestion de l'ordre d'affichage 

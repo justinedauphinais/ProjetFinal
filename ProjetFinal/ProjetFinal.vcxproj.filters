@@ -1,83 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="shopOwner.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="assetManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="bossRoomState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="cat.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="collision.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="door.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="drawable.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="torch.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="stateMachine.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="splashState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="shopState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="ProjetFinal.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="minotaur.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="mainWalls.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="mainMenuState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="mainCharacter.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="items.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="loadingState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="introductionState.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="inputManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="hud.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="gardeEnemy.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="gameState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="gameOverState.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="bossRoomState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="gameOverState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="gameState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="introductionState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="loadingState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="mainMenuState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="stateMachine.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="splashState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="shopState.cpp">
+      <Filter>Source\States</Filter>
+    </ClCompile>
+    <ClCompile Include="minotaur.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="shopOwner.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="mainCharacter.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="gardeEnemy.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="cat.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
     <ClCompile Include="entity.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="door.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="drawable.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="hud.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="mainWalls.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="torch.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="items.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="archerEnemy.cpp">
+      <Filter>Source\Entities</Filter>
     </ClCompile>
     <ClCompile Include="coffres.cpp">
       <Filter>Source</Filter>
@@ -90,83 +93,86 @@
     <ClInclude Include="assetManager.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="bossRoomState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="cat.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="collision.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="door.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="DEFINITIONS.hpp">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="drawable.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="entity.h">
-      <Filter>Header</Filter>
-    </ClInclude>
     <ClInclude Include="game.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="gameOverState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="gameState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="gardeEnemy.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="hud.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="inputManager.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="introductionState.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="gameOverState.h">
+      <Filter>Header\States</Filter>
     </ClInclude>
-    <ClInclude Include="items.h">
-      <Filter>Header</Filter>
+    <ClInclude Include="introductionState.h">
+      <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="loadingState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="mainCharacter.h">
-      <Filter>Header</Filter>
+      <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="mainMenuState.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="mainWalls.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="minotaur.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="shopOwner.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="shopState.h">
-      <Filter>Header</Filter>
+      <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="splashState.h">
-      <Filter>Header</Filter>
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="shopState.h">
+      <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="stateMachine.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="torch.h">
-      <Filter>Header</Filter>
+      <Filter>Header\States</Filter>
     </ClInclude>
     <ClInclude Include="state.hpp">
-      <Filter>Header</Filter>
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="bossRoomState.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="cat.h">
+      <Filter>Header\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Header\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="gardeEnemy.h">
+      <Filter>Header\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="mainCharacter.h">
+      <Filter>Header\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="minotaur.h">
+      <Filter>Header\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="shopOwner.h">
+      <Filter>Header\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="gameState.h">
+      <Filter>Header\States</Filter>
+    </ClInclude>
+    <ClInclude Include="door.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="mainWalls.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="torch.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="items.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="hud.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="drawable.h">
+      <Filter>Header\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="archerEnemy.h">
+      <Filter>Header\Entities</Filter>
     </ClInclude>
     <ClInclude Include="coffres.h">
       <Filter>Header</Filter>
@@ -182,5 +188,26 @@
     <Filter Include="Header">
       <UniqueIdentifier>{44829b70-ee99-4d01-b56b-f8c093cc1f4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header\States">
+      <UniqueIdentifier>{faec040a-f002-4c77-8720-3df3e1342907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\States">
+      <UniqueIdentifier>{dbe649b5-64c7-42ff-a27f-7d90286ca19c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects">
+      <UniqueIdentifier>{fdf6f1f8-87f7-477d-a1ae-7b780c3a9622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities">
+      <UniqueIdentifier>{2a509980-e96a-4ef9-b9aa-53a420dce85d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Entities">
+      <UniqueIdentifier>{56ae8bbc-19a7-46e5-b7d9-1493a002cfbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Objects">
+      <UniqueIdentifier>{1373d31b-063b-4b3e-92a3-b3dce1fa0261}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

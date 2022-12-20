@@ -58,7 +58,7 @@ private:
 
 	bool _showDialogue;
 	bool _inItemFrame;
-	
+	bool _usedItem;
 
 	Clock _clock;
 

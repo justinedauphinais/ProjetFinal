@@ -85,15 +85,12 @@ void bossRoomState::handleInput()
 /// <param name="dt"></param>
 void bossRoomState::update(float dt)
 {
-	if (_minotaur->move(_collision.getDistance(_mainCharacter->getSprite(), _minotaur->getSprite()), dt, 200, 75))
+	if (_minotaur->move(_collision.getDistance(_mainCharacter->getSprite(), _minotaur->getSprite()), dt, 300, 25, false))
 		_minotaur->attack();
 
 	_mainCharacter->update(dt);
 	_minotaur->update(dt);
 
-	if (_minotaur->getState() != DEAD) {
-		_lstSprites.push_back(_minotaur->getSprite());
-	}
 	if (_mainCharacter->getState() != ATTACKING) {
 		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f))			// Collision mur du haut
 			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
@@ -110,7 +107,8 @@ void bossRoomState::update(float dt)
 		_minotaur->setState(HIT);
 	}
 
-	if (_minotaur->getState() == ATTACKING && _mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 3.0f, _minotaur->getSprite(), 3.0f, 2.0f)) {
+	if (_minotaur->getState() == ATTACKING && _mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _minotaur->getSprite(), 5.0f, 5.0f)) {
+		_mainCharacter->setState(HIT);
 		_hud->removeHeart();
 	}
 

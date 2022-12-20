@@ -38,6 +38,13 @@ mainCharacter::mainCharacter(gameDataRef data, int nbrVies)
 		for (int i = 1; i < 19; i++) {
 			_animationFramesFightingLeft.push_back(_data->assets.getTexture("skeleton attacking frame left" + to_string(i)));
 		}
+
+		// Animation hit
+		for (int i = 1; i <= 8; i++)
+			_animationFramesDamagedLeft.push_back(_data->assets.getTexture("skeleton hit frame left " + to_string(i)));
+
+		for (int i = 1; i <= 8; i++)
+			_animationFramesDamagedRight.push_back(_data->assets.getTexture("skeleton hit frame right " + to_string(i)));
 	#pragma endregion
 
 	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
@@ -99,7 +106,25 @@ void mainCharacter::update(float dt)
 			_clock.restart();
 		}
 	}
-	//else if (_clock.getElapsedTime().asSeconds() > SKELETE_ATTACK_TIME);
+	else if (_clock.getElapsedTime().asSeconds() > SKELETE_HURT_TIME / _animationFramesDamagedRight.size() && (_state == entityStates::HIT)) {
+		if (_dir == RIGHT || _dir == TOP) {
+			_sprite.setTexture(_animationFramesDamagedRight[_animationIterator], true);
+		}
+		else {
+			_sprite.setTexture(_animationFramesDamagedLeft[_animationIterator], true);
+		}
+
+		_animationIterator++;
+
+		if (_animationIterator >= _animationFramesDamagedLeft.size() && _nbrLives <= 0) {
+			setState(DYING);
+		}
+		else if (_animationIterator >= _animationFramesDamagedLeft.size()) {
+			setState(IDLE);
+		}
+
+		_clock.restart();
+	}
 }
 
 /// <summary>

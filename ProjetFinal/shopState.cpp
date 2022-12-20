@@ -32,7 +32,7 @@ shopState::~shopState()
 /// </summary>
 void shopState::init()
 {
-	_hud->addMoney(10);
+	_hud->addMoney(40);
 
 	_background.setTexture(_data->assets.getTexture("game background 1"));
 	_carpet.setTexture(_data->assets.getTexture("tapis"));
@@ -104,22 +104,19 @@ void shopState::handleInput()
 			_data->window.close();
 		else if (event.type == Event::KeyReleased) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
+			_usedItem = false;
 		}
 		else if (_inItemFrame && _data->input.isSpriteClicked(_buttonAccept, Mouse::Left, _data->window)) { //item present sur la page.
 			if (_hud->removeMoney(_items[_indexSelectedItem].getPrice())) {
 				_items[_indexSelectedItem].wasBought();
 				_inItemFrame = false;
 				_hud->addItem(_items[_indexSelectedItem]);
-				//_items.push_back();
-				
 			}
-			
 		}
-		else if (!_items.empty() && Keyboard::isKeyPressed(Keyboard::E))
+		else if (Keyboard::isKeyPressed(Keyboard::E) && !_usedItem)
 		{		
+			_usedItem = true;
 			_hud->removeItem(_items[_indexSelectedItem]);
-			//_items.pop_back();
-
 		}
 	}
 
@@ -162,10 +159,17 @@ void shopState::update(float dt)
 		_torches[i].update(dt);
 
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {				// Collision porte
-		_hud->addRoom();
-		_data->machine.addState(stateRef(new bossRoomState(_data, _hud)), true);
+		if (_door->getState() == CLOSED) {
+			_door->openDoor();
+			_clock.restart();
+		}
+		else if (_clock.getElapsedTime().asSeconds() > 0.3f) {
+			_hud->addRoom();
+			_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
+		}
 	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {		// Collision mur du haut
+	
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {		// Collision mur du haut
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
 	}
 	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {					// Collision mur du bas

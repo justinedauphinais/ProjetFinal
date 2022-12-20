@@ -19,8 +19,7 @@
 #include "gardeEnemy.h"
 #include "gameOverState.h"
 #include "shopState.h"
-#include "shopOwner.h"
-#include "Inventaire.h"
+#include "archerEnemy.h"
 #include <iostream>
 
 using namespace sf;
@@ -41,9 +40,9 @@ private:
 	door* _door;					// La porte
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
+	vector<archerEnemy> _archers;
 
 	vector<gardeEnemy> _gardes;		// Vecteur de garde
-	gardeEnemy* _garde;
 
 	vector<Sprite> _lstSprites;		// Liste des sprites
 	

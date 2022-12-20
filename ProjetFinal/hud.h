@@ -51,6 +51,7 @@ public:
 
 	int getScore() const;
 	int getNbrVies() const;
+	int getRoom() const;
 	void addItem(item item);
 	void removeItem(item item);
 
