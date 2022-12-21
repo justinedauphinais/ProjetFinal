@@ -37,7 +37,7 @@ gameState::~gameState()
 }
 
 /// <summary>
-/// Initilisae les différents objets du state
+/// Initialise les différents objets du state
 /// </summary>
 void gameState::init()
 {
@@ -223,7 +223,7 @@ void gameState::update(float dt)
 }
 
 /// <summary>
-/// Clear, dessine le background et display la fenêtre
+/// Clear, dessine et display la fenêtre
 /// </summary>
 /// <param name="dt"></param>
 void gameState::draw(float dt) const

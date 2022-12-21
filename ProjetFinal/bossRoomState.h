@@ -1,3 +1,9 @@
+/********************************************************************************************
+* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
+* Nom		: gameState.h																	*
+* Date		: 21/12/2022																	*
+* Description : Gestion de la salle de la bataille finale entre le MC et le minotaur.		*
+*********************************************************************************************/
 #pragma once
 
 #include <SFML/Graphics.hpp>

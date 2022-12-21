@@ -24,7 +24,7 @@ bossRoomState::~bossRoomState()
 }
 
 /// <summary>
-/// 
+/// Initialise les différents objets du state
 /// </summary>
 void bossRoomState::init()
 {
@@ -56,7 +56,7 @@ void bossRoomState::init()
 }
 
 /// <summary>
-/// 
+/// Réagit aux différents inputs de l'utilisateur
 /// </summary>
 void bossRoomState::handleInput()
 {
@@ -99,7 +99,7 @@ void bossRoomState::handleInput()
 }
 
 /// <summary>
-/// 
+/// Mets-à-jour les objets du state
 /// </summary>
 /// <param name="dt"></param>
 void bossRoomState::update(float dt)
@@ -109,7 +109,7 @@ void bossRoomState::update(float dt)
 	_mainCharacter->update(dt);
 	_minotaur->update(dt);
 
-	if (_mainCharacter->getState() != ATTACKING) {
+	if (_mainCharacter->getState() != ATTACKING) {	// Si n'attaque pas vérifie collisions
 		_hit = false;
 
 		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f))			// Collision mur du haut
@@ -121,8 +121,8 @@ void bossRoomState::update(float dt)
 		else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 5.0f, _wall->getWallRight(), 1.0f, 1.0f))	// Collision mur droit
 			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
-	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), _minotaur->getSprite()) && 
-				_minotaur->getState() != HIT && _minotaur->getState() != DEAD && _minotaur->getState() != DYING && !_hit) {
+	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), _minotaur->getSprite()) &&			// Si minotaur frappé
+			_minotaur->getState() != HIT && _minotaur->getState() != DEAD && _minotaur->getState() != DYING && !_hit) {
 		_hit = true;
 
 		_enemyHitSound.play();
@@ -169,7 +169,7 @@ void bossRoomState::update(float dt)
 }
 
 /// <summary>
-/// 
+/// Clear, dessine et display la fenêtre
 /// </summary>
 /// <param name="dt"></param>
 void bossRoomState::draw(float dt) const
