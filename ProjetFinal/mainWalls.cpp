@@ -1,5 +1,10 @@
 #include "mainWalls.h"
 
+/// <summary>
+/// Constructeur
+/// </summary>
+/// <param name="data"></param>
+/// <param name="nbrWall"></param>
 wall::wall(gameDataRef data, int nbrWall) : _data(data)
 {
 	// Création des murs de la pièce
@@ -25,39 +30,64 @@ wall::wall(gameDataRef data, int nbrWall) : _data(data)
 
 }
 
+/// <summary>
+/// Dessine dans la fenêtre
+/// </summary>
 void wall::draw() const
 {
 	for (int i = 1; i < _wallSprites.size(); i++)
 		_data->window.draw(_wallSprites.at(i));
 }
 
+/// <summary>
+/// Dessine le mur derrière
+/// </summary>
 void wall::drawBackWall() const
 {
 	_data->window.draw(_wallSprites.at(0));
 }
 
+/// <summary>
+/// Retourne les sprites
+/// </summary>
+/// <returns></returns>
 const vector<Sprite>& wall::getSprites() const
 {
 	return _wallSprites;
 }
 
+/// <summary>
+/// Get le mur du haut
+/// </summary>
+/// <returns></returns>
 const Sprite& wall::getWallUp() const
 {
 	return _wallSprites[0];
 }
 
+/// <summary>
+/// Get le mur du bas
+/// </summary>
+/// <returns></returns>
 const Sprite& wall::getWallDown() const
 {
 	return _wallSprites[1];
 }
 
+/// <summary>
+/// Get le mur de gauche
+/// </summary>
+/// <returns></returns>
 const Sprite& wall::getWallLeft() const
 {
 	return _wallSprites[2];
 }
 
+/// <summary>
+/// Get le mur de droite
+/// </summary>
+/// <returns></returns>
 const Sprite& wall::getWallRight() const
 {
 	return _wallSprites[3];
 }
-

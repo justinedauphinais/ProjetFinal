@@ -34,7 +34,6 @@ gameState::~gameState()
 	delete _mainCharacter;
 	delete _wall;
 	delete _door;
-	
 }
 
 /// <summary>
@@ -42,31 +41,44 @@ gameState::~gameState()
 /// </summary>
 void gameState::init()
 {
-	_background.setTexture(_data->assets.getTexture("game background 1"));
 	_hasKey = true;
+	_background.setTexture(_data->assets.getTexture("game background 1"));
 
 	// Pointeurs
 	if (_hud == nullptr) 
 		_hud = new hud(_data, 1, 0);
 
-	int nbrEnemies = (rand() % _hud->getRoom() + 1);
+	int nbrEnemies = (rand() % _hud->getRoom() + 1);		// Crée nombre aléatoire d'ennemis selon nbr salle
 	for (int i = 0; i < nbrEnemies; i++) {
-		_gardes.push_back(gardeEnemy(_data, rand() % 1500 + 150, rand() % 750 + 150));
+		_gardes.push_back(gardeEnemy(_data, rand() % 1500 + 150, rand() % 500 + 150));
 		_lstSprites.push_back(_gardes[i].getSprite());
 	}
 
-	nbrEnemies = (rand() % 2);
-	for (int i = 0; i < nbrEnemies; i++) {
-		_archers.push_back(archerEnemy(_data, rand() % 1500 + 150, rand() % 750 + 150));
-	}
-
-	_mainCharacter = new mainCharacter(_data);
+	// Initialisation des pointeurs
 	_wall = new wall(_data);
 	_door = new door(_data);
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 
-	_lstSprites.push_back(_mainCharacter->getSprite());
+	// Key
+	_key.setTexture(_data->assets.getTexture("key"));
+	_key.setPosition(SCREEN_WIDTH - 275, 40);
+	_key.setScale(3.0f, 3.0f);
 
+	// Son
+	if (!_enemyDeadBuffer.loadFromFile(SOUND_ENEMY_DEAD))
+		cout << "Erreur loading sound effect" << endl;
+
+	_enemyDeadSound.setBuffer(_enemyDeadBuffer);
+
+	if (!_enemyHitBuffer.loadFromFile(SOUND_HIT))
+		cout << "Erreur loading sound effect" << endl;
+
+	_enemyHitSound.setBuffer(_enemyHitBuffer);
+
+	if (!_MCHitBuffer.loadFromFile(SOUND_MC_HIT))
+		cout << "Erreur loading sound effect" << endl;
+
+	_MCHitSound.setBuffer(_MCHitBuffer);
 
 	_gameState = gameStates::ready;
 }
@@ -120,44 +132,31 @@ void gameState::handleInput()
 /// <param name="dt"></param>
 void gameState::update(float dt)
 {
-	for (int i = 0; i < _gardes.size(); i++) {
-		if (_gardes[i].getState() != DEAD) {
-			_gardes[i].update(dt);
-
-			if (_gardes[i].move(_collision.getDistance(_mainCharacter->getSprite(), _gardes[i].getSprite()), dt, 175, 125))
-				_gardes[i].attack();
-		}
+	for (int i = 0; i < _gardes.size(); i++) {	// Update les gardes
+		_gardes[i].update(dt);
+		_gardes[i].move(_collision.getDistance(_mainCharacter->getSprite(), _gardes[i].getSprite()), dt, 175, 125);
 	}
 
-	for (int i = 0; i < _archers.size(); i++) {
-		if (_archers[i].getState() != DEAD) {
-			_archers[i].update(dt);
+	_mainCharacter->update(dt);	
 
-			if (_archers[i].move(_collision.getDistance(_mainCharacter->getSprite(), _archers[i].getSprite()), dt, 175, 125))
-				_archers[i].attack();
-		}
-	}
-
-	_mainCharacter->update(dt);
-
-	if (_mainCharacter->getState() != ATTACKING) {
+	if (_mainCharacter->getState() != ATTACKING) {		// Si MC attaque pas
 		_hit = false;
 
 		// Collision porte
 		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f) && _hasKey) {
-			if (_door->getState() == CLOSED) {
+			if (_door->getState() == CLOSED) {		// Si porte fermée, ouvre porte
 				_door->openDoor();
 				_clock.restart();
 			}
-			else if (_clock.getElapsedTime().asSeconds() > 0.3f) {
+			else if (_clock.getElapsedTime().asSeconds() > 0.2f) {
 				_hud->addRoom();
-				if (_hud->getRoom() == 3) {
+				if (_hud->getRoom() == 3) {		// Shop state
 					_data->machine.addState(stateRef(new shopState(_data, _hud)), true);
 				}
-				else if (_hud->getRoom() == 5) {
+				else if (_hud->getRoom() == 5) {	// Boss room state
 					_data->machine.addState(stateRef(new bossRoomState(_data, _hud)), true);
 				}
-				else {
+				else {								// Prochaine salle
 					_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
 				}
 			}
@@ -173,40 +172,40 @@ void gameState::update(float dt)
 			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - MOVEMENT_DISTANCE, _mainCharacter->getSprite().getPosition().y);
 	}
 
-	for (int i = 0; i < _gardes.size(); i++) {
-		if (_mainCharacter->getState() == ATTACKING && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 7.0f, 4.0f, _gardes[i].getSprite(), 2.0f, 5.0f) 
+	for (int i = 0; i < _gardes.size(); i++) {		// Collisions gardes
+		if (_mainCharacter->getState() == ATTACKING && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 7.0f, 4.0f, _gardes[i].getSprite(), 5.0f, 5.0f)		// Si est attaqué par MC
 			&& !_hit && _gardes[i].getState() != DEAD) {
 			_hit = true;
 
-			if (_gardes[i].removeHearts()) {
+			if (_gardes[i].removeHearts()) {		// Si est mort
+				_enemyDeadSound.play();
 				_gardes[i].setState(DYING);
 				_hud->addScore();
 				_hud->addMoney(2);
 				_hasKey = true;
 			}
 			else {
+				_enemyHitSound.play();
 				_gardes[i].setState(HIT);
 			}
 		}
-		else if (_gardes[i].getState() == ATTACKING && _mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 4.0f, 3.0f, _gardes[i].getSprite(), 3.0f, 2.0f)) {
+		else if (_gardes[i].getState() == ATTACKING && !_wasHit && _mainCharacter->getState() != HIT && _collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 3.0f, _gardes[i].getSprite(), 6.0f, 3.0f)) {	// Si attaque MC
+			_wasHit = true;
 			_mainCharacter->setState(HIT);
 			_hud->removeHeart();
+			_MCHitSound.play();
+		}
+		else if (_gardes[i].getState() != ATTACKING) {		// Si passif
+			_wasHit = false;
 		}
 	}
 
 	_lstSprites.clear();
 	_lstSprites.push_back(_mainCharacter->getSprite());
 
-	for (int i = 0; i < _gardes.size(); i++) {
-		if (_gardes[i].getState() != DEAD) {
+	for (int i = 0; i < _gardes.size(); i++) {	// Ajoute garde au vecteur de sprites 
+		if (_gardes[i].getState() != DEAD)
 			_lstSprites.push_back(_gardes[i].getSprite());
-		}
-	}
-
-	for (int i = 0; i < _archers.size(); i++) {
-		if (_gardes[i].getState() != DEAD) {
-			_lstSprites.push_back(_archers[i].getSprite());
-		}
 	}
 
 	// Gestion de l'ordre d'affichage 
@@ -219,9 +218,8 @@ void gameState::update(float dt)
 	}
 
 	// Si mort
-	if (_hud->getNbrVies() <= 0) {
+	if (_hud->getNbrVies() <= 0)
 		_data->machine.addState(stateRef(new gameOverState(_data, _hud->getScore(), false)), true);
-	}
 }
 
 /// <summary>
@@ -235,11 +233,14 @@ void gameState::draw(float dt) const
 	_wall->drawBackWall();
 	_door->draw();
 
-	for (int i = 0; i < _lstSprites.size(); i++) {
+	for (int i = 0; i < _lstSprites.size(); i++)
 		_data->window.draw(_lstSprites[i]);
-	}
 
 	_wall->draw();
 	_hud->draw();
+
+	if (_hasKey)		// Si a clé
+		_data->window.draw(_key);
+
 	_data->window.display();
 }

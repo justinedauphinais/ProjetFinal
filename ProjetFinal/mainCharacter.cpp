@@ -57,6 +57,12 @@ mainCharacter::mainCharacter(gameDataRef data, int nbrVies)
 	// Directions
 	_dir = directions::RIGHT;
 	_state = entityStates::IDLE;
+
+	// Sons
+	if (!_stepBuffer.loadFromFile(SOUND_STEP))
+		cout << "Erreur loading sound effect" << endl;
+
+	_stepSound.setBuffer(_stepBuffer);
 }
 
 /// <summary>
@@ -72,19 +78,21 @@ void mainCharacter::update(float dt)
 			_animationIterator = 0;
 
 		if (_dir == RIGHT || _dir == TOP)								// Gauche ou droite
-			_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
+			_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator), true);
 		else
-			_sprite.setTexture(_animationFramesIdleLeft.at(_animationIterator));
+			_sprite.setTexture(_animationFramesIdleLeft.at(_animationIterator), true);
+
+		_sprite.setScale(5.0, 5.0);
 
 		_clock.restart();
 	}
 	else if (_clock.getElapsedTime().asSeconds() > SKELETE_ATTACK_TIME / _animationFramesIdleRight.size() && (_state == entityStates::ATTACKING)) {
 		_animationIterator++;
 
-		if (_animationIterator == _animationFramesFightingRight.size()) {
+		if (_animationIterator == _animationFramesFightingRight.size()) {	// Si fin de l'animation
 			_animationIterator = 0;
 
-			if (_dir == TOP || _dir == RIGHT) {
+			if (_dir == TOP || _dir == RIGHT) {			// Gauche ou droite
 				_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator), true);
 				_sprite.setPosition(_sprite.getPosition().x + 15, _sprite.getPosition().y + 20);
 			}
@@ -95,7 +103,7 @@ void mainCharacter::update(float dt)
 
 			_state = entityStates::IDLE;
 		}
-		else if (_dir == RIGHT) {
+		else if (_dir == RIGHT) {		// Gauche ou droite
 			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator));
 
 			_clock.restart();
@@ -107,7 +115,7 @@ void mainCharacter::update(float dt)
 		}
 	}
 	else if (_clock.getElapsedTime().asSeconds() > SKELETE_HURT_TIME / _animationFramesDamagedRight.size() && (_state == entityStates::HIT)) {
-		if (_dir == RIGHT || _dir == TOP) {
+		if (_dir == RIGHT || _dir == TOP) {			// Gauche ou droite
 			_sprite.setTexture(_animationFramesDamagedRight[_animationIterator], true);
 		}
 		else {
@@ -116,7 +124,7 @@ void mainCharacter::update(float dt)
 
 		_animationIterator++;
 
-		if (_animationIterator >= _animationFramesDamagedLeft.size() && _nbrLives <= 0) {
+		if (_animationIterator >= _animationFramesDamagedLeft.size() && _nbrLives <= 0) {	// Si mort ou non
 			setState(DYING);
 		}
 		else if (_animationIterator >= _animationFramesDamagedLeft.size()) {
@@ -124,6 +132,9 @@ void mainCharacter::update(float dt)
 		}
 
 		_clock.restart();
+	}
+	else if ((_animationIterator == 8 || _animationIterator == 1 || _animationIterator == 13) && _state == WALKING) {
+		_stepSound.play();
 	}
 }
 
@@ -133,12 +144,12 @@ void mainCharacter::update(float dt)
 /// <param name="dt"></param>
 void mainCharacter::attack()
 {
-	if (_state != entityStates::ATTACKING) {
+	if (_state != entityStates::ATTACKING) {		// Si pas déjà en train d'attaquer
 		_state = entityStates::ATTACKING;
 
 		_animationIterator = 0;
 
-		if ((_dir == directions::RIGHT) || (_dir == directions::TOP)) {
+		if ((_dir == directions::RIGHT) || (_dir == directions::TOP)) {			// Gauche ou droite
 			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator), true);
 			_sprite.setPosition(_sprite.getPosition().x - 15, _sprite.getPosition().y - 20);
 		}

@@ -2,7 +2,7 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: DEFINITIONS.hpp																*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Définitions des différentes variables du jeu.								*
 *********************************************************************************************/
 #pragma once
 
@@ -51,6 +51,9 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define PLAY_BUTTON_FILEPATH "Ressources/Menu/playButton.png"
 #define STOP_BUTTON_FILEPATH "Ressources/Menu/stopButton.png"
 #define OPTION_BUTTON_FILEPATH "Ressources/Menu/optionsButton.png"
+#define QUITTER_BUTTON_GAME_OVER "Ressources/UI/quitterButton.png"
+#define REJOUER_BUTTON_GAME_OVER "Ressources/UI/rejouerButton.png"
+
 //----- Intro -----//
 #define NEXT_BUTTON_FILEPATH "Ressources/Menu/suivantButton.png"
 
@@ -72,7 +75,6 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define LOADING_SKELETON_FAME_7 "Ressources/UI/LoadingSkeleton/7.png"
 #define LOADING_SKELETON_FAME_8 "Ressources/UI/LoadingSkeleton/8.png"
 
-
 //------ Game ------//
 	// Murs
 #define GAME_BACKGROUND_TEMP_1 "Ressources/Map/Contour_map.png"
@@ -85,7 +87,6 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define GAME_FOREGROUND_LEFT_RIGHT_TEMP_3 "Ressources/Map/wall_3.png"
 #define GAME_FOREGROUND_UP_DOWN_TEMP_3 "Ressources/Map/wall_back_3.png"
 #define POP_UP "Ressources/UI/pop_up.png"
-#define INVENTORY_BACKGROUND "Ressources/UI/pop_up.png"
 #define ACCEPT_PURCHASE "Ressources/UI/accept.png"
 	// Hud
 #define GAME_HEARTS_FILEPATH "Ressources/UI/hearts.png"
@@ -93,16 +94,15 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define GAME_KILLS_FILEPATH "Ressources/UI/kills.png"
 	// Porte
 #define GAME_DOOR_CLOSED_1 "Ressources/Objects/door_closed.png"
-#define GAME_DOOR_CLOSED_2 "Ressources/Objects/door_closed_1.png"
 #define GAME_DOOR_OPEN "Ressources/Objects/door_open.png"
 	// Items
 #define PRICE_BIG_LIFE_POTION 5
 #define BIG_LIFE_POTION "Ressources/Objects/flask_big_red.png"
-#define PRICE_SMALL_LIFE_POTION 3
-#define BIG_LIFE_POTION "Ressources/Objects/flask_big_red.png"
+	// Clé
+#define KEY "Ressources/Objects/key.png"
 
 //------ Store ------//
-	// Hi
+	// Salutation pop up
 #define TALKING_SHOP_OWNER "Ressources/Map/Shop/shopHi.png"
 	// Carpet
 #define CARPET_STORE "Ressources/Map/Shop/tapis.png"
@@ -118,9 +118,20 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define TORCH_FRAME_3 "Ressources/Objects/Torch/3.png"
 #define TORCH_FRAME_4 "Ressources/Objects/Torch/4.png"
 
-	//coffres
-#define COFFRE_CLOSE "Ressources/Objects/chest_closed.png"
-#define COFFRE_OPEN "Ressources/Objects/chest_open_full.png"
+//------ Sons ------//
+#define SOUND_BUTTON_CLICKED_MAIN_MENU "Ressources/Sons/confirm.wav"
+#define SOUND_HEAL "Ressources/Sons/heal.wav"
+#define SOUND_STEP "Ressources/Sons/step.wav"
+#define SOUND_ENEMY_DEAD "Ressources/Sons/enemyDead.wav"
+#define SOUND_MAIN_MENU "Ressources/Sons/cave_theme_1.wav"
+#define SOUND_DOOR_OPENING "Ressources/Sons/door.wav"
+#define SOUND_GAME_OVER "Ressources/Sons/Game_Over_1.wav"
+#define SOUND_GAME_WON "Ressources/Sons/Game_Win_1.wav"
+#define SOUND_HIT "Ressources/Sons/impact.wav"
+#define SOUND_MC_HIT "Ressources/Sons/MChit.wav"
+#define SOUND_POP_UP "Ressources/Sons/popup.wav"
+#define SOUND_BOSS_DEAD "Ressources/Sons/bossDead.wav"
+
 //------ Main character ------//
 #define NBR_LIVES 5
 #define SKELETON_WALK_TIME 0.6f
@@ -261,7 +272,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define GUARD_WALK_TIME 0.8f
 #define AGRO_RANGE 500
 #define LIFE_BAR_FILEPATH "Ressources/UI/enemy_life_bar.png"
-
+#define GUARD_WAIT_TIME 4
 #define GUARD_ATTACK_TIME 1.0f
 
 	// Idle 
@@ -333,87 +344,11 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define GUARD_DYING_RIGHT_5 "Ressources/Enemies/Mud Guard/Death/Right/5.png"
 #define GUARD_DYING_RIGHT_6 "Ressources/Enemies/Mud Guard/Death/Right/6.png"
 
-//------ Archer ------//
-#define NBR_LIVES_ARCHER 2
-#define ARCHER_IDLE_TIME 1.0f
-#define ARCHER_WALK_TIME 0.8f
-
-#define ARCHER_ATTACK_TIME 1.0f
-
-	// Idle 
-#define ARCHER_IDLE_FRAME_LEFT_1 "Ressources/Enemies/Archer/Idle/Left/1.png"
-#define ARCHER_IDLE_FRAME_LEFT_2 "Ressources/Enemies/Archer/Idle/Left/2.png"
-#define ARCHER_IDLE_FRAME_LEFT_3 "Ressources/Enemies/Archer/Idle/Left/3.png"
-#define ARCHER_IDLE_FRAME_LEFT_4 "Ressources/Enemies/Archer/Idle/Left/4.png"
-#define ARCHER_IDLE_FRAME_LEFT_5 "Ressources/Enemies/Archer/Idle/Left/5.png"
-#define ARCHER_IDLE_FRAME_LEFT_6 "Ressources/Enemies/Archer/Idle/Left/6.png"
-
-#define ARCHER_IDLE_FRAME_RIGHT_1 "Ressources/Enemies/Archer/Idle/Right/1.png"
-#define ARCHER_IDLE_FRAME_RIGHT_2 "Ressources/Enemies/Archer/Idle/Right/2.png"
-#define ARCHER_IDLE_FRAME_RIGHT_3 "Ressources/Enemies/Archer/Idle/Right/3.png"
-#define ARCHER_IDLE_FRAME_RIGHT_4 "Ressources/Enemies/Archer/Idle/Right/4.png"
-#define ARCHER_IDLE_FRAME_RIGHT_5 "Ressources/Enemies/Archer/Idle/Right/5.png"
-#define ARCHER_IDLE_FRAME_RIGHT_6 "Ressources/Enemies/Archer/Idle/Right/6.png"
-
-	// Walking 
-#define ARCHER_WALKING_FRAME_LEFT_1 "Ressources/Enemies/Archer/Run/Left/1.png"
-#define ARCHER_WALKING_FRAME_LEFT_2 "Ressources/Enemies/Archer/Run/Left/2.png"
-#define ARCHER_WALKING_FRAME_LEFT_3 "Ressources/Enemies/Archer/Run/Left/3.png"
-#define ARCHER_WALKING_FRAME_LEFT_4 "Ressources/Enemies/Archer/Run/Left/4.png"
-#define ARCHER_WALKING_FRAME_LEFT_5 "Ressources/Enemies/Archer/Run/Left/5.png"
-#define ARCHER_WALKING_FRAME_LEFT_6 "Ressources/Enemies/Archer/Run/Left/6.png"
-
-#define ARCHER_WALKING_FRAME_RIGHT_1 "Ressources/Enemies/Archer/Run/Right/1.png"
-#define ARCHER_WALKING_FRAME_RIGHT_2 "Ressources/Enemies/Archer/Run/Right/2.png"
-#define ARCHER_WALKING_FRAME_RIGHT_3 "Ressources/Enemies/Archer/Run/Right/3.png"
-#define ARCHER_WALKING_FRAME_RIGHT_4 "Ressources/Enemies/Archer/Run/Right/4.png"
-#define ARCHER_WALKING_FRAME_RIGHT_5 "Ressources/Enemies/Archer/Run/Right/5.png"
-#define ARCHER_WALKING_FRAME_RIGHT_6 "Ressources/Enemies/Archer/Run/Right/6.png"
-
-	// Attack 
-#define ARCHER_ATTACK_FRAME_RIGHT_1 "Ressources/Enemies/Archer/Attack/Right/1.png"
-#define ARCHER_ATTACK_FRAME_RIGHT_2 "Ressources/Enemies/Archer/Attack/Right/2.png"
-#define ARCHER_ATTACK_FRAME_RIGHT_3 "Ressources/Enemies/Archer/Attack/Right/3.png"
-#define ARCHER_ATTACK_FRAME_RIGHT_4 "Ressources/Enemies/Archer/Attack/Right/4.png"
-#define ARCHER_ATTACK_FRAME_RIGHT_5 "Ressources/Enemies/Archer/Attack/Right/5.png"
-#define ARCHER_ATTACK_FRAME_RIGHT_6 "Ressources/Enemies/Archer/Attack/Right/6.png"
-#define ARCHER_ATTACK_FRAME_RIGHT_7 "Ressources/Enemies/Archer/Attack/Right/7.png"
-
-#define ARCHER_ATTACK_FRAME_LEFT_1 "Ressources/Enemies/Archer/Attack/Left/1.png"
-#define ARCHER_ATTACK_FRAME_LEFT_2 "Ressources/Enemies/Archer/Attack/Left/2.png"
-#define ARCHER_ATTACK_FRAME_LEFT_3 "Ressources/Enemies/Archer/Attack/Left/3.png"
-#define ARCHER_ATTACK_FRAME_LEFT_4 "Ressources/Enemies/Archer/Attack/Left/4.png"
-#define ARCHER_ATTACK_FRAME_LEFT_5 "Ressources/Enemies/Archer/Attack/Left/5.png"
-#define ARCHER_ATTACK_FRAME_LEFT_6 "Ressources/Enemies/Archer/Attack/Left/6.png"
-#define ARCHER_ATTACK_FRAME_LEFT_7 "Ressources/Enemies/Archer/Attack/Left/7.png"
-
-	// Hit 
-#define ARCHER_HIT_TIME 0.2f
-#define ARCHER_HIT_LEFT_1 "Ressources/Enemies/Archer/Damaged/Left/1.png"
-#define ARCHER_HIT_LEFT_2 "Ressources/Enemies/Archer/Damaged/Left/2.png"
-
-#define ARCHER_HIT_RIGHT_1 "Ressources/Enemies/Archer/Damaged/Right/1.png"
-#define ARCHER_HIT_RIGHT_2 "Ressources/Enemies/Archer/Damaged/Right/2.png"
-
-	// Dying 
-#define ARCHER_DYING_TIME 2.0f
-#define ARCHER_DYING_LEFT_1 "Ressources/Enemies/Archer/Death/Left/1.png"
-#define ARCHER_DYING_LEFT_2 "Ressources/Enemies/Archer/Death/Left/2.png"
-#define ARCHER_DYING_LEFT_3 "Ressources/Enemies/Archer/Death/Left/3.png"
-#define ARCHER_DYING_LEFT_4 "Ressources/Enemies/Archer/Death/Left/4.png"
-#define ARCHER_DYING_LEFT_5 "Ressources/Enemies/Archer/Death/Left/5.png"
-
-#define ARCHER_DYING_RIGHT_1 "Ressources/Enemies/Archer/Death/Right/1.png"
-#define ARCHER_DYING_RIGHT_2 "Ressources/Enemies/Archer/Death/Right/2.png"
-#define ARCHER_DYING_RIGHT_3 "Ressources/Enemies/Archer/Death/Right/3.png"
-#define ARCHER_DYING_RIGHT_4 "Ressources/Enemies/Archer/Death/Right/4.png"
-#define ARCHER_DYING_RIGHT_5 "Ressources/Enemies/Archer/Death/Right/5.png"
-
 //------ Minotaur ------//
 #define MINOTAUR_NBR_LIVES 5
 #define MINOTAUR_WALK_TIME 1.0f
 #define MINOTAUR_IDLE_TIME 1.0f
-#define MINOTAUR_ATTACK_TIME 1.2f
+#define MINOTAUR_ATTACK_TIME 0.5f
 
 	// Idle
 #define MINOTAUR_IDLE_FRAME_RIGHT_1 "Ressources/Boss/Idle/Right/1.png"
@@ -467,7 +402,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define MINOTAUR_ATTACK_FRAME_LEFT_10 "Ressources/Boss/Attack1/Left/10.png"
 
 	// Hit
-#define MINOTAUR_HIT_TIME 1.2f
+#define MINOTAUR_HIT_TIME 0.8f
 #define MINOTAUR_HIT_LEFT_1 "Ressources/Boss/Hurt/Left/1.png"
 #define MINOTAUR_HIT_LEFT_2 "Ressources/Boss/Hurt/Left/2.png"
 #define MINOTAUR_HIT_LEFT_3 "Ressources/Boss/Hurt/Left/3.png"
@@ -479,7 +414,7 @@ enum itemTypes {		// Les types d'item qu'on peut acquérir
 #define MINOTAUR_HIT_RIGHT_4 "Ressources/Boss/Hurt/Right/4.png"
 
 	// Dying
-#define MINOTAUR_DYING_TIME 1.50f
+#define MINOTAUR_DYING_TIME 3.0f
 #define MINOTAUR_DYING_LEFT_1 "Ressources/Boss/Death/Left/1.png"
 #define MINOTAUR_DYING_LEFT_2 "Ressources/Boss/Death/Left/2.png"
 #define MINOTAUR_DYING_LEFT_3 "Ressources/Boss/Death/Left/3.png"

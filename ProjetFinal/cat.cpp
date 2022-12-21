@@ -1,7 +1,7 @@
 #include "cat.h"
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
 cat::cat(gameDataRef data)
@@ -19,7 +19,7 @@ cat::cat(gameDataRef data)
 }
 
 /// <summary>
-/// 
+/// Mets à jour le sprite du chat
 /// </summary>
 /// <param name="dt"></param>
 void cat::update(float dt)

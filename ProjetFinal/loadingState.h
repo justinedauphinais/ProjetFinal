@@ -2,7 +2,7 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: loadingState.h																*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : State qui charge toutes les textures du jeu.								*
 *********************************************************************************************/
 #pragma once
 
@@ -36,7 +36,6 @@ private:
 
 public:
 	loadingState(gameDataRef data);
-	~loadingState();
 
 	void init();
 

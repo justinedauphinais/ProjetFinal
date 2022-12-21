@@ -16,6 +16,18 @@ mainMenuState::mainMenuState(gameDataRef data) : _data(data)
 /// </summary>
 void mainMenuState::init()
 {
+	if (!_clickButtonBuffer.loadFromFile(SOUND_BUTTON_CLICKED_MAIN_MENU))
+		cout << "Erreur loading sound effect" << endl;
+
+	_clickButtonSound.setBuffer(_clickButtonBuffer);
+
+	if (!_musicBuffer.loadFromFile(SOUND_MAIN_MENU))
+		cout << "Erreur loading sound effect" << endl;
+
+	_musicSound.setBuffer(_musicBuffer);
+	_musicSound.setLoop(true);
+	_musicSound.play();
+
 	// Background
 	_data->assets.loadTexture("main menu background", MAIN_MENU_BACKGROUND);
 	_background.setTexture(_data->assets.getTexture("main menu background"));
@@ -33,13 +45,6 @@ void mainMenuState::init()
 	_stopButton.setScale(6.0f, 6.0f);
 	_stopButton.setPosition(((SCREEN_WIDTH / 2) + 15),
 		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2)));
-
-	// Option button
-	_data->assets.loadTexture("main menu option button", OPTION_BUTTON_FILEPATH);
-	_optionButton.setTexture(_data->assets.getTexture("main menu option button"));
-	_optionButton.setScale(6.0f, 6.0f);
-	_optionButton.setPosition(((SCREEN_WIDTH / 2) - (_playButton.getGlobalBounds().width) + 100),
-		((SCREEN_HEIGHT / 2) - (_playButton.getGlobalBounds().height / 2) + 100));
 
 	// Title
 	_data->assets.loadFont("main menu font", MAIN_MENU_FONT);
@@ -61,14 +66,11 @@ void mainMenuState::handleInput()
 			_data->window.close();
 		else if (_data->input.isSpriteClicked(_playButton, Mouse::Left, _data->window)) {
 			// Create the new state main screen
-			//_data->machine.addState(stateRef(new loadingState(_data)), true);
+			_clickButtonSound.play();
 			_data->machine.addState(stateRef(new introductionState(_data)), true);
 		}
 		else if (_data->input.isSpriteClicked(_stopButton, Mouse::Left, _data->window)) {
 			_data->window.close();
-		}
-		else if (_data->input.isSpriteClicked(_optionButton, Mouse::Left, _data->window)) {
-			//
 		}
 	}
 }
@@ -92,6 +94,5 @@ void mainMenuState::draw(float dt) const
 	_data->window.draw(_title);
 	_data->window.draw(_playButton);
 	_data->window.draw(_stopButton);
-	_data->window.draw(_optionButton);
 	_data->window.display();
 }

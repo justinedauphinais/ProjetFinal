@@ -35,7 +35,13 @@ private:
 	Text _scoreText;
 	Text _highScoreText;
 
+	Sprite _rejouerSprite;
+	Sprite _quitterSprite;
+
 	Clock _clock;			// Horloge pour calculer le temps avant de faire apparaître les scores
+
+	SoundBuffer _gameOverBuffer;
+	Sound _gameOverSound;
 
 public:
 	gameOverState(gameDataRef data, int score, bool gagne);	// Constructeur

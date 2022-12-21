@@ -79,12 +79,6 @@
     <ClCompile Include="items.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="archerEnemy.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="coffres.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="inventaire.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -170,12 +164,6 @@
     </ClInclude>
     <ClInclude Include="drawable.h">
       <Filter>Header\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="archerEnemy.h">
-      <Filter>Header\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="coffres.h">
-      <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="Inventaire.h">
       <Filter>Header</Filter>

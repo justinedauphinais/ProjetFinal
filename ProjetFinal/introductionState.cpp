@@ -22,12 +22,12 @@ void introductionState::init()
 {
 	_data->assets.loadFont("pixel art font", PIXEL_ART_FONT);
 
-	// titre de l'introduction du jeu.
+	// Titre de l'introduction du jeu
 	_titreText = Text("Bienvenue, dans les catacombes de Yharnam !",_data->assets.getFont("pixel art font"), 40);
 	_titreText.setFillColor(Color::Color(255, 0, 0, _color));
 	_titreText.setPosition((SCREEN_WIDTH / 2) - (_titreText.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_titreText.getGlobalBounds().height / 2 + 400));
 
-	// Narration du jeu.
+	// Narration du jeu
 	_introparagragh1Text = Text("Le brave héros Scalet se vit jeter une malédiction, lors de la disparition de son fils ",_data->assets.getFont("pixel art font"),17 );
 	_introparagragh1Text.setFillColor(Color::Color(255,0,0,_color));
 	_introparagragh1Text.setPosition((SCREEN_WIDTH / 2 )- (_introparagragh1Text.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2 )- (_introparagragh1Text.getGlobalBounds().height/2+ 250));
@@ -41,7 +41,7 @@ void introductionState::init()
 	_introparagragh3Text.setPosition((SCREEN_WIDTH / 2) - (_introparagragh3Text.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_introparagragh3Text.getGlobalBounds().height / 2 + 170));
 
 
-	_introparagragh4Text = Text("Au fil du temps, sa chair commença à laisser peu à peu la place à son squelette.", _data->assets.getFont("pixel art font"), 17);
+	_introparagragh4Text = Text("Au fil du temps, sa chair commença a laisser peu a peu la place a son squelette.", _data->assets.getFont("pixel art font"), 17);
 	_introparagragh4Text.setFillColor(Color::Color(255, 0, 0, _color));
 	_introparagragh4Text.setPosition((SCREEN_WIDTH / 2) - (_introparagragh4Text.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_introparagragh4Text.getGlobalBounds().height / 2 + 100));
 
@@ -53,11 +53,14 @@ void introductionState::init()
 	_introparagragh6Text.setFillColor(Color::Color(255, 0, 0, _color));
 	_introparagragh6Text.setPosition((SCREEN_WIDTH / 2) - (_introparagragh6Text.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_introparagragh6Text.getGlobalBounds().height / 2 + 0));
 	
-	_introparagragh7Text = Text("mais surtout déterminé à venger son fils dans la taninère de son ennemi.", _data->assets.getFont("pixel art font"), 17);
+	_introparagragh7Text = Text("mais surtout déterminé a venger son fils dans la taninère de son ennemi.", _data->assets.getFont("pixel art font"), 17);
 	_introparagragh7Text.setFillColor(Color::Color(255, 0, 0, _color));
 	_introparagragh7Text.setPosition((SCREEN_WIDTH / 2) - (_introparagragh7Text.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_introparagragh7Text.getGlobalBounds().height / 2 + -40));
 
-	
+	if (!_clickButtonBuffer.loadFromFile(SOUND_BUTTON_CLICKED_MAIN_MENU))
+		cout << "Erreur loading sound effect" << endl;
+
+	_clickButtonSound.setBuffer(_clickButtonBuffer);
 }
 
 
@@ -71,34 +74,29 @@ void introductionState::handleInput()
 	{
 		if (event.type == Event::Closed)	// Si ferme fenêtre
 			_data->window.close();
-		else if (_data->input.isSpriteClicked(_suivantButton, Mouse::Left, _data->window))
+		else if (_data->input.isSpriteClicked(_suivantButton, Mouse::Left, _data->window))	// Si clique suivant
 		{
+			_clickButtonSound.play();
+
 			_data->machine.addState(stateRef(new loadingState(_data)), true);
 		}
-		else if (Mouse::isButtonPressed(Mouse::Left)) {
+		else if (Mouse::isButtonPressed(Mouse::Left)) {			// Si skip temps d'attente
 			_data->assets.loadTexture("main continuer button", NEXT_BUTTON_FILEPATH);
 			_suivantButton.setTexture(_data->assets.getTexture("main continuer button"));
 			_suivantButton.setScale(5.0f, 5.0f);
 			_suivantButton.setPosition(((SCREEN_WIDTH / 2) - (_suivantButton.getGlobalBounds().width) / 2 + 600), ((SCREEN_HEIGHT / 2) - (_suivantButton.getGlobalBounds().height / 2 - 400)));
-		}
-		//else if (Mouse::isButtonPressed(Mouse::Left)) {		// Si clique, skip le temps pour faire apparaître les textes et boutons
-		//	_color = 255;
-		//	_titreText.setFillColor(Color::Color(255, 0, 0, _color));
-		//	_introparagragh1Text.setFillColor(Color::Color (255,0,0,_color));
-		//	_introparagragh2Text.setFillColor(Color::Color (255,0,0,_color));
-		//	_introparagragh3Text.setFillColor(Color::Color (255,0,0,_color));
-		//	_introparagragh4Text.setFillColor(Color::Color (255,0,0,_color));
-		//	_introparagragh5Text.setFillColor(Color::Color (255,0,0,_color));
-		//	_introparagragh6Text.setFillColor(Color::Color (255,0,0,_color));
-		//	_introparagragh7Text.setFillColor(Color::Color (255,0,0,_color));
-		//}
-		
+		}		
 	}
 }
 
+/// <summary>
+/// Mets à jour de la couleur des paragraphes 
+/// et de l'affichage du bouton suivant un délai
+/// </summary>
+/// <param name="dt"></param>
 void introductionState::update(float dt)
 {
-	if (_color < 255) {
+	if (_color < 255) {	// Affichage progressif
 		_titreText.setFillColor(Color::Color(255, 0, 0, _color++));
 		_introparagragh1Text.setFillColor(Color::Color(255, 0, 0, _color++));
 		_introparagragh2Text.setFillColor(Color::Color(255, 0, 0, _color++));
@@ -107,12 +105,10 @@ void introductionState::update(float dt)
 		_introparagragh5Text.setFillColor(Color::Color(255, 0, 0, _color++));
 		_introparagragh6Text.setFillColor(Color::Color(255, 0, 0, _color++));
 		_introparagragh7Text.setFillColor(Color::Color(255, 0, 0, _color++));
-
 	}
 
 	// Affiche le suivant apres 6 secondes
 	if (_clock.getElapsedTime().asSeconds() > 6.0f) {
-
 		_data->assets.loadTexture("main continuer button", NEXT_BUTTON_FILEPATH);
 		_suivantButton.setTexture(_data->assets.getTexture("main continuer button"));
 		_suivantButton.setScale(5.0f, 5.0f);
@@ -120,6 +116,10 @@ void introductionState::update(float dt)
 	}
 }
 
+/// <summary>
+/// Clear, dessine les paragraphes et display fenêtre
+/// </summary>
+/// <param name="dt"></param>
 void introductionState::draw(float dt) const
 {
 	_data->window.clear();

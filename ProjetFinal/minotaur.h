@@ -2,7 +2,7 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: minotaur.h																	*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Gestion du boss final du jeu.												*
 *********************************************************************************************/
 #pragma once
 
@@ -14,7 +14,7 @@ public:
 
 	void update(float dt);
 
-	void attack();
+	void attack(Vector2f distance);
 
-	void draw()const;
+	void move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY);
 };

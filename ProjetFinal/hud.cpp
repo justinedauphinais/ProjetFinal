@@ -1,7 +1,7 @@
 #include "hud.h"
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="score"></param>
 hud::hud(gameDataRef data, int nbrRoom, int score, int money, int nbCoeurs) : _data(data)
@@ -9,7 +9,6 @@ hud::hud(gameDataRef data, int nbrRoom, int score, int money, int nbCoeurs) : _d
 	_score = score;
 	_nbrRoom = nbrRoom;
 	_money = money;
-
 
 	// Score
 	_scoreText = Text(to_string(_score), _data->assets.getFont("pixel art font"), 50);
@@ -43,17 +42,10 @@ hud::hud(gameDataRef data, int nbrRoom, int score, int money, int nbCoeurs) : _d
 	_roomText = Text(to_string(_nbrRoom), _data->assets.getFont("pixel art font"), 50);
 	_roomText.setFillColor(Color::Red);
 	_roomText.setPosition(((SCREEN_WIDTH / 2) - (_roomText.getGlobalBounds().width / 2)), (SCREEN_HEIGHT - _roomText.getGlobalBounds().height - 50));
-
-	_inventory = new inventaire(_data);
-}
-
-hud::~hud()
-{
-	delete _inventory;
 }
 
 /// <summary>
-/// 
+/// Set le score
 /// </summary>
 void hud::setScore(int score)
 {
@@ -62,7 +54,7 @@ void hud::setScore(int score)
 }
 
 /// <summary>
-/// 
+/// Ajoute du score
 /// </summary>
 /// <param name="score"></param>
 void hud::addScore(int score)
@@ -72,7 +64,7 @@ void hud::addScore(int score)
 }
 
 /// <summary>
-/// 
+/// Enlève un ou plusieurs coeurs
 /// </summary>
 /// <param name="nb"></param>
 /// <returns></returns>
@@ -87,7 +79,7 @@ bool hud::removeHeart(int nb)
 }
 
 /// <summary>
-/// 
+/// Ajoute un ou plusieurs coeurs
 /// </summary>
 /// <param name="nb"></param>
 void hud::addHeart(int nb)
@@ -99,7 +91,7 @@ void hud::addHeart(int nb)
 }
 
 /// <summary>
-/// 
+/// Set l'argent
 /// </summary>
 /// <param name="nb"></param>
 void hud::setMoney(int nb)
@@ -109,7 +101,7 @@ void hud::setMoney(int nb)
 }
 
 /// <summary>
-/// 
+/// Ajoute de l'argent
 /// </summary>
 /// <param name="nb"></param>
 void hud::addMoney(int nb)
@@ -119,7 +111,7 @@ void hud::addMoney(int nb)
 }
 
 /// <summary>
-/// 
+/// Enlève de l'argent
 /// </summary>
 /// <param name="nb"></param>
 bool hud::removeMoney(int nb)
@@ -134,7 +126,7 @@ bool hud::removeMoney(int nb)
 }
 
 /// <summary>
-/// 
+/// Ajoute une chambre
 /// </summary>
 void hud::addRoom()
 {
@@ -143,7 +135,7 @@ void hud::addRoom()
 }
 
 /// <summary>
-/// 
+/// Va chercher le score
 /// </summary>
 /// <returns></returns>
 int hud::getScore() const
@@ -152,7 +144,7 @@ int hud::getScore() const
 }
 
 /// <summary>
-/// 
+/// Va chercher le nombre de vie
 /// </summary>
 /// <returns></returns>
 int hud::getNbrVies() const
@@ -161,25 +153,7 @@ int hud::getNbrVies() const
 }
 
 /// <summary>
-/// 
-/// </summary>
-/// <param name="item"></param>
-void hud::addItem(item item)
-{
-	_inventory->addItem(item);
-}
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="item"></param>
-void hud::removeItem(item item)
-{
-	_inventory->removeItem(item);
-}
-
-/// <summary>
-/// 
+/// Get le numéro de la chambre
 /// </summary>
 /// <returns></returns>
 int hud::getRoom() const
@@ -188,7 +162,7 @@ int hud::getRoom() const
 }
 
 /// <summary>
-/// 
+/// Affiche à l'écran l'objet
 /// </summary>
 void hud::draw() const
 {
@@ -196,9 +170,10 @@ void hud::draw() const
 	_data->window.draw(_scoreText);
 	_data->window.draw(_moneySprite);
 	_data->window.draw(_moneyText);
-	_inventory->draw();
+
 	for (int i = 0; i < _hearts.size(); i++) {
 		_data->window.draw(_hearts[i]);
 	}
+
 	_data->window.draw(_roomText);
 }

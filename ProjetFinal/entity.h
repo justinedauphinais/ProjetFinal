@@ -2,7 +2,9 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: entity.h																		*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Classe utilisée pour la base de toutes les entités. Contient tous les		*
+				vecteurs d'animations, l'état de l'entité, sa direction et					*
+				et son nombre de vie.														*
 *********************************************************************************************/
 #pragma once
 
@@ -39,5 +41,4 @@ public:
 	bool removeHearts(int nbr = 1);
 
 	void move(Keyboard::Key key, float time);
-	bool move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY, bool agroRange = true);
 };

@@ -1,4 +1,5 @@
 #include "minotaur.h"
+#include <iostream>
 
 /// <summary>
 /// Constructeur
@@ -51,7 +52,7 @@ minotaur::minotaur(gameDataRef data)
 
 	_sprite.setTexture(_animationFramesIdleRight.at(_animationIterator));
 
-	_sprite.setScale(5.0f, 5.0f);
+	_sprite.setScale(7.0f, 7.0f);
 
 	_sprite.setPosition((_data->window.getSize().x / 2) - (_sprite.getGlobalBounds().width / 2),
 		(_data->window.getSize().y / 2) - (_sprite.getGlobalBounds().height / 2));
@@ -142,30 +143,53 @@ void minotaur::update(float dt)
 /// <summary>
 /// Déclenche l'attaque de l'entité
 /// </summary>
-void minotaur::attack()
+void minotaur::attack(Vector2f distance)
 {
 	if (_state == entityStates::IDLE || _state == entityStates::WALKING)
 	{
 		_state = entityStates::ATTACKING;
 		_animationIterator = 0;
 
-		if ((_dir == directions::RIGHT) || (_dir == directions::TOP)) {
+		cout << distance.x << endl;
+
+		if (distance.x - 50 > 0) {
 			_sprite.setTexture(_animationFramesFightingRight.at(_animationIterator), true);
-			//_sprite.move(-30, -5);
+			_dir = RIGHT;
 		}
 		else {
 			_sprite.setTexture(_animationFramesFightingLeft.at(_animationIterator), true);
+			_dir = LEFT;
 		}
-		_sprite.setScale(5.0, 5.0);
+		_sprite.setScale(7.0f, 7.0f);
 
 		_attackClock.restart();
 	}
 }
 
 /// <summary>
-/// Affiche 
+/// Vérifie prochain mouvement selon pos du MC
 /// </summary>
-void minotaur::draw() const
+/// <param name="distance"></param>
+/// <param name="time"></param>
+/// <param name="hitDistanceX"></param>
+/// <param name="hitDistanceY"></param>
+/// <returns></returns>
+void minotaur::move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY)
 {
-	_data->window.draw(_sprite);
+	int x = abs(distance.x);
+	int y = abs(distance.y);
+	if (_state == IDLE || _state == WALKING) {			// Si marche ou est idle vérifie prochain mouvement selon pos du MC
+		if (abs(distance.x) < hitDistanceX && abs(distance.y) < hitDistanceY && _attackClock.getElapsedTime().asSeconds() > 6)
+			attack(distance);
+		else if (abs(distance.x) < hitDistanceX && abs(distance.y) < hitDistanceY)
+			setState(IDLE);
+		else if (abs(distance.x) > abs(distance.y) && distance.x < 0)
+			entity::move(Keyboard::A, GUARD_WALK_TIME);
+		else if (abs(distance.x) > abs(distance.y))
+			entity::move(Keyboard::D, GUARD_WALK_TIME);
+		else if (distance.y < 0)
+			entity::move(Keyboard::W, GUARD_WALK_TIME);
+		else if (distance.y > 0)
+			entity::move(Keyboard::S, GUARD_WALK_TIME);
+	}
 }

@@ -1,7 +1,7 @@
 #include "torch.h"
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
 /// <param name="posX"></param>
@@ -23,7 +23,7 @@ torch::torch(gameDataRef data, float posX, float posY, int animationIterator)
 }
 
 /// <summary>
-/// 
+/// Mets à jour le sprite
 /// </summary>
 /// <param name="dt"></param>
 void torch::update(float dt)
@@ -31,7 +31,7 @@ void torch::update(float dt)
 	if (_clock.getElapsedTime().asSeconds() > TORCH_ANIMATION_TIME / _animation.size()) {
 		_animationIterator++;
 
-		if (_animationIterator >= _animation.size())
+		if (_animationIterator >= _animation.size())	// Si fin vecteur
 			_animationIterator = 0;
 
 		_sprite.setTexture(_animation[_animationIterator]);

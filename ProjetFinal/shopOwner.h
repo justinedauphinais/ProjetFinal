@@ -2,7 +2,7 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: shopOwner.h																	*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Gestion du NPC dans le shopState.											*
 *********************************************************************************************/
 #pragma once
 

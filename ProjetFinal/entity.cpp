@@ -2,7 +2,7 @@
 #include <iostream>
 
 /// <summary>
-/// Get le nombre de vie de l'entité
+/// Retourne le nombre de vie de l'entité
 /// </summary>
 /// <returns></returns>
 int entity::getNbrLives() const
@@ -11,7 +11,7 @@ int entity::getNbrLives() const
 }
 
 /// <summary>
-/// Get le state de l'entité
+/// Retourne le state de l'entité
 /// </summary>
 /// <returns></returns>
 entityStates entity::getState() const
@@ -20,7 +20,7 @@ entityStates entity::getState() const
 }
 
 /// <summary>
-/// 
+/// Retourne la direction de l'entité
 /// </summary>
 /// <returns></returns>
 directions entity::getDirection() const
@@ -41,7 +41,8 @@ void entity::setState(entityStates state)
 }
 
 /// <summary>
-/// 
+/// Enlève le nombre de coeurs souhaités
+/// Retourne si l'entité est morte 
 /// </summary>
 /// <param name="nbr"></param>
 bool entity::removeHearts(int nbr)
@@ -90,32 +91,4 @@ void entity::move(Keyboard::Key key, float time)
 
 		_clock.restart();
 	}
-}
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="distance"></param>
-/// <param name="time"></param>
-/// <returns></returns>
-bool entity::move(Vector2f distance, float time, float hitDistanceX, float hitDistanceY, bool agroRange)
-{
-	int x = abs(distance.x);
-	int y = abs(distance.y);
-	if (_state != ATTACKING) {
-		if (abs(distance.x) > AGRO_RANGE && abs(distance.y) < AGRO_RANGE && agroRange)
-			setState(IDLE);
-		else if (abs(distance.x) < hitDistanceX && abs(distance.y) < hitDistanceY && _attackClock.getElapsedTime().asSeconds() > 6)
-			return true;
-		else if (abs(distance.x) > abs(distance.y) && distance.x < 0)
-			move(Keyboard::A, GUARD_WALK_TIME);
-		else if (abs(distance.x) > abs(distance.y))
-			move(Keyboard::D, GUARD_WALK_TIME);
-		else if (distance.y < 0)
-			move(Keyboard::W, GUARD_WALK_TIME);
-		else if (distance.y > 0)
-			move(Keyboard::S, GUARD_WALK_TIME);
-	}
-
-	return false;
 }

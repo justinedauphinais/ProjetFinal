@@ -1,3 +1,9 @@
+/********************************************************************************************
+* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
+* Nom		: torch.h																		*
+* Date		: 21/12/2022																	*
+* Description : Objet décoratif qui se trouve dans le shopState.							*
+*********************************************************************************************/
 #pragma once
 
 #include "drawable.h"

@@ -1,7 +1,7 @@
 #include "loadingState.h"
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
 loadingState::loadingState(gameDataRef data) : _data(data)
@@ -10,14 +10,7 @@ loadingState::loadingState(gameDataRef data) : _data(data)
 }
 
 /// <summary>
-/// 
-/// </summary>
-loadingState::~loadingState()
-{
-}
-
-/// <summary>
-/// 
+/// Initilisae les différents objets du state
 /// </summary>
 void loadingState::init()
 {
@@ -42,16 +35,13 @@ void loadingState::init()
 	_data->assets.loadTexture("game background 2", GAME_BACKGROUND_TEMP_2);
 	_data->assets.loadTexture("game background 3", GAME_BACKGROUND_TEMP_3);
 
-	//coffres
-	_data->assets.loadTexture("coffre close", COFFRE_CLOSE); 
-	_data->assets.loadTexture("coffre open", COFFRE_OPEN); 
-
-	//Inventory
-	_data->assets.loadTexture("inventory", INVENTORY_BACKGROUND);
-
 	// Pop up
 	_data->assets.loadTexture("pop up", POP_UP);
 	_data->assets.loadTexture("accept purchase", ACCEPT_PURCHASE);
+
+	// Boutons game over
+	_data->assets.loadTexture("rejouer", REJOUER_BUTTON_GAME_OVER);
+	_data->assets.loadTexture("quitter rouge", QUITTER_BUTTON_GAME_OVER);
 
 	// Walls
 	_data->assets.loadTexture("wall up 1", GAME_FOREGROUND_UP_DOWN_TEMP_1);
@@ -258,76 +248,6 @@ void loadingState::init()
 
 	#pragma endregion
 
-	// Archer
-	#pragma region Archer
-		// Idle
-		_data->assets.loadTexture("archer idle frame right 1", ARCHER_IDLE_FRAME_RIGHT_1);
-		_data->assets.loadTexture("archer idle frame right 2", ARCHER_IDLE_FRAME_RIGHT_2);
-		_data->assets.loadTexture("archer idle frame right 3", ARCHER_IDLE_FRAME_RIGHT_3);
-		_data->assets.loadTexture("archer idle frame right 4", ARCHER_IDLE_FRAME_RIGHT_4);
-		_data->assets.loadTexture("archer idle frame right 5", ARCHER_IDLE_FRAME_RIGHT_5);
-		_data->assets.loadTexture("archer idle frame right 6", ARCHER_IDLE_FRAME_RIGHT_6);
-
-		_data->assets.loadTexture("archer idle frame left 1", ARCHER_IDLE_FRAME_LEFT_1);
-		_data->assets.loadTexture("archer idle frame left 2", ARCHER_IDLE_FRAME_LEFT_2);
-		_data->assets.loadTexture("archer idle frame left 3", ARCHER_IDLE_FRAME_LEFT_3);
-		_data->assets.loadTexture("archer idle frame left 4", ARCHER_IDLE_FRAME_LEFT_4);
-		_data->assets.loadTexture("archer idle frame left 5", ARCHER_IDLE_FRAME_LEFT_5);
-		_data->assets.loadTexture("archer idle frame left 6", ARCHER_IDLE_FRAME_LEFT_6);
-
-		// Walking
-		_data->assets.loadTexture("archer walking frame right 1", ARCHER_WALKING_FRAME_RIGHT_1);
-		_data->assets.loadTexture("archer walking frame right 2", ARCHER_WALKING_FRAME_RIGHT_2);
-		_data->assets.loadTexture("archer walking frame right 3", ARCHER_WALKING_FRAME_RIGHT_3);
-		_data->assets.loadTexture("archer walking frame right 4", ARCHER_WALKING_FRAME_RIGHT_4);
-		_data->assets.loadTexture("archer walking frame right 5", ARCHER_WALKING_FRAME_RIGHT_5);
-		_data->assets.loadTexture("archer walking frame right 6", ARCHER_WALKING_FRAME_RIGHT_6);
-
-		_data->assets.loadTexture("archer walking frame left 1", ARCHER_WALKING_FRAME_LEFT_1);
-		_data->assets.loadTexture("archer walking frame left 2", ARCHER_WALKING_FRAME_LEFT_2);
-		_data->assets.loadTexture("archer walking frame left 3", ARCHER_WALKING_FRAME_LEFT_3);
-		_data->assets.loadTexture("archer walking frame left 4", ARCHER_WALKING_FRAME_LEFT_4);
-		_data->assets.loadTexture("archer walking frame left 5", ARCHER_WALKING_FRAME_LEFT_5);
-		_data->assets.loadTexture("archer walking frame left 6", ARCHER_WALKING_FRAME_LEFT_6);
-
-		// Attack
-		_data->assets.loadTexture("archer attack frame right 1", ARCHER_ATTACK_FRAME_RIGHT_1);
-		_data->assets.loadTexture("archer attack frame right 2", ARCHER_ATTACK_FRAME_RIGHT_2);
-		_data->assets.loadTexture("archer attack frame right 3", ARCHER_ATTACK_FRAME_RIGHT_3);
-		_data->assets.loadTexture("archer attack frame right 4", ARCHER_ATTACK_FRAME_RIGHT_4);
-		_data->assets.loadTexture("archer attack frame right 5", ARCHER_ATTACK_FRAME_RIGHT_5);
-		_data->assets.loadTexture("archer attack frame right 6", ARCHER_ATTACK_FRAME_RIGHT_6);
-		_data->assets.loadTexture("archer attack frame right 7", ARCHER_ATTACK_FRAME_RIGHT_7);
-
-		_data->assets.loadTexture("archer attack frame left 1", ARCHER_ATTACK_FRAME_LEFT_1);
-		_data->assets.loadTexture("archer attack frame left 2", ARCHER_ATTACK_FRAME_LEFT_2);
-		_data->assets.loadTexture("archer attack frame left 3", ARCHER_ATTACK_FRAME_LEFT_3);
-		_data->assets.loadTexture("archer attack frame left 4", ARCHER_ATTACK_FRAME_LEFT_4);
-		_data->assets.loadTexture("archer attack frame left 5", ARCHER_ATTACK_FRAME_LEFT_5);
-		_data->assets.loadTexture("archer attack frame left 6", ARCHER_ATTACK_FRAME_LEFT_6);
-		_data->assets.loadTexture("archer attack frame left 7", ARCHER_ATTACK_FRAME_LEFT_7);
-
-		// Damaged
-		_data->assets.loadTexture("archer hit frame right 1", ARCHER_HIT_RIGHT_1);
-		_data->assets.loadTexture("archer hit frame right 2", ARCHER_HIT_RIGHT_2);
-
-		_data->assets.loadTexture("archer hit frame left 1", ARCHER_HIT_LEFT_1);
-		_data->assets.loadTexture("archer hit frame left 2", ARCHER_HIT_LEFT_2);
-
-		// Dying
-		_data->assets.loadTexture("archer dying frame right 1", ARCHER_DYING_RIGHT_1);
-		_data->assets.loadTexture("archer dying frame right 2", ARCHER_DYING_RIGHT_2);
-		_data->assets.loadTexture("archer dying frame right 3", ARCHER_DYING_RIGHT_3);
-		_data->assets.loadTexture("archer dying frame right 4", ARCHER_DYING_RIGHT_4);
-		_data->assets.loadTexture("archer dying frame right 5", ARCHER_DYING_RIGHT_5);
-
-		_data->assets.loadTexture("archer dying frame left 1", ARCHER_DYING_LEFT_1);
-		_data->assets.loadTexture("archer dying frame left 2", ARCHER_DYING_LEFT_2);
-		_data->assets.loadTexture("archer dying frame left 3", ARCHER_DYING_LEFT_3);
-		_data->assets.loadTexture("archer dying frame left 4", ARCHER_DYING_LEFT_4);
-		_data->assets.loadTexture("archer dying frame left 5", ARCHER_DYING_LEFT_5);
-	#pragma endregion
-
 	// Minotaur
 	#pragma region Minotaur
 		// Idle
@@ -442,7 +362,6 @@ void loadingState::init()
 
 	// Porte
 	_data->assets.loadTexture("closed door 1", GAME_DOOR_CLOSED_1);
-	_data->assets.loadTexture("closed door 2", GAME_DOOR_CLOSED_2);
 	_data->assets.loadTexture("opened door", GAME_DOOR_OPEN);
 
 	// Torches
@@ -450,6 +369,9 @@ void loadingState::init()
 	_data->assets.loadTexture("torch frame 2", TORCH_FRAME_2);
 	_data->assets.loadTexture("torch frame 3", TORCH_FRAME_3);
 	_data->assets.loadTexture("torch frame 4", TORCH_FRAME_4);
+
+	// Clé
+	_data->assets.loadTexture("key", KEY);
 
 	#pragma region animation Squelette Loading
 		// Skeleton loading
@@ -479,7 +401,7 @@ void loadingState::init()
 }
 
 /// <summary>
-/// 
+/// Réagit aux différents inputs de l'utilisateur
 /// </summary>
 void loadingState::handleInput()
 {
@@ -495,7 +417,7 @@ void loadingState::handleInput()
 }
 
 /// <summary>
-/// 
+/// Mets-à-jour les objets du state
 /// </summary>
 /// <param name="dt"></param>
 void loadingState::update(float dt)
@@ -525,7 +447,7 @@ void loadingState::update(float dt)
 }
 
 /// <summary>
-/// 
+/// Clear, dessine et display la fenêtre
 /// </summary>
 /// <param name="dt"></param>
 void loadingState::draw(float dt) const

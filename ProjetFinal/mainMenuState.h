@@ -6,6 +6,7 @@
 *********************************************************************************************/
 #pragma once
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "DEFINITIONS.hpp"
 #include "game.h"
@@ -27,8 +28,13 @@ private:
 	Sprite _background;		// Le sprite pour la background
 	Sprite _playButton;		// Le sprite du bouton jouer
 	Sprite _stopButton;		// Le sprite du bouton jouer
-	Sprite _optionButton;		// Le sprite du bouton option
 	Text _title;			// Le texte du titre
+
+	SoundBuffer _clickButtonBuffer;
+	SoundBuffer _musicBuffer;
+
+	Sound _clickButtonSound;
+	Sound _musicSound;
 
 public:
 	mainMenuState(gameDataRef data);

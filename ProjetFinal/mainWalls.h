@@ -2,7 +2,7 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: mainWalls.h																	*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Gestion des murs des salles. 												*
 *********************************************************************************************/
 #pragma once
 
@@ -13,9 +13,7 @@
 
 using namespace sf;
 
-class wall
-{
-
+class wall {
 private:
 	gameDataRef _data;
 	vector<Sprite> _wallSprites;
@@ -31,6 +29,5 @@ public:
 	const Sprite& getWallDown() const;
 	const Sprite& getWallLeft() const;
 	const Sprite& getWallRight() const;
-
 };
 

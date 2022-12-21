@@ -103,15 +103,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio-s.lib;sfml-window-s.lib;vorbisenc.lib;opengl32.lib;sfml-graphics-s.lib;sfml-main.lib;vorbisfile.lib;freetype.lib;sfml-network-s.lib;openal32.lib;vorbis.lib;winmm.lib;sfml-system-s.lib;flac.lib;ogg.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,11 +132,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="archerEnemy.cpp" />
     <ClCompile Include="assetManager.cpp" />
     <ClCompile Include="bossRoomState.cpp" />
     <ClCompile Include="cat.cpp" />
-    <ClCompile Include="coffres.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="door.cpp" />
     <ClCompile Include="gardeEnemy.cpp" />
@@ -162,11 +161,9 @@
     <ClCompile Include="torch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="archerEnemy.h" />
     <ClInclude Include="assetManager.h" />
     <ClInclude Include="bossRoomState.h" />
     <ClInclude Include="cat.h" />
-    <ClInclude Include="coffres.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="door.h" />

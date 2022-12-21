@@ -40,6 +40,17 @@ private:
 	int _moveX;
 	int _moveY;
 
+	bool _hit;
+	bool _wasHit;
+
+	SoundBuffer _enemyDeadBuffer;
+	SoundBuffer _enemyHitBuffer;
+	SoundBuffer _MCHitBuffer;
+
+	Sound _enemyDeadSound;
+	Sound _enemyHitSound;
+	Sound _MCHitSound;
+
 public:
 	bossRoomState(gameDataRef data, hud*& hud);
 	~bossRoomState();

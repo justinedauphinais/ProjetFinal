@@ -1,3 +1,9 @@
+/********************************************************************************************
+* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
+* Nom		: items.h																		*
+* Date		: 21/12/2022																	*
+* Description : Item pouvant être obtenu par le joueur pour augmenter sa vie.				*
+*********************************************************************************************/
 #pragma once
 
 #include "drawable.h"
@@ -10,6 +16,8 @@ private:
 
 	bool _bought;
 
+	int _effect;
+
 public:
 	item(gameDataRef data, itemTypes itemType);
 	item(gameDataRef data, itemTypes itemType, float posX, float posY);
@@ -18,5 +26,6 @@ public:
 	bool isBought() const;
 
 	int getPrice() const;
-	void draw()const;
+
+	int getEffect() const;
 };

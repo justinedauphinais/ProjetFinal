@@ -2,10 +2,12 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: gameState.h																	*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Gestion des différentes salles (rooms). Contient les ennemis, le MC, les	*
+				murs, la porte, etc. Gère les collisions du player.							*
 *********************************************************************************************/
 #pragma once
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "DEFINITIONS.hpp"
@@ -19,7 +21,6 @@
 #include "gardeEnemy.h"
 #include "gameOverState.h"
 #include "shopState.h"
-#include "archerEnemy.h"
 #include <iostream>
 
 using namespace sf;
@@ -35,14 +36,14 @@ private:
 							// assertManager et au inputManager
 
 	Sprite _background;			// Le sprite pour la background
+	Sprite _key;
 
 	wall* _wall;					// Les murs
 	door* _door;					// La porte
 	hud* _hud;						// Le hud
 	mainCharacter* _mainCharacter;	// Le personnage principal
-	vector<archerEnemy> _archers;
-
-	vector<gardeEnemy> _gardes;		// Vecteur de garde
+	
+	vector<gardeEnemy> _gardes;		// Vecteur des gardes
 
 	vector<Sprite> _lstSprites;		// Liste des sprites
 	
@@ -55,6 +56,15 @@ private:
 
 	bool _hasKey;
 	bool _hit;
+	bool _wasHit;
+
+	SoundBuffer _enemyDeadBuffer;
+	SoundBuffer _enemyHitBuffer;
+	SoundBuffer _MCHitBuffer;
+
+	Sound _enemyDeadSound;
+	Sound _enemyHitSound;
+	Sound _MCHitSound;
 	
 public:
 	gameState(gameDataRef data);

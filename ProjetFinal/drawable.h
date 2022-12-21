@@ -1,3 +1,9 @@
+/********************************************************************************************
+* Auteur	: Justine Dauphinais & Jimmi Lancelot											*
+* Nom		: drawable.h																	*
+* Date		: 21/12/2022																	*
+* Description : Classe parent pour tous les objets qui vont être affichés à la fenêtre.		*
+*********************************************************************************************/
 #pragma once
 
 #include <SFML/Graphics.hpp>

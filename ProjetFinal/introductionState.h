@@ -2,7 +2,8 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: gameOverState.h																*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Donne une introduction au jeu. A des lignes de textes et un bouton			*
+				qui nous apporte au loadingState.											*
 *********************************************************************************************/
 #pragma once
 
@@ -23,8 +24,8 @@ class introductionState: public state
 {
 private:
 	gameDataRef _data;		// Chaque state recevra le pointeur sur la gameData qui
-	// donne accès au stateMachine, au RenderWindow, au
-	// assertManager et au inputManager
+							// donne accès au stateMachine, au RenderWindow, au
+							// assertManager et au inputManager
 
 	int _color;				// Couleur du texte qui apparaît
 	bool intro;				// Si utilisateur a gagne ou pas
@@ -40,9 +41,11 @@ private:
 
 	Sprite _suivantButton;		// Le sprite du bouton suivant
 
-
-
 	Clock _clock;			// Horloge pour calculer le temps avant de faire apparaître les scores
+
+	SoundBuffer _clickButtonBuffer;
+
+	Sound _clickButtonSound;
 
 public:
 	introductionState(gameDataRef data);	// Constructeur

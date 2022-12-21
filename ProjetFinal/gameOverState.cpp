@@ -65,6 +65,26 @@ void gameOverState::init()
 	_highScoreText = Text("High score : " + to_string(highScore), _data->assets.getFont("pixel art font"), 50);
 	_highScoreText.setFillColor(Color::Black);
 	_highScoreText.setPosition((SCREEN_WIDTH / 2 - (_highScoreText.getGlobalBounds().width / 2)), (SCREEN_HEIGHT / 2 + 175));
+
+	// Boutons
+	_rejouerSprite.setTexture(_data->assets.getTexture("rejouer"));
+	_rejouerSprite.setScale(6.0f, 6.0f);
+	_rejouerSprite.setPosition(((SCREEN_WIDTH / 2) - (_rejouerSprite.getGlobalBounds().width) - 50), 800);
+	_quitterSprite.setTexture(_data->assets.getTexture("quitter rouge"));
+	_quitterSprite.setScale(6.0f, 6.0f);
+	_quitterSprite.setPosition(((SCREEN_WIDTH / 2) + 50), 800);
+
+	if (_gagne) {
+		if (!_gameOverBuffer.loadFromFile(SOUND_GAME_WON))
+			cout << "Erreur loading sound effect" << endl;
+	}
+	else {
+		if (!_gameOverBuffer.loadFromFile(SOUND_GAME_OVER))
+			cout << "Erreur loading sound effect" << endl;
+	}
+
+	_gameOverSound.setBuffer(_gameOverBuffer);
+	_gameOverSound.play();
 }
 
 /// <summary>
@@ -76,6 +96,10 @@ void gameOverState::handleInput()
 	while (_data->window.pollEvent(event))
 	{
 		if (event.type == Event::Closed)	// Si ferme fenêtre
+			_data->window.close();
+		else if (_data->input.isSpriteClicked(_rejouerSprite, Mouse::Left, _data->window))	// Si rejouer
+			_data->machine.addState(stateRef(new gameState(_data)), true);
+		else if (_data->input.isSpriteClicked(_quitterSprite, Mouse::Left, _data->window))	// Si fermer
 			_data->window.close();
 		else if (Mouse::isButtonPressed(Mouse::Left)) {		// Si clique, skip le temps pour faire apparaître les textes et boutons
 			_color = 255;
@@ -113,5 +137,7 @@ void gameOverState::draw(float dt) const
 	_data->window.draw(_vousEtesText);
 	_data->window.draw(_scoreText);
 	_data->window.draw(_highScoreText);
+	_data->window.draw(_rejouerSprite);
+	_data->window.draw(_quitterSprite);
 	_data->window.display();
 }

@@ -2,7 +2,8 @@
 * Auteur	: Justine Dauphinais & Jimmi Lancelot											*
 * Nom		: hud.h																			*
 * Date		: 21/12/2022																	*
-* Description : ...																			*
+* Description : Gestion des objets affichés par dessus le jeu, tels que la vie, le score,	*
+				l'argent et le nombre de chambres.											*
 *********************************************************************************************/
 #pragma once
 
@@ -32,11 +33,9 @@ private:
 	int _nbrRoom;
 	Text _roomText;
 
-	inventaire* _inventory;
-
 public:
 	hud(gameDataRef data, int nbrRoom, int score = 0, int money = 0, int nbCoeurs = NBR_LIVES);
-	~hud();
+
 	void setScore(int score);
 	void addScore(int score = 1);
 
@@ -52,8 +51,6 @@ public:
 	int getScore() const;
 	int getNbrVies() const;
 	int getRoom() const;
-	void addItem(item item);
-	void removeItem(item item);
 
 	void draw() const;
 };

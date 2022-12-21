@@ -1,22 +1,22 @@
 #include "shopState.h"
 
 /// <summary>
-/// 
+/// Constructeur
 /// </summary>
 /// <param name="data"></param>
 /// <param name="hud"></param>
 shopState::shopState(gameDataRef data, hud*& hud) : _data(data)
 {
+	_item = nullptr;
 	_hud = hud;
 	_mainCharacter = nullptr;
 	_door = nullptr;
 	_shopOwner = nullptr;
 	_showDialogue = false;
-	//_chest = nullptr;
 }
 
 /// <summary>
-/// 
+/// Destructeur
 /// </summary>
 shopState::~shopState()
 {
@@ -24,11 +24,11 @@ shopState::~shopState()
 	delete _wall;
 	delete _door;
 	delete _shopOwner;
-	//delete _chest;
+	delete _item;
 }
 
 /// <summary>
-/// 
+/// Load les sprites à l’aide du assetManager ds _data et la set au Sprite
 /// </summary>
 void shopState::init()
 {
@@ -50,7 +50,7 @@ void shopState::init()
 	_mainCharacter = new mainCharacter(_data, _hud->getNbrVies());
 	_shopOwner = new shopOwner(_data);
 	_cat = new cat(_data);
-	//_chest = new coffres(_data, Closed);
+	_item = new item(_data, bigLifePotion, 700, 250);
 
 	// Shop owner
 	_shopOwnerHiSprite.setTexture(_data->assets.getTexture("talking shop owner"));
@@ -58,8 +58,15 @@ void shopState::init()
 	_shopOwnerHiSprite.setPosition(_shopOwner->getSprite().getPosition().x - ((_shopOwnerHiSprite.getGlobalBounds().width - _shopOwner->getSprite().getGlobalBounds().width) / 4),
 									_shopOwner->getSprite().getPosition().y - _shopOwnerHiSprite.getGlobalBounds().height + 20);
 
-	// Items à vendre
-	_items.push_back(item(_data, itemTypes::bigLifePotion, 700, 250));
+	_priceText.setFillColor(Color::White);
+	_priceText.setString(to_string(_item->getPrice()));
+	_priceText.setFont(_data->assets.getFont("pixel art font"));
+	_priceText.setPosition(740, 210);
+	_priceText.setScale(0.8f, 0.8f);
+
+	_coinSprite.setTexture(_data->assets.getTexture("coin"));
+	_coinSprite.setScale(2.0f, 2.0f);
+	_coinSprite.setPosition(_priceText.getPosition().x - 50, _priceText.getPosition().y - 7);
 
 	// Pop up
 	_popUp.setTexture(_data->assets.getTexture("pop up"));
@@ -76,47 +83,46 @@ void shopState::init()
 	_buttonAccept.setScale(4.0f, 4.0f);
 	_buttonAccept.setPosition(SCREEN_WIDTH / 2 - _buttonAccept.getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 + _buttonAccept.getGlobalBounds().height * 1.2f);
 
-	// Coffre fermer
-	_chestClose.setTexture(_data->assets.getTexture("coffre close"));
-	_chestClose.setScale(6.0f, 6.0f);
-	_chestClose.setPosition(SCREEN_WIDTH / 2 - _chestClose.getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 - _chestClose.getGlobalBounds().height / 2);
-
 	// Liste de sprites
 	_lstSprites.push_back(_mainCharacter->getSprite());
 	_lstSprites.push_back(_shopOwner->getSprite());
-	_lstSprites.push_back(_items[0].getSprite());
-
+	_lstSprites.push_back(_item->getSprite());
 
 	_inItemFrame = false;
+
+	if (!_healBuffer.loadFromFile(SOUND_HEAL)) 
+		cout << "Erreur loading sound effect" << endl;
+
+	_healSound.setBuffer(_healBuffer);
+
+	if (!_popUpBuffer.loadFromFile(SOUND_POP_UP))
+		cout << "Erreur loading sound effect" << endl;
+
+	_popUpSound.setBuffer(_popUpBuffer);
 
 	_gameState = gameStates::ready;
 }
 
 /// <summary>
-/// 
+/// Fenêtre qui reste ouverte tant qu’elle n’est pas fermée
+/// Gestions des inputs de l'utilisateur
 /// </summary>
 void shopState::handleInput()
 {
 	Event event;
 	while (_data->window.pollEvent(event))
 	{
-		if (event.type == Event::Closed)	// Ferme la fenêtre
+		if (event.type == Event::Closed)					// Ferme la fenêtre
 			_data->window.close();
 		else if (event.type == Event::KeyReleased) {		// Idle
 			_mainCharacter->setState(entityStates::IDLE);
 			_usedItem = false;
 		}
-		else if (_inItemFrame && _data->input.isSpriteClicked(_buttonAccept, Mouse::Left, _data->window)) { //item present sur la page.
-			if (_hud->removeMoney(_items[_indexSelectedItem].getPrice())) {
-				_items[_indexSelectedItem].wasBought();
-				_inItemFrame = false;
-				_hud->addItem(_items[_indexSelectedItem]);
-			}
-		}
-		else if (Keyboard::isKeyPressed(Keyboard::E) && !_usedItem)
-		{		
-			_usedItem = true;
-			_hud->removeItem(_items[_indexSelectedItem]);
+		else if (_inItemFrame && _data->input.isSpriteClicked(_buttonAccept, Mouse::Left, _data->window) && _hud->removeMoney(_item->getPrice())) { // Item present sur la page
+			_item->wasBought();
+			_inItemFrame = false;
+			_healSound.play();
+			_hud->addHeart(_item->getEffect());
 		}
 	}
 
@@ -151,25 +157,26 @@ void shopState::handleInput()
 /// <param name="dt"></param>
 void shopState::update(float dt)
 {
+	// Update les entitées
 	_mainCharacter->update(dt);
 	_shopOwner->update(dt);
 	_cat->update(dt);
 
-	for (int i = 0; i < _torches.size(); i++)
+	for (int i = 0; i < _torches.size(); i++)	// Update les torches
 		_torches[i].update(dt);
 
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _door->getSprite(), 5.0f, 0.3f)) {				// Collision porte
-		if (_door->getState() == CLOSED) {
+		if (_door->getState() == CLOSED) {		// Si porte fermée, on ouvre
 			_door->openDoor();
 			_clock.restart();
 		}
-		else if (_clock.getElapsedTime().asSeconds() > 0.3f) {
+		else if (_clock.getElapsedTime().asSeconds() > 0.3f) {		// 
 			_hud->addRoom();
 			_data->machine.addState(stateRef(new gameState(_data, _hud)), true);
 		}
 	}
 	
-	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {		// Collision mur du haut
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 2.5f, 2.5f, _wall->getWallUp(), 1.0f, 0.1f)) {				// Collision mur du haut
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x, _mainCharacter->getSprite().getPosition().y + MOVEMENT_DISTANCE);
 	}
 	else if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.5f, _wall->getWallDown(), 1.0f)) {					// Collision mur du bas
@@ -191,26 +198,19 @@ void shopState::update(float dt)
 	}
 
 	// Collision items
-	for (int i = 0; i < _items.size(); i++) {
-		if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.0f, 4.0f, _items[i].getSprite(), 4.0f, 0.05f) && !_items[i].isBought()) {
-			_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - _moveX, _mainCharacter->getSprite().getPosition().y - _moveY);
-		}
-		else if (!_collision.checkSpriteCollision(_mainCharacter->getSprite(), 6.0f, 6.0f, _items[i].getSprite(), 6.0f, 4.0f) && !_items[i].isBought()) {
-			_inItemFrame = false;
-		}
-		else if (!_inItemFrame && !_items[i].isBought()) {
-			_inItemFrame = true;
-			_indexSelectedItem = i;
-			_selectedItem = _items[i].getSprite();
-			_selectedItem.setScale(6.5f, 6.5f);
-			_selectedItem.setPosition(SCREEN_WIDTH / 2 - _selectedItem.getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 - _selectedItem.getGlobalBounds().height / 2);
-		}
-	}
-	//Collision avec coffres
-	/*if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 5.0f, 5.0f, _chest->getSprite(), 5.0f, 0.3f)) {
+	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 3.0f, 4.0f, _item->getSprite(), 4.0f, 0.05f) && !_item->isBought()) {
 		_mainCharacter->setPosition(_mainCharacter->getSprite().getPosition().x - _moveX, _mainCharacter->getSprite().getPosition().y - _moveY);
-		_chest->openCoffre();
-	}*/
+	}
+	else if (!_collision.checkSpriteCollision(_mainCharacter->getSprite(), 6.0f, 6.0f, _item->getSprite(), 6.0f, 4.0f) && !_item->isBought()) {
+		_inItemFrame = false;
+	}
+	else if (!_inItemFrame && !_item->isBought()) {
+		_inItemFrame = true;
+		_selectedItem = _item->getSprite();
+		_selectedItem.setScale(6.5f, 6.5f);
+		_selectedItem.setPosition(SCREEN_WIDTH / 2 - _selectedItem.getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 - _selectedItem.getGlobalBounds().height / 2);
+		_popUpSound.play();
+	}
 
 	// Collision shop keeper
 	if (_collision.checkSpriteCollision(_mainCharacter->getSprite(), 6.0f, 4.0f, _shopOwner->getSprite(), 9.0f, 4.0f))
@@ -222,10 +222,8 @@ void shopState::update(float dt)
 	_lstSprites.push_back(_shopOwner->getSprite());
 	_lstSprites.push_back(_mainCharacter->getSprite());
 
-	for (int i = 0; i < _items.size(); i++) {
-		if (!_items[i].isBought()) 
-			_lstSprites.push_back(_items[i].getSprite());
-	}
+	if (!_item->isBought())
+		_lstSprites.push_back(_item->getSprite());
 
 	// Gestion de l'ordre d'affichage 
 	for (int i = 0; i < _lstSprites.size() - 1; i++) {
@@ -238,7 +236,7 @@ void shopState::update(float dt)
 }
 
 /// <summary>
-/// 
+/// Clear, dessine le background et display la fenêtre
 /// </summary>
 /// <param name="dt"></param>
 void shopState::draw(float dt) const
@@ -247,28 +245,32 @@ void shopState::draw(float dt) const
 	_data->window.draw(_background);
 	_data->window.draw(_carpet);
 	_wall->drawBackWall();	
-	//_chest->draw();
-	for (int i = 0; i < _torches.size(); i++)
+
+	for (int i = 0; i < _torches.size(); i++)		// Torches
 		_torches[i].draw();
+
 	_cat->draw();
 
 	_door->draw();
-	
 
-	for (int i = 0; i < _lstSprites.size(); i++)
+	for (int i = 0; i < _lstSprites.size(); i++)	// Vecteur de sprite
 		_data->window.draw(_lstSprites[i]);
+
+	if (!_item->isBought()) {						// Prix de l'item
+		_data->window.draw(_priceText);
+		_data->window.draw(_coinSprite);
+	}
 
 	_wall->draw();
 
-	if (_showDialogue)
+	if (_showDialogue)								// Montre dialogue
 		_data->window.draw(_shopOwnerHiSprite);
 
 	_hud->draw();
 
-	if (_inItemFrame) {
+	if (_inItemFrame) {								// Si permet d'acheté potion
 		_data->window.draw(_popUp);
 		_data->window.draw(_popUpText);
-		_data->window.draw(_priceText);
 		_data->window.draw(_selectedItem);
 		_data->window.draw(_buttonAccept);
 	}
