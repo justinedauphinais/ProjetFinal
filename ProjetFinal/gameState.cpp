@@ -41,7 +41,6 @@ gameState::~gameState()
 /// </summary>
 void gameState::init()
 {
-	_hasKey = true;
 	_background.setTexture(_data->assets.getTexture("game background 1"));
 
 	// Pointeurs

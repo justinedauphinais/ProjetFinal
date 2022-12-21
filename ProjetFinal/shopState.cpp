@@ -32,8 +32,6 @@ shopState::~shopState()
 /// </summary>
 void shopState::init()
 {
-	_hud->addMoney(40);
-
 	_background.setTexture(_data->assets.getTexture("game background 1"));
 	_carpet.setTexture(_data->assets.getTexture("tapis"));
 	_carpet.setScale(0.8f, 0.8f);
